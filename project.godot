@@ -14,6 +14,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/finite_state_machine/source/FiniteStateMachine.gd"
 }, {
+"base": "Spatial",
+"class": "Game",
+"language": "GDScript",
+"path": "res://source/game/Game.gd"
+}, {
 "base": "Node",
 "class": "MusicBooth",
 "language": "GDScript",
@@ -61,6 +66,7 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "FiniteStateMachine": "",
+"Game": "",
 "MusicBooth": "",
 "SceneLoader": "",
 "Song": "",
