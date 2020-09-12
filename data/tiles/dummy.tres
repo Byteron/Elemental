@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://source/tile/TileData.gd" type="Script" id=1]
+[ext_resource path="res://graphics/models/tiles/block_raw.obj" type="ArrayMesh" id=2]
+
+[resource]
+script = ExtResource( 1 )
+alias = "Dummy"
+mesh = ExtResource( 2 )
