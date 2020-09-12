@@ -5,5 +5,6 @@
 
 [resource]
 script = ExtResource( 1 )
+color = Color( 1, 1, 1, 1 )
 alias = "Dummy"
 mesh = ExtResource( 2 )

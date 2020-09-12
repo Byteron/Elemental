@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Spatial",
+"class": "Elemental",
+"language": "GDScript",
+"path": "res://source/elemental/Elemental.gd"
+}, {
 "base": "Node",
 "class": "FiniteStateMachine",
 "language": "GDScript",
@@ -85,6 +90,7 @@ _global_script_classes=[ {
 "path": "res://addons/audio_booth/source/music/containers/TrackContainer.gd"
 } ]
 _global_script_class_icons={
+"Elemental": "",
 "FiniteStateMachine": "",
 "Game": "",
 "Loader": "",
@@ -112,6 +118,10 @@ config/icon="res://icon.png"
 
 Scene="*res://addons/scene_manager/source/Scene.tscn"
 Global="*res://source/global/Global.gd"
+
+[debug]
+
+settings/stdout/print_fps=true
 
 [editor_plugins]
 
