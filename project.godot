@@ -8,15 +8,83 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Node",
+"class": "FiniteStateMachine",
+"language": "GDScript",
+"path": "res://addons/finite_state_machine/source/FiniteStateMachine.gd"
+}, {
+"base": "Node",
+"class": "MusicBooth",
+"language": "GDScript",
+"path": "res://addons/audio_booth/source/music/MusicBooth.gd"
+}, {
+"base": "Node",
+"class": "SceneLoader",
+"language": "GDScript",
+"path": "res://addons/scene_manager/source/SceneLoader.gd"
+}, {
+"base": "Node",
+"class": "Song",
+"language": "GDScript",
+"path": "res://addons/audio_booth/source/music/Song.gd"
+}, {
+"base": "Node",
+"class": "Sound",
+"language": "GDScript",
+"path": "res://addons/audio_booth/source/sfx/Sound.gd"
+}, {
+"base": "Node",
+"class": "SoundBooth",
+"language": "GDScript",
+"path": "res://addons/audio_booth/source/sfx/SoundBooth.gd"
+}, {
+"base": "Node",
+"class": "State",
+"language": "GDScript",
+"path": "res://addons/finite_state_machine/source/State.gd"
+}, {
+"base": "Node",
+"class": "StingerContainer",
+"language": "GDScript",
+"path": "res://addons/audio_booth/source/music/containers/StingerContainer.gd"
+}, {
+"base": "Control",
+"class": "TitleScreen",
+"language": "GDScript",
+"path": "res://source/menu/TitleScreen.gd"
+}, {
+"base": "Node",
+"class": "TrackContainer",
+"language": "GDScript",
+"path": "res://addons/audio_booth/source/music/containers/TrackContainer.gd"
+} ]
 _global_script_class_icons={
-
+"FiniteStateMachine": "",
+"MusicBooth": "",
+"SceneLoader": "",
+"Song": "",
+"Sound": "",
+"SoundBooth": "",
+"State": "",
+"StingerContainer": "",
+"TitleScreen": "",
+"TrackContainer": ""
 }
 
 [application]
 
 config/name="Elemental"
+run/main_scene="res://source/menu/TitleScreen.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+Scene="*res://addons/scene_manager/source/Scene.tscn"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "audio_booth", "finite_state_machine", "scene_manager" )
 
 [rendering]
 
