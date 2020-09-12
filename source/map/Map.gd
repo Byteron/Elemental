@@ -1,7 +1,7 @@
 extends Spatial
 class_name Map
 
-var size := Vector2(20, 20)
+export var size := Vector2(10, 10)
 
 var tiles := {}
 
