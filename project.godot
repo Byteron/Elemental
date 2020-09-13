@@ -29,6 +29,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://source/global/Loader.gd"
 }, {
+"base": "Node",
+"class": "Location",
+"language": "GDScript",
+"path": "res://source/map/Location.gd"
+}, {
 "base": "Spatial",
 "class": "Map",
 "language": "GDScript",
@@ -70,14 +75,14 @@ _global_script_classes=[ {
 "path": "res://addons/audio_booth/source/music/containers/StingerContainer.gd"
 }, {
 "base": "Spatial",
-"class": "Tile",
+"class": "Terrain",
 "language": "GDScript",
-"path": "res://source/tile/Tile.gd"
+"path": "res://source/terrain/Terrain.gd"
 }, {
 "base": "Resource",
-"class": "TileData",
+"class": "TerrainData",
 "language": "GDScript",
-"path": "res://source/tile/TileData.gd"
+"path": "res://source/terrain/TerrainData.gd"
 }, {
 "base": "Control",
 "class": "TitleScreen",
@@ -94,6 +99,7 @@ _global_script_class_icons={
 "FiniteStateMachine": "",
 "Game": "",
 "Loader": "",
+"Location": "",
 "Map": "",
 "MusicBooth": "",
 "SceneLoader": "",
@@ -102,8 +108,8 @@ _global_script_class_icons={
 "SoundBooth": "",
 "State": "",
 "StingerContainer": "",
-"Tile": "",
-"TileData": "",
+"Terrain": "",
+"TerrainData": "",
 "TitleScreen": "",
 "TrackContainer": ""
 }

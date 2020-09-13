@@ -1,12 +1,12 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://source/tile/Tile.gd" type="Script" id=2]
+[ext_resource path="res://source/terrain/Terrain.gd" type="Script" id=2]
 
 [sub_resource type="SpatialMaterial" id=1]
 vertex_color_use_as_albedo = true
 albedo_color = Color( 0.384314, 0.407843, 0.47451, 1 )
 
-[node name="Tile" type="Spatial"]
+[node name="Terrain" type="Spatial"]
 script = ExtResource( 2 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]

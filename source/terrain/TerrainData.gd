@@ -1,5 +1,5 @@
 extends Resource
-class_name TileData
+class_name TerrainData
 
 export var color := Color.white
 export var alias := ""

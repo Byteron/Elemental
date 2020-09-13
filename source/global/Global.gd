@@ -1,6 +1,6 @@
 extends Node
 
-var tiles := {}
+var terrains := {}
 
 func _ready() -> void:
 	_register_scenes()
@@ -14,10 +14,10 @@ func _register_scenes():
 
 
 func _load_tiles():
-	var files = Loader.load_dir("res://data/tiles/", ["tres"])
+	var files = Loader.load_dir("res://data/terrains/", ["tres"])
 
 	for file in files:
-		var tile = file.data
-		tiles[tile.alias] = tile
+		var terrain = file.data
+		terrains[terrain.alias] = terrain
 
-	print(tiles)
+	print(terrains)

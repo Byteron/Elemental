@@ -3,19 +3,25 @@ class_name Map
 
 export var size := Vector2(10, 10)
 
-var tiles := {}
+var locations := {}
 
 
 func _ready() -> void:
 	for z in size.y:
 		for x in size.x:
 			var cell = Vector3(x, 0, z)
-			_add_tile("Dummy", cell)
+			_add_location("Dummy", cell)
 
 
-func _add_tile(alias: String, cell: Vector3) -> void:
-	var tile := Tile.instance()
-	add_child(tile)
-	tile.initialize(Global.tiles[alias])
-	tile.transform.origin = cell * 2
-	tiles[cell] = tile
+func _add_location(alias: String, cell: Vector3) -> void:
+	var terrain := Terrain.instance()
+	add_child(terrain)
+	terrain.initialize(Global.terrains[alias])
+	terrain.transform.origin = cell * 2
+
+	var loc := Location.new()
+	loc.terrain = terrain
+	loc.position = cell * 2
+	loc.cell = cell
+
+	locations[cell] = loc

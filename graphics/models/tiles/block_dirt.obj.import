@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/block_dirt.obj-57caaa042a5435a0ea40996d4bb8831e.mesh"
+
+[deps]
+
+files=[ "res://.import/block_dirt.obj-57caaa042a5435a0ea40996d4bb8831e.mesh" ]
+
+source_file="res://graphics/models/tiles/block_dirt.obj"
+dest_files=[ "res://.import/block_dirt.obj-57caaa042a5435a0ea40996d4bb8831e.mesh", "res://.import/block_dirt.obj-57caaa042a5435a0ea40996d4bb8831e.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true
