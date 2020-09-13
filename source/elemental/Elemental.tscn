@@ -4,6 +4,7 @@
 
 [sub_resource type="Animation" id=1]
 resource_name = "idle"
+length = 2.0
 loop = true
 step = 0.05
 tracks/0/type = "value"
@@ -13,15 +14,27 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.25, 0.5, 0.75, 1 ),
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2 ),
 "transitions": PoolRealArray( 0.5, 2, 0.5, 2, 1 ),
 "update": 0,
 "values": [ Vector3( 0, 1, 0 ), Vector3( 0, 0.8, 0 ), Vector3( 0, 0.908511, 0 ), Vector3( 0, 1.2, 0 ), Vector3( 0, 1, 0 ) ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("Seeds:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 360, 0 ) ]
+}
 
 [sub_resource type="SphereMesh" id=2]
-radius = 0.5
-height = 1.0
+radius = 0.75
+height = 1.5
 
 [sub_resource type="SpatialMaterial" id=3]
 albedo_color = Color( 1, 0.858824, 0.431373, 1 )
@@ -46,6 +59,5 @@ material/0 = SubResource( 3 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 shape = SubResource( 4 )
 
-[node name="Camera" type="Camera" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.913588, 0.406641, 0, -0.406641, 0.913588, 0, 2.96832, 3.47263 )
+[node name="Seeds" type="Spatial" parent="."]
 [connection signal="tween_all_completed" from="Tween" to="." method="_on_Tween_tween_all_completed"]

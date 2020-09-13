@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="SpatialMaterial" id=3]
+albedo_color = Color( 0.866667, 0.615686, 0.372549, 1 )
+
+[sub_resource type="SphereMesh" id=4]
+material = SubResource( 3 )
+radius = 0.25
+height = 0.6
+
+[node name="SeedsMesh" type="Spatial"]
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.251587, 0.790598, 0.185988 )
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="MeshInstance2" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.226671, 1.08599, 0.0906932 )
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="MeshInstance3" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.140444, 1.3507, -0.27732 )
+mesh = SubResource( 4 )
+material/0 = null

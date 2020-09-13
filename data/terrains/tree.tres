@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=5 format=2]
+
+[ext_resource path="res://source/terrain/TerrainData.gd" type="Script" id=1]
+[ext_resource path="res://graphics/models/tiles/block_dirt0_LOD0.obj" type="ArrayMesh" id=2]
+[ext_resource path="res://graphics/materials/terrain_tree.tres" type="Material" id=3]
+[ext_resource path="res://data/transitions/earth_from_fire.tres" type="Resource" id=4]
+
+[resource]
+script = ExtResource( 1 )
+alias = "Tree"
+fertile = false
+mesh = ExtResource( 2 )
+material = ExtResource( 3 )
+transitions = [ ExtResource( 4 ) ]
