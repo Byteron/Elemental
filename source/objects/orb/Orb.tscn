@@ -5,8 +5,8 @@
 
 [sub_resource type="SphereMesh" id=1]
 material = ExtResource( 1 )
-radius = 0.75
-height = 1.5
+radius = 0.5
+height = 1.0
 
 [sub_resource type="SphereShape" id=2]
 radius = 0.780526

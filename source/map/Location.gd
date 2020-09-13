@@ -17,6 +17,7 @@ func _set_orb(value: Orb) -> void:
 	orb = value
 
 	if orb:
+		orb.transform.origin = position
 		orb.connect("collected", self, "_on_orb_collected")
 
 
@@ -24,6 +25,7 @@ func _set_seeds(value: Seeds) -> void:
 	seeds = value
 
 	if seeds:
+		seeds.transform.origin = position
 		seeds.connect("collected", self, "_on_seeds_collected")
 
 

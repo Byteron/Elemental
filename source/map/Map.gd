@@ -19,6 +19,11 @@ func _ready() -> void:
 			var cell = Vector3(x, 0, z)
 			_add_location(["Earth", "Stone", "Stone", "Water"][randi() % 4], cell)
 
+			if randf() < 0.1:
+				_add_orb(["Ice", "Neutral", "Fire"][randi() % 3], cell)
+			elif randf() < 0.04:
+				_add_seeds(cell)
+
 
 func initialize(elemental: Elemental, cell: Vector3) -> void:
 	if not locations.has(cell):
@@ -48,11 +53,19 @@ func move_elemental(direction: Vector3) -> void:
 
 
 func _add_orb(alias: String, cell: Vector3) -> void:
-	pass
+	var orb := Orb.instance()
+	objects.add_child(orb)
+	orb.element = alias
+	orb.mesh_instance.material_override = Global.orb_materials.get(alias.to_lower())
+
+	locations[cell].orb = orb
 
 
 func _add_seeds(cell: Vector3) -> void:
-	pass
+	var seeds := Seeds.instance()
+	objects.add_child(seeds)
+
+	locations[cell].seeds = seeds
 
 
 func _add_location(alias: String, cell: Vector3) -> void:
@@ -87,6 +100,12 @@ func _check_terrain(loc: Location) -> void:
 	if terrain:
 		loc.terrain.queue_free()
 		_add_location(terrain, loc.cell)
+
+	if elemental.seeds and loc.terrain.fertile:
+		elemental.seeds -= 1
+		print("Seeds - 1")
+		loc.terrain.queue_free()
+		_add_location("Tree", loc.cell)
 
 
 func _on_elemental_move_finished(cell: Vector3) -> void:

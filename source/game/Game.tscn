@@ -12,9 +12,10 @@ transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 0, 0, 0
 shadow_enabled = true
 
 [node name="Elemental" parent="." instance=ExtResource( 3 )]
+state = "Neutral"
 
 [node name="Map" parent="." instance=ExtResource( 2 )]
-size = Vector2( 11, 11 )
+size = Vector2( 9, 9 )
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 0.707107, 0.40558, -0.579228, 0, 0.819152, 0.573577, 0.707107, -0.40558, 0.579228, 0, 10, 10 )

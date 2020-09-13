@@ -1,6 +1,8 @@
 extends Node
 
 var terrains := {}
+var orb_materials : OrbMaterialData = preload("res://data/orb_materials.tres")
+
 
 func _ready() -> void:
 	_register_scenes()
