@@ -3,6 +3,7 @@ class_name Game
 
 onready var elemental := $Elemental as Elemental
 onready var map := $Map as Map
+onready var camera := $Camera as Camera
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -18,3 +19,6 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _ready() -> void:
 	elemental.move_to(Vector3(map.size.x, 0, map.size.y) / 2)
+	camera.size = max(map.size.x, map.size.y) * 1.7
+	camera.transform.origin.y = map.size.length() / 1.5 - 1
+	camera.transform.origin.z = (map.size.y - 1) * 2
