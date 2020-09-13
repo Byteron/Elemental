@@ -2,10 +2,14 @@ extends Spatial
 class_name Map
 
 const GRID_SIZE = Vector3(2, 2, 2)
+
 export var size := Vector2(10, 10)
 
 var locations := {}
 var elemental : Elemental = null
+
+onready var terrains := $Terrains
+onready var objects := $Objects
 
 
 func _ready() -> void:
@@ -43,9 +47,17 @@ func move_elemental(direction: Vector3) -> void:
 	elemental.move_to(next_loc.position)
 
 
+func _add_orb(alias: String, cell: Vector3) -> void:
+	pass
+
+
+func _add_seeds(cell: Vector3) -> void:
+	pass
+
+
 func _add_location(alias: String, cell: Vector3) -> void:
 	var terrain := Terrain.instance()
-	add_child(terrain)
+	terrains.add_child(terrain)
 	terrain.initialize(Global.terrains[alias])
 	terrain.transform.origin = cell * GRID_SIZE
 

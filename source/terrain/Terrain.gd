@@ -18,4 +18,3 @@ func initialize(data: TerrainData) -> void:
 	transitions = data.transitions
 	mesh_instance.mesh = data.mesh
 	mesh_instance.material_override = data.material
-	mesh_instance.scale = Vector3(0.01, 0.01, 0.01)

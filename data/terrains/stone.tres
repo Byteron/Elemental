@@ -1,6 +1,6 @@
 [gd_resource type="Resource" load_steps=4 format=2]
 
-[ext_resource path="res://graphics/models/tiles/block_raw.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://graphics/models/tiles/block_dirt0_LOD0.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://source/terrain/TerrainData.gd" type="Script" id=2]
 
 [sub_resource type="SpatialMaterial" id=1]

@@ -1,9 +1,11 @@
-extends Spatial
+extends Area
 class_name Elemental
 
 signal move_finished(cell)
 
 export var state := "Ice"
+export var seeds := 0
+
 
 var cell := Vector3()
 

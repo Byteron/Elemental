@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://graphics/materials/orb_fire.tres" type="Material" id=1]
-[ext_resource path="res://source/objects/orbs/Orb.gd" type="Script" id=2]
+[ext_resource path="res://source/objects/orb/Orb.gd" type="Script" id=2]
 
 [sub_resource type="SphereMesh" id=1]
 material = ExtResource( 1 )
@@ -22,4 +22,4 @@ material/0 = null
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0 )
 shape = SubResource( 2 )
-[connection signal="body_entered" from="." to="." method="_on_Orb_body_entered"]
+[connection signal="area_entered" from="." to="." method="_on_Orb_area_entered"]

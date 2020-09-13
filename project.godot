@@ -9,7 +9,7 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Spatial",
+"base": "Area",
 "class": "Elemental",
 "language": "GDScript",
 "path": "res://source/elemental/Elemental.gd"
@@ -47,12 +47,17 @@ _global_script_classes=[ {
 "base": "Area",
 "class": "Orb",
 "language": "GDScript",
-"path": "res://source/objects/orbs/Orb.gd"
+"path": "res://source/objects/orb/Orb.gd"
 }, {
 "base": "Node",
 "class": "SceneLoader",
 "language": "GDScript",
 "path": "res://addons/scene_manager/source/SceneLoader.gd"
+}, {
+"base": "Area",
+"class": "Seeds",
+"language": "GDScript",
+"path": "res://source/objects/seeds/Seeds.gd"
 }, {
 "base": "Node",
 "class": "Song",
@@ -114,6 +119,7 @@ _global_script_class_icons={
 "MusicBooth": "",
 "Orb": "",
 "SceneLoader": "",
+"Seeds": "",
 "Song": "",
 "Sound": "",
 "SoundBooth": "",
