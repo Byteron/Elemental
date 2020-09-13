@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=5 format=2]
+
+[ext_resource path="res://source/terrain/TerrainData.gd" type="Script" id=1]
+[ext_resource path="res://graphics/models/tiles/block_raw.obj" type="ArrayMesh" id=2]
+[ext_resource path="res://data/transitions/ice_from_ice.tres" type="Resource" id=3]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_color = Color( 0.0196078, 0.0117647, 0.847059, 1 )
+roughness = 0.5
+
+[resource]
+script = ExtResource( 1 )
+alias = "Water"
+mesh = ExtResource( 2 )
+material = SubResource( 1 )
+transitions = [ ExtResource( 3 ) ]

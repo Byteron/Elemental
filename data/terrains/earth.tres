@@ -2,10 +2,14 @@
 
 [ext_resource path="res://source/terrain/TerrainData.gd" type="Script" id=1]
 [ext_resource path="res://graphics/models/tiles/block_raw.obj" type="ArrayMesh" id=2]
-[ext_resource path="res://graphics/materials/orb_fire.tres" type="Material" id=3]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_color = Color( 0.498039, 0.356863, 0.223529, 1 )
+metallic_specular = 0.2
 
 [resource]
 script = ExtResource( 1 )
-alias = "Dummy"
+alias = "Earth"
 mesh = ExtResource( 2 )
-material = ExtResource( 3 )
+material = SubResource( 1 )
+transitions = [  ]

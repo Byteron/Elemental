@@ -98,6 +98,11 @@ _global_script_classes=[ {
 "class": "TrackContainer",
 "language": "GDScript",
 "path": "res://addons/audio_booth/source/music/containers/TrackContainer.gd"
+}, {
+"base": "Resource",
+"class": "TransitionData",
+"language": "GDScript",
+"path": "res://source/terrain/TransitionData.gd"
 } ]
 _global_script_class_icons={
 "Elemental": "",
@@ -117,7 +122,8 @@ _global_script_class_icons={
 "Terrain": "",
 "TerrainData": "",
 "TitleScreen": "",
-"TrackContainer": ""
+"TrackContainer": "",
+"TransitionData": ""
 }
 
 [application]
@@ -141,6 +147,4 @@ enabled=PoolStringArray( "audio_booth", "finite_state_machine", "scene_manager" 
 
 [rendering]
 
-quality/filters/use_nearest_mipmap_filter=true
-quality/filters/msaa=2
 environment/default_environment="res://default_env.tres"
