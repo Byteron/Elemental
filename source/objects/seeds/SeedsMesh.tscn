@@ -11,16 +11,16 @@ height = 0.6
 [node name="SeedsMesh" type="Spatial"]
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.251587, 0.405292, 0.185988 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.251587, 0.363355, 0.10628 )
 mesh = SubResource( 2 )
 material/0 = null
 
 [node name="MeshInstance2" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.226671, 0.700684, 0.0906932 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.226671, 0.586055, 0.0906932 )
 mesh = SubResource( 2 )
 material/0 = null
 
 [node name="MeshInstance3" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.140444, 0.965394, -0.27732 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.140444, 0.862285, -0.151943 )
 mesh = SubResource( 2 )
 material/0 = null
