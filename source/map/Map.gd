@@ -46,6 +46,8 @@ func initialize_from_map_data(elemental: Elemental, map_data: MapData) -> void:
 			var type = data["Orb"]
 			add_orb(cell, type)
 
+	_conditionalize()
+
 
 func randomize_terrain() -> void:
 	randomize()
@@ -56,6 +58,8 @@ func randomize_terrain() -> void:
 			add_orb(loc.cell, ["Ice", "Stone", "Fire"][randi() % 3])
 		elif randf() < 0.04:
 			add_seeds(loc.cell)
+
+	_conditionalize()
 
 
 func place_elemental(elemental: Elemental, cell: Vector3) -> void:
@@ -171,6 +175,30 @@ func get_map_data() -> MapData:
 	return map_data
 
 
+func _conditionalize() -> void:
+	earth_block_count = 0
+	seeds_planted = 0
+
+	for cell in locations:
+		var loc : Location = locations[cell]
+
+		if loc.terrain.fertile:
+			earth_block_count += 1
+
+
+func _check_conditions() -> void:
+	seeds_planted = 0
+
+	for cell in locations:
+		var loc : Location = locations[cell]
+
+		if loc.terrain.alias == "Tree":
+			seeds_planted += 1
+
+	if seeds_planted == earth_block_count:
+		Scene.change("TitleScreen")
+
+
 func _add_location(alias: String, cell: Vector3) -> void:
 	var terrain : Terrain = Global.terrains[alias].instance()
 	terrain.connect("mouse_entered", self, "_on_terrain_hovered", [ cell ])
@@ -218,6 +246,7 @@ func _check_terrain(loc: Location) -> void:
 
 	if elemental.seeds and loc.terrain.fertile:
 		elemental.seeds -= 1
+		seeds_planted += 1
 		print("Seeds - 1")
 		_replace_terrain(loc, "Tree")
 
@@ -231,3 +260,4 @@ func _on_elemental_move_finished(cell: Vector3) -> void:
 	loc.terrain.on_moved(self)
 	_check_orb(loc)
 	_check_terrain(loc)
+	_check_conditions()
