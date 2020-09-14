@@ -18,11 +18,6 @@ static func instance() -> Map:
 	return load("res://source/map/Map.tscn").instance() as Map
 
 
-func _ready() -> void:
-	pass
-
-
-
 func initialize(width: int, height: int) -> void:
 	size = Vector2(width, height)
 	for z in size.y:
@@ -74,7 +69,9 @@ func change_terrain(cell: Vector3, alias: String, elevation := 0) -> void:
 
 	if elevation:
 		_remove_location(cell)
-		_add_location(alias, Vector3(cell.x, clamp(cell.y + elevation, 0, 2), cell.z))
+		cell.y = clamp(cell.y + elevation, 0, 2)
+		_add_location(alias, cell)
+		emit_signal("cell_hovered", cell)
 	else:
 		_replace_terrain(loc, alias)
 
