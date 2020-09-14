@@ -9,4 +9,4 @@
 script = ExtResource( 1 )
 fire = ExtResource( 2 )
 ice = ExtResource( 3 )
-neutral = ExtResource( 4 )
+stone = ExtResource( 4 )

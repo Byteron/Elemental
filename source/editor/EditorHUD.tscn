@@ -1,0 +1,116 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://source/interface/LabelEdit.tscn" type="PackedScene" id=1]
+[ext_resource path="res://source/editor/EditorHUD.gd" type="Script" id=2]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource( 2 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_right = 207.0
+margin_bottom = 52.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+margin_right = 150.0
+margin_bottom = 52.0
+
+[node name="Width" parent="VBoxContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 1 )]
+margin_bottom = 24.0
+alias = "Width"
+
+[node name="Height" parent="VBoxContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 1 )]
+margin_top = 28.0
+margin_bottom = 52.0
+alias = "Height"
+
+[node name="CreateButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+margin_left = 154.0
+margin_right = 207.0
+margin_bottom = 52.0
+text = "Create"
+
+[node name="VBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 56.0
+margin_right = 207.0
+margin_bottom = 76.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VBoxContainer/VBoxContainer2"]
+margin_top = 3.0
+margin_right = 101.0
+margin_bottom = 17.0
+size_flags_horizontal = 3
+text = "Mode"
+
+[node name="ModeOptions" type="OptionButton" parent="VBoxContainer/VBoxContainer2"]
+margin_left = 105.0
+margin_right = 207.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+text = "Mode"
+items = [ "Terrain", null, false, 0, null, "Orbs", null, false, 1, null, "Seeds", null, false, 2, null ]
+selected = 0
+
+[node name="VBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 80.0
+margin_right = 207.0
+margin_bottom = 100.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VBoxContainer/VBoxContainer"]
+margin_top = 3.0
+margin_right = 101.0
+margin_bottom = 17.0
+size_flags_horizontal = 3
+text = "Terrain"
+
+[node name="TerrainOptions" type="OptionButton" parent="VBoxContainer/VBoxContainer"]
+margin_left = 105.0
+margin_right = 207.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+text = "Terrain"
+items = [ "Stone", null, false, 0, null, "Water", null, false, 1, null, "Earth", null, false, 2, null, "Tree", null, false, 3, null ]
+selected = 0
+
+[node name="VBoxContainer3" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 104.0
+margin_right = 207.0
+margin_bottom = 124.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VBoxContainer/VBoxContainer3"]
+margin_top = 3.0
+margin_right = 101.0
+margin_bottom = 17.0
+size_flags_horizontal = 3
+text = "Orbs"
+
+[node name="OrbOptions" type="OptionButton" parent="VBoxContainer/VBoxContainer3"]
+margin_left = 105.0
+margin_right = 207.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+text = "Stone"
+items = [ "Stone", null, false, 0, null, "Ice", null, false, 1, null, "Fire", null, false, 2, null ]
+selected = 0
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/CreateButton" to="." method="_on_CreateButton_pressed"]
+[connection signal="item_selected" from="VBoxContainer/VBoxContainer2/ModeOptions" to="." method="_on_ModeOptions_item_selected"]
+[connection signal="item_selected" from="VBoxContainer/VBoxContainer/TerrainOptions" to="." method="_on_TerrainOptions_item_selected"]
+[connection signal="item_selected" from="VBoxContainer/VBoxContainer3/OrbOptions" to="." method="_on_OrbOptions_item_selected"]

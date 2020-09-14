@@ -1,4 +1,4 @@
-extends Spatial
+extends Area
 class_name Terrain
 
 var cell := Vector3()

@@ -4,7 +4,6 @@
 
 [node name="Map" type="Spatial"]
 script = ExtResource( 1 )
-size = Vector2( 15, 15 )
 
 [node name="Terrains" type="Spatial" parent="."]
 

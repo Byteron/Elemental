@@ -3,6 +3,8 @@ class_name Map
 
 const GRID_SIZE = Vector3(2, 2, 2)
 
+signal cell_hovered(cell)
+
 var size := Vector2(0, 0)
 
 var locations := {}
@@ -12,8 +14,13 @@ onready var terrains := $Terrains
 onready var objects := $Objects
 
 
+static func instance() -> Map:
+	return load("res://source/map/Map.tscn").instance() as Map
+
+
 func _ready() -> void:
 	pass
+
 
 
 func initialize(width: int, height: int) -> void:
@@ -30,9 +37,9 @@ func randomize_terrain() -> void:
 		_replace_terrain(loc, ["Earth", "Stone", "Stone", "Water"][randi() % 4])
 
 		if randf() < 0.1:
-			_add_orb(["Ice", "Neutral", "Fire"][randi() % 3], loc.cell)
+			add_orb(loc.cell, ["Ice", "Stone", "Fire"][randi() % 3])
 		elif randf() < 0.04:
-			_add_seeds(loc.cell)
+			add_seeds(loc.cell)
 
 
 func place_elemental(elemental: Elemental, cell: Vector3) -> void:
@@ -62,24 +69,56 @@ func move_elemental(direction: Vector3) -> void:
 	elemental.move_to(next_loc.position)
 
 
-func _add_orb(alias: String, cell: Vector3) -> void:
+func change_terrain(cell: Vector3, alias: String) -> void:
+	var loc : Location = locations[cell]
+
+	_replace_terrain(loc, alias)
+
+
+func add_orb(cell: Vector3, alias: String) -> void:
+	var loc : Location = locations[cell]
+
+	if loc.orb:
+		return
+
 	var orb := Orb.instance()
 	objects.add_child(orb)
 	orb.element = alias
 	orb.mesh_instance.material_override = Global.orb_materials.get(alias.to_lower())
 
-	locations[cell].orb = orb
+	loc.orb = orb
 
 
-func _add_seeds(cell: Vector3) -> void:
+func remove_orb(cell: Vector3) -> void:
+	var loc : Location = locations[cell]
+
+	if loc.orb:
+		loc.orb.queue_free()
+		loc.orb = null
+
+
+func add_seeds(cell: Vector3) -> void:
+	var loc : Location = locations[cell]
+
+	if loc.seeds:
+		return
+
 	var seeds := Seeds.instance()
 	objects.add_child(seeds)
 
-	locations[cell].seeds = seeds
+	loc.seeds = seeds
 
+
+func remove_seeds(cell: Vector3) -> void:
+	var loc : Location = locations[cell]
+
+	if loc.seeds:
+		loc.seeds.queue_free()
+		loc.seeds = null
 
 func _add_location(alias: String, cell: Vector3) -> void:
 	var terrain := Terrain.instance()
+	terrain.connect("mouse_entered", self, "_on_terrain_hovered", [ cell ])
 	terrains.add_child(terrain)
 	terrain.initialize(Global.terrains[alias])
 	terrain.transform.origin = cell * GRID_SIZE
@@ -119,6 +158,10 @@ func _check_terrain(loc: Location) -> void:
 		elemental.seeds -= 1
 		print("Seeds - 1")
 		_replace_terrain(loc, "Tree")
+
+
+func _on_terrain_hovered(cell: Vector3) -> void:
+	emit_signal("cell_hovered", cell)
 
 
 func _on_elemental_move_finished(cell: Vector3) -> void:

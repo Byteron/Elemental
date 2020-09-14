@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://graphics/models/tiles/block_dirt0_LOD0.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://source/terrain/Terrain.gd" type="Script" id=2]
@@ -7,7 +7,9 @@
 vertex_color_use_as_albedo = true
 albedo_color = Color( 0.384314, 0.407843, 0.47451, 1 )
 
-[node name="Terrain" type="Spatial"]
+[sub_resource type="BoxShape" id=2]
+
+[node name="Terrain" type="Area"]
 script = ExtResource( 2 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
@@ -15,3 +17,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0 )
 material_override = SubResource( 1 )
 mesh = ExtResource( 1 )
 material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
+shape = SubResource( 2 )
