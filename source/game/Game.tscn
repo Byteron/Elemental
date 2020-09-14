@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://source/game/Game.gd" type="Script" id=1]
 [ext_resource path="res://source/map/Map.tscn" type="PackedScene" id=2]
 [ext_resource path="res://source/elemental/Elemental.tscn" type="PackedScene" id=3]
+[ext_resource path="res://source/camera/OrthoCamera.tscn" type="PackedScene" id=4]
 
 [node name="Game" type="Spatial"]
 script = ExtResource( 1 )
@@ -15,11 +16,5 @@ shadow_enabled = true
 state = "Neutral"
 
 [node name="Map" parent="." instance=ExtResource( 2 )]
-size = Vector2( 9, 9 )
 
-[node name="Camera" type="Camera" parent="."]
-transform = Transform( 0.707107, 0.40558, -0.579228, 0, 0.819152, 0.573577, 0.707107, -0.40558, 0.579228, 0, 10, 10 )
-projection = 1
-current = true
-size = 20.0
-far = 1000.0
+[node name="OrthoCamera" parent="." instance=ExtResource( 4 )]

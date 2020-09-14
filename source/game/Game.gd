@@ -1,9 +1,11 @@
 extends Spatial
 class_name Game
 
+export var size := Vector2(10, 10)
+
 onready var elemental := $Elemental as Elemental
 onready var map := $Map as Map
-onready var camera := $Camera as Camera
+onready var camera := $OrthoCamera as OrthoCamera
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -18,11 +20,8 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func _ready() -> void:
-	map.initialize(elemental, (Vector3(map.size.x, 0, map.size.y) / 2).floor())
-	_initialize_camera()
+	map.initialize(size.x, size.y)
+	map.randomize_terrain()
+	map.place_elemental(elemental, (Vector3(map.size.x, 0, map.size.y) / 2).floor())
 
-
-func _initialize_camera() -> void:
-	camera.size = max(map.size.x, map.size.y) * 1.7
-	camera.transform.origin.y = map.size.length() / 1.5 - 1
-	camera.transform.origin.z = (map.size.y - 1) * 2
+	camera.initialize(map.size)

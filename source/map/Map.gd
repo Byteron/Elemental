@@ -3,7 +3,7 @@ class_name Map
 
 const GRID_SIZE = Vector3(2, 2, 2)
 
-export var size := Vector2(10, 10)
+var size := Vector2(0, 0)
 
 var locations := {}
 var elemental : Elemental = null
@@ -13,19 +13,29 @@ onready var objects := $Objects
 
 
 func _ready() -> void:
-	randomize()
+	pass
+
+
+func initialize(width: int, height: int) -> void:
+	size = Vector2(width, height)
 	for z in size.y:
 		for x in size.x:
 			var cell = Vector3(x, 0, z)
-			_add_location(["Earth", "Stone", "Stone", "Water"][randi() % 4], cell)
-
-			if randf() < 0.1:
-				_add_orb(["Ice", "Neutral", "Fire"][randi() % 3], cell)
-			elif randf() < 0.04:
-				_add_seeds(cell)
+			_add_location("Stone", cell)
 
 
-func initialize(elemental: Elemental, cell: Vector3) -> void:
+func randomize_terrain() -> void:
+	randomize()
+	for loc in locations.values():
+		_replace_terrain(loc, ["Earth", "Stone", "Stone", "Water"][randi() % 4])
+
+		if randf() < 0.1:
+			_add_orb(["Ice", "Neutral", "Fire"][randi() % 3], loc.cell)
+		elif randf() < 0.04:
+			_add_seeds(loc.cell)
+
+
+func place_elemental(elemental: Elemental, cell: Vector3) -> void:
 	if not locations.has(cell):
 		print_debug("invalid start location: ", cell)
 		return
@@ -82,6 +92,11 @@ func _add_location(alias: String, cell: Vector3) -> void:
 	locations[cell] = loc
 
 
+func _replace_terrain(loc: Location, alias: String) -> void:
+	loc.terrain.queue_free()
+	_add_location(alias, loc.cell)
+
+
 func _check_orb(loc: Location) -> void:
 	if loc.orb:
 		elemental.state = loc.orb.element
@@ -98,14 +113,12 @@ func _check_terrain(loc: Location) -> void:
 			break
 
 	if terrain:
-		loc.terrain.queue_free()
-		_add_location(terrain, loc.cell)
+		_replace_terrain(loc, terrain)
 
 	if elemental.seeds and loc.terrain.fertile:
 		elemental.seeds -= 1
 		print("Seeds - 1")
-		loc.terrain.queue_free()
-		_add_location("Tree", loc.cell)
+		_replace_terrain(loc, "Tree")
 
 
 func _on_elemental_move_finished(cell: Vector3) -> void:
