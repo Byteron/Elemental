@@ -1,6 +1,13 @@
 extends Area
 class_name Terrain
 
+enum Action {
+	MOVE,
+	BLOCK,
+	FALL,
+}
+
+
 var cell := Vector3()
 var position := Vector3()
 

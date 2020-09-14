@@ -1,7 +1,7 @@
 extends Spatial
 class_name Map
 
-const GRID_SIZE = Vector3(2, 2, 2)
+const GRID_SIZE = Vector3(2, 0.8, 2)
 
 signal cell_hovered(cell)
 
@@ -97,7 +97,7 @@ func remove_elemental() -> void:
 func change_terrain(cell: Vector3, alias: String, elevation := 0) -> void:
 	var loc : Location = locations[cell]
 
-	if elevation:
+	if cell.y != elevation:
 		_remove_location(cell)
 		cell.y = elevation
 		_add_location(alias, cell)
