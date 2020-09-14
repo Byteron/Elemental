@@ -8,6 +8,8 @@ var current_elevation := 0
 var current_orb := ""
 
 onready var map := $Map as Map
+onready var elemental := $Elemental
+
 onready var camera := $OrthoCamera as OrthoCamera
 onready var hud := $HUD
 
@@ -19,10 +21,13 @@ func _unhandled_input(event: InputEvent) -> void:
 			_handle_orbs_mode(event)
 		EditorHUD.Mode.SEEDS:
 			_handle_seeds_mode(event)
+		EditorHUD.Mode.ELEMENTAL:
+			_handle_elemental_mode(event)
 
 
 func _ready() -> void:
 	hud.initialize()
+	elemental.visible = false
 
 
 func _handle_terrain_mode(event: InputEvent) -> void:
@@ -44,7 +49,20 @@ func _handle_seeds_mode(event: InputEvent) -> void:
 		map.remove_seeds(current_cell)
 
 
+func _handle_elemental_mode(event: InputEvent) -> void:
+
+	if event.is_action_pressed("mouse_left"):
+		map.remove_elemental()
+		map.place_elemental(elemental, current_cell)
+		elemental.visible = true
+
+	if event.is_action_pressed("mouse_right"):
+		map.remove_elemental()
+		elemental.visible = false
+
+
 func _on_HUD_create_button_pressed(width: int, height: int) -> void:
+	map.remove_elemental()
 	map.queue_free()
 	map = Map.instance()
 	map.connect("cell_hovered", self, "_on_cell_hovered")
@@ -74,3 +92,23 @@ func _on_HUD_orb_selected(orb: String) -> void:
 func _on_HUD_elevation_selected(elevation: int) -> void:
 	current_elevation = elevation
 	print("Current Elevation: ", elevation)
+
+
+func _on_HUD_save_button_pressed(file_name: String) -> void:
+	var map_data := map.get_map_data()
+	ResourceSaver.save("res://data/maps/" + file_name + ".tres", map_data)
+
+
+func _on_HUD_load_button_pressed(file_name) -> void:
+	var map_data : MapData = load("res://data/maps/" + file_name + ".tres")
+
+	if not map_data:
+		return
+
+	map.remove_elemental()
+	map.queue_free()
+	map = Map.instance()
+	map.connect("cell_hovered", self, "_on_cell_hovered")
+	add_child(map)
+	map.initialize_from_map_data(elemental, map_data)
+	camera.initialize(map.size)

@@ -10,6 +10,9 @@ var size := Vector2(0, 0)
 var locations := {}
 var elemental : Elemental = null
 
+var earth_block_count := 0
+var seeds_planted := 0
+
 onready var terrains := $Terrains
 onready var objects := $Objects
 
@@ -24,6 +27,24 @@ func initialize(width: int, height: int) -> void:
 		for x in size.x:
 			var cell = Vector3(x, 0, z)
 			_add_location("Stone", cell)
+
+
+func initialize_from_map_data(elemental: Elemental, map_data: MapData) -> void:
+	size = Vector2(map_data.width, map_data.height)
+
+	for cell in map_data.locations.keys():
+		var data : Dictionary = map_data.locations[cell]
+		_add_location(data["Terrain"], cell)
+
+		if data.has("Elemental"):
+			place_elemental(elemental, cell)
+
+		if data.has("Seeds"):
+			add_seeds(cell)
+
+		if data.has("Orb"):
+			var type = data["Orb"]
+			add_orb(cell, type)
 
 
 func randomize_terrain() -> void:
@@ -64,12 +85,21 @@ func move_elemental(direction: Vector3) -> void:
 	elemental.move_to(next_loc.position)
 
 
+func remove_elemental() -> void:
+	if not elemental:
+		return
+
+	var loc : Location = locations[elemental.cell]
+	loc.elemental = null
+	self.elemental = null
+
+
 func change_terrain(cell: Vector3, alias: String, elevation := 0) -> void:
 	var loc : Location = locations[cell]
 
 	if elevation:
 		_remove_location(cell)
-		cell.y = clamp(cell.y + elevation, 0, 2)
+		cell.y = elevation
 		_add_location(alias, cell)
 		emit_signal("cell_hovered", cell)
 	else:
@@ -110,6 +140,31 @@ func add_seeds(cell: Vector3) -> void:
 func remove_seeds(cell: Vector3) -> void:
 	var loc : Location = locations[cell]
 	loc.seeds = null
+
+
+func get_map_data() -> MapData:
+	var map_data := MapData.new()
+
+	map_data.width = size.x
+	map_data.height = size.y
+
+	for value in locations.values():
+		var loc : Location = value
+
+		map_data.locations[loc.cell] = {}
+
+		map_data.locations[loc.cell]["Terrain"] = loc.terrain.alias
+
+		if loc.orb:
+			map_data.locations[loc.cell]["Orb"] = loc.orb.element
+
+		if loc.seeds:
+			map_data.locations[loc.cell]["Seeds"] = true
+
+		if loc.elemental:
+			map_data.locations[loc.cell]["Elemental"] = true
+
+	return map_data
 
 
 func _add_location(alias: String, cell: Vector3) -> void:
