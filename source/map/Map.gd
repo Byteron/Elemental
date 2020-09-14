@@ -244,7 +244,7 @@ func _check_terrain(loc: Location) -> void:
 	if terrain:
 		_replace_terrain(loc, terrain)
 
-	if elemental.seeds and loc.terrain.fertile:
+	if elemental.seeds and loc.terrain and loc.terrain.fertile:
 		elemental.seeds -= 1
 		seeds_planted += 1
 		print("Seeds - 1")
