@@ -15,15 +15,15 @@ signal elevation_selected(elevation)
 signal mode_selected(mode)
 
 
-onready var width_edit := $Panel/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/Width as LabelEdit
-onready var height_edit := $Panel/CenterContainer/VBoxContainer/HBoxContainer/VBoxContainer/Height as LabelEdit
+onready var width_edit := $Panel/VBoxContainer/HBoxContainer/VBoxContainer/Width as LabelEdit
+onready var height_edit := $Panel/VBoxContainer/HBoxContainer/VBoxContainer/Height as LabelEdit
 
-onready var terrain_options := $Panel/CenterContainer/VBoxContainer/VBoxContainer/TerrainOptions as OptionButton
-onready var orb_options := $Panel/CenterContainer/VBoxContainer/VBoxContainer3/OrbOptions as OptionButton
+onready var terrain_options := $Panel/VBoxContainer/VBoxContainer/TerrainOptions as OptionButton
+onready var orb_options := $Panel/VBoxContainer/VBoxContainer3/OrbOptions as OptionButton
 
-onready var orbs := $Panel/CenterContainer/VBoxContainer/VBoxContainer3
-onready var terrains := $Panel/CenterContainer/VBoxContainer/VBoxContainer
-onready var elevations := $Panel/CenterContainer/VBoxContainer/HBoxContainer2
+onready var orbs := $Panel/VBoxContainer/VBoxContainer3
+onready var terrains := $Panel/VBoxContainer/VBoxContainer
+onready var elevations := $Panel/VBoxContainer/HBoxContainer2
 
 
 func initialize() -> void:
