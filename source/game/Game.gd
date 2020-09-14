@@ -1,8 +1,7 @@
 extends Spatial
 class_name Game
 
-const LEVEL : MapData = preload("res://data/maps/level_01.tres")
-
+export var level := "random"
 
 export var size := Vector2(10, 10)
 
@@ -23,7 +22,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func _ready() -> void:
-	map.initialize_from_map_data(elemental, LEVEL)
+	map.initialize_from_map_data(elemental, load("res://data/maps/" + level + ".tres"))
 	# map.place_elemental(elemental, (Vector3(map.size.x, 0, map.size.y) / 2).floor())
 
 	camera.initialize(map.size)
