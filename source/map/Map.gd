@@ -76,8 +76,12 @@ func move_elemental(direction: Vector3) -> void:
 	if not locations.has(next_cell) or not elemental.can_move():
 		return
 
-	var loc = locations[elemental.cell]
 	var next_loc = locations[next_cell]
+
+	if next_loc.terrain.is_blocked(elemental.state):
+		return
+
+	var loc = locations[elemental.cell]
 
 	loc.elemental = null
 	elemental.cell = next_loc.cell
@@ -168,10 +172,9 @@ func get_map_data() -> MapData:
 
 
 func _add_location(alias: String, cell: Vector3) -> void:
-	var terrain := Terrain.instance()
+	var terrain : Terrain = Global.terrains[alias].instance()
 	terrain.connect("mouse_entered", self, "_on_terrain_hovered", [ cell ])
 	terrains.add_child(terrain)
-	terrain.initialize(Global.terrains[alias])
 
 	var loc := Location.new()
 	loc.cell = cell
@@ -225,5 +228,6 @@ func _on_terrain_hovered(cell: Vector3) -> void:
 
 func _on_elemental_move_finished(cell: Vector3) -> void:
 	var loc : Location = locations[cell]
+	loc.terrain.on_moved(self)
 	_check_orb(loc)
 	_check_terrain(loc)

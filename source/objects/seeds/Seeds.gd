@@ -13,7 +13,8 @@ static func instance() -> Seeds:
 
 func _on_Seeds_area_entered(area: Area) -> void:
 	if area is Elemental:
-		area.seeds += 1
-		print("Seeds + 1")
+		if area.state != "Fire":
+			area.seeds += 1
+			print("Seeds + 1")
 		emit_signal("collected")
 		queue_free()

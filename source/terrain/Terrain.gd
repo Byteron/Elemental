@@ -7,25 +7,26 @@ enum Action {
 	FALL,
 }
 
+export var alias := ""
+export var fertile := false
+
+export(Array, Resource) var transitions = []
 
 var cell := Vector3()
 var position := Vector3()
 
-var alias := ""
-var fertile := false
 
-var transitions := []
-
-
-onready var mesh_instance := $MeshInstance as MeshInstance
-
-static func instance() -> Terrain:
-	return load("res://source/terrain/Terrain.tscn").instance() as Terrain
+func on_moved(map) -> void:
+	_on_moved(map)
 
 
-func initialize(data: TerrainData) -> void:
-	alias = data.alias
-	fertile = data.fertile
-	transitions = data.transitions
-	mesh_instance.mesh = data.mesh
-	mesh_instance.material_override = data.material
+func is_blocked(state: String) -> bool:
+	return _is_blocked(state)
+
+
+func _on_moved(map) -> void:
+	pass
+
+
+func _is_blocked(state: String) -> bool:
+	return true

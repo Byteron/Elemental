@@ -32,6 +32,10 @@ onready var terrains := $Panel/VBoxContainer/Terrains
 onready var elevations := $Panel/VBoxContainer/Elevations
 
 
+func _ready() -> void:
+	for terrain in Global.terrains:
+		terrain_options.add_item(terrain)
+
 func initialize() -> void:
 	width_edit.text = "7"
 	height_edit.text = "7"
@@ -85,4 +89,7 @@ func _on_Load_pressed() -> void:
 		return
 
 	emit_signal("load_button_pressed", load_edit.text)
-	pass # Replace with function body.
+
+
+func _on_Back_pressed() -> void:
+	Scene.change("TitleScreen")
