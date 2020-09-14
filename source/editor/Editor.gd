@@ -4,6 +4,7 @@ class_name Editor
 var current_mode := 0
 var current_cell := Vector3()
 var current_terrain := ""
+var current_elevation := 0
 var current_orb := ""
 
 onready var map := $Map as Map
@@ -26,7 +27,7 @@ func _ready() -> void:
 
 func _handle_terrain_mode(event: InputEvent) -> void:
 	if event.is_action_pressed("mouse_left"):
-		map.change_terrain(current_cell, current_terrain)
+		map.change_terrain(current_cell, current_terrain, current_elevation)
 
 
 func _handle_orbs_mode(event: InputEvent) -> void:
@@ -68,3 +69,8 @@ func _on_HUD_mode_selected(mode: int) -> void:
 func _on_HUD_orb_selected(orb: String) -> void:
 	current_orb = orb
 	print("Orb Selected: ", orb)
+
+
+func _on_HUD_elevation_selected(elevation: int) -> void:
+	current_elevation = elevation
+	print("Current Elevation: ", elevation)

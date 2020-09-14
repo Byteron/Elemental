@@ -4,13 +4,14 @@ class_name EditorHUD
 enum Mode {
 	TERRAIN,
 	ORBS,
-	SEEDS
+	SEEDS,
 }
 
 
 signal create_button_pressed(width, height)
 signal terrain_selected(terrain)
 signal orb_selected(orb)
+signal elevation_selected(elevation)
 signal mode_selected(mode)
 
 
@@ -22,6 +23,7 @@ onready var orb_options := $VBoxContainer/VBoxContainer3/OrbOptions as OptionBut
 
 onready var orbs := $VBoxContainer/VBoxContainer3
 onready var terrains := $VBoxContainer/VBoxContainer
+onready var elevations := $VBoxContainer/HBoxContainer2
 
 
 func initialize() -> void:
@@ -29,6 +31,7 @@ func initialize() -> void:
 	height_edit.text = "7"
 	_on_CreateButton_pressed()
 	emit_signal("terrain_selected", "Stone")
+	emit_signal("elevation_selected", 0)
 	emit_signal("orb_selected", "Stone")
 	_on_ModeOptions_item_selected(0)
 
@@ -42,12 +45,15 @@ func _on_ModeOptions_item_selected(index: int) -> void:
 		Mode.TERRAIN:
 			orbs.hide()
 			terrains.show()
+			elevations.show()
 		Mode.ORBS:
 			orbs.show()
 			terrains.hide()
+			elevations.hide()
 		Mode.SEEDS:
 			orbs.hide()
 			terrains.hide()
+			elevations.hide()
 
 	emit_signal("mode_selected", index)
 
@@ -58,3 +64,7 @@ func _on_TerrainOptions_item_selected(index: int) -> void:
 
 func _on_OrbOptions_item_selected(index: int) -> void:
 	emit_signal("orb_selected", orb_options.get_item_text(index))
+
+
+func _on_ElevationSlider_value_changed(value: float) -> void:
+	emit_signal("elevation_selected", value)

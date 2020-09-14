@@ -69,10 +69,14 @@ func move_elemental(direction: Vector3) -> void:
 	elemental.move_to(next_loc.position)
 
 
-func change_terrain(cell: Vector3, alias: String) -> void:
+func change_terrain(cell: Vector3, alias: String, elevation := 0) -> void:
 	var loc : Location = locations[cell]
 
-	_replace_terrain(loc, alias)
+	if elevation:
+		_remove_location(cell)
+		_add_location(alias, Vector3(cell.x, clamp(cell.y + elevation, 0, 2), cell.z))
+	else:
+		_replace_terrain(loc, alias)
 
 
 func add_orb(cell: Vector3, alias: String) -> void:
@@ -91,10 +95,7 @@ func add_orb(cell: Vector3, alias: String) -> void:
 
 func remove_orb(cell: Vector3) -> void:
 	var loc : Location = locations[cell]
-
-	if loc.orb:
-		loc.orb.queue_free()
-		loc.orb = null
+	loc.orb = null
 
 
 func add_seeds(cell: Vector3) -> void:
@@ -111,29 +112,35 @@ func add_seeds(cell: Vector3) -> void:
 
 func remove_seeds(cell: Vector3) -> void:
 	var loc : Location = locations[cell]
+	loc.seeds = null
 
-	if loc.seeds:
-		loc.seeds.queue_free()
-		loc.seeds = null
 
 func _add_location(alias: String, cell: Vector3) -> void:
 	var terrain := Terrain.instance()
 	terrain.connect("mouse_entered", self, "_on_terrain_hovered", [ cell ])
 	terrains.add_child(terrain)
 	terrain.initialize(Global.terrains[alias])
-	terrain.transform.origin = cell * GRID_SIZE
 
 	var loc := Location.new()
-	loc.terrain = terrain
-	loc.position = cell * GRID_SIZE
 	loc.cell = cell
+	loc.position = cell * GRID_SIZE
+	loc.terrain = terrain
 
 	locations[cell] = loc
 
 
+func _remove_location(cell) -> void:
+	var loc : Location = locations[cell]
+	loc.terrain = null
+	loc.orb = null
+	loc.seeds = null
+	locations.erase(cell)
+
+
 func _replace_terrain(loc: Location, alias: String) -> void:
-	loc.terrain.queue_free()
-	_add_location(alias, loc.cell)
+	var cell = loc.cell
+	_remove_location(cell)
+	_add_location(alias, cell)
 
 
 func _check_orb(loc: Location) -> void:

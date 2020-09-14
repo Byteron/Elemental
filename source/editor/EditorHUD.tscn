@@ -110,7 +110,27 @@ size_flags_horizontal = 3
 text = "Stone"
 items = [ "Stone", null, false, 0, null, "Ice", null, false, 1, null, "Fire", null, false, 2, null ]
 selected = 0
+
+[node name="HBoxContainer2" type="VBoxContainer" parent="VBoxContainer"]
+margin_top = 128.0
+margin_right = 207.0
+margin_bottom = 162.0
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2"]
+margin_right = 207.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+text = "Elevation"
+align = 1
+
+[node name="ElevationSlider" type="HSlider" parent="VBoxContainer/HBoxContainer2"]
+margin_top = 18.0
+margin_right = 207.0
+margin_bottom = 34.0
+min_value = -1.0
+max_value = 1.0
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/CreateButton" to="." method="_on_CreateButton_pressed"]
 [connection signal="item_selected" from="VBoxContainer/VBoxContainer2/ModeOptions" to="." method="_on_ModeOptions_item_selected"]
 [connection signal="item_selected" from="VBoxContainer/VBoxContainer/TerrainOptions" to="." method="_on_TerrainOptions_item_selected"]
 [connection signal="item_selected" from="VBoxContainer/VBoxContainer3/OrbOptions" to="." method="_on_OrbOptions_item_selected"]
+[connection signal="value_changed" from="VBoxContainer/HBoxContainer2/ElevationSlider" to="." method="_on_ElevationSlider_value_changed"]
