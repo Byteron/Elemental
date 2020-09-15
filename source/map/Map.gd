@@ -3,6 +3,10 @@ class_name Map
 
 const GRID_SIZE = Vector3(2, 0.8, 2)
 
+signal finished()
+signal game_over()
+
+
 const NEIGHBORS = [
 	Vector3(1, 0, 0),
 	#Vector3(1, 0, 1),
@@ -222,7 +226,7 @@ func _check_conditions() -> void:
 			seeds_planted += 1
 
 	if seeds_planted == earth_block_count:
-		Scene.change("TitleScreen")
+		emit_signal("finished")
 
 
 func _add_location(alias: String, cell: Vector3) -> void:

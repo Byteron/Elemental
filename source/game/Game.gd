@@ -1,8 +1,6 @@
 extends Spatial
 class_name Game
 
-export var level := "random"
-
 export var size := Vector2(10, 10)
 
 onready var elemental := $Elemental as Elemental
@@ -26,7 +24,10 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func _ready() -> void:
-	map.initialize_from_map_data(elemental, load("res://data/maps/" + level + ".tres"))
-	# map.place_elemental(elemental, (Vector3(map.size.x, 0, map.size.y) / 2).floor())
-
+	map.initialize_from_map_data(elemental, Global.get_map_data())
+	map.connect("finished", self, "_on_map_finished")
 	camera.initialize(map.size)
+
+
+func _on_map_finished() -> void:
+	Global.next_level()
