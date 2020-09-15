@@ -57,7 +57,7 @@ func _on_ModeOptions_item_selected(index: int) -> void:
 	match index:
 		Mode.TERRAIN:
 			terrains.show()
-			elevations.show()
+			# elevations.show()
 		Mode.ORBS:
 			orbs.show()
 

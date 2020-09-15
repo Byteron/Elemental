@@ -17,7 +17,7 @@ __meta__ = {
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 214.0
-margin_bottom = 229.0
+margin_bottom = 197.0
 
 [node name="Create" type="HBoxContainer" parent="Panel/VBoxContainer"]
 margin_right = 207.0
@@ -138,6 +138,7 @@ items = [ "Stone", null, false, 0, null, "Ice", null, false, 1, null, "Fire", nu
 selected = 0
 
 [node name="Elevations" type="VBoxContainer" parent="Panel/VBoxContainer"]
+visible = false
 margin_top = 156.0
 margin_right = 207.0
 margin_bottom = 190.0
@@ -154,6 +155,7 @@ margin_top = 18.0
 margin_right = 207.0
 margin_bottom = 34.0
 max_value = 2.0
+editable = false
 
 [node name="Back" type="Button" parent="."]
 anchor_top = 1.0
