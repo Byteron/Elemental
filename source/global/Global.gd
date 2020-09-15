@@ -3,7 +3,11 @@ extends Node
 var current_level := 0
 
 var terrains := {}
-var levels := []
+
+var levels := [
+	preload("res://data/maps/01.tres"),
+	preload("res://data/maps/02.tres"),
+]
 
 var orb_materials : OrbMaterialData = preload("res://data/orb_materials.tres")
 
@@ -12,7 +16,6 @@ func _ready() -> void:
 	_register_scenes()
 
 	_load_tiles()
-	_load_levels()
 
 
 func next_level() -> void:
@@ -42,11 +45,3 @@ func _load_tiles() -> void:
 		terrains[file.id] = terrain
 
 	print(terrains)
-
-func _load_levels() -> void:
-	var files = Loader.load_dir("res://data/maps/", ["tres"])
-
-	for file in files:
-		levels.append(file.data)
-
-	print(levels)
