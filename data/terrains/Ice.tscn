@@ -1,12 +1,14 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://data/terrains/Ice.gd" type="Script" id=1]
 [ext_resource path="res://source/terrain/Terrain.tscn" type="PackedScene" id=2]
 [ext_resource path="res://graphics/materials/terrain_ice.tres" type="Material" id=3]
+[ext_resource path="res://data/transitions/water_from_fire.tres" type="Resource" id=4]
 
 [node name="Ice" instance=ExtResource( 2 )]
 script = ExtResource( 1 )
-alias = "Ice"
+alias = "ice"
+transitions = [ ExtResource( 4 ) ]
 
 [node name="MeshInstance" parent="." index="0"]
 material_override = ExtResource( 3 )

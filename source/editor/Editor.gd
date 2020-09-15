@@ -95,7 +95,10 @@ func _on_HUD_elevation_selected(elevation: int) -> void:
 
 
 func _on_HUD_save_button_pressed(file_name: String) -> void:
+	var dir = Directory.new()
 	var map_data := map.get_map_data()
+	dir.remove("res://data/maps/" + file_name + ".tres")
+	yield(get_tree(), "idle_frame")
 	ResourceSaver.save("res://data/maps/" + file_name + ".tres", map_data)
 
 

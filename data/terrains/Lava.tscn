@@ -6,6 +6,7 @@
 
 [node name="Lava" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+alias = "Lava"
 
 [node name="MeshInstance" parent="." index="0"]
 material_override = ExtResource( 3 )

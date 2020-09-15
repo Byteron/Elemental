@@ -3,7 +3,7 @@ class_name Orb
 
 signal collected
 
-export(String, "Neutral", "Fire", "Ice") var element = "Neutral"
+export(String, "Stone", "Fire", "Ice", "Air") var element = "Stone"
 
 onready var mesh_instance := $MeshInstance as MeshInstance
 

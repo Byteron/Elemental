@@ -21,8 +21,7 @@ signal mode_selected(mode)
 onready var width_edit := $Panel/VBoxContainer/Create/VBoxContainer/Width as LabelEdit
 onready var height_edit := $Panel/VBoxContainer/Create/VBoxContainer/Height as LabelEdit
 
-onready var save_edit := $Panel/VBoxContainer/Save/SaveEdit
-onready var load_edit := $Panel/VBoxContainer/Load/LoadEdit
+onready var path_edit := $Panel/VBoxContainer/SaveAndLoad/PathEdit
 
 onready var terrain_options := $Panel/VBoxContainer/Terrains/TerrainOptions as OptionButton
 onready var orb_options := $Panel/VBoxContainer/Orbs/OrbOptions as OptionButton
@@ -40,9 +39,9 @@ func initialize() -> void:
 	width_edit.text = "7"
 	height_edit.text = "7"
 	_on_CreateButton_pressed()
-	emit_signal("terrain_selected", "Stone")
+	emit_signal("terrain_selected", terrain_options.get_item_text(0))
 	emit_signal("elevation_selected", 0)
-	emit_signal("orb_selected", "Stone")
+	emit_signal("orb_selected", orb_options.get_item_text(0))
 	_on_ModeOptions_item_selected(0)
 
 
@@ -78,17 +77,17 @@ func _on_ElevationSlider_value_changed(value: float) -> void:
 
 
 func _on_Save_pressed() -> void:
-	if not save_edit.text:
+	if not path_edit.text:
 		return
 
-	emit_signal("save_button_pressed", save_edit.text)
+	emit_signal("save_button_pressed", path_edit.text)
 
 
 func _on_Load_pressed() -> void:
-	if not load_edit.text:
+	if not path_edit.text:
 		return
 
-	emit_signal("load_button_pressed", load_edit.text)
+	emit_signal("load_button_pressed", path_edit.text)
 
 
 func _on_Back_pressed() -> void:

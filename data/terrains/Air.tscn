@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://source/terrain/Terrain.tscn" type="PackedScene" id=1]
+[ext_resource path="res://data/terrains/Air.gd" type="Script" id=2]
+[ext_resource path="res://graphics/materials/terrain_air.tres" type="Material" id=3]
+
+[sub_resource type="ParticlesMaterial" id=2]
+emission_shape = 2
+emission_box_extents = Vector3( 1, 1, 1 )
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 1.0
+initial_velocity_random = 1.0
+angle = 360.0
+angle_random = 0.5
+color = Color( 0.321569, 0.839216, 0.792157, 0.235294 )
+
+[sub_resource type="SpatialMaterial" id=3]
+flags_transparent = true
+vertex_color_use_as_albedo = true
+albedo_color = Color( 0.704788, 0.964844, 0.952654, 1 )
+
+[sub_resource type="PlaneMesh" id=4]
+material = SubResource( 3 )
+size = Vector2( 0.2, 0.2 )
+
+[node name="Air" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+alias = "Air"
+
+[node name="MeshInstance" parent="." index="0"]
+material_override = ExtResource( 3 )
+cast_shadow = 0
+
+[node name="Particles" type="Particles" parent="." index="2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
+process_material = SubResource( 2 )
+draw_pass_1 = SubResource( 4 )

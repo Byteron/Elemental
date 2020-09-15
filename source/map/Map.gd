@@ -3,6 +3,17 @@ class_name Map
 
 const GRID_SIZE = Vector3(2, 0.8, 2)
 
+const NEIGHBORS = [
+	Vector3(1, 0, 0),
+	#Vector3(1, 0, 1),
+	#Vector3(1, 0, -1),
+	Vector3(-1, 0, 0),
+	#Vector3(-1, 0, 1),
+	#Vector3(-1, 0, -1),
+	Vector3(0, 0, 1),
+	Vector3(0, 0, -1)
+]
+
 signal cell_hovered(cell)
 
 var size := Vector2(0, 0)
@@ -62,6 +73,20 @@ func randomize_terrain() -> void:
 	_conditionalize()
 
 
+func get_neighbors(loc: Location) -> Array:
+	var neighbors := []
+
+	for n_cell in NEIGHBORS:
+		n_cell += loc.cell
+
+		if not locations.has(n_cell):
+			continue
+
+		neighbors.append(locations[n_cell])
+
+	return neighbors
+
+
 func place_elemental(elemental: Elemental, cell: Vector3) -> void:
 	if not locations.has(cell):
 		print_debug("invalid start location: ", cell)
@@ -70,6 +95,7 @@ func place_elemental(elemental: Elemental, cell: Vector3) -> void:
 	elemental.connect("move_finished", self, "_on_elemental_move_finished")
 	elemental.cell = cell
 	elemental.transform.origin = cell * GRID_SIZE
+	elemental.visible = true
 	self.elemental = elemental
 	locations[cell].elemental = elemental
 
@@ -234,6 +260,9 @@ func _check_orb(loc: Location) -> void:
 
 
 func _check_terrain(loc: Location) -> void:
+	if not loc.terrain:
+		return
+
 	var terrain := ""
 
 	for transition in loc.terrain.transitions:
@@ -244,6 +273,12 @@ func _check_terrain(loc: Location) -> void:
 	if terrain:
 		_replace_terrain(loc, terrain)
 
+	if elemental.state == "Fire" and loc.seeds:
+		remove_seeds(loc.cell)
+		get_tree().reload_current_scene()
+
+
+func _check_seeds(loc: Location) -> void:
 	if elemental.seeds and loc.terrain and loc.terrain.fertile:
 		elemental.seeds -= 1
 		seeds_planted += 1
@@ -258,6 +293,13 @@ func _on_terrain_hovered(cell: Vector3) -> void:
 func _on_elemental_move_finished(cell: Vector3) -> void:
 	var loc : Location = locations[cell]
 	loc.terrain.on_moved(self)
+
 	_check_orb(loc)
+	_check_seeds(loc)
+
 	_check_terrain(loc)
+
+	for n_loc in get_neighbors(loc):
+		_check_terrain(n_loc)
+
 	_check_conditions()

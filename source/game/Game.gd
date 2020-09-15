@@ -11,6 +11,10 @@ onready var camera := $OrthoCamera as OrthoCamera
 
 
 func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_accept"):
+		get_tree().reload_current_scene()
+	if event.is_action_pressed("ui_cancel"):
+		Scene.change("TitleScreen")
 	if event.is_action_pressed("ui_left"):
 		map.move_elemental(Vector3.LEFT)
 	if event.is_action_pressed("ui_right"):
