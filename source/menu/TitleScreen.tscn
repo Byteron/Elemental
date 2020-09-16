@@ -26,7 +26,7 @@ margin_bottom = 468.0
 [node name="Level" type="LineEdit" parent="CenterContainer/VBoxContainer"]
 margin_right = 200.0
 margin_bottom = 24.0
-text = "0"
+text = "1"
 
 [node name="Play" type="Button" parent="CenterContainer/VBoxContainer"]
 margin_top = 28.0
