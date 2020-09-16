@@ -154,10 +154,8 @@ func add_orb(cell: Vector3, alias: String) -> void:
 	if loc.orb:
 		return
 
-	var orb := Orb.instance()
+	var orb : Orb = Global.orbs[alias].instance()
 	objects.add_child(orb)
-	orb.element = alias
-	orb.mesh_instance.material_override = Global.orb_materials.get(alias.to_lower())
 
 	loc.orb = orb
 
@@ -215,7 +213,7 @@ func get_map_data() -> MapData:
 		map_data.locations[loc.cell]["Terrain"] = loc.terrain.alias
 
 		if loc.orb:
-			map_data.locations[loc.cell]["Orb"] = loc.orb.element
+			map_data.locations[loc.cell]["Orb"] = loc.orb.alias
 
 		if loc.obstacle:
 			map_data.locations[loc.cell]["Obstacle"] = loc.obstacle.alias
@@ -282,9 +280,15 @@ func _replace_terrain(loc: Location, alias: String) -> void:
 
 func _check_collecting_orb(loc: Location) -> void:
 	if loc.orb:
-		elemental.state = loc.orb.element
-		loc.orb.queue_free()
-		loc.orb = null
+		elemental.state = loc.orb.alias
+		elemental.mesh_instance.material_override = loc.orb.mesh_instance.material_override
+		loc.orb.collect()
+
+
+func _check_collecting_seeds(loc: Location) -> void:
+	if loc.seeds:
+		elemental.seeds += 1
+		loc.seeds.collect()
 
 
 func _check_terrain_transitions(loc: Location) -> void:
@@ -313,7 +317,7 @@ func _check_obstacle(loc: Location) -> void:
 		loc.obstacle.destroy()
 
 
-func _check_collecting_seeds(loc: Location) -> void:
+func _check_planting_seeds(loc: Location) -> void:
 	if elemental.seeds and loc.terrain and loc.terrain.fertile:
 		elemental.seeds -= 1
 		seeds_planted += 1
@@ -331,6 +335,7 @@ func _on_elemental_move_finished(cell: Vector3) -> void:
 
 	_check_collecting_orb(loc)
 	_check_collecting_seeds(loc)
+	_check_planting_seeds(loc)
 
 	_check_terrain_transitions(loc)
 

@@ -69,7 +69,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://source/objects/obstacle/Obstacle.gd"
 }, {
-"base": "Area",
+"base": "Spatial",
 "class": "Orb",
 "language": "GDScript",
 "path": "res://source/objects/orb/Orb.gd"
@@ -89,7 +89,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/scene_manager/source/SceneLoader.gd"
 }, {
-"base": "Area",
+"base": "Spatial",
 "class": "Seeds",
 "language": "GDScript",
 "path": "res://source/objects/seeds/Seeds.gd"

@@ -4,15 +4,15 @@ var current_level := 0
 
 var levels := []
 
+var orbs := {}
 var terrains := {}
 var obstacles := {}
-
-var orb_materials : OrbMaterialData = preload("res://data/orb_materials.tres")
 
 
 func _ready() -> void:
 	_register_scenes()
 	_load_tiles()
+	_load_orbs()
 	_load_obstacles()
 	scan()
 
@@ -63,6 +63,18 @@ func _load_obstacles() -> void:
 		obstacles[file.id] = obstacle
 
 	print(obstacles)
+
+
+func _load_orbs() -> void:
+	orbs.clear()
+
+	var files = Loader.load_dir("res://data/orbs/", ["tscn"])
+
+	for file in files:
+		var orb = file.data
+		orbs[file.id] = orb
+
+	print(orbs)
 
 
 func _load_levels() -> void:

@@ -42,6 +42,10 @@ func _ready() -> void:
 	for obstacle in Global.obstacles:
 		obstacle_options.add_item(obstacle)
 
+	for orb in Global.orbs:
+		orb_options.add_item(orb)
+
+
 func initialize() -> void:
 	width_edit.text = "7"
 	height_edit.text = "7"

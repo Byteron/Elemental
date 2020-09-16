@@ -6,6 +6,6 @@ func _on_moved(map) -> void:
 
 
 func _is_blocked(state: String) -> bool:
-	if state != "Air":
+	if state != "Wind":
 		return true
 	return false
