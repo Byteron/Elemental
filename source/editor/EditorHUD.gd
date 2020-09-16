@@ -106,4 +106,5 @@ func _on_Load_pressed() -> void:
 
 
 func _on_Back_pressed() -> void:
+	Global.scan()
 	Scene.change("TitleScreen")

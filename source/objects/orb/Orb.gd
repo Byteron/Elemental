@@ -14,6 +14,10 @@ static func instance() -> Orb:
 
 func _on_Orb_area_entered(area: Area) -> void:
 	if area is Elemental:
+		if element == "Fire" and area.seeds:
+			get_tree().reload_current_scene()
+			return
+
 		area.state = element
 		area.mesh_instance.material_override = Global.orb_materials.get(element.to_lower())
 		print("Elemental State: ", element)

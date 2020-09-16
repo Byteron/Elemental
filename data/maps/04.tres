@@ -4,58 +4,66 @@
 
 [resource]
 script = ExtResource( 1 )
-width = 6
-height = 6
+width = 7
+height = 7
 locations = {
 Vector3( 0, 0, 0 ): {
-"Terrain": "None"
+"Orb": "Fire",
+"Terrain": "Stone"
 },
 Vector3( 0, 0, 1 ): {
-"Terrain": "None"
+"Terrain": "Stone"
 },
 Vector3( 0, 0, 2 ): {
-"Elemental": true,
 "Terrain": "Stone"
 },
 Vector3( 0, 0, 3 ): {
-"Terrain": "None"
+"Elemental": true,
+"Terrain": "Stone"
 },
 Vector3( 0, 0, 4 ): {
-"Terrain": "None"
+"Terrain": "Stone"
 },
 Vector3( 0, 0, 5 ): {
-"Terrain": "None"
+"Terrain": "Stone"
+},
+Vector3( 0, 0, 6 ): {
+"Seeds": true,
+"Terrain": "Stone"
 },
 Vector3( 1, 0, 0 ): {
-"Terrain": "None"
+"Terrain": "Stone"
 },
 Vector3( 1, 0, 1 ): {
 "Terrain": "None"
 },
 Vector3( 1, 0, 2 ): {
-"Terrain": "Stone"
+"Terrain": "None"
 },
 Vector3( 1, 0, 3 ): {
 "Terrain": "Stone"
 },
 Vector3( 1, 0, 4 ): {
-"Terrain": "Stone"
+"Terrain": "None"
 },
 Vector3( 1, 0, 5 ): {
-"Seeds": true,
-"Terrain": "Stone"
+"Terrain": "None"
+},
+Vector3( 1, 0, 6 ): {
+"Terrain": "None"
 },
 Vector3( 2, 0, 0 ): {
-"Terrain": "None"
+"Terrain": "Stone"
 },
 Vector3( 2, 0, 1 ): {
 "Terrain": "None"
 },
 Vector3( 2, 0, 2 ): {
-"Terrain": "Stone"
+"Terrain": "None"
 },
 Vector3( 2, 0, 3 ): {
-"Terrain": "None"
+"Obstacle": "Thorns",
+"Terrain": "Stone"
 },
 Vector3( 2, 0, 4 ): {
 "Terrain": "None"
@@ -63,27 +71,37 @@ Vector3( 2, 0, 4 ): {
 Vector3( 2, 0, 5 ): {
 "Terrain": "None"
 },
+Vector3( 2, 0, 6 ): {
+"Terrain": "None"
+},
 Vector3( 3, 0, 0 ): {
-"Terrain": "Earth"
+"Terrain": "Stone"
 },
 Vector3( 3, 0, 1 ): {
+"Obstacle": "Thorns",
 "Terrain": "Stone"
 },
 Vector3( 3, 0, 2 ): {
-"Seeds": true,
+"Obstacle": "Thorns",
 "Terrain": "Stone"
 },
 Vector3( 3, 0, 3 ): {
+"Obstacle": "Thorns",
 "Terrain": "Stone"
 },
 Vector3( 3, 0, 4 ): {
+"Obstacle": "Thorns",
 "Terrain": "Stone"
 },
 Vector3( 3, 0, 5 ): {
-"Terrain": "None"
+"Terrain": "Stone"
+},
+Vector3( 3, 0, 6 ): {
+"Orb": "Stone",
+"Terrain": "Stone"
 },
 Vector3( 4, 0, 0 ): {
-"Terrain": "None"
+"Terrain": "Stone"
 },
 Vector3( 4, 0, 1 ): {
 "Terrain": "None"
@@ -95,13 +113,17 @@ Vector3( 4, 0, 3 ): {
 "Terrain": "None"
 },
 Vector3( 4, 0, 4 ): {
+"Obstacle": "Thorns",
 "Terrain": "Stone"
 },
 Vector3( 4, 0, 5 ): {
 "Terrain": "None"
 },
-Vector3( 5, 0, 0 ): {
+Vector3( 4, 0, 6 ): {
 "Terrain": "None"
+},
+Vector3( 5, 0, 0 ): {
+"Terrain": "Stone"
 },
 Vector3( 5, 0, 1 ): {
 "Terrain": "None"
@@ -113,9 +135,34 @@ Vector3( 5, 0, 3 ): {
 "Terrain": "None"
 },
 Vector3( 5, 0, 4 ): {
-"Terrain": "Earth"
+"Terrain": "Stone"
 },
 Vector3( 5, 0, 5 ): {
 "Terrain": "None"
+},
+Vector3( 5, 0, 6 ): {
+"Terrain": "None"
+},
+Vector3( 6, 0, 0 ): {
+"Terrain": "Earth"
+},
+Vector3( 6, 0, 1 ): {
+"Terrain": "None"
+},
+Vector3( 6, 0, 2 ): {
+"Terrain": "None"
+},
+Vector3( 6, 0, 3 ): {
+"Terrain": "None"
+},
+Vector3( 6, 0, 4 ): {
+"Seeds": true,
+"Terrain": "Stone"
+},
+Vector3( 6, 0, 5 ): {
+"Terrain": "Stone"
+},
+Vector3( 6, 0, 6 ): {
+"Terrain": "Earth"
 }
 }
