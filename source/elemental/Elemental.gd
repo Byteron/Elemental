@@ -19,7 +19,7 @@ func move_to(position: Vector3) -> void:
 	if tween.is_active():
 		return
 
-	tween.interpolate_property(self, "transform:origin", transform.origin, position, 0.28, Tween.TRANS_CUBIC, Tween.EASE_OUT)
+	tween.interpolate_property(self, "transform:origin", transform.origin, position, 0.28, Tween.TRANS_SINE, Tween.EASE_OUT)
 	tween.start()
 
 
