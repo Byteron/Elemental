@@ -11,6 +11,7 @@ var elemental : Elemental = null
 var terrain : Terrain = null setget _set_terrain
 var orb : Orb = null setget _set_orb
 var seeds : Seeds = null setget _set_seeds
+var obstacle : Obstacle = null setget _set_obstacle
 
 
 func _set_terrain(value: Terrain) -> void:
@@ -45,11 +46,26 @@ func _set_seeds(value: Seeds) -> void:
 		seeds.connect("collected", self, "_on_seeds_collected")
 
 
+func _set_obstacle(value: Obstacle) -> void:
+	if obstacle:
+		obstacle.queue_free()
+
+	obstacle = value
+
+	if obstacle:
+		obstacle.transform.origin = position
+		obstacle.connect("destroyed", self, "_on_obstacle_destroyed")
+
+
 func _on_orb_collected() -> void:
 	orb = null
 
 
 func _on_seeds_collected() -> void:
 	seeds = null
+
+
+func _on_obstacle_destroyed() -> void:
+	obstacle = null
 
 

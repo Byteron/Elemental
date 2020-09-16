@@ -6,6 +6,7 @@ var current_cell := Vector3()
 var current_terrain := ""
 var current_elevation := 0
 var current_orb := ""
+var current_obstacle := ""
 
 onready var map := $Map as Map
 onready var elemental := $Elemental
@@ -21,6 +22,8 @@ func _unhandled_input(event: InputEvent) -> void:
 			_handle_orbs_mode(event)
 		EditorHUD.Mode.SEEDS:
 			_handle_seeds_mode(event)
+		EditorHUD.Mode.OBSTACLES:
+			_handle_obstalces_mode(event)
 		EditorHUD.Mode.ELEMENTAL:
 			_handle_elemental_mode(event)
 
@@ -42,6 +45,13 @@ func _handle_orbs_mode(event: InputEvent) -> void:
 		map.remove_orb(current_cell)
 
 
+func _handle_obstalces_mode(event: InputEvent) -> void:
+	if event.is_action_pressed("mouse_left"):
+		map.add_obstacle(current_cell, current_obstacle)
+	if event.is_action_pressed("mouse_right"):
+		map.remove_obstacle(current_cell)
+
+
 func _handle_seeds_mode(event: InputEvent) -> void:
 	if event.is_action_pressed("mouse_left"):
 		map.add_seeds(current_cell)
@@ -50,7 +60,6 @@ func _handle_seeds_mode(event: InputEvent) -> void:
 
 
 func _handle_elemental_mode(event: InputEvent) -> void:
-
 	if event.is_action_pressed("mouse_left"):
 		map.remove_elemental()
 		map.place_elemental(elemental, current_cell)
@@ -87,6 +96,10 @@ func _on_HUD_mode_selected(mode: int) -> void:
 func _on_HUD_orb_selected(orb: String) -> void:
 	current_orb = orb
 	print("Orb Selected: ", orb)
+
+
+func _on_HUD_obstacle_selected(obstacle: String) -> void:
+	current_obstacle = obstacle
 
 
 func _on_HUD_elevation_selected(elevation: int) -> void:

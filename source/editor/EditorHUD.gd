@@ -5,6 +5,7 @@ enum Mode {
 	TERRAIN,
 	ORBS,
 	SEEDS,
+	OBSTACLES,
 	ELEMENTAL
 }
 
@@ -14,6 +15,7 @@ signal save_button_pressed(file_name)
 signal load_button_pressed(file_name)
 signal terrain_selected(terrain)
 signal orb_selected(orb)
+signal obstacle_selected(obstacle)
 signal elevation_selected(elevation)
 signal mode_selected(mode)
 
@@ -25,8 +27,10 @@ onready var path_edit := $Panel/VBoxContainer/SaveAndLoad/PathEdit
 
 onready var terrain_options := $Panel/VBoxContainer/Terrains/TerrainOptions as OptionButton
 onready var orb_options := $Panel/VBoxContainer/Orbs/OrbOptions as OptionButton
+onready var obstacle_options := $Panel/VBoxContainer/Obstacles/ObstacleOptions as OptionButton
 
 onready var orbs := $Panel/VBoxContainer/Orbs
+onready var obstacles := $Panel/VBoxContainer/Obstacles
 onready var terrains := $Panel/VBoxContainer/Terrains
 onready var elevations := $Panel/VBoxContainer/Elevations
 
@@ -35,6 +39,9 @@ func _ready() -> void:
 	for terrain in Global.terrains:
 		terrain_options.add_item(terrain)
 
+	for obstacle in Global.obstacles:
+		obstacle_options.add_item(obstacle)
+
 func initialize() -> void:
 	width_edit.text = "7"
 	height_edit.text = "7"
@@ -42,6 +49,7 @@ func initialize() -> void:
 	emit_signal("terrain_selected", terrain_options.get_item_text(0))
 	emit_signal("elevation_selected", 0)
 	emit_signal("orb_selected", orb_options.get_item_text(0))
+	emit_signal("obstacle_selected", obstacle_options.get_item_text(0))
 	_on_ModeOptions_item_selected(0)
 
 
@@ -51,6 +59,7 @@ func _on_CreateButton_pressed() -> void:
 
 func _on_ModeOptions_item_selected(index: int) -> void:
 	orbs.hide()
+	obstacles.hide()
 	terrains.hide()
 	elevations.hide()
 
@@ -60,6 +69,8 @@ func _on_ModeOptions_item_selected(index: int) -> void:
 			# elevations.show()
 		Mode.ORBS:
 			orbs.show()
+		Mode.OBSTACLES:
+			obstacles.show()
 
 	emit_signal("mode_selected", index)
 
@@ -70,6 +81,10 @@ func _on_TerrainOptions_item_selected(index: int) -> void:
 
 func _on_OrbOptions_item_selected(index: int) -> void:
 	emit_signal("orb_selected", orb_options.get_item_text(index))
+
+
+func _on_ObstacleOptions_item_selected(index: int) -> void:
+	emit_signal("obstacle_selected", orb_options.get_item_text(index))
 
 
 func _on_ElevationSlider_value_changed(value: float) -> void:

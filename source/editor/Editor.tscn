@@ -24,6 +24,7 @@ shadow_enabled = true
 [connection signal="elevation_selected" from="HUD" to="." method="_on_HUD_elevation_selected"]
 [connection signal="load_button_pressed" from="HUD" to="." method="_on_HUD_load_button_pressed"]
 [connection signal="mode_selected" from="HUD" to="." method="_on_HUD_mode_selected"]
+[connection signal="obstacle_selected" from="HUD" to="." method="_on_HUD_obstacle_selected"]
 [connection signal="orb_selected" from="HUD" to="." method="_on_HUD_orb_selected"]
 [connection signal="save_button_pressed" from="HUD" to="." method="_on_HUD_save_button_pressed"]
 [connection signal="terrain_selected" from="HUD" to="." method="_on_HUD_terrain_selected"]

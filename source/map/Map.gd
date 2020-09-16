@@ -61,6 +61,10 @@ func initialize_from_map_data(elemental: Elemental, map_data: MapData) -> void:
 			var type = data["Orb"]
 			add_orb(cell, type)
 
+		if data.has("Obstacle"):
+			var obstacle = data["Obstacle"]
+			add_obstacle(cell, obstacle)
+
 	_conditionalize()
 
 
@@ -180,6 +184,23 @@ func remove_seeds(cell: Vector3) -> void:
 	loc.seeds = null
 
 
+func add_obstacle(cell: Vector3, alias: String) -> void:
+	var loc : Location = locations[cell]
+
+	if loc.obstacle:
+		return
+
+	var obstacle : Obstacle = Global.obstacles[alias].instance()
+	objects.add_child(obstacle)
+
+	loc.obstacle = obstacle
+
+
+func remove_obstacle(cell: Vector3) -> void:
+	var loc : Location = locations[cell]
+	loc.obstacle = null
+
+
 func get_map_data() -> MapData:
 	var map_data := MapData.new()
 
@@ -195,6 +216,9 @@ func get_map_data() -> MapData:
 
 		if loc.orb:
 			map_data.locations[loc.cell]["Orb"] = loc.orb.element
+
+		if loc.obstacle:
+			map_data.locations[loc.cell]["Obstacle"] = loc.obstacle.alias
 
 		if loc.seeds:
 			map_data.locations[loc.cell]["Seeds"] = true
@@ -256,14 +280,14 @@ func _replace_terrain(loc: Location, alias: String) -> void:
 	_add_location(alias, cell)
 
 
-func _check_orb(loc: Location) -> void:
+func _check_collecting_orb(loc: Location) -> void:
 	if loc.orb:
 		elemental.state = loc.orb.element
 		loc.orb.queue_free()
 		loc.orb = null
 
 
-func _check_terrain(loc: Location) -> void:
+func _check_terrain_transitions(loc: Location) -> void:
 	if not loc.terrain:
 		return
 
@@ -277,12 +301,19 @@ func _check_terrain(loc: Location) -> void:
 	if terrain:
 		_replace_terrain(loc, terrain)
 
+
+func _check_burning_seeds(loc: Location) -> void:
 	if elemental.state == "Fire" and loc.seeds:
 		remove_seeds(loc.cell)
 		get_tree().reload_current_scene()
 
 
-func _check_seeds(loc: Location) -> void:
+func _check_obstacle(loc: Location) -> void:
+	if loc.obstacle and loc.obstacle.is_destroyable(elemental.state):
+		loc.obstacle.destroy()
+
+
+func _check_collecting_seeds(loc: Location) -> void:
 	if elemental.seeds and loc.terrain and loc.terrain.fertile:
 		elemental.seeds -= 1
 		seeds_planted += 1
@@ -298,12 +329,14 @@ func _on_elemental_move_finished(cell: Vector3) -> void:
 	var loc : Location = locations[cell]
 	loc.terrain.on_moved(self)
 
-	_check_orb(loc)
-	_check_seeds(loc)
+	_check_collecting_orb(loc)
+	_check_collecting_seeds(loc)
 
-	_check_terrain(loc)
+	_check_terrain_transitions(loc)
 
 	for n_loc in get_neighbors(loc):
-		_check_terrain(n_loc)
+		_check_terrain_transitions(n_loc)
+		_check_burning_seeds(n_loc)
+		_check_obstacle(n_loc)
 
 	_check_conditions()
