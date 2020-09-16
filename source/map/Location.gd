@@ -14,6 +14,12 @@ var seeds : Seeds = null setget _set_seeds
 var obstacle : Obstacle = null setget _set_obstacle
 
 
+func is_blocked(state: String) -> bool:
+	if obstacle or (terrain and terrain.is_blocked(state)):
+		return true
+	return false
+
+
 func _set_terrain(value: Terrain) -> void:
 	if terrain:
 		terrain.queue_free()

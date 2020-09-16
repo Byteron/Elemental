@@ -116,7 +116,7 @@ func move_elemental(direction: Vector3) -> void:
 
 	var next_loc = locations[next_cell]
 
-	if next_loc.terrain.is_blocked(elemental.state):
+	if next_loc.is_blocked(elemental.state):
 		return
 
 	var loc = locations[elemental.cell]
