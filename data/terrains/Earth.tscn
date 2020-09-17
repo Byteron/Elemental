@@ -7,9 +7,11 @@
 
 [node name="Earth" instance=ExtResource( 2 )]
 script = ExtResource( 1 )
+height = 0.04
+speed = 4.5
 alias = "Earth"
 fertile = true
 
-[node name="MeshInstance" parent="." index="0"]
+[node name="MeshInstance" parent="." index="1"]
 material_override = ExtResource( 3 )
 mesh = ExtResource( 5 )

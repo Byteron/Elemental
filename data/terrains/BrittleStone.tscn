@@ -7,10 +7,12 @@
 
 [node name="BrittleStone" instance=ExtResource( 2 )]
 script = ExtResource( 1 )
+height = 0.06
+speed = 1.2
 alias = "BrittleStone"
 brittle = true
 
-[node name="MeshInstance" parent="." index="0"]
+[node name="MeshInstance" parent="." index="1"]
 material_override = ExtResource( 3 )
 cast_shadow = 2
 mesh = ExtResource( 4 )

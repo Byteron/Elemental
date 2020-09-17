@@ -8,9 +8,11 @@
 
 [node name="Tree" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+height = 0.06
+speed = 2.4
 alias = "Tree"
 transitions = [ ExtResource( 4 ) ]
 
-[node name="MeshInstance" parent="." index="0"]
+[node name="MeshInstance" parent="." index="1"]
 material_override = ExtResource( 3 )
 mesh = ExtResource( 6 )
