@@ -17,6 +17,10 @@ var cell := Vector3()
 var position := Vector3()
 
 
+func _ready() -> void:
+	rotation_degrees.y = [0, 90, 180, 270][randi() % 4]
+
+
 func on_moved(map) -> void:
 	_on_moved(map)
 
