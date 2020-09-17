@@ -16,13 +16,13 @@ func _unhandled_input(event: InputEvent) -> void:
 		map.drop_seeds()
 
 func _process(delta: float) -> void:
-	if Input.is_action_pressed("ui_left"):
+	if Input.is_action_pressed("move_left"):
 		map.move_elemental(Vector3.LEFT)
-	if Input.is_action_pressed("ui_right"):
+	if Input.is_action_pressed("move_right"):
 		map.move_elemental(Vector3.RIGHT)
-	if Input.is_action_pressed("ui_up"):
+	if Input.is_action_pressed("move_up"):
 		map.move_elemental(Vector3.FORWARD)
-	if Input.is_action_pressed("ui_down"):
+	if Input.is_action_pressed("move_down"):
 		map.move_elemental(Vector3.BACK)
 
 
