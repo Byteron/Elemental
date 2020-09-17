@@ -1,0 +1,161 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://source/map/MapData.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+width = 7
+height = 7
+locations = {
+Vector3( 0, 0, 0 ): {
+"Terrain": "None"
+},
+Vector3( 0, 0, 1 ): {
+"Terrain": "Stone"
+},
+Vector3( 0, 0, 2 ): {
+"Terrain": "Stone"
+},
+Vector3( 0, 0, 3 ): {
+"Elemental": true,
+"Terrain": "Stone"
+},
+Vector3( 0, 0, 4 ): {
+"Terrain": "Stone"
+},
+Vector3( 0, 0, 5 ): {
+"Terrain": "Stone"
+},
+Vector3( 0, 0, 6 ): {
+"Terrain": "None"
+},
+Vector3( 1, 0, 0 ): {
+"Terrain": "None"
+},
+Vector3( 1, 0, 1 ): {
+"Terrain": "BrittleStone"
+},
+Vector3( 1, 0, 2 ): {
+"Terrain": "BrittleStone"
+},
+Vector3( 1, 0, 3 ): {
+"Terrain": "BrittleStone"
+},
+Vector3( 1, 0, 4 ): {
+"Terrain": "None"
+},
+Vector3( 1, 0, 5 ): {
+"Terrain": "None"
+},
+Vector3( 1, 0, 6 ): {
+"Terrain": "None"
+},
+Vector3( 2, 0, 0 ): {
+"Terrain": "None"
+},
+Vector3( 2, 0, 1 ): {
+"Seeds": true,
+"Terrain": "BrittleStone"
+},
+Vector3( 2, 0, 2 ): {
+"Terrain": "None"
+},
+Vector3( 2, 0, 3 ): {
+"Terrain": "None"
+},
+Vector3( 2, 0, 4 ): {
+"Terrain": "None"
+},
+Vector3( 2, 0, 5 ): {
+"Terrain": "None"
+},
+Vector3( 2, 0, 6 ): {
+"Terrain": "None"
+},
+Vector3( 3, 0, 0 ): {
+"Terrain": "None"
+},
+Vector3( 3, 0, 1 ): {
+"Terrain": "BrittleStone"
+},
+Vector3( 3, 0, 2 ): {
+"Terrain": "BrittleStone"
+},
+Vector3( 3, 0, 3 ): {
+"Seeds": true,
+"Terrain": "BrittleStone"
+},
+Vector3( 3, 0, 4 ): {
+"Terrain": "BrittleStone"
+},
+Vector3( 3, 0, 5 ): {
+"Terrain": "BrittleStone"
+},
+Vector3( 3, 0, 6 ): {
+"Terrain": "None"
+},
+Vector3( 4, 0, 0 ): {
+"Terrain": "None"
+},
+Vector3( 4, 0, 1 ): {
+"Terrain": "None"
+},
+Vector3( 4, 0, 2 ): {
+"Terrain": "None"
+},
+Vector3( 4, 0, 3 ): {
+"Terrain": "None"
+},
+Vector3( 4, 0, 4 ): {
+"Terrain": "None"
+},
+Vector3( 4, 0, 5 ): {
+"Seeds": true,
+"Terrain": "BrittleStone"
+},
+Vector3( 4, 0, 6 ): {
+"Terrain": "None"
+},
+Vector3( 5, 0, 0 ): {
+"Terrain": "None"
+},
+Vector3( 5, 0, 1 ): {
+"Terrain": "BrittleStone"
+},
+Vector3( 5, 0, 2 ): {
+"Terrain": "BrittleStone"
+},
+Vector3( 5, 0, 3 ): {
+"Terrain": "BrittleStone"
+},
+Vector3( 5, 0, 4 ): {
+"Terrain": "BrittleStone"
+},
+Vector3( 5, 0, 5 ): {
+"Terrain": "BrittleStone"
+},
+Vector3( 5, 0, 6 ): {
+"Terrain": "None"
+},
+Vector3( 6, 0, 0 ): {
+"Terrain": "None"
+},
+Vector3( 6, 0, 1 ): {
+"Terrain": "Earth"
+},
+Vector3( 6, 0, 2 ): {
+"Terrain": "BrittleStone"
+},
+Vector3( 6, 0, 3 ): {
+"Terrain": "Earth"
+},
+Vector3( 6, 0, 4 ): {
+"Terrain": "BrittleStone"
+},
+Vector3( 6, 0, 5 ): {
+"Terrain": "Earth"
+},
+Vector3( 6, 0, 6 ): {
+"Terrain": "None"
+}
+}
