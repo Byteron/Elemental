@@ -1,6 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://source/elemental/Elemental.gd" type="Script" id=1]
+[ext_resource path="res://graphics/particles/ice.tscn" type="PackedScene" id=2]
+[ext_resource path="res://graphics/particles/wind.tscn" type="PackedScene" id=3]
+[ext_resource path="res://graphics/particles/fire.tscn" type="PackedScene" id=4]
 
 [sub_resource type="Animation" id=1]
 resource_name = "idle"
@@ -60,4 +63,10 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 shape = SubResource( 4 )
 
 [node name="Seeds" type="Spatial" parent="."]
+
+[node name="WindParticles" parent="." instance=ExtResource( 3 )]
+
+[node name="FireParticles" parent="." instance=ExtResource( 4 )]
+
+[node name="IceParticles" parent="." instance=ExtResource( 2 )]
 [connection signal="tween_all_completed" from="Tween" to="." method="_on_Tween_tween_all_completed"]

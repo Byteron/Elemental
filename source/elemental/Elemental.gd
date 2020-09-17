@@ -5,7 +5,7 @@ const SeedsMesh := preload("res://source/objects/seeds/SeedsMesh.tscn")
 
 signal move_finished(cell)
 
-export var state := "Ice"
+export var state := "Stone" setget _set_state
 export var seeds := 0 setget _set_seeds
 
 var cell := Vector3()
@@ -13,6 +13,14 @@ var cell := Vector3()
 onready var tween := $Tween as Tween
 onready var mesh_instance := $MeshInstance as MeshInstance
 onready var seeds_container := $Seeds as Spatial
+
+onready var wind_particles := $WindParticles/Particles
+onready var ice_particles := $IceParticles/Particles
+onready var fire_particles := $FireParticles/Particles
+
+
+func _ready() -> void:
+	_set_state(state)
 
 
 func move_to(position: Vector3) -> void:
@@ -45,9 +53,26 @@ func _add_seeds() -> void:
 		spatial.rotation_degrees.y = (360 / seeds) * i
 		print(spatial.rotation_degrees)
 
+
 func _set_seeds(value: int) -> void:
 	seeds = value
 	_add_seeds()
+
+
+func _set_state(value: String) -> void:
+	state = value
+
+	if not wind_particles:
+		return
+
+	wind_particles.emitting = false
+	ice_particles.emitting = false
+	fire_particles.emitting = false
+
+	match state:
+		"Fire": fire_particles.emitting = true
+		"Ice": ice_particles.emitting = true
+		"Wind": wind_particles.emitting = true
 
 
 func _on_Tween_tween_all_completed() -> void:
