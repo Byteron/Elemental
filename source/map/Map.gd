@@ -294,6 +294,9 @@ func _check_brittle_terrain(loc: Location) -> void:
 
 func _check_collecting_orb(loc: Location) -> void:
 	if loc.orb:
+		if loc.orb.alias == "Fire" and elemental.seeds:
+			elemental.seeds = 0
+
 		elemental.state = loc.orb.alias
 		elemental.mesh_instance.material_override = loc.orb.mesh_instance.material_override
 		loc.orb.collect()
@@ -323,7 +326,6 @@ func _check_terrain_transitions(loc: Location) -> void:
 func _check_burning_seeds(loc: Location) -> void:
 	if elemental.state == "Fire" and loc.seeds:
 		remove_seeds(loc.cell)
-		get_tree().reload_current_scene()
 
 
 func _check_obstacle(loc: Location) -> void:
