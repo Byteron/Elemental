@@ -22,6 +22,8 @@ func _input(event: InputEvent) -> void:
 
 
 func initialize(size: Vector2) -> void:
+	transform.origin = Vector3.ZERO
+	camera.transform.origin = Vector3.ZERO
 
 	camera.size = max(size.x, size.y) * 1.7
 	camera.transform.origin.y = size.length() / 1.5 - 1
