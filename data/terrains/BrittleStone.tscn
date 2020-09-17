@@ -7,6 +7,8 @@
 
 [node name="BrittleStone" instance=ExtResource( 2 )]
 script = ExtResource( 1 )
+alias = "BrittleStone"
+brittle = true
 
 [node name="MeshInstance" parent="." index="0"]
 material_override = ExtResource( 3 )
