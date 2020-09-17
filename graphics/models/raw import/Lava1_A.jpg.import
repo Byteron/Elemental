@@ -2,19 +2,21 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Lava1_A.jpg-ed3d628e94b5d8cf45616ce2d139be28.stex"
+path.s3tc="res://.import/Lava1_A.jpg-ed3d628e94b5d8cf45616ce2d139be28.s3tc.stex"
+path.etc2="res://.import/Lava1_A.jpg-ed3d628e94b5d8cf45616ce2d139be28.etc2.stex"
 metadata={
-"vram_texture": false
+"imported_formats": [ "s3tc", "etc2" ],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://graphics/models/raw import/Lava1_A.jpg"
-dest_files=[ "res://.import/Lava1_A.jpg-ed3d628e94b5d8cf45616ce2d139be28.stex" ]
+dest_files=[ "res://.import/Lava1_A.jpg-ed3d628e94b5d8cf45616ce2d139be28.s3tc.stex", "res://.import/Lava1_A.jpg-ed3d628e94b5d8cf45616ce2d139be28.etc2.stex" ]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
@@ -22,7 +24,7 @@ compress/normal_map=0
 flags/repeat=true
 flags/filter=true
 flags/mipmaps=true
-flags/anisotropic=false
+flags/anisotropic=true
 flags/srgb=1
 process/fix_alpha_border=true
 process/premult_alpha=false
