@@ -102,6 +102,7 @@ func place_elemental(elemental: Elemental, cell: Vector3) -> void:
 
 	elemental.connect("move_finished", self, "_on_elemental_move_finished")
 	elemental.cell = cell
+	elemental.last_cell = cell
 	elemental.transform.origin = cell * GRID_SIZE
 	elemental.visible = true
 	self.elemental = elemental
@@ -286,6 +287,11 @@ func _replace_terrain(loc: Location, alias: String) -> void:
 	_add_location(alias, cell)
 
 
+func _check_brittle_terrain(loc: Location) -> void:
+	if loc.terrain.brittle:
+		_replace_terrain(loc, "None")
+
+
 func _check_collecting_orb(loc: Location) -> void:
 	if loc.orb:
 		elemental.state = loc.orb.alias
@@ -337,10 +343,12 @@ func _on_terrain_hovered(cell: Vector3) -> void:
 	emit_signal("cell_hovered", cell)
 
 
-func _on_elemental_move_finished(cell: Vector3) -> void:
-	var loc : Location = locations[cell]
+func _on_elemental_move_finished(last_cell: Vector3, new_cell: Vector3) -> void:
+	var last_loc: Location = locations[last_cell]
+	var loc : Location = locations[new_cell]
 	loc.terrain.on_moved(self)
 
+	_check_brittle_terrain(last_loc)
 	_check_collecting_orb(loc)
 	_check_collecting_seeds(loc)
 	_check_planting_seeds(loc)

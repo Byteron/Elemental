@@ -3,12 +3,13 @@ class_name Elemental
 
 const SeedsMesh := preload("res://source/objects/seeds/SeedsMesh.tscn")
 
-signal move_finished(cell)
+signal move_finished(last_cell, new_cell)
 
 export var state := "Stone" setget _set_state
 export var seeds := 0 setget _set_seeds
 
-var cell := Vector3()
+var last_cell := Vector3()
+var cell := Vector3() setget _set_cell
 
 onready var tween := $Tween as Tween
 onready var mesh_instance := $MeshInstance as MeshInstance
@@ -54,6 +55,11 @@ func _add_seeds() -> void:
 		print(spatial.rotation_degrees)
 
 
+func _set_cell(value: Vector3) -> void:
+	last_cell = cell
+	cell = value
+
+
 func _set_seeds(value: int) -> void:
 	seeds = value
 	_add_seeds()
@@ -76,4 +82,4 @@ func _set_state(value: String) -> void:
 
 
 func _on_Tween_tween_all_completed() -> void:
-	emit_signal("move_finished", cell)
+	emit_signal("move_finished", last_cell, cell)

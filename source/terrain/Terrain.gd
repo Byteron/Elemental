@@ -9,6 +9,7 @@ enum Action {
 
 export var alias := ""
 export var fertile := false
+export var brittle := false
 
 export(Array, Resource) var transitions = []
 
