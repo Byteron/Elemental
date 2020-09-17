@@ -8,11 +8,12 @@ onready var map := $Map as Map
 onready var camera := $OrthoCamera as OrthoCamera
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_accept"):
+	if event.is_action_pressed("restart"):
 		get_tree().reload_current_scene()
 	if event.is_action_pressed("ui_cancel"):
 		Scene.change("TitleScreen")
-
+	if event.is_action_pressed("drop_seeds"):
+		map.drop_seeds()
 
 func _process(delta: float) -> void:
 	if Input.is_action_pressed("ui_left"):

@@ -127,6 +127,14 @@ func move_elemental(direction: Vector3) -> void:
 	elemental.move_to(next_loc.position)
 
 
+func drop_seeds() -> void:
+	if not elemental.can_move() or not elemental.seeds or locations[elemental.cell].seeds:
+		return
+
+	elemental.seeds -= 1
+	add_seeds(elemental.cell)
+
+
 func remove_elemental() -> void:
 	if not elemental:
 		return
