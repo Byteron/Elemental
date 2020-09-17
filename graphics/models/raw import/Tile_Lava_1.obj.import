@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Tile_Lava_1.obj-64796c00047596ca75522143075f1c0d.mesh"
+
+[deps]
+
+files=[ "res://.import/Tile_Lava_1.obj-64796c00047596ca75522143075f1c0d.mesh" ]
+
+source_file="res://graphics/models/raw import/Tile_Lava_1.obj"
+dest_files=[ "res://.import/Tile_Lava_1.obj-64796c00047596ca75522143075f1c0d.mesh", "res://.import/Tile_Lava_1.obj-64796c00047596ca75522143075f1c0d.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

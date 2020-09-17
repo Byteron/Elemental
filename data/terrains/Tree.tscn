@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://source/terrain/Terrain.tscn" type="PackedScene" id=1]
 [ext_resource path="res://data/terrains/Tree.gd" type="Script" id=2]
-[ext_resource path="res://graphics/materials/terrain_tree.tres" type="Material" id=3]
+[ext_resource path="res://graphics/materials/terrain_grass.tres" type="Material" id=3]
 [ext_resource path="res://data/transitions/earth_from_fire.tres" type="Resource" id=4]
+[ext_resource path="res://graphics/models/raw import/Tile_Grass_1.obj" type="ArrayMesh" id=6]
 
 [node name="Tree" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
@@ -12,3 +13,4 @@ transitions = [ ExtResource( 4 ) ]
 
 [node name="MeshInstance" parent="." index="0"]
 material_override = ExtResource( 3 )
+mesh = ExtResource( 6 )

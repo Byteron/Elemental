@@ -1,7 +1,7 @@
 [gd_resource type="SpatialMaterial" load_steps=3 format=2]
 
-[ext_resource path="res://graphics/models/raw import/Ice_N.jpg" type="Texture" id=1]
-[ext_resource path="res://graphics/models/raw import/Ice_A.jpg" type="Texture" id=2]
+[ext_resource path="res://graphics/models/raw import/Lava1_N.jpg" type="Texture" id=1]
+[ext_resource path="res://graphics/models/raw import/Lava1_A.jpg" type="Texture" id=2]
 
 [resource]
 albedo_texture = ExtResource( 2 )
