@@ -1,15 +1,14 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://data/terrains/Stone.gd" type="Script" id=1]
+[ext_resource path="res://data/terrains/BrittleStone.gd" type="Script" id=1]
 [ext_resource path="res://source/terrain/Terrain.tscn" type="PackedScene" id=2]
 [ext_resource path="res://graphics/materials/terrain_brittle_stone.tres" type="Material" id=3]
 [ext_resource path="res://graphics/models/raw import/Tile_Stone_Brittle_1.obj" type="ArrayMesh" id=4]
 
 [node name="BrittleStone" instance=ExtResource( 2 )]
 script = ExtResource( 1 )
-alias = "BrittleStone"
-brittle = true
 
 [node name="MeshInstance" parent="." index="0"]
 material_override = ExtResource( 3 )
+cast_shadow = 2
 mesh = ExtResource( 4 )
