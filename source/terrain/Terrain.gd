@@ -24,7 +24,11 @@ onready var tween := $Tween as Tween
 
 func _ready() -> void:
 	rotation_degrees.y = [0, 90, 180, 270][randi() % 4]
-	yield(get_tree().create_timer(randf()), "timeout")
+	var timer = get_tree().create_timer(randf())
+	timer.connect("timeout", self, "_timeout")
+
+
+func _timeout() -> void:
 	tween.interpolate_property(self, "transform:origin:y", transform.origin.y, transform.origin.y - height, speed / 2, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
 	tween.interpolate_property(self, "transform:origin:y", transform.origin.y - height,transform.origin.y, speed / 2, Tween.TRANS_SINE, Tween.EASE_IN_OUT, speed / 2)
 	tween.start()

@@ -1,16 +1,13 @@
 [gd_scene load_steps=3 format=2]
 
+[ext_resource path="res://graphics/models/raw import/Orb_basemesh.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://source/objects/orb/Orb.gd" type="Script" id=2]
-
-[sub_resource type="SphereMesh" id=1]
-radius = 0.5
-height = 1.0
 
 [node name="Orb" type="Spatial"]
 script = ExtResource( 2 )
 alias = "Orb"
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.823936, 0 )
-mesh = SubResource( 1 )
+transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0.823936, 0 )
+mesh = ExtResource( 1 )
 material/0 = null

@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/Wind_N.jpg-739f059fcf04a33004948311b7de8d4d.s3tc.stex"
-path.etc2="res://.import/Wind_N.jpg-739f059fcf04a33004948311b7de8d4d.etc2.stex"
+path.s3tc="res://.import/Orb_fire_N.jpg-1c7df77e752afc89b32d1da966c6e67b.s3tc.stex"
+path.etc2="res://.import/Orb_fire_N.jpg-1c7df77e752afc89b32d1da966c6e67b.etc2.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc2" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://graphics/models/raw import/Wind_N.jpg"
-dest_files=[ "res://.import/Wind_N.jpg-739f059fcf04a33004948311b7de8d4d.s3tc.stex", "res://.import/Wind_N.jpg-739f059fcf04a33004948311b7de8d4d.etc2.stex" ]
+source_file="res://graphics/models/raw import/Orb_fire_N.jpg"
+dest_files=[ "res://.import/Orb_fire_N.jpg-1c7df77e752afc89b32d1da966c6e67b.s3tc.stex", "res://.import/Orb_fire_N.jpg-1c7df77e752afc89b32d1da966c6e67b.etc2.stex" ]
 
 [params]
 
@@ -24,7 +24,7 @@ compress/normal_map=1
 flags/repeat=true
 flags/filter=true
 flags/mipmaps=true
-flags/anisotropic=true
+flags/anisotropic=false
 flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false

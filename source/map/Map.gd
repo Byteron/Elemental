@@ -69,14 +69,13 @@ func initialize_from_map_data(elemental: Elemental, map_data: MapData) -> void:
 
 
 func randomize_terrain() -> void:
-	randomize()
 	for loc in locations.values():
 		_replace_terrain(loc, Global.terrains.keys()[randi() % Global.terrains.size()])
 
-#		if randf() < 0.1:
-#			add_orb(loc.cell, Global.orbs.keys()[randi() % Global.orbs.size()])
-#		elif randf() < 0.04:
-#			add_seeds(loc.cell)
+		if randf() < 0.1:
+			add_orb(loc.cell, Global.orbs.keys()[randi() % Global.orbs.size()])
+		elif randf() < 0.04:
+			add_seeds(loc.cell)
 
 	_conditionalize()
 

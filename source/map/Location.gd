@@ -1,4 +1,3 @@
-extends Node
 class_name Location
 
 signal terrain_changed()
