@@ -4,7 +4,7 @@
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0, 0.518519, 0.637037, 0.807407, 0.948148 )
-colors = PoolColorArray( 0, 0, 0, 0, 0.59668, 0.486373, 0.309994, 1, 0, 0, 0, 1, 0.241211, 0.241211, 0.241211, 1, 0, 0, 0, 0 )
+colors = PoolColorArray( 0, 0, 0, 0, 0.59668, 0.486373, 0.309994, 1, 0, 0, 0, 1, 0.0380859, 0.0380859, 0.0380859, 1, 0, 0, 0, 0 )
 
 [sub_resource type="GradientTexture" id=2]
 gradient = SubResource( 1 )
@@ -28,6 +28,7 @@ angular_velocity = 40.0
 angular_velocity_random = 1.0
 linear_accel = 4.0
 linear_accel_random = 1.0
+radial_accel = -1.0
 angle = 360.0
 angle_random = 1.0
 scale_random = 0.8
@@ -38,7 +39,6 @@ color_ramp = SubResource( 2 )
 flags_transparent = true
 flags_unshaded = true
 vertex_color_use_as_albedo = true
-params_blend_mode = 1
 params_billboard_mode = 3
 particles_anim_h_frames = 1
 particles_anim_v_frames = 1
@@ -55,7 +55,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 [node name="Particles" type="Particles" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0627018, 0, 0 )
 amount = 200
-lifetime = 0.5
+lifetime = 0.7
 randomness = 1.0
 local_coords = false
 draw_order = 2
