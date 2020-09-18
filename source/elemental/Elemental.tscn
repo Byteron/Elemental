@@ -5,6 +5,7 @@
 [ext_resource path="res://graphics/particles/wind.tscn" type="PackedScene" id=3]
 [ext_resource path="res://graphics/particles/fire.tscn" type="PackedScene" id=4]
 [ext_resource path="res://graphics/materials/orbs/orb_earth.tres" type="Material" id=5]
+[ext_resource path="res://graphics/models/raw import/Orb_basemesh.obj" type="ArrayMesh" id=6]
 
 [sub_resource type="Animation" id=1]
 resource_name = "idle"
@@ -36,10 +37,6 @@ tracks/1/keys = {
 "values": [ Vector3( 0, 0, 0 ), Vector3( 0, 360, 0 ) ]
 }
 
-[sub_resource type="SphereMesh" id=2]
-radius = 0.75
-height = 1.5
-
 [sub_resource type="SphereShape" id=3]
 
 [node name="Elemental" type="Area"]
@@ -54,8 +51,9 @@ anims/idle = SubResource( 1 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
-mesh = SubResource( 2 )
-material/0 = ExtResource( 5 )
+material_override = ExtResource( 5 )
+mesh = ExtResource( 6 )
+material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )

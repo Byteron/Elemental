@@ -15,6 +15,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("drop_seeds"):
 		map.drop_seeds()
 
+
 func _process(delta: float) -> void:
 	if Input.is_action_pressed("move_left"):
 		map.move_elemental(Vector3.FORWARD)
@@ -27,9 +28,13 @@ func _process(delta: float) -> void:
 
 
 func _ready() -> void:
+	#map.initialize(20, 20)
+	#map.randomize_terrain()
+	#map.place_elemental(elemental, Vector3(10, 0, 10))
 	map.initialize_from_map_data(elemental, Global.get_map_data())
 	map.connect("finished", self, "_on_map_finished")
 	camera.initialize(map.size)
+	print_stray_nodes()
 
 
 func _on_map_finished() -> void:
