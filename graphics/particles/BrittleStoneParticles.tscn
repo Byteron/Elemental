@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://graphics/models/raw import/Tile_Stone_1.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://graphics/particles/BrittleStoneParticles.gd" type="Script" id=2]
+[ext_resource path="res://graphics/materials/terrain/terrain_stone.tres" type="Material" id=3]
 
 [sub_resource type="Curve" id=1]
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.82449, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), -3.47348, 0.0, 0, 0 ]
@@ -24,6 +25,7 @@ script = ExtResource( 2 )
 
 [node name="Particles" type="Particles" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
+material_override = ExtResource( 3 )
 emitting = false
 lifetime = 1.4
 one_shot = true
