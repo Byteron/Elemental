@@ -9,7 +9,7 @@
 [node name="Tree" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 height = 0.8
-speed = 3.2
+speed = 3.0
 alias = "Tree"
 transitions = [ ExtResource( 4 ) ]
 
