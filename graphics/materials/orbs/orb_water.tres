@@ -5,7 +5,7 @@
 [resource]
 albedo_color = Color( 0.203922, 0.133333, 0.690196, 1 )
 emission_enabled = true
-emission = Color( 1, 1, 1, 1 )
+emission = Color( 0.25098, 0.447059, 0.564706, 1 )
 emission_energy = 1.0
 emission_operator = 1
 emission_on_uv2 = false

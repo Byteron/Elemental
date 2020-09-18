@@ -2,6 +2,7 @@ extends Spatial
 class_name Game
 
 export var size := Vector2(10, 10)
+export var random := false
 
 onready var elemental := $Elemental as Elemental
 onready var map := $Map as Map
@@ -28,10 +29,12 @@ func _process(delta: float) -> void:
 
 
 func _ready() -> void:
-	#map.initialize(20, 20)
-	#map.randomize_terrain()
-	#map.place_elemental(elemental, Vector3(10, 0, 10))
-	map.initialize_from_map_data(elemental, Global.get_map_data())
+	if random:
+		map.initialize(size.x, size.y)
+		map.randomize_terrain()
+		map.place_elemental(elemental, Vector3(size.x / 2, 0, size.y / 2))
+	else:
+		map.initialize_from_map_data(elemental, Global.get_map_data())
 	map.connect("finished", self, "_on_map_finished")
 	camera.initialize(map.size)
 	print_stray_nodes()

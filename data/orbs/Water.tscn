@@ -6,5 +6,5 @@
 [node name="Water" instance=ExtResource( 1 )]
 alias = "Water"
 
-[node name="MeshInstance" parent="." index="0"]
+[node name="MeshInstance" parent="." index="1"]
 material_override = ExtResource( 2 )

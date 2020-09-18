@@ -7,7 +7,7 @@
 [node name="Wind" instance=ExtResource( 1 )]
 alias = "Wind"
 
-[node name="MeshInstance" parent="." index="0"]
-material_override = ExtResource( 2 )
-
 [node name="Spatial" parent="." index="1" instance=ExtResource( 3 )]
+
+[node name="MeshInstance" parent="." index="2"]
+material_override = ExtResource( 2 )
