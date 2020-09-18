@@ -1,4 +1,6 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://graphics/particles/circle.png" type="Texture" id=1]
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0, 0.037037, 0.0962963, 0.340741, 0.948148 )
@@ -39,6 +41,7 @@ params_billboard_mode = 3
 particles_anim_h_frames = 1
 particles_anim_v_frames = 1
 particles_anim_loop = false
+albedo_texture = ExtResource( 1 )
 
 [sub_resource type="QuadMesh" id=7]
 material = SubResource( 6 )
