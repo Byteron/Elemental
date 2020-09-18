@@ -18,6 +18,7 @@ onready var seeds_container := $Seeds as Spatial
 onready var wind_particles := $WindParticles/Particles
 onready var ice_particles := $IceParticles/Particles
 onready var fire_particles := $FireParticles/Particles
+onready var water_particles := $WaterParticles/Particles
 
 
 func _ready() -> void:
@@ -74,11 +75,13 @@ func _set_state(value: String) -> void:
 	wind_particles.emitting = false
 	ice_particles.emitting = false
 	fire_particles.emitting = false
+	water_particles.emitting = false
 
 	match state:
 		"Fire": fire_particles.emitting = true
 		"Ice": ice_particles.emitting = true
 		"Wind": wind_particles.emitting = true
+		"Water": water_particles.emitting = true
 
 
 func _on_Tween_tween_all_completed() -> void:
