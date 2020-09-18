@@ -184,7 +184,7 @@ window/size/height=720
 
 [editor_plugins]
 
-enabled=PoolStringArray( "audio_booth", "finite_state_machine", "scene_manager" )
+enabled=PoolStringArray( "audio_booth", "scene_manager" )
 
 [input]
 
