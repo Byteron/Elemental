@@ -97,7 +97,7 @@ Vector3( 3, 0, 5 ): {
 "Terrain": "Stone"
 },
 Vector3( 3, 0, 6 ): {
-"Orb": "Stone",
+"Orb": "Earth",
 "Terrain": "Stone"
 },
 Vector3( 4, 0, 0 ): {

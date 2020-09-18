@@ -2,7 +2,7 @@ extends Node
 
 var current_level := 0
 
-var levels := []
+var levels := {}
 
 var orbs := {}
 var terrains := {}
@@ -32,7 +32,11 @@ func next_level() -> void:
 
 
 func get_map_data() -> MapData:
-	return levels[current_level]
+	return levels.values()[current_level]
+
+
+func get_map_data_from_key(key: String) -> MapData:
+	return levels[key]
 
 
 func _register_scenes() -> void:
@@ -84,6 +88,6 @@ func _load_levels() -> void:
 
 	for file in files:
 		var level = file.data
-		levels.append(level)
+		levels[file.id] = level
 
 	print(levels)

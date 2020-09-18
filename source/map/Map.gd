@@ -294,7 +294,7 @@ func _check_brittle_terrain(loc: Location) -> void:
 
 func _check_collecting_orb(loc: Location) -> void:
 	if loc.orb:
-		if loc.orb.alias == "Fire" and elemental.seeds:
+		if ["Ice", "Fire"].has(loc.orb.alias) and elemental.seeds:
 			elemental.seeds = 0
 
 		elemental.state = loc.orb.alias
@@ -324,7 +324,7 @@ func _check_terrain_transitions(loc: Location) -> void:
 
 
 func _check_burning_seeds(loc: Location) -> void:
-	if elemental.state == "Fire" and loc.seeds:
+	if ["Ice", "Fire"].has(elemental.state) and loc.seeds:
 		remove_seeds(loc.cell)
 
 

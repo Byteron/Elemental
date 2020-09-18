@@ -17,7 +17,7 @@ Vector3( 0, 0, 2 ): {
 "Terrain": "None"
 },
 Vector3( 0, 0, 3 ): {
-"Elemental": true,
+"Orb": "Ice",
 "Terrain": "Stone"
 },
 Vector3( 0, 0, 4 ): {
@@ -33,12 +33,14 @@ Vector3( 1, 0, 0 ): {
 "Terrain": "None"
 },
 Vector3( 1, 0, 1 ): {
+"Orb": "Earth",
 "Terrain": "Earth"
 },
 Vector3( 1, 0, 2 ): {
 "Terrain": "BrittleStone"
 },
 Vector3( 1, 0, 3 ): {
+"Elemental": true,
 "Terrain": "Stone"
 },
 Vector3( 1, 0, 4 ): {
@@ -119,7 +121,6 @@ Vector3( 5, 0, 0 ): {
 "Terrain": "None"
 },
 Vector3( 5, 0, 1 ): {
-"Orb": "Ice",
 "Terrain": "Earth"
 },
 Vector3( 5, 0, 2 ): {
