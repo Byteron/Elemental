@@ -2,7 +2,7 @@
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0, 0.037037, 0.0962963, 0.340741, 0.948148 )
-colors = PoolColorArray( 0, 0, 0, 1, 0.09375, 0.612366, 1, 1, 0.824219, 0.99485, 1, 1, 0.582031, 0.755096, 1, 1, 0, 0, 0, 1 )
+colors = PoolColorArray( 0, 0, 0, 1, 0.09375, 0.612366, 1, 1, 0, 0.970702, 1, 1, 0, 0.414062, 1, 1, 0, 0, 0, 1 )
 
 [sub_resource type="GradientTexture" id=2]
 gradient = SubResource( 1 )
@@ -18,7 +18,7 @@ emission_shape = 1
 emission_sphere_radius = 1.0
 direction = Vector3( 0, 1, 0 )
 spread = 0.0
-gravity = Vector3( 0, -0.5, 0 )
+gravity = Vector3( 0, -4, 0 )
 angular_velocity = 40.0
 angular_velocity_random = 1.0
 angle = 360.0
