@@ -6,10 +6,9 @@
 [ext_resource path="res://data/transitions/earth_from_fire.tres" type="Resource" id=4]
 [ext_resource path="res://graphics/models/raw import/Tile_Grass_1.obj" type="ArrayMesh" id=6]
 
-
 [node name="Tree" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
-height = 0.8
+height = 0.08
 speed = 3.0
 alias = "Tree"
 transitions = [ ExtResource( 4 ) ]
