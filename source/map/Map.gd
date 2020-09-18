@@ -49,7 +49,7 @@ func initialize_from_map_data(elemental: Elemental, map_data: MapData) -> void:
 
 	for cell in map_data.locations.keys():
 		var data : Dictionary = map_data.locations[cell]
-		_add_location(data["Terrain"], cell)
+		_add_location(data["Terrain"], cell, false)
 
 		if data.has("Elemental"):
 			place_elemental(elemental, cell)
@@ -70,7 +70,7 @@ func initialize_from_map_data(elemental: Elemental, map_data: MapData) -> void:
 
 func randomize_terrain() -> void:
 	for loc in locations.values():
-		_replace_terrain(loc, Global.terrains.keys()[randi() % Global.terrains.size()])
+		_replace_terrain(loc, Global.terrains.keys()[randi() % Global.terrains.size()], false)
 
 		if randf() < 0.1:
 			add_orb(loc.cell, Global.orbs.keys()[randi() % Global.orbs.size()])
@@ -259,7 +259,7 @@ func _check_conditions() -> void:
 		emit_signal("finished")
 
 
-func _add_location(alias: String, cell: Vector3) -> void:
+func _add_location(alias: String, cell: Vector3, animate := true) -> void:
 	var terrain : Terrain = Global.terrains[alias].instance()
 	terrain.connect("mouse_entered", self, "_on_terrain_hovered", [ cell ])
 	terrains.add_child(terrain)
@@ -271,6 +271,9 @@ func _add_location(alias: String, cell: Vector3) -> void:
 
 	locations[cell] = loc
 
+	if animate:
+		terrain.animate()
+
 
 func _remove_location(cell) -> void:
 	var loc : Location = locations[cell]
@@ -280,10 +283,10 @@ func _remove_location(cell) -> void:
 	locations.erase(cell)
 
 
-func _replace_terrain(loc: Location, alias: String) -> void:
+func _replace_terrain(loc: Location, alias: String, animate := true) -> void:
 	var cell = loc.cell
 	_remove_location(cell)
-	_add_location(alias, cell)
+	_add_location(alias, cell, animate)
 
 
 func _check_brittle_terrain(loc: Location) -> void:

@@ -21,7 +21,7 @@ func is_blocked(state: String) -> bool:
 
 func _set_terrain(value: Terrain) -> void:
 	if terrain:
-		terrain.queue_free()
+		terrain.destroy()
 
 	terrain = value
 
