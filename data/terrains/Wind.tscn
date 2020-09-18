@@ -7,8 +7,8 @@
 
 [node name="Wind" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
-height = 0.1
-speed = 1.4
+height = 0.12
+speed = 1.2
 alias = "Wind"
 
 [node name="MeshInstance" parent="." index="1"]
