@@ -9,5 +9,6 @@ static func instance() -> Seeds:
 
 
 func collect() -> void:
+	SFX.play_sfx("GrabSeeds")
 	emit_signal("collected")
 	queue_free()

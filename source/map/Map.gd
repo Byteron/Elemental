@@ -65,8 +65,6 @@ func initialize_from_map_data(elemental: Elemental, map_data: MapData) -> void:
 			var obstacle = data["Obstacle"]
 			add_obstacle(cell, obstacle)
 
-	_conditionalize()
-
 
 func randomize_terrain() -> void:
 	for loc in locations.values():
@@ -76,8 +74,6 @@ func randomize_terrain() -> void:
 			add_orb(loc.cell, Global.orbs.keys()[randi() % Global.orbs.size()])
 		elif randf() < 0.04:
 			add_seeds(loc.cell)
-
-	_conditionalize()
 
 
 func get_neighbors(loc: Location) -> Array:
@@ -235,27 +231,16 @@ func get_map_data() -> MapData:
 	return map_data
 
 
-func _conditionalize() -> void:
-	earth_block_count = 0
-	seeds_planted = 0
+func _check_conditions() -> void:
+	var blocks_left = 0
 
 	for cell in locations:
 		var loc : Location = locations[cell]
 
 		if loc.terrain.fertile:
-			earth_block_count += 1
+			blocks_left += 1
 
-
-func _check_conditions() -> void:
-	seeds_planted = 0
-
-	for cell in locations:
-		var loc : Location = locations[cell]
-
-		if loc.terrain.alias == "Tree":
-			seeds_planted += 1
-
-	if seeds_planted == earth_block_count:
+	if not blocks_left:
 		emit_signal("finished")
 
 
@@ -280,6 +265,7 @@ func _remove_location(cell) -> void:
 	loc.terrain = null
 	loc.orb = null
 	loc.seeds = null
+	loc.obstacle = null
 	locations.erase(cell)
 
 
@@ -327,6 +313,7 @@ func _check_terrain_transitions(loc: Location) -> void:
 
 func _check_burning_seeds(loc: Location) -> void:
 	if ["Ice", "Fire"].has(elemental.state) and loc.seeds:
+		SFX.play_sfx("Burn")
 		remove_seeds(loc.cell)
 
 
@@ -341,6 +328,7 @@ func _check_planting_seeds(loc: Location) -> void:
 		seeds_planted += 1
 		print("Seeds - 1")
 		_replace_terrain(loc, "Tree")
+		SFX.play_sfx("Plant")
 
 
 func _on_terrain_hovered(cell: Vector3) -> void:

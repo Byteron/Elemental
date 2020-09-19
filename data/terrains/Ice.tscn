@@ -6,12 +6,11 @@
 [ext_resource path="res://data/transitions/water_from_fire.tres" type="Resource" id=4]
 [ext_resource path="res://graphics/models/raw import/Tile_Ice_1.obj" type="ArrayMesh" id=6]
 
-
 [node name="Ice" instance=ExtResource( 2 )]
 script = ExtResource( 1 )
-alias = "ice"
+alias = "Ice"
 transitions = [ ExtResource( 4 ) ]
 
-[node name="MeshInstance" parent="." index="0"]
+[node name="MeshInstance" parent="." index="2"]
 material_override = ExtResource( 3 )
 mesh = ExtResource( 6 )

@@ -20,7 +20,7 @@ var stop_song_on_bar_queue := []
 var stop_track_on_beat_queue := []
 var stop_track_on_bar_queue := []
 
-var current_song : Node = null
+var current_song : Song = null
 
 onready var songs := {}
 
@@ -110,7 +110,7 @@ func is_song_playing(song_name: String) -> bool:
 
 	return current_song.name == song_name
 
-func _get_song(song_name: String) -> Node:
+func _get_song(song_name: String) -> Song:
 	assert(songs.has(song_name))
 	return songs[song_name]
 

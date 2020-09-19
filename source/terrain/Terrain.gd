@@ -31,6 +31,7 @@ func _ready() -> void:
 
 func animate() -> void:
 	anim.play("spawn")
+	SFX.play_sfx("Grow")
 
 
 func destroy() -> void:

@@ -1,0 +1,67 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://addons/audio_booth/source/sfx/SoundBooth.gd" type="Script" id=1]
+[ext_resource path="res://addons/audio_booth/source/sfx/Sound.gd" type="Script" id=2]
+[ext_resource path="res://audio/sounds/IceOrb.wav" type="AudioStream" id=3]
+[ext_resource path="res://audio/sounds/Burn.wav" type="AudioStream" id=4]
+[ext_resource path="res://audio/sounds/GrabSeeds.wav" type="AudioStream" id=5]
+[ext_resource path="res://audio/sounds/WindOrb.wav" type="AudioStream" id=6]
+[ext_resource path="res://audio/sounds/WaterOrb.wav" type="AudioStream" id=7]
+[ext_resource path="res://audio/sounds/FireOrb.wav" type="AudioStream" id=8]
+[ext_resource path="res://audio/sounds/Freeze.wav" type="AudioStream" id=9]
+[ext_resource path="res://audio/sounds/PlantSeeds.wav" type="AudioStream" id=10]
+[ext_resource path="res://audio/sounds/StoneOrb.wav" type="AudioStream" id=11]
+[ext_resource path="res://audio/sounds/GrowGrass.wav" type="AudioStream" id=12]
+
+[node name="SFX" type="Node"]
+script = ExtResource( 1 )
+
+[node name="Burn" type="Node" parent="."]
+script = ExtResource( 2 )
+singleton = true
+stream = ExtResource( 4 )
+
+[node name="Freeze" type="Node" parent="."]
+script = ExtResource( 2 )
+singleton = true
+stream = ExtResource( 9 )
+
+[node name="Grow" type="Node" parent="."]
+script = ExtResource( 2 )
+singleton = true
+stream = ExtResource( 12 )
+
+[node name="Plant" type="Node" parent="."]
+script = ExtResource( 2 )
+singleton = true
+stream = ExtResource( 10 )
+
+[node name="GrabSeeds" type="Node" parent="."]
+script = ExtResource( 2 )
+singleton = true
+stream = ExtResource( 5 )
+
+[node name="FireOrb" type="Node" parent="."]
+script = ExtResource( 2 )
+singleton = true
+stream = ExtResource( 8 )
+
+[node name="EarthOrb" type="Node" parent="."]
+script = ExtResource( 2 )
+singleton = true
+stream = ExtResource( 11 )
+
+[node name="WaterOrb" type="Node" parent="."]
+script = ExtResource( 2 )
+singleton = true
+stream = ExtResource( 7 )
+
+[node name="IceOrb" type="Node" parent="."]
+script = ExtResource( 2 )
+singleton = true
+stream = ExtResource( 3 )
+
+[node name="WindOrb" type="Node" parent="."]
+script = ExtResource( 2 )
+singleton = true
+stream = ExtResource( 6 )

@@ -1,0 +1,32 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://addons/audio_booth/source/music/MusicBooth.gd" type="Script" id=1]
+[ext_resource path="res://addons/audio_booth/source/music/Song.gd" type="Script" id=2]
+[ext_resource path="res://addons/audio_booth/source/music/containers/TrackContainer.gd" type="Script" id=3]
+[ext_resource path="res://audio/music/Grass_-_stem.wav" type="AudioStream" id=4]
+[ext_resource path="res://audio/music/Ice_-_stem.wav" type="AudioStream" id=5]
+[ext_resource path="res://audio/music/Fire_-_stem.wav" type="AudioStream" id=6]
+
+[node name="Music" type="Node"]
+script = ExtResource( 1 )
+
+[node name="Song" type="Node" parent="."]
+script = ExtResource( 2 )
+tempo = 145.0
+beats = 4
+
+[node name="TrackContainer" type="Node" parent="Song"]
+script = ExtResource( 3 )
+
+[node name="Main" type="AudioStreamPlayer" parent="Song/TrackContainer"]
+stream = ExtResource( 4 )
+volume_db = -80.0
+
+[node name="Earth" type="AudioStreamPlayer" parent="Song/TrackContainer"]
+stream = ExtResource( 4 )
+
+[node name="Ice" type="AudioStreamPlayer" parent="Song/TrackContainer"]
+stream = ExtResource( 5 )
+
+[node name="Fire" type="AudioStreamPlayer" parent="Song/TrackContainer"]
+stream = ExtResource( 6 )
