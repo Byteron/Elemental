@@ -8,8 +8,8 @@ width = 3
 height = 3
 locations = {
 Vector3( 0, 0, 0 ): {
-"Seeds": true,
-"Terrain": "Tree"
+"Orb": "Wind",
+"Terrain": "Stone"
 },
 Vector3( 0, 0, 1 ): {
 "Elemental": true,
@@ -19,8 +19,7 @@ Vector3( 0, 0, 2 ): {
 "Terrain": "Stone"
 },
 Vector3( 1, 0, 0 ): {
-"Orb": "Wind",
-"Terrain": "Stone"
+"Terrain": "Wind"
 },
 Vector3( 1, 0, 1 ): {
 "Terrain": "BrittleStone"
@@ -30,7 +29,8 @@ Vector3( 1, 0, 2 ): {
 "Terrain": "Stone"
 },
 Vector3( 2, 0, 0 ): {
-"Terrain": "Wind"
+"Seeds": true,
+"Terrain": "Tree"
 },
 Vector3( 2, 0, 1 ): {
 "Obstacle": "Thorns",
