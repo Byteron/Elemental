@@ -8,7 +8,7 @@
 
 [node name="Ice" instance=ExtResource( 2 )]
 script = ExtResource( 1 )
-alias = "ice"
+alias = "Ice"
 transitions = [ ExtResource( 4 ) ]
 
 [node name="MeshInstance" parent="." index="2"]
