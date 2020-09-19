@@ -52,7 +52,7 @@ Vector3( 2, 0, 1 ): {
 "Terrain": "None"
 },
 Vector3( 2, 0, 2 ): {
-"Terrain": "Stone"
+"Terrain": "BrittleStone"
 },
 Vector3( 2, 0, 3 ): {
 "Terrain": "None"
