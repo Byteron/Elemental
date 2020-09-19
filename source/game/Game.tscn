@@ -41,7 +41,6 @@ light_color = Color( 0.717647, 0.67451, 0.32549, 1 )
 shadow_enabled = true
 
 [node name="Elemental" parent="." instance=ExtResource( 3 )]
-state = "Earth"
 
 [node name="Map" parent="." instance=ExtResource( 2 )]
 
@@ -51,3 +50,18 @@ state = "Earth"
 transform = Transform( 0.707107, 0.40558, -0.579228, 0, 0.819152, 0.573577, 0.707107, -0.40558, 0.579228, 0, 0, 0 )
 light_color = Color( 1, 0.945098, 0.729412, 1 )
 light_energy = 0.3
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="LevelLabel" type="Label" parent="CanvasLayer"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -90.0
+margin_right = 90.0
+margin_bottom = 43.0
+text = "Level 1"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
