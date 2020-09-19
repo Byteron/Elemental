@@ -37,7 +37,7 @@ func _ready() -> void:
 		map.initialize_from_map_data(elemental, Global.get_map_data())
 	map.connect("finished", self, "_on_map_finished")
 	camera.initialize(map.size)
-	print_stray_nodes()
+	Music.play_track(1, 1.0)
 
 
 func _on_map_finished() -> void:

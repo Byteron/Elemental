@@ -92,6 +92,7 @@ func play_track(track: int, fade_time := 0.0) -> void:
 		_fade_in(track_player, fade_time)
 
 	track_player.play()
+	track_player.seek(core.get_playback_position())
 
 func stop_track(track: int, fade_time := 0.0) -> void:
 	var track_player = tracks[track]

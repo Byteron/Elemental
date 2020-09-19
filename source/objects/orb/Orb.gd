@@ -14,5 +14,20 @@ func _process(delta: float) -> void:
 
 func collect() -> void:
 	SFX.play_sfx(alias + "Orb")
+
+	match alias:
+		"Earth":
+			Music.play_track(1, .5)
+			Music.stop_track(2, .5)
+			Music.stop_track(3, .5)
+		"Ice":
+			Music.play_track(2, .5)
+			Music.stop_track(1, .5)
+			Music.stop_track(3, .5)
+		"Fire":
+			Music.play_track(3, .5)
+			Music.stop_track(2, .5)
+			Music.stop_track(1, .5)
+
 	emit_signal("collected")
 	queue_free()
