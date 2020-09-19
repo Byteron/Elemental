@@ -265,6 +265,7 @@ func _remove_location(cell) -> void:
 	loc.terrain = null
 	loc.orb = null
 	loc.seeds = null
+	loc.obstacle = null
 	locations.erase(cell)
 
 
