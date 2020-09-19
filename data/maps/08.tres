@@ -11,152 +11,158 @@ Vector3( 0, 0, 0 ): {
 "Terrain": "None"
 },
 Vector3( 0, 0, 1 ): {
-"Terrain": "None"
+"Terrain": "Water"
 },
 Vector3( 0, 0, 2 ): {
-"Terrain": "None"
+"Terrain": "Tree"
 },
 Vector3( 0, 0, 3 ): {
-"Orb": "Ice",
-"Terrain": "Stone"
+"Elemental": true,
+"Terrain": "Tree"
 },
 Vector3( 0, 0, 4 ): {
-"Terrain": "None"
+"Terrain": "Tree"
 },
 Vector3( 0, 0, 5 ): {
-"Terrain": "None"
+"Terrain": "Stone"
 },
 Vector3( 0, 0, 6 ): {
 "Terrain": "None"
 },
 Vector3( 1, 0, 0 ): {
-"Terrain": "None"
+"Orb": "Wind",
+"Terrain": "Stone"
 },
 Vector3( 1, 0, 1 ): {
-"Terrain": "Earth"
+"Obstacle": "Thorns",
+"Terrain": "Stone"
 },
 Vector3( 1, 0, 2 ): {
-"Terrain": "BrittleStone"
+"Terrain": "Water"
 },
 Vector3( 1, 0, 3 ): {
-"Elemental": true,
-"Terrain": "Stone"
+"Terrain": "Water"
 },
 Vector3( 1, 0, 4 ): {
-"Terrain": "BrittleStone"
-},
-Vector3( 1, 0, 5 ): {
-"Terrain": "Earth"
-},
-Vector3( 1, 0, 6 ): {
-"Terrain": "None"
-},
-Vector3( 2, 0, 0 ): {
-"Terrain": "None"
-},
-Vector3( 2, 0, 1 ): {
-"Terrain": "BrittleStone"
-},
-Vector3( 2, 0, 2 ): {
-"Terrain": "None"
-},
-Vector3( 2, 0, 3 ): {
 "Terrain": "Stone"
 },
-Vector3( 2, 0, 4 ): {
-"Terrain": "None"
+Vector3( 1, 0, 5 ): {
+"Terrain": "Stone"
 },
-Vector3( 2, 0, 5 ): {
+Vector3( 1, 0, 6 ): {
+"Terrain": "Water"
+},
+Vector3( 2, 0, 0 ): {
+"Obstacle": "Thorns",
+"Terrain": "Stone"
+},
+Vector3( 2, 0, 1 ): {
+"Obstacle": "Thorns",
+"Terrain": "Stone"
+},
+Vector3( 2, 0, 2 ): {
 "Terrain": "BrittleStone"
 },
+Vector3( 2, 0, 3 ): {
+"Terrain": "BrittleStone"
+},
+Vector3( 2, 0, 4 ): {
+"Orb": "Fire",
+"Terrain": "Stone"
+},
+Vector3( 2, 0, 5 ): {
+"Terrain": "Stone"
+},
 Vector3( 2, 0, 6 ): {
-"Terrain": "None"
+"Terrain": "Earth"
 },
 Vector3( 3, 0, 0 ): {
-"Seeds": true,
+"Obstacle": "Thorns",
 "Terrain": "Stone"
 },
 Vector3( 3, 0, 1 ): {
-"Terrain": "Wind"
+"Terrain": "Stone"
 },
 Vector3( 3, 0, 2 ): {
-"Terrain": "Wind"
+"Terrain": "Stone"
 },
 Vector3( 3, 0, 3 ): {
-"Terrain": "Stone"
+"Terrain": "Water"
 },
 Vector3( 3, 0, 4 ): {
 "Terrain": "Water"
 },
 Vector3( 3, 0, 5 ): {
-"Terrain": "Water"
+"Terrain": "Tree"
 },
 Vector3( 3, 0, 6 ): {
-"Seeds": true,
-"Terrain": "Stone"
+"Terrain": "Earth"
 },
 Vector3( 4, 0, 0 ): {
-"Terrain": "None"
-},
-Vector3( 4, 0, 1 ): {
-"Terrain": "Wind"
-},
-Vector3( 4, 0, 2 ): {
-"Terrain": "None"
-},
-Vector3( 4, 0, 3 ): {
+"Obstacle": "Thorns",
 "Terrain": "Stone"
 },
+Vector3( 4, 0, 1 ): {
+"Obstacle": "Thorns",
+"Terrain": "Stone"
+},
+Vector3( 4, 0, 2 ): {
+"Terrain": "Tree"
+},
+Vector3( 4, 0, 3 ): {
+"Terrain": "Water"
+},
 Vector3( 4, 0, 4 ): {
-"Terrain": "None"
+"Terrain": "Water"
 },
 Vector3( 4, 0, 5 ): {
-"Terrain": "BrittleStone"
+"Terrain": "Tree"
 },
 Vector3( 4, 0, 6 ): {
-"Terrain": "None"
+"Terrain": "Earth"
 },
 Vector3( 5, 0, 0 ): {
-"Terrain": "None"
+"Seeds": true,
+"Terrain": "Tree"
 },
 Vector3( 5, 0, 1 ): {
-"Terrain": "Earth"
+"Seeds": true,
+"Terrain": "Tree"
 },
 Vector3( 5, 0, 2 ): {
 "Terrain": "Water"
 },
 Vector3( 5, 0, 3 ): {
-"Terrain": "Stone"
+"Terrain": "Tree"
 },
 Vector3( 5, 0, 4 ): {
-"Terrain": "Wind"
+"Terrain": "Tree"
 },
 Vector3( 5, 0, 5 ): {
-"Terrain": "Earth"
+"Terrain": "Tree"
 },
 Vector3( 5, 0, 6 ): {
-"Terrain": "None"
+"Terrain": "Water"
 },
 Vector3( 6, 0, 0 ): {
 "Terrain": "None"
 },
 Vector3( 6, 0, 1 ): {
-"Terrain": "Stone"
+"Seeds": true,
+"Terrain": "Tree"
 },
 Vector3( 6, 0, 2 ): {
-"Seeds": true,
-"Terrain": "BrittleStone"
+"Terrain": "Tree"
 },
 Vector3( 6, 0, 3 ): {
-"Orb": "Wind",
-"Terrain": "Stone"
+"Terrain": "Storm"
 },
 Vector3( 6, 0, 4 ): {
-"Seeds": true,
-"Terrain": "BrittleStone"
+"Terrain": "Storm"
 },
 Vector3( 6, 0, 5 ): {
-"Terrain": "Stone"
+"Orb": "Earth",
+"Terrain": "Tree"
 },
 Vector3( 6, 0, 6 ): {
 "Terrain": "None"
