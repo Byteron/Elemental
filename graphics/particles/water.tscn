@@ -50,7 +50,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 [node name="Particles" type="Particles" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0627018, 0, 0 )
 amount = 10
-lifetime = 1.5
 randomness = 1.0
 local_coords = false
 draw_order = 2

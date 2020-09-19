@@ -1,0 +1,173 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://source/map/MapData.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+width = 7
+height = 7
+locations = {
+Vector3( 0, 0, 0 ): {
+"Terrain": "Ice"
+},
+Vector3( 0, 0, 1 ): {
+"Orb": "Water",
+"Terrain": "Stone"
+},
+Vector3( 0, 0, 2 ): {
+"Terrain": "None"
+},
+Vector3( 0, 0, 3 ): {
+"Elemental": true,
+"Terrain": "Ice"
+},
+Vector3( 0, 0, 4 ): {
+"Terrain": "None"
+},
+Vector3( 0, 0, 5 ): {
+"Orb": "Ice",
+"Terrain": "Stone"
+},
+Vector3( 0, 0, 6 ): {
+"Terrain": "Ice"
+},
+Vector3( 1, 0, 0 ): {
+"Obstacle": "Thorns",
+"Terrain": "Ice"
+},
+Vector3( 1, 0, 1 ): {
+"Obstacle": "Thorns",
+"Terrain": "Stone"
+},
+Vector3( 1, 0, 2 ): {
+"Terrain": "None"
+},
+Vector3( 1, 0, 3 ): {
+"Terrain": "Ice"
+},
+Vector3( 1, 0, 4 ): {
+"Terrain": "None"
+},
+Vector3( 1, 0, 5 ): {
+"Obstacle": "Thorns",
+"Terrain": "Stone"
+},
+Vector3( 1, 0, 6 ): {
+"Obstacle": "Thorns",
+"Terrain": "Ice"
+},
+Vector3( 2, 0, 0 ): {
+"Terrain": "Ice"
+},
+Vector3( 2, 0, 1 ): {
+"Terrain": "Stone"
+},
+Vector3( 2, 0, 2 ): {
+"Terrain": "Stone"
+},
+Vector3( 2, 0, 3 ): {
+"Orb": "Fire",
+"Terrain": "Stone"
+},
+Vector3( 2, 0, 4 ): {
+"Terrain": "Stone"
+},
+Vector3( 2, 0, 5 ): {
+"Terrain": "Stone"
+},
+Vector3( 2, 0, 6 ): {
+"Terrain": "Ice"
+},
+Vector3( 3, 0, 0 ): {
+"Terrain": "Ice"
+},
+Vector3( 3, 0, 1 ): {
+"Terrain": "Ice"
+},
+Vector3( 3, 0, 2 ): {
+"Terrain": "Ice"
+},
+Vector3( 3, 0, 3 ): {
+"Terrain": "Stone"
+},
+Vector3( 3, 0, 4 ): {
+"Terrain": "Ice"
+},
+Vector3( 3, 0, 5 ): {
+"Terrain": "Ice"
+},
+Vector3( 3, 0, 6 ): {
+"Terrain": "Ice"
+},
+Vector3( 4, 0, 0 ): {
+"Obstacle": "Thorns",
+"Terrain": "Ice"
+},
+Vector3( 4, 0, 1 ): {
+"Obstacle": "Thorns",
+"Terrain": "Stone"
+},
+Vector3( 4, 0, 2 ): {
+"Obstacle": "Thorns",
+"Terrain": "Stone"
+},
+Vector3( 4, 0, 3 ): {
+"Obstacle": "Thorns",
+"Terrain": "Stone"
+},
+Vector3( 4, 0, 4 ): {
+"Obstacle": "Thorns",
+"Terrain": "Stone"
+},
+Vector3( 4, 0, 5 ): {
+"Obstacle": "Thorns",
+"Terrain": "Stone"
+},
+Vector3( 4, 0, 6 ): {
+"Obstacle": "Thorns",
+"Terrain": "Ice"
+},
+Vector3( 5, 0, 0 ): {
+"Terrain": "Ice"
+},
+Vector3( 5, 0, 1 ): {
+"Terrain": "Ice"
+},
+Vector3( 5, 0, 2 ): {
+"Terrain": "Ice"
+},
+Vector3( 5, 0, 3 ): {
+"Terrain": "Ice"
+},
+Vector3( 5, 0, 4 ): {
+"Terrain": "Ice"
+},
+Vector3( 5, 0, 5 ): {
+"Terrain": "Ice"
+},
+Vector3( 5, 0, 6 ): {
+"Terrain": "Ice"
+},
+Vector3( 6, 0, 0 ): {
+"Seeds": true,
+"Terrain": "Tree"
+},
+Vector3( 6, 0, 1 ): {
+"Terrain": "None"
+},
+Vector3( 6, 0, 2 ): {
+"Terrain": "Ice"
+},
+Vector3( 6, 0, 3 ): {
+"Terrain": "Ice"
+},
+Vector3( 6, 0, 4 ): {
+"Terrain": "Ice"
+},
+Vector3( 6, 0, 5 ): {
+"Terrain": "None"
+},
+Vector3( 6, 0, 6 ): {
+"Terrain": "Earth"
+}
+}
