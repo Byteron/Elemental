@@ -41,7 +41,7 @@ light_color = Color( 0.717647, 0.67451, 0.32549, 1 )
 shadow_enabled = true
 
 [node name="Elemental" parent="." instance=ExtResource( 3 )]
-state = "Neutral"
+state = "Earth"
 
 [node name="Map" parent="." instance=ExtResource( 2 )]
 

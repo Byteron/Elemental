@@ -1,0 +1,126 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://data/terrains/Storm.gd" type="Script" id=1]
+[ext_resource path="res://source/terrain/Terrain.tscn" type="PackedScene" id=2]
+[ext_resource path="res://graphics/materials/terrain/terrain_storm.tres" type="Material" id=3]
+[ext_resource path="res://graphics/models/raw import/Tile_Wind_1.obj" type="ArrayMesh" id=4]
+[ext_resource path="res://graphics/models/raw import/Wind_A.jpg" type="Texture" id=5]
+[ext_resource path="res://graphics/models/raw import/Wind_N.jpg" type="Texture" id=6]
+[ext_resource path="res://data/transitions/wind_from_earth.tres" type="Resource" id=7]
+
+[sub_resource type="Animation" id=1]
+resource_name = "idle"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("MeshInstance/Flash2:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MeshInstance/Flash3:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.7, 1.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("MeshInstance/Flash1:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5, 0.6, 0.7, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false, true, false ]
+}
+
+[sub_resource type="SpatialMaterial" id=2]
+emission_enabled = true
+emission = Color( 0.992157, 0.968627, 0.384314, 1 )
+emission_energy = 1.0
+emission_operator = 0
+emission_on_uv2 = false
+
+[sub_resource type="CubeMesh" id=3]
+size = Vector3( 0.1, 0.5, 0.1 )
+
+[sub_resource type="CubeMesh" id=4]
+size = Vector3( 0.1, 0.3, 0.1 )
+
+[sub_resource type="SpatialMaterial" id=5]
+albedo_color = Color( 0.513726, 0.513726, 0.513726, 1 )
+albedo_texture = ExtResource( 5 )
+normal_enabled = true
+normal_scale = 1.0
+normal_texture = ExtResource( 6 )
+
+[node name="Storm" instance=ExtResource( 2 )]
+script = ExtResource( 1 )
+height = 0.15
+speed = 1.0
+alias = "Storm"
+transitions = [ ExtResource( 7 ) ]
+
+[node name="AnimationPlayer" parent="." index="0"]
+anims/idle = SubResource( 1 )
+
+[node name="MeshInstance" parent="." index="2"]
+material_override = ExtResource( 3 )
+cast_shadow = 0
+mesh = ExtResource( 4 )
+
+[node name="Flash2" type="MeshInstance" parent="MeshInstance" index="0"]
+transform = Transform( 1, 0, 0, 0, 0.979184, 0.202975, 0, -0.202975, 0.979184, -0.37452, 2.41206, -0.159108 )
+visible = false
+material_override = SubResource( 2 )
+mesh = SubResource( 3 )
+material/0 = null
+
+[node name="Flash3" type="MeshInstance" parent="MeshInstance" index="1"]
+transform = Transform( -0.642917, -0.0734906, -0.762403, -0.332556, 0.923452, 0.191423, 0.689974, 0.37661, -0.618142, 0.465385, 2.48075, 0.333187 )
+visible = false
+material_override = SubResource( 2 )
+mesh = SubResource( 3 )
+material/0 = null
+
+[node name="Flash1" type="Spatial" parent="MeshInstance" index="2"]
+visible = false
+
+[node name="Flash1" type="MeshInstance" parent="MeshInstance/Flash1" index="0"]
+transform = Transform( 1, 0, 0, 0, 0.94965, -0.313313, 0, 0.313313, 0.94965, 0, 2.43821, 0.156043 )
+material_override = SubResource( 2 )
+mesh = SubResource( 3 )
+material/0 = null
+
+[node name="Flash4" type="MeshInstance" parent="MeshInstance/Flash1" index="1"]
+transform = Transform( 1, 0, 0, 0, 0.979184, 0.202975, 0, -0.202975, 0.979184, 0, 2.06719, -0.0589479 )
+material_override = SubResource( 2 )
+mesh = SubResource( 3 )
+material/0 = null
+
+[node name="Flash5" type="MeshInstance" parent="MeshInstance/Flash1" index="2"]
+transform = Transform( 1, 0, 0, 0, 0.445213, 0.895424, 0, -0.895424, 0.445213, 0, 2.28472, -0.0116995 )
+material_override = SubResource( 2 )
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="UpperCloud" type="MeshInstance" parent="." index="4"]
+transform = Transform( 0.372207, 0.00136682, -0.593302, 0, -0.547515, -0.00126134, -0.655315, 0.000947094, -0.411109, 0, 1.56067, 0 )
+material_override = SubResource( 5 )
+mesh = ExtResource( 4 )
+material/0 = null
