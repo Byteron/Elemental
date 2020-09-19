@@ -13,5 +13,6 @@ func _process(delta: float) -> void:
 
 
 func collect() -> void:
+	SFX.play_sfx(alias + "Orb")
 	emit_signal("collected")
 	queue_free()

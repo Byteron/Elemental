@@ -312,6 +312,7 @@ func _check_terrain_transitions(loc: Location) -> void:
 
 func _check_burning_seeds(loc: Location) -> void:
 	if ["Ice", "Fire"].has(elemental.state) and loc.seeds:
+		SFX.play_sfx("Burn")
 		remove_seeds(loc.cell)
 
 
@@ -326,6 +327,7 @@ func _check_planting_seeds(loc: Location) -> void:
 		seeds_planted += 1
 		print("Seeds - 1")
 		_replace_terrain(loc, "Tree")
+		SFX.play_sfx("Plant")
 
 
 func _on_terrain_hovered(cell: Vector3) -> void:

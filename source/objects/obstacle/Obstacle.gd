@@ -7,6 +7,7 @@ export var alias := ""
 
 
 func destroy() -> void:
+	SFX.play_sfx("Burn")
 	emit_signal("destroyed")
 	queue_free()
 
