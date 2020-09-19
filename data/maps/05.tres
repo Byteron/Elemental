@@ -33,7 +33,6 @@ Vector3( 1, 0, 0 ): {
 "Terrain": "None"
 },
 Vector3( 1, 0, 1 ): {
-"Orb": "Earth",
 "Terrain": "Earth"
 },
 Vector3( 1, 0, 2 ): {

@@ -172,6 +172,8 @@ config/icon="res://icon.png"
 
 Scene="*res://addons/scene_manager/source/Scene.tscn"
 Global="*res://source/global/Global.gd"
+Music="*res://source/global/Music.tscn"
+SFX="*res://source/global/SFX.tscn"
 
 [debug]
 

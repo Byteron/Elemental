@@ -14,7 +14,7 @@ func play_sfx(sfx_name: String) -> void:
 	if not sfx.has(sfx_name):
 		print("Could not find sfx: %s" % sfx_name)
 		return
-	
+
 	sfx[sfx_name].play()
 
 
@@ -22,7 +22,7 @@ func stop_sfx(sfx_name) -> void:
 	if not sfx.has(sfx_name):
 		print("Could not find sfx: %s" % sfx_name)
 		return
-	
+
 	sfx[sfx_name].stop()
 
 
