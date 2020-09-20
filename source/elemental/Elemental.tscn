@@ -1,12 +1,20 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://source/elemental/Elemental.gd" type="Script" id=1]
 [ext_resource path="res://graphics/particles/ice.tscn" type="PackedScene" id=2]
 [ext_resource path="res://graphics/particles/wind.tscn" type="PackedScene" id=3]
 [ext_resource path="res://graphics/particles/fire.tscn" type="PackedScene" id=4]
-[ext_resource path="res://graphics/materials/orbs/orb_earth.tres" type="Material" id=5]
-[ext_resource path="res://graphics/models/raw import/Orb_basemesh.obj" type="ArrayMesh" id=6]
+[ext_resource path="res://graphics/materials/elemental/elemental_water.tres" type="Material" id=5]
+[ext_resource path="res://graphics/materials/elemental/elemental_wind.tres" type="Material" id=6]
 [ext_resource path="res://graphics/particles/water.tscn" type="PackedScene" id=7]
+[ext_resource path="res://graphics/models/raw import/Elemental_earth.obj" type="ArrayMesh" id=8]
+[ext_resource path="res://graphics/materials/elemental/elemental_earth.tres" type="Material" id=9]
+[ext_resource path="res://graphics/materials/elemental/elemental_fire.tres" type="Material" id=10]
+[ext_resource path="res://graphics/materials/elemental/elemental_ice.tres" type="Material" id=11]
+[ext_resource path="res://graphics/models/raw import/Elemental_ice.obj" type="ArrayMesh" id=12]
+[ext_resource path="res://graphics/models/raw import/Elemental_fire.obj" type="ArrayMesh" id=13]
+[ext_resource path="res://graphics/models/raw import/Elemental_wind.obj" type="ArrayMesh" id=14]
+[ext_resource path="res://graphics/models/raw import/Elemental_water.obj" type="ArrayMesh" id=15]
 
 [sub_resource type="Animation" id=1]
 resource_name = "idle"
@@ -42,6 +50,16 @@ tracks/1/keys = {
 
 [node name="Elemental" type="Area"]
 script = ExtResource( 1 )
+fire_mesh = ExtResource( 13 )
+fire_mat = ExtResource( 10 )
+water_mesh = ExtResource( 15 )
+water_mat = ExtResource( 5 )
+ice_mesh = ExtResource( 12 )
+ice_mat = ExtResource( 11 )
+earth_mesh = ExtResource( 8 )
+earth_mat = ExtResource( 9 )
+wind_mesh = ExtResource( 14 )
+wind_mat = ExtResource( 6 )
 state = "Earth"
 
 [node name="Tween" type="Tween" parent="."]
@@ -51,9 +69,9 @@ autoplay = "idle"
 anims/idle = SubResource( 1 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
-material_override = ExtResource( 5 )
-mesh = ExtResource( 6 )
+transform = Transform( 0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 1, 0 )
+material_override = ExtResource( 6 )
+mesh = ExtResource( 14 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="."]

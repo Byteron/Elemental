@@ -5,6 +5,22 @@ const SeedsMesh := preload("res://source/objects/seeds/SeedsMesh.tscn")
 
 signal move_finished(last_cell, new_cell)
 
+export var fire_mesh : Mesh = null
+export var fire_mat : Material = null
+
+export var water_mesh : Mesh = null
+export var water_mat : Material = null
+
+export var ice_mesh : Mesh = null
+export var ice_mat : Material = null
+
+export var earth_mesh : Mesh = null
+export var earth_mat : Material = null
+
+export var wind_mesh : Mesh = null
+export var wind_mat : Material = null
+
+
 export var state := "Stone" setget _set_state
 export var seeds := 0 setget _set_seeds
 
@@ -23,11 +39,14 @@ onready var water_particles := $WaterParticles/Particles
 
 func _ready() -> void:
 	_set_state(state)
+	rotation_degrees.y = 135
 
 
 func move_to(position: Vector3) -> void:
 	if tween.is_active():
 		return
+
+	look_at(position, Vector3.UP)
 
 	tween.interpolate_property(self, "transform:origin", transform.origin, position, 0.28, Tween.TRANS_SINE, Tween.EASE_OUT)
 	tween.start()
@@ -78,10 +97,25 @@ func _set_state(value: String) -> void:
 	water_particles.emitting = false
 
 	match state:
-		"Fire": fire_particles.emitting = true
-		"Ice": ice_particles.emitting = true
-		"Wind": wind_particles.emitting = true
-		"Water": water_particles.emitting = true
+		"Fire":
+			fire_particles.emitting = true
+			mesh_instance.mesh = fire_mesh
+			mesh_instance.material_override = fire_mat
+		"Ice":
+			ice_particles.emitting = true
+			mesh_instance.mesh = ice_mesh
+			mesh_instance.material_override = ice_mat
+		"Wind":
+			wind_particles.emitting = true
+			mesh_instance.mesh = wind_mesh
+			mesh_instance.material_override = wind_mat
+		"Water":
+			water_particles.emitting = true
+			mesh_instance.mesh = water_mesh
+			mesh_instance.material_override = water_mat
+		"Earth":
+			mesh_instance.mesh = earth_mesh
+			mesh_instance.material_override = earth_mat
 
 
 func _on_Tween_tween_all_completed() -> void:

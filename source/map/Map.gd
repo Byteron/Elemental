@@ -286,7 +286,6 @@ func _check_collecting_orb(loc: Location) -> void:
 			elemental.seeds = 0
 
 		elemental.state = loc.orb.alias
-		elemental.mesh_instance.material_override = loc.orb.mesh_instance.material_override
 		loc.orb.collect()
 
 
