@@ -36,6 +36,7 @@ onready var wind_particles := $WindParticles/Particles
 onready var ice_particles := $IceParticles/Particles
 onready var fire_particles := $FireParticles/Particles
 onready var water_particles := $WaterParticles/Particles
+onready var smoke_particles := $SmokeParicles/Particles
 
 
 func _ready() -> void:
@@ -107,10 +108,12 @@ func _set_state(value: String) -> void:
 	ice_particles.emitting = false
 	fire_particles.emitting = false
 	water_particles.emitting = false
+	smoke_particles.emitting = false
 
 	match state:
 		"Fire":
 			fire_particles.emitting = true
+			smoke_particles.emitting = true
 			mesh_instance.mesh = fire_mesh
 			mesh_instance.material_override = fire_mat
 		"Ice":
