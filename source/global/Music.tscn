@@ -39,6 +39,8 @@ bus = "Music"
 
 [node name="Water" type="AudioStreamPlayer" parent="Song/TrackContainer"]
 stream = ExtResource( 7 )
+bus = "Music"
 
 [node name="Wind" type="AudioStreamPlayer" parent="Song/TrackContainer"]
 stream = ExtResource( 8 )
+bus = "Music"
