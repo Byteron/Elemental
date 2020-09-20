@@ -64,6 +64,13 @@ func can_move() -> bool:
 	return not tween.is_active()
 
 
+func shake() -> void:
+	tween.interpolate_property(self, "rotation_degrees:y", rotation_degrees.y, rotation_degrees.y - 20, 0.1, Tween.TRANS_SINE, Tween.EASE_IN)
+	tween.interpolate_property(self, "rotation_degrees:y", rotation_degrees.y - 20, rotation_degrees.y + 20, 0.1, Tween.TRANS_SINE, Tween.EASE_IN, 0.1)
+	tween.interpolate_property(self, "rotation_degrees:y", rotation_degrees.y + 20, rotation_degrees.y, 0.1, Tween.TRANS_SINE, Tween.EASE_IN, 0.2)
+	tween.start()
+
+
 func finished() -> void:
 	mesh_instance.rotation_degrees.y = 135
 	anim.play("finished")

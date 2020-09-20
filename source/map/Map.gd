@@ -106,12 +106,17 @@ func place_elemental(elemental: Elemental, cell: Vector3) -> void:
 func move_elemental(direction: Vector3) -> void:
 	var next_cell = elemental.cell + direction
 
-	if not locations.has(next_cell) or not elemental.can_move():
+	if not elemental.can_move():
+		return
+
+	if not locations.has(next_cell):
+		elemental.shake()
 		return
 
 	var next_loc = locations[next_cell]
 
 	if next_loc.is_blocked(elemental.state):
+		elemental.shake()
 		return
 
 	var loc = locations[elemental.cell]
