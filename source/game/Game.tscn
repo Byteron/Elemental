@@ -9,12 +9,10 @@
 [sub_resource type="Environment" id=1]
 background_mode = 4
 background_color = Color( 0.0705882, 0.0705882, 0.0705882, 1 )
-background_energy = 0.0
 background_canvas_max_layer = 2
 ambient_light_color = Color( 0.478431, 0.639216, 0.717647, 1 )
 ambient_light_energy = 0.1
 ambient_light_sky_contribution = 0.0
-tonemap_mode = 2
 ssao_enabled = true
 glow_levels/1 = true
 glow_levels/3 = false
@@ -23,8 +21,6 @@ glow_intensity = 1.4
 glow_strength = 1.1
 glow_bicubic_upscale = true
 adjustment_enabled = true
-adjustment_contrast = 1.1
-adjustment_saturation = 1.1
 
 [node name="Game" type="Spatial"]
 script = ExtResource( 1 )
