@@ -5,10 +5,14 @@ signal destroyed()
 
 export var alias := ""
 
+onready var anim := $AnimationPlayer as AnimationPlayer
+
 
 func destroy() -> void:
 	SFX.play_sfx("Burn")
 	emit_signal("destroyed")
+	anim.play("shrink")
+	yield(anim, "animation_finished")
 	queue_free()
 
 

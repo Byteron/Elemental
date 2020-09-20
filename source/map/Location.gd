@@ -42,7 +42,7 @@ func _set_orb(value: Orb) -> void:
 
 func _set_seeds(value: Seeds) -> void:
 	if seeds:
-		seeds.queue_free()
+		seeds.destroy()
 
 	seeds = value
 
