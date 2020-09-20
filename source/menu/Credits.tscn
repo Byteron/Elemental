@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
+[ext_resource path="res://graphics/images/credits.png" type="Texture" id=1]
 [ext_resource path="res://source/menu/Credits.gd" type="Script" id=2]
 [ext_resource path="res://source/menu/MenuButton.tscn" type="PackedScene" id=3]
 [ext_resource path="res://source/menu/CreditsLabel.tscn" type="PackedScene" id=4]
@@ -17,14 +18,17 @@ __meta__ = {
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0.101961, 0.101961, 0.101961, 1 )
+color = Color( 0.0901961, 0.121569, 0.0901961, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="TextureRect" type="TextureRect" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -700.0
+texture = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -54,12 +58,14 @@ margin_right = 390.0
 margin_bottom = 60.0
 text = "Aaron Winter"
 
-[node name="MenuButton" parent="." instance=ExtResource( 3 )]
+[node name="Back" parent="." instance=ExtResource( 3 )]
+anchor_top = 1.0
+anchor_bottom = 1.0
 margin_left = 100.0
-margin_top = 600.0
+margin_top = -120.0
 margin_right = 374.0
-margin_bottom = 660.0
+margin_bottom = -60.0
 custom_colors/font_color = Color( 0.854902, 0.854902, 0.854902, 1 )
 text = "Back"
 [connection signal="tween_all_completed" from="Tween" to="." method="_on_Tween_tween_all_completed"]
-[connection signal="pressed" from="MenuButton" to="." method="_on_MenuButton_pressed"]
+[connection signal="pressed" from="Back" to="." method="_on_Back_pressed"]

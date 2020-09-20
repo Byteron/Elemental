@@ -120,5 +120,5 @@ func _on_Tween_tween_all_completed() -> void:
 	animate()
 
 
-func _on_MenuButton_pressed() -> void:
+func _on_Back_pressed() -> void:
 	Scene.change("TitleScreen", true)
