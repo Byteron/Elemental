@@ -29,11 +29,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://source/game/Game.gd"
 }, {
-"base": "Control",
-"class": "GameOver",
-"language": "GDScript",
-"path": "res://source/menu/GameOver.gd"
-}, {
 "base": "HBoxContainer",
 "class": "LabelEdit",
 "language": "GDScript",
@@ -138,18 +133,12 @@ _global_script_classes=[ {
 "class": "TransitionData",
 "language": "GDScript",
 "path": "res://source/terrain/TransitionData.gd"
-}, {
-"base": "Control",
-"class": "Victory",
-"language": "GDScript",
-"path": "res://source/menu/Victory.gd"
 } ]
 _global_script_class_icons={
 "Editor": "",
 "EditorHUD": "",
 "Elemental": "",
 "Game": "",
-"GameOver": "",
 "LabelEdit": "",
 "Loader": "",
 "Location": "",
@@ -170,8 +159,7 @@ _global_script_class_icons={
 "TerrainData": "",
 "TitleScreen": "",
 "TrackContainer": "",
-"TransitionData": "",
-"Victory": ""
+"TransitionData": ""
 }
 
 [application]

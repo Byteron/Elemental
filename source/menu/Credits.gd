@@ -51,7 +51,7 @@ onready var entries := [
 		]
 	},
 	{
-		"Title": "Sound and Music",
+		"Title": "Sound & Music",
 		"Names":
 		[
 			"TheMooseman",
