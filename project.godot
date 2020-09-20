@@ -175,10 +175,6 @@ Global="*res://source/global/Global.gd"
 Music="*res://source/global/Music.tscn"
 SFX="*res://source/global/SFX.tscn"
 
-[debug]
-
-settings/stdout/print_fps=true
-
 [display]
 
 window/size/width=1280

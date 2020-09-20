@@ -36,7 +36,7 @@ onready var entries := [
 		]
 	},
 	{
-		"Title": "Artworks",
+		"Title": "Artwork",
 		"Names":
 		[
 			"Geoffrey Muller (ambivorous)"
