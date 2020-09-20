@@ -1,0 +1,57 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://source/menu/Credits.gd" type="Script" id=2]
+[ext_resource path="res://source/menu/MenuButton.tscn" type="PackedScene" id=3]
+[ext_resource path="res://source/menu/CreditsLabel.tscn" type="PackedScene" id=4]
+
+[node name="Credits" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 80.0
+margin_top = 120.0
+margin_right = 470.0
+margin_bottom = 372.0
+custom_constants/separation = 40
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" parent="VBoxContainer" instance=ExtResource( 4 )]
+margin_right = 390.0
+margin_bottom = 60.0
+text = "PROGRAMMER"
+
+[node name="Names" type="VBoxContainer" parent="VBoxContainer"]
+margin_top = 100.0
+margin_right = 390.0
+margin_bottom = 160.0
+
+[node name="CreditsLabel" parent="VBoxContainer/Names" instance=ExtResource( 4 )]
+margin_right = 390.0
+margin_bottom = 60.0
+text = "Aaron Winter"
+
+[node name="MenuButton" parent="." instance=ExtResource( 3 )]
+margin_left = 100.0
+margin_top = 600.0
+margin_right = 374.0
+margin_bottom = 660.0
+custom_colors/font_color = Color( 0.854902, 0.854902, 0.854902, 1 )
+text = "Back"
+[connection signal="tween_all_completed" from="Tween" to="." method="_on_Tween_tween_all_completed"]
+[connection signal="pressed" from="MenuButton" to="." method="_on_MenuButton_pressed"]

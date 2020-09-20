@@ -27,6 +27,7 @@ export var seeds := 0 setget _set_seeds
 var last_cell := Vector3()
 var cell := Vector3() setget _set_cell
 
+onready var anim := $AnimationPlayer as AnimationPlayer
 onready var tween := $Tween as Tween
 onready var mesh_instance := $MeshInstance as MeshInstance
 onready var seeds_container := $Seeds as Spatial
@@ -54,6 +55,11 @@ func move_to(position: Vector3) -> void:
 
 func can_move() -> bool:
 	return not tween.is_active()
+
+
+func finished() -> void:
+	mesh_instance.rotation_degrees.y = 135
+	anim.play("finished")
 
 
 func _clear_seeds() -> void:

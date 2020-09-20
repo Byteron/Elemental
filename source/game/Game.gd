@@ -13,15 +13,19 @@ onready var level_label := $CanvasLayer/LevelLabel
 func _ready() -> void:
 	level_label.text = "Level: " + str(Global.current_level + 1)
 
+	Music.play_track(1, 1.0)
+	Music.stop_track(2, 1.0)
+	Music.stop_track(3, 1.0)
+
 	if random:
 		map.initialize(size.x, size.y)
 		map.randomize_terrain()
 		map.place_elemental(elemental, Vector3(size.x / 2, 0, size.y / 2))
 	else:
 		map.initialize_from_map_data(elemental, Global.get_map_data())
+
 	map.connect("finished", self, "_on_map_finished")
 	camera.initialize(map.size)
-	Music.play_track(1, 1.0)
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -45,4 +49,8 @@ func _process(delta: float) -> void:
 
 
 func _on_map_finished() -> void:
+	set_process(false)
+	set_process_unhandled_input(false)
+	elemental.finished()
+	yield(get_tree().create_timer(1.5), "timeout")
 	Global.next_level()
