@@ -1,7 +1,7 @@
 extends Control
 class_name TitleScreen
 
-onready var level := $CenterContainer/VBoxContainer/Level
+onready var level := $VBoxContainer/Level
 
 
 func _ready() -> void:
