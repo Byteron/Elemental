@@ -1,14 +1,16 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://source/game/Game.gd" type="Script" id=1]
 [ext_resource path="res://source/map/Map.tscn" type="PackedScene" id=2]
 [ext_resource path="res://source/elemental/Elemental.tscn" type="PackedScene" id=3]
 [ext_resource path="res://source/camera/OrthoCamera.tscn" type="PackedScene" id=4]
+[ext_resource path="res://graphics/images/background.png" type="Texture" id=5]
 
 [sub_resource type="Environment" id=1]
-background_mode = 1
+background_mode = 4
 background_color = Color( 0.0705882, 0.0705882, 0.0705882, 1 )
 background_energy = 0.0
+background_canvas_max_layer = 2
 ambient_light_color = Color( 0.478431, 0.639216, 0.717647, 1 )
 ambient_light_energy = 0.1
 ambient_light_sky_contribution = 0.0
@@ -52,8 +54,10 @@ light_color = Color( 1, 0.945098, 0.729412, 1 )
 light_energy = 0.3
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 3
 
 [node name="LevelLabel" type="Label" parent="CanvasLayer"]
+visible = false
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -90.0
@@ -62,6 +66,19 @@ margin_bottom = 43.0
 text = "Level 1"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="TextureRect" type="TextureRect" parent="Background"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }

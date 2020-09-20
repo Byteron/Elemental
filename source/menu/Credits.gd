@@ -16,38 +16,38 @@ onready var entries := [
 		"Title": "Game Design",
 		"Names":
 		[
-			"Aaron Winter",
-			"Geoffrey Muller",
-			"Karlo Koščal"
+			"Aaron Winter (Bitron)",
+			"Geoffrey Muller (ambivorous)",
+			"Karlo Koščal (WingedAdventurer)"
 		]
 	},
 	{
 		"Title": "Programming",
 		"Names":
 		[
-			"Aaron Winter",
+			"Aaron Winter (Bitron)",
 		]
 	},
 	{
 		"Title": "3D Modelling & Texturing",
 		"Names":
 		[
-			"LordBob"
+			"Emilien Rotival (LordBob)"
 		]
 	},
 	{
 		"Title": "Artworks",
 		"Names":
 		[
-			"Geoffrey Muller"
+			"Geoffrey Muller (ambivorous)"
 		]
 	},
 	{
 		"Title": "Level Design",
 		"Names":
 		[
-			"Geoffrey Muller",
-			"Aaron Winter"
+			"Geoffrey Muller (ambivorous)",
+			"Aaron Winter (Bitron)"
 		]
 	},
 	{
@@ -61,17 +61,17 @@ onready var entries := [
 		"Title": "Testers",
 		"Names":
 		[
-			"justadude1",
-			"ColdCalzone",
-			"Mat"
+			"Joren Vermijs",
+			"Daniel Browne",
 		]
 	},
 	{
 		"Title": "More Testers",
 		"Names":
 		[
-			"Joren Vermijs",
-			"Daniel Browne",
+			"justadude1",
+			"ColdCalzone",
+			"Mat"
 		]
 	},
 	{
