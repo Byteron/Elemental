@@ -63,6 +63,8 @@ onready var entries := [
 		[
 			"Joren Vermijs",
 			"Daniel Browne",
+			"Shannon Browne",
+			"Alexander Zurek (Alresu)"
 		]
 	},
 	{
