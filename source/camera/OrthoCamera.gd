@@ -25,8 +25,8 @@ func initialize(size: Vector2) -> void:
 	transform.origin = Vector3.ZERO
 	camera.transform.origin = Vector3.ZERO
 
-	camera.size = max(size.x, size.y) * 1.7 + 1
-	camera.transform.origin.y = size.length() / 1.5 - 0.5
+	camera.size = max(size.x, size.y) * 1.7 + 2
+	camera.transform.origin.y = size.length() / 1.5 + 0.5
 	camera.transform.origin.x = -1
 	camera.transform.origin.z = (size.y - 1) * 2 + 1
 
