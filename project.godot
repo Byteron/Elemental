@@ -164,7 +164,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Elemental"
+config/name="Elementary"
 run/main_scene="res://source/menu/TitleScreen.tscn"
 config/icon="res://icon.png"
 
