@@ -16,9 +16,9 @@ onready var entries := [
 		"Title": "Game Design",
 		"Names":
 		[
-			"WingedAdventurer",
-			"Geoffrey Muller",
 			"Aaron Winter",
+			"Geoffrey Muller",
+			"Karlo Koščal"
 		]
 	},
 	{
@@ -29,11 +29,17 @@ onready var entries := [
 		]
 	},
 	{
-		"Title": "Art",
+		"Title": "3D Modelling & Texturing",
 		"Names":
 		[
-			"Geoffrey Muller",
 			"LordBob"
+		]
+	},
+	{
+		"Title": "Artworks",
+		"Names":
+		[
+			"Geoffrey Muller"
 		]
 	},
 	{
@@ -61,6 +67,15 @@ onready var entries := [
 		]
 	},
 	{
+		"Title": "More Testers",
+		"Names":
+		[
+			"Joren Vermijs",
+			"Daniel Browne",
+		]
+	},
+	{
+
 		"Title": "Special Thanks",
 		"Names":
 		[
