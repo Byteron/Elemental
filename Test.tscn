@@ -1,0 +1,481 @@
+[gd_scene load_steps=27 format=2]
+
+[ext_resource path="res://data/terrains/Lava.tscn" type="PackedScene" id=1]
+[ext_resource path="res://data/terrains/Water.tscn" type="PackedScene" id=2]
+[ext_resource path="res://data/terrains/Wind.tscn" type="PackedScene" id=3]
+[ext_resource path="res://data/terrains/Ice.tscn" type="PackedScene" id=4]
+[ext_resource path="res://data/terrains/Tree.tscn" type="PackedScene" id=5]
+[ext_resource path="res://data/terrains/Stone.tscn" type="PackedScene" id=6]
+[ext_resource path="res://data/terrains/BrittleStone.tscn" type="PackedScene" id=7]
+[ext_resource path="res://data/terrains/Earth.tscn" type="PackedScene" id=8]
+[ext_resource path="res://graphics/materials/elemental/elemental_ice.tres" type="Material" id=9]
+[ext_resource path="res://graphics/models/raw import/Elemental_water.obj" type="ArrayMesh" id=10]
+[ext_resource path="res://graphics/models/raw import/Elemental_fire.obj" type="ArrayMesh" id=11]
+[ext_resource path="res://source/elemental/Elemental.tscn" type="PackedScene" id=12]
+[ext_resource path="res://graphics/materials/elemental/elemental_earth.tres" type="Material" id=13]
+[ext_resource path="res://graphics/materials/elemental/elemental_fire.tres" type="Material" id=14]
+[ext_resource path="res://graphics/materials/elemental/elemental_water.tres" type="Material" id=15]
+[ext_resource path="res://graphics/models/raw import/Elemental_ice.obj" type="ArrayMesh" id=16]
+[ext_resource path="res://graphics/models/raw import/Elemental_earth.obj" type="ArrayMesh" id=17]
+
+[sub_resource type="Environment" id=1]
+background_mode = 2
+background_energy = 0.85
+ambient_light_color = Color( 0.380392, 0.27451, 0.454902, 1 )
+ambient_light_energy = 1.17
+ambient_light_sky_contribution = 0.56
+tonemap_mode = 2
+tonemap_exposure = 0.75
+tonemap_white = 14.19
+
+[sub_resource type="Animation" id=2]
+resource_name = "finished"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("MeshInstance:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3, 0.45, 0.7 ),
+"transitions": PoolRealArray( 1.8025, 0.5, 1.8025, 0.5, 1 ),
+"update": 0,
+"values": [ Vector3( 0.7, 0.7, 0.7 ), Vector3( 0.5, 1, 0.5 ), Vector3( 0.7, 0.7, 0.7 ), Vector3( 0.5, 1, 0.5 ), Vector3( 0.7, 0.7, 0.7 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MeshInstance:translation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3, 0.45, 0.7 ),
+"transitions": PoolRealArray( 2, 1, 2, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0.5, 0 ), Vector3( 0, 1, 0 ), Vector3( 0, 0.5, 0 ), Vector3( 0, 1, 0 ), Vector3( 0, 0.5, 0 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 2.0
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("MeshInstance:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 0.5, 0.5, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0.5, 0 ), Vector3( 0, 0.3, 0 ), Vector3( 0, 0.5, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Seeds:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 360, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("MeshInstance:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.8, 2 ),
+"transitions": PoolRealArray( 1.8025, 1.51572, 1 ),
+"update": 0,
+"values": [ Vector3( 0.7, 0.7, 0.7 ), Vector3( 0.74, 0.68, 0.74 ), Vector3( 0.7, 0.7, 0.7 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "finished"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("MeshInstance:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3, 0.45, 0.7 ),
+"transitions": PoolRealArray( 1.8025, 0.5, 1.8025, 0.5, 1 ),
+"update": 0,
+"values": [ Vector3( 0.7, 0.7, 0.7 ), Vector3( 0.5, 1, 0.5 ), Vector3( 0.7, 0.7, 0.7 ), Vector3( 0.5, 1, 0.5 ), Vector3( 0.7, 0.7, 0.7 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MeshInstance:translation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3, 0.45, 0.7 ),
+"transitions": PoolRealArray( 2, 1, 2, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0.5, 0 ), Vector3( 0, 1, 0 ), Vector3( 0, 0.5, 0 ), Vector3( 0, 1, 0 ), Vector3( 0, 0.5, 0 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 2.0
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("MeshInstance:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 0.5, 0.5, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0.5, 0 ), Vector3( 0, 0.3, 0 ), Vector3( 0, 0.5, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Seeds:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 360, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("MeshInstance:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.8, 2 ),
+"transitions": PoolRealArray( 1.8025, 1.51572, 1 ),
+"update": 0,
+"values": [ Vector3( 0.7, 0.7, 0.7 ), Vector3( 0.74, 0.68, 0.74 ), Vector3( 0.7, 0.7, 0.7 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "finished"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("MeshInstance:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3, 0.45, 0.7 ),
+"transitions": PoolRealArray( 1.8025, 0.5, 1.8025, 0.5, 1 ),
+"update": 0,
+"values": [ Vector3( 0.7, 0.7, 0.7 ), Vector3( 0.5, 1, 0.5 ), Vector3( 0.7, 0.7, 0.7 ), Vector3( 0.5, 1, 0.5 ), Vector3( 0.7, 0.7, 0.7 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MeshInstance:translation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3, 0.45, 0.7 ),
+"transitions": PoolRealArray( 2, 1, 2, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0.5, 0 ), Vector3( 0, 1, 0 ), Vector3( 0, 0.5, 0 ), Vector3( 0, 1, 0 ), Vector3( 0, 0.5, 0 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+length = 2.0
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("MeshInstance:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 0.5, 0.5, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0.5, 0 ), Vector3( 0, 0.3, 0 ), Vector3( 0, 0.5, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Seeds:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 360, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("MeshInstance:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.8, 2 ),
+"transitions": PoolRealArray( 1.8025, 1.51572, 1 ),
+"update": 0,
+"values": [ Vector3( 0.7, 0.7, 0.7 ), Vector3( 0.74, 0.68, 0.74 ), Vector3( 0.7, 0.7, 0.7 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "finished"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("MeshInstance:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3, 0.45, 0.7 ),
+"transitions": PoolRealArray( 1.8025, 0.5, 1.8025, 0.5, 1 ),
+"update": 0,
+"values": [ Vector3( 0.7, 0.7, 0.7 ), Vector3( 0.5, 1, 0.5 ), Vector3( 0.7, 0.7, 0.7 ), Vector3( 0.5, 1, 0.5 ), Vector3( 0.7, 0.7, 0.7 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MeshInstance:translation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3, 0.45, 0.7 ),
+"transitions": PoolRealArray( 2, 1, 2, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0.5, 0 ), Vector3( 0, 1, 0 ), Vector3( 0, 0.5, 0 ), Vector3( 0, 1, 0 ), Vector3( 0, 0.5, 0 ) ]
+}
+
+[sub_resource type="Animation" id=9]
+length = 2.0
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("MeshInstance:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 0.5, 0.5, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0.5, 0 ), Vector3( 0, 0.3, 0 ), Vector3( 0, 0.5, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Seeds:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 360, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("MeshInstance:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.8, 2 ),
+"transitions": PoolRealArray( 1.8025, 1.51572, 1 ),
+"update": 0,
+"values": [ Vector3( 0.7, 0.7, 0.7 ), Vector3( 0.74, 0.68, 0.74 ), Vector3( 0.7, 0.7, 0.7 ) ]
+}
+
+[node name="Lighting tests scene" type="Spatial"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 1 )
+
+[node name="Warm fill" type="DirectionalLight" parent="WorldEnvironment"]
+transform = Transform( 0.469799, 0.187915, -0.862541, -0.154034, 0.979541, 0.129507, 0.869231, 0.0720186, 0.489132, 0, 0, 0 )
+light_color = Color( 0.992157, 0.768627, 0.364706, 1 )
+light_energy = 0.91
+light_specular = 0.49
+
+[node name="Blue Rim" type="DirectionalLight" parent="WorldEnvironment"]
+transform = Transform( -0.867356, 0.353243, 0.350589, -0.168389, 0.454599, -0.874634, -0.468336, -0.817654, -0.334817, 0, 0, 0 )
+light_color = Color( 0.196078, 0.380392, 0.776471, 1 )
+light_energy = 4.06
+
+[node name="Top Key" type="DirectionalLight" parent="WorldEnvironment"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0 )
+light_energy = 1.81
+
+[node name="Stone" parent="." instance=ExtResource( 6 )]
+transform = Transform( -0.609896, 0, -0.792481, -0.032398, 0.999164, 0.0249336, 0.791819, 0.0408817, -0.609386, 0.0946779, -5.88968, -2.29247 )
+
+[node name="BrittleStone" parent="." instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.11821, -1.2532, -4.30209 )
+
+[node name="Earth" parent="." instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5444, 0.418258, -6.17137 )
+
+[node name="Ice" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.35572, -3.85139, -3.32148 )
+
+[node name="Lava" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.86774, -5.29122, -1.05285 )
+
+[node name="Tree" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.53864, 1.34822, -6.40215 )
+
+[node name="Water" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.35021, -2.30736, -2.10045 )
+
+[node name="Wind" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2037, -3.26409, -5.6316 )
+
+[node name="Elemental" parent="." instance=ExtResource( 12 )]
+transform = Transform( -0.921863, 0, 0.387515, 0, 1, 0, -0.387515, 0, -0.921863, -5.5977, 0, 0 )
+
+[node name="FireParticles" parent="Elemental" index="5"]
+visible = false
+
+[node name="SmokeParicles" parent="Elemental" index="6"]
+visible = false
+
+[node name="IceParticles" parent="Elemental" index="7"]
+visible = false
+
+[node name="WaterParticles" parent="Elemental" index="8"]
+visible = false
+
+[node name="WindParticles" parent="Elemental" index="9"]
+visible = false
+
+[node name="Elemental2" parent="." instance=ExtResource( 12 )]
+transform = Transform( -0.921863, 0, 0.387515, 0, 1, 0, -0.387515, 0, -0.921863, -3.17037, 0, 0 )
+
+[node name="AnimationPlayer" parent="Elemental2" index="1"]
+anims/finished = SubResource( 2 )
+anims/idle = SubResource( 3 )
+
+[node name="MeshInstance" parent="Elemental2" index="2"]
+material_override = ExtResource( 13 )
+mesh = ExtResource( 17 )
+
+[node name="FireParticles" parent="Elemental2" index="5"]
+visible = false
+
+[node name="SmokeParicles" parent="Elemental2" index="6"]
+visible = false
+
+[node name="IceParticles" parent="Elemental2" index="7"]
+visible = false
+
+[node name="WaterParticles" parent="Elemental2" index="8"]
+visible = false
+
+[node name="WindParticles" parent="Elemental2" index="9"]
+visible = false
+
+[node name="Elemental3" parent="." instance=ExtResource( 12 )]
+transform = Transform( -0.921863, 0, 0.387515, 0, 1, 0, -0.387515, 0, -0.921863, -0.0304546, 0, 0 )
+
+[node name="AnimationPlayer" parent="Elemental3" index="1"]
+anims/finished = SubResource( 4 )
+anims/idle = SubResource( 5 )
+
+[node name="MeshInstance" parent="Elemental3" index="2"]
+material_override = ExtResource( 14 )
+mesh = ExtResource( 11 )
+
+[node name="FireParticles" parent="Elemental3" index="5"]
+visible = false
+
+[node name="SmokeParicles" parent="Elemental3" index="6"]
+visible = false
+
+[node name="IceParticles" parent="Elemental3" index="7"]
+visible = false
+
+[node name="WaterParticles" parent="Elemental3" index="8"]
+visible = false
+
+[node name="WindParticles" parent="Elemental3" index="9"]
+visible = false
+
+[node name="Elemental4" parent="." instance=ExtResource( 12 )]
+transform = Transform( -0.921863, 0, 0.387515, 0, 1, 0, -0.387515, 0, -0.921863, 2.81707, 0, 0 )
+
+[node name="AnimationPlayer" parent="Elemental4" index="1"]
+anims/finished = SubResource( 6 )
+anims/idle = SubResource( 7 )
+
+[node name="MeshInstance" parent="Elemental4" index="2"]
+material_override = ExtResource( 9 )
+mesh = ExtResource( 16 )
+
+[node name="FireParticles" parent="Elemental4" index="5"]
+visible = false
+
+[node name="SmokeParicles" parent="Elemental4" index="6"]
+visible = false
+
+[node name="IceParticles" parent="Elemental4" index="7"]
+visible = false
+
+[node name="WaterParticles" parent="Elemental4" index="8"]
+visible = false
+
+[node name="WindParticles" parent="Elemental4" index="9"]
+visible = false
+
+[node name="Elemental5" parent="." instance=ExtResource( 12 )]
+transform = Transform( -0.921863, 0, 0.387515, 0, 1, 0, -0.387515, 0, -0.921863, 5.94873, 0, 0 )
+
+[node name="AnimationPlayer" parent="Elemental5" index="1"]
+anims/finished = SubResource( 8 )
+anims/idle = SubResource( 9 )
+
+[node name="MeshInstance" parent="Elemental5" index="2"]
+material_override = ExtResource( 15 )
+mesh = ExtResource( 10 )
+
+[node name="FireParticles" parent="Elemental5" index="5"]
+visible = false
+
+[node name="SmokeParicles" parent="Elemental5" index="6"]
+visible = false
+
+[node name="IceParticles" parent="Elemental5" index="7"]
+visible = false
+
+[node name="WaterParticles" parent="Elemental5" index="8"]
+visible = false
+
+[node name="WindParticles" parent="Elemental5" index="9"]
+visible = false
+
+[editable path="Elemental"]
+
+[editable path="Elemental2"]
+
+[editable path="Elemental3"]
+
+[editable path="Elemental4"]
+
+[editable path="Elemental5"]
