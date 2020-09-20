@@ -8,7 +8,7 @@ width = 9
 height = 9
 locations = {
 Vector3( 0, 0, 0 ): {
-"Orb": "Ice",
+"Seeds": true,
 "Terrain": "Stone"
 },
 Vector3( 0, 0, 1 ): {
@@ -65,7 +65,7 @@ Vector3( 1, 0, 8 ): {
 "Terrain": "Stone"
 },
 Vector3( 2, 0, 0 ): {
-"Terrain": "Water"
+"Terrain": "BrittleStone"
 },
 Vector3( 2, 0, 1 ): {
 "Terrain": "None"
@@ -93,7 +93,7 @@ Vector3( 2, 0, 8 ): {
 "Terrain": "Stone"
 },
 Vector3( 3, 0, 0 ): {
-"Terrain": "Water"
+"Terrain": "Lava"
 },
 Vector3( 3, 0, 1 ): {
 "Terrain": "None"
@@ -102,7 +102,6 @@ Vector3( 3, 0, 2 ): {
 "Terrain": "None"
 },
 Vector3( 3, 0, 3 ): {
-"Seeds": true,
 "Terrain": "Stone"
 },
 Vector3( 3, 0, 4 ): {
@@ -235,10 +234,10 @@ Vector3( 8, 0, 0 ): {
 "Terrain": "Stone"
 },
 Vector3( 8, 0, 1 ): {
-"Terrain": "None"
+"Terrain": "Wind"
 },
 Vector3( 8, 0, 2 ): {
-"Terrain": "None"
+"Terrain": "Wind"
 },
 Vector3( 8, 0, 3 ): {
 "Terrain": "Earth"
