@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://addons/audio_booth/source/music/MusicBooth.gd" type="Script" id=1]
 [ext_resource path="res://addons/audio_booth/source/music/Song.gd" type="Script" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://audio/music/Grass_-_stem.wav" type="AudioStream" id=4]
 [ext_resource path="res://audio/music/Ice_-_stem.wav" type="AudioStream" id=5]
 [ext_resource path="res://audio/music/Fire_-_stem.wav" type="AudioStream" id=6]
+[ext_resource path="res://audio/music/Water_-_stem.wav" type="AudioStream" id=7]
+[ext_resource path="res://audio/music/Wind_-_stem.wav" type="AudioStream" id=8]
 
 [node name="Music" type="Node"]
 script = ExtResource( 1 )
@@ -34,3 +36,9 @@ bus = "Music"
 [node name="Fire" type="AudioStreamPlayer" parent="Song/TrackContainer"]
 stream = ExtResource( 6 )
 bus = "Music"
+
+[node name="Water" type="AudioStreamPlayer" parent="Song/TrackContainer"]
+stream = ExtResource( 7 )
+
+[node name="Wind" type="AudioStreamPlayer" parent="Song/TrackContainer"]
+stream = ExtResource( 8 )

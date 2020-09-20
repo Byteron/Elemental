@@ -16,6 +16,8 @@ func _ready() -> void:
 	Music.play_track(1, 1.0)
 	Music.stop_track(2, 1.0)
 	Music.stop_track(3, 1.0)
+	Music.stop_track(4, 1.0)
+	Music.stop_track(5, 1.0)
 
 	if random:
 		map.initialize(size.x, size.y)
