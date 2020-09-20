@@ -45,4 +45,8 @@ func _process(delta: float) -> void:
 
 
 func _on_map_finished() -> void:
+	set_process(false)
+	set_process_unhandled_input(false)
+	elemental.finished()
+	yield(get_tree().create_timer(1.5), "timeout")
 	Global.next_level()

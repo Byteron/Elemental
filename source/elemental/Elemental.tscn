@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://source/elemental/Elemental.gd" type="Script" id=1]
 [ext_resource path="res://graphics/particles/ice.tscn" type="PackedScene" id=2]
@@ -15,6 +15,22 @@
 [ext_resource path="res://graphics/models/raw import/Elemental_fire.obj" type="ArrayMesh" id=13]
 [ext_resource path="res://graphics/models/raw import/Elemental_wind.obj" type="ArrayMesh" id=14]
 [ext_resource path="res://graphics/models/raw import/Elemental_water.obj" type="ArrayMesh" id=15]
+
+[sub_resource type="Animation" id=3]
+resource_name = "finished"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("MeshInstance:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3, 0.45, 0.7 ),
+"transitions": PoolRealArray( 1.8025, 0.5, 1.8025, 0.5, 1 ),
+"update": 0,
+"values": [ Vector3( 0.7, 0.7, 0.7 ), Vector3( 0.5, 1, 0.5 ), Vector3( 0.7, 0.7, 0.7 ), Vector3( 0.5, 1, 0.5 ), Vector3( 0.7, 0.7, 0.7 ) ]
+}
 
 [sub_resource type="Animation" id=1]
 resource_name = "idle"
@@ -78,6 +94,7 @@ state = "Earth"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "idle"
+anims/finished = SubResource( 3 )
 anims/idle = SubResource( 1 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
