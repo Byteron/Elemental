@@ -28,10 +28,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5, 1, 1.5, 2 ),
-"transitions": PoolRealArray( 0.5, 2, 0.5, 2, 1 ),
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 0.5, 0.5, 1 ),
 "update": 0,
-"values": [ Vector3( 0, 0.7, 0 ), Vector3( 0, 0.5, 0 ), Vector3( 0, 0.7, 0 ), Vector3( 0, 0.9, 0 ), Vector3( 0, 0.7, 0 ) ]
+"values": [ Vector3( 0, 0.5, 0 ), Vector3( 0, 0.3, 0 ), Vector3( 0, 0.5, 0 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Seeds:rotation_degrees")
@@ -55,7 +55,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 0.8, 2 ),
 "transitions": PoolRealArray( 1.8025, 1.51572, 1 ),
 "update": 0,
-"values": [ Vector3( 0.6, 0.6, 0.6 ), Vector3( 0.64, 0.58, 0.64 ), Vector3( 0.6, 0.6, 0.6 ) ]
+"values": [ Vector3( 0.7, 0.7, 0.7 ), Vector3( 0.74, 0.68, 0.74 ), Vector3( 0.7, 0.7, 0.7 ) ]
 }
 
 [sub_resource type="SphereShape" id=2]
@@ -81,7 +81,7 @@ autoplay = "idle"
 anims/idle = SubResource( 1 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
-transform = Transform( 0.618806, 0, 0, 0, 0.590597, 0, 0, 0, 0.618806, 0, 0.893636, 0 )
+transform = Transform( 0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0.5, 0 )
 material_override = ExtResource( 6 )
 mesh = ExtResource( 14 )
 material/0 = null
@@ -91,7 +91,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 shape = SubResource( 2 )
 
 [node name="Seeds" type="Spatial" parent="."]
-transform = Transform( 0.27656, 0, -0.960997, 0, 1, 0, 0.960997, 0, 0.27656, 0, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 
 [node name="WindParticles" parent="." instance=ExtResource( 3 )]
 
