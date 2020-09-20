@@ -3,6 +3,7 @@ class_name Seeds
 
 signal collected()
 
+export var particles : PackedScene = null
 onready var anim := $AnimationPlayer as AnimationPlayer
 
 
@@ -13,6 +14,9 @@ static func instance() -> Seeds:
 func destroy() -> void:
 	emit_signal("collected")
 	anim.play("shrink")
+	var p : Spatial = particles.instance() as Spatial
+	p.global_transform.origin = global_transform.origin
+	get_tree().current_scene.add_child(p)
 	yield(anim, "animation_finished")
 	queue_free()
 

@@ -1,33 +1,19 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://source/objects/obstacle/Obstacle.tscn" type="PackedScene" id=1]
 [ext_resource path="res://data/obstacles/Thorns.gd" type="Script" id=2]
+[ext_resource path="res://graphics/models/raw import/Thorns_A.jpg" type="Texture" id=3]
+[ext_resource path="res://graphics/models/raw import/Thorns.obj" type="ArrayMesh" id=4]
 
 [sub_resource type="SpatialMaterial" id=1]
-albedo_color = Color( 0.352941, 0.25098, 0.180392, 1 )
-
-[sub_resource type="CylinderMesh" id=2]
-top_radius = 0.2
-bottom_radius = 0.2
+albedo_texture = ExtResource( 3 )
 
 [node name="Thorns" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 alias = "Thorns"
 
-[node name="MeshInstance" type="MeshInstance" parent="." index="0"]
-transform = Transform( 0.948639, -0.152244, 0.27732, 0, 0.876592, 0.481234, -0.316361, -0.456517, 0.83157, 0.0975733, 0.762106, 0.243806 )
+[node name="Thorns" type="MeshInstance" parent="." index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.63027, 0 )
 material_override = SubResource( 1 )
-mesh = SubResource( 2 )
-material/0 = null
-
-[node name="MeshInstance3" type="MeshInstance" parent="." index="1"]
-transform = Transform( -0.561968, -0.398057, 0.725081, 0, 0.876592, 0.481234, -0.827159, 0.270438, -0.492617, 0.262839, 0.762106, -0.382842 )
-material_override = SubResource( 1 )
-mesh = SubResource( 2 )
-material/0 = null
-
-[node name="MeshInstance4" type="MeshInstance" parent="." index="2"]
-transform = Transform( -0.0900761, 0.479277, -0.873029, 0, 0.876592, 0.481234, 0.995935, 0.0433477, -0.0789601, -0.250198, 0.775542, -0.382842 )
-material_override = SubResource( 1 )
-mesh = SubResource( 2 )
+mesh = ExtResource( 4 )
 material/0 = null

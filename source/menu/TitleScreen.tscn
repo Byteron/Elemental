@@ -59,7 +59,7 @@ margin_bottom = 454.0
 visible = false
 margin_right = 163.0
 margin_bottom = 24.0
-text = "1"
+text = "4"
 
 [node name="Play" parent="CenterContainer/VBoxContainer" instance=ExtResource( 2 )]
 margin_right = 163.0
