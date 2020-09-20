@@ -21,8 +21,8 @@ glow_intensity = 1.4
 glow_strength = 1.1
 glow_bicubic_upscale = true
 adjustment_enabled = true
-adjustment_contrast = 1.2
-adjustment_saturation = 1.25
+adjustment_contrast = 1.1
+adjustment_saturation = 1.1
 
 [node name="Game" type="Spatial"]
 script = ExtResource( 1 )
