@@ -1,0 +1,43 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://fonts/kirifont/Kirifont.tres" type="DynamicFont" id=1]
+[ext_resource path="res://source/menu/MenuButton.gd" type="Script" id=2]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
+[sub_resource type="StyleBoxEmpty" id=5]
+
+[node name="MenuButton" type="Button"]
+margin_right = 274.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 160, 60 )
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/disabled = SubResource( 4 )
+custom_styles/normal = SubResource( 5 )
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color_disabled = Color( 0.113725, 0.113725, 0.113725, 1 )
+custom_colors/font_color = Color( 0.215686, 0.215686, 0.215686, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+text = "TEXT"
+align = 0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="Pointer" type="ColorRect" parent="."]
+margin_left = -12.0
+margin_right = -4.0
+[connection signal="mouse_entered" from="." to="." method="_on_MenuButton_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_MenuButton_mouse_exited"]

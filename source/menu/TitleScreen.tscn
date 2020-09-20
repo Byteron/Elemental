@@ -1,11 +1,38 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://source/menu/TitleScreen.gd" type="Script" id=1]
+[ext_resource path="res://source/menu/MenuButton.tscn" type="PackedScene" id=2]
+[ext_resource path="res://fonts/architect-s-daughter/ArchitectsDaughter.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 48
+extra_spacing_top = -5
+extra_spacing_bottom = -20
+font_data = ExtResource( 3 )
 
 [node name="TitleScreen" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -154.0
+margin_right = 154.0
+margin_bottom = 58.0
+custom_fonts/font = SubResource( 1 )
+text = "Elementary"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -18,36 +45,40 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
-margin_left = 540.0
-margin_top = 252.0
-margin_right = 740.0
-margin_bottom = 468.0
+margin_left = 558.0
+margin_top = 234.0
+margin_right = 721.0
+margin_bottom = 486.0
 
 [node name="Level" type="LineEdit" parent="CenterContainer/VBoxContainer"]
-margin_right = 200.0
+visible = false
+margin_right = 160.0
 margin_bottom = 24.0
 text = "1"
 
-[node name="Play" type="Button" parent="CenterContainer/VBoxContainer"]
-margin_top = 28.0
-margin_right = 200.0
-margin_bottom = 88.0
-rect_min_size = Vector2( 200, 60 )
+[node name="Play" parent="CenterContainer/VBoxContainer" instance=ExtResource( 2 )]
+margin_right = 163.0
+margin_bottom = 60.0
 text = "PLAY"
 
-[node name="Editor" type="Button" parent="CenterContainer/VBoxContainer"]
-margin_top = 92.0
-margin_right = 200.0
-margin_bottom = 152.0
-rect_min_size = Vector2( 200, 60 )
+[node name="Editor" parent="CenterContainer/VBoxContainer" instance=ExtResource( 2 )]
+margin_top = 64.0
+margin_right = 163.0
+margin_bottom = 124.0
 text = "EDITOR"
 
-[node name="Quit" type="Button" parent="CenterContainer/VBoxContainer"]
-margin_top = 156.0
-margin_right = 200.0
-margin_bottom = 216.0
-rect_min_size = Vector2( 200, 60 )
+[node name="Credits" parent="CenterContainer/VBoxContainer" instance=ExtResource( 2 )]
+margin_top = 128.0
+margin_right = 163.0
+margin_bottom = 188.0
+text = "CREDITS"
+
+[node name="Quit" parent="CenterContainer/VBoxContainer" instance=ExtResource( 2 )]
+margin_top = 192.0
+margin_right = 163.0
+margin_bottom = 252.0
 text = "QUIT"
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Play" to="." method="_on_Play_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Editor" to="." method="_on_Editor_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Credits" to="." method="_on_Credits_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Quit" to="." method="_on_Quit_pressed"]

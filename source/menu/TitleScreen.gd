@@ -12,12 +12,16 @@ func _ready() -> void:
 
 
 func _on_Play_pressed() -> void:
-	Global.current_level = int(level.text) - 1
+	Global.current_level = 13 # int(level.text) - 1
 	Scene.change("Game")
 
 
 func _on_Editor_pressed() -> void:
 	Scene.change("Editor")
+
+
+func _on_Credits_pressed() -> void:
+	Scene.change("Credits")
 
 
 func _on_Quit_pressed() -> void:

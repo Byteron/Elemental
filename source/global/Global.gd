@@ -26,7 +26,7 @@ func next_level() -> void:
 
 	if levels.size() == current_level:
 		current_level = 0
-		Scene.change("TitleScreen")
+		Scene.change("Credits")
 	else:
 		Scene.change("Game")
 
@@ -43,6 +43,7 @@ func _register_scenes() -> void:
 	Scene.register_scene("TitleScreen", "res://source/menu/TitleScreen.tscn")
 	Scene.register_scene("Game", "res://source/game/Game.tscn")
 	Scene.register_scene("Editor", "res://source/editor/Editor.tscn")
+	Scene.register_scene("Credits", "res://source/menu/Credits.tscn")
 
 
 func _load_tiles() -> void:
