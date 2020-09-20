@@ -29,7 +29,6 @@ var earth_block_count := 0
 var seeds_planted := 0
 
 onready var terrains := $Terrains
-onready var objects := $Objects
 
 
 static func instance() -> Map:
@@ -158,8 +157,11 @@ func add_orb(cell: Vector3, alias: String) -> void:
 	if loc.orb:
 		return
 
+	if not loc.terrain:
+		return
+
 	var orb : Orb = Global.orbs[alias].instance()
-	objects.add_child(orb)
+	loc.terrain.add_child(orb)
 
 	loc.orb = orb
 
@@ -175,8 +177,11 @@ func add_seeds(cell: Vector3) -> void:
 	if loc.seeds:
 		return
 
+	if not loc.terrain:
+		return
+
 	var seeds := Seeds.instance()
-	objects.add_child(seeds)
+	loc.terrain.add_child(seeds)
 
 	loc.seeds = seeds
 
@@ -192,8 +197,11 @@ func add_obstacle(cell: Vector3, alias: String) -> void:
 	if loc.obstacle:
 		return
 
+	if not loc.terrain:
+		return
+
 	var obstacle : Obstacle = Global.obstacles[alias].instance()
-	objects.add_child(obstacle)
+	loc.terrain.add_child(obstacle)
 
 	loc.obstacle = obstacle
 
