@@ -286,6 +286,7 @@ func _check_collecting_orb(loc: Location) -> void:
 			elemental.seeds = 0
 
 		elemental.state = loc.orb.alias
+		elemental.plop()
 		loc.orb.collect()
 
 

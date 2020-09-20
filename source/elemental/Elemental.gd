@@ -53,6 +53,12 @@ func move_to(position: Vector3) -> void:
 	tween.start()
 
 
+func plop() -> void:
+	tween.interpolate_property(self, "scale", Vector3(1, 1, 1), Vector3(0.8, 1.2, 0.8), 0.15, Tween.TRANS_SINE, Tween.EASE_IN)
+	tween.interpolate_property(self, "scale", Vector3(0.8, 1.2, 0.8), Vector3(1, 1, 1), 0.2, Tween.TRANS_BACK, Tween.EASE_OUT, 0.15)
+	tween.start()
+
+
 func can_move() -> bool:
 	return not tween.is_active()
 
