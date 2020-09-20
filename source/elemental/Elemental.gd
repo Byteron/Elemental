@@ -39,14 +39,14 @@ onready var water_particles := $WaterParticles/Particles
 
 func _ready() -> void:
 	_set_state(state)
-	rotation_degrees.y = 135
+	mesh_instance.rotation_degrees.y = 135
 
 
 func move_to(position: Vector3) -> void:
 	if tween.is_active():
 		return
 
-	look_at(position, Vector3.UP)
+	mesh_instance.look_at(position, Vector3.UP)
 
 	tween.interpolate_property(self, "transform:origin", transform.origin, position, 0.28, Tween.TRANS_SINE, Tween.EASE_OUT)
 	tween.start()
