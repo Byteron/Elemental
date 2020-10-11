@@ -14,7 +14,6 @@ alias = "BrittleStone"
 brittle = true
 particles = ExtResource( 5 )
 
-[node name="MeshInstance" parent="." index="2"]
-material_override = ExtResource( 3 )
-cast_shadow = 2
+[node name="MeshInstance" parent="Meshes" index="0"]
 mesh = ExtResource( 4 )
+material/0 = ExtResource( 3 )

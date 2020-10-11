@@ -11,7 +11,7 @@ Vector3( 0, 0, 0 ): {
 "Terrain": "None"
 },
 Vector3( 0, 0, 1 ): {
-"Terrain": "Wind"
+"Terrain": "Cloud"
 },
 Vector3( 0, 0, 2 ): {
 "Orb": "Wind",
@@ -25,14 +25,14 @@ Vector3( 0, 0, 4 ): {
 "Terrain": "Stone"
 },
 Vector3( 0, 0, 5 ): {
-"Terrain": "Wind"
+"Terrain": "Cloud"
 },
 Vector3( 0, 0, 6 ): {
 "Terrain": "None"
 },
 Vector3( 1, 0, 0 ): {
 "Seeds": true,
-"Terrain": "Wind"
+"Terrain": "Cloud"
 },
 Vector3( 1, 0, 1 ): {
 "Terrain": "None"
@@ -51,7 +51,7 @@ Vector3( 1, 0, 5 ): {
 },
 Vector3( 1, 0, 6 ): {
 "Seeds": true,
-"Terrain": "Wind"
+"Terrain": "Cloud"
 },
 Vector3( 2, 0, 0 ): {
 "Terrain": "Stone"
@@ -69,7 +69,7 @@ Vector3( 2, 0, 4 ): {
 "Terrain": "Stone"
 },
 Vector3( 2, 0, 5 ): {
-"Terrain": "Wind"
+"Terrain": "Cloud"
 },
 Vector3( 2, 0, 6 ): {
 "Terrain": "Stone"
@@ -78,7 +78,7 @@ Vector3( 3, 0, 0 ): {
 "Terrain": "Stone"
 },
 Vector3( 3, 0, 1 ): {
-"Terrain": "Wind"
+"Terrain": "Cloud"
 },
 Vector3( 3, 0, 2 ): {
 "Orb": "Wind",
@@ -91,7 +91,7 @@ Vector3( 3, 0, 4 ): {
 "Terrain": "Stone"
 },
 Vector3( 3, 0, 5 ): {
-"Terrain": "Wind"
+"Terrain": "Cloud"
 },
 Vector3( 3, 0, 6 ): {
 "Terrain": "Stone"
@@ -103,14 +103,14 @@ Vector3( 4, 0, 1 ): {
 "Terrain": "None"
 },
 Vector3( 4, 0, 2 ): {
-"Terrain": "Wind"
+"Terrain": "Cloud"
 },
 Vector3( 4, 0, 3 ): {
 "Orb": "Earth",
 "Terrain": "Stone"
 },
 Vector3( 4, 0, 4 ): {
-"Terrain": "Wind"
+"Terrain": "Cloud"
 },
 Vector3( 4, 0, 5 ): {
 "Terrain": "None"
@@ -138,25 +138,25 @@ Vector3( 5, 0, 5 ): {
 "Terrain": "Storm"
 },
 Vector3( 5, 0, 6 ): {
-"Terrain": "Wind"
+"Terrain": "Cloud"
 },
 Vector3( 6, 0, 0 ): {
 "Terrain": "None"
 },
 Vector3( 6, 0, 1 ): {
-"Terrain": "Wind"
+"Terrain": "Cloud"
 },
 Vector3( 6, 0, 2 ): {
 "Terrain": "Earth"
 },
 Vector3( 6, 0, 3 ): {
-"Terrain": "Wind"
+"Terrain": "Cloud"
 },
 Vector3( 6, 0, 4 ): {
 "Terrain": "Earth"
 },
 Vector3( 6, 0, 5 ): {
-"Terrain": "Wind"
+"Terrain": "Cloud"
 },
 Vector3( 6, 0, 6 ): {
 "Terrain": "None"

@@ -40,6 +40,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func _process(delta: float) -> void:
+	yield(get_tree(), "idle_frame")
 	if Input.is_action_pressed("move_left"):
 		map.move_elemental(Vector3.FORWARD)
 	if Input.is_action_pressed("move_down"):

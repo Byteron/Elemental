@@ -5,14 +5,14 @@
 [ext_resource path="res://graphics/materials/terrain/terrain_earth.tres" type="Material" id=3]
 [ext_resource path="res://graphics/models/raw import/Tile_Dirt_1.obj" type="ArrayMesh" id=5]
 
-
 [node name="Earth" instance=ExtResource( 2 )]
 script = ExtResource( 1 )
+broadcast = [ "earth" ]
 height = 0.07
 speed = 3.2
 alias = "Earth"
 fertile = true
 
-[node name="MeshInstance" parent="." index="1"]
-material_override = ExtResource( 3 )
+[node name="MeshInstance" parent="Meshes" index="0"]
 mesh = ExtResource( 5 )
+material/0 = ExtResource( 3 )

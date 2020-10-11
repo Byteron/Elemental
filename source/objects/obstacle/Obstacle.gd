@@ -1,4 +1,4 @@
-extends Spatial
+extends Entity
 class_name Obstacle
 
 signal destroyed()
@@ -18,11 +18,3 @@ func destroy() -> void:
 	get_tree().current_scene.add_child(p)
 	yield(anim, "animation_finished")
 	queue_free()
-
-
-func is_destroyable(state: String) -> bool:
-	return _is_destroyable(state)
-
-
-func _is_destroyable(state: String) -> bool:
-	return false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://source/elemental/Elemental.gd" type="Script" id=1]
 [ext_resource path="res://graphics/particles/ice_elemental.tscn" type="PackedScene" id=2]
@@ -86,9 +86,7 @@ tracks/2/keys = {
 "values": [ Vector3( 0.7, 0.7, 0.7 ), Vector3( 0.74, 0.68, 0.74 ), Vector3( 0.7, 0.7, 0.7 ) ]
 }
 
-[sub_resource type="SphereShape" id=3]
-
-[node name="Elemental" type="Area"]
+[node name="Elemental" type="Spatial"]
 script = ExtResource( 1 )
 fire_mesh = ExtResource( 13 )
 fire_mat = ExtResource( 10 )
@@ -114,10 +112,6 @@ transform = Transform( 0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0.5, 0 )
 material_override = ExtResource( 6 )
 mesh = ExtResource( 14 )
 material/0 = null
-
-[node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
-shape = SubResource( 3 )
 
 [node name="Seeds" type="Spatial" parent="."]
 

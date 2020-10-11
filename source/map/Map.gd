@@ -3,21 +3,15 @@ class_name Map
 
 const GRID_SIZE = Vector3(2, 0.8, 2)
 
-signal finished()
-signal game_over()
-
-
 const NEIGHBORS = [
 	Vector3(1, 0, 0),
-	#Vector3(1, 0, 1),
-	#Vector3(1, 0, -1),
 	Vector3(-1, 0, 0),
-	#Vector3(-1, 0, 1),
-	#Vector3(-1, 0, -1),
 	Vector3(0, 0, 1),
 	Vector3(0, 0, -1)
 ]
 
+signal finished()
+signal game_over()
 signal cell_hovered(cell)
 
 var size := Vector2(0, 0)
@@ -40,7 +34,9 @@ func initialize(width: int, height: int) -> void:
 	for z in size.y:
 		for x in size.x:
 			var cell = Vector3(x, 0, z)
-			_add_location("Stone", cell)
+			_add_location("Stone", cell, false)
+
+	_connect_all_terrains()
 
 
 func initialize_from_map_data(elemental: Elemental, map_data: MapData) -> void:
@@ -64,15 +60,25 @@ func initialize_from_map_data(elemental: Elemental, map_data: MapData) -> void:
 			var obstacle = data["Obstacle"]
 			add_obstacle(cell, obstacle)
 
+	_connect_all_terrains()
+
 
 func randomize_terrain() -> void:
 	for loc in locations.values():
-		_replace_terrain(loc, Global.terrains.keys()[randi() % Global.terrains.size()], false)
+		loc.change_terrain(Global.terrains.keys()[randi() % Global.terrains.size()])
 
 		if randf() < 0.1:
 			add_orb(loc.cell, Global.orbs.keys()[randi() % Global.orbs.size()])
 		elif randf() < 0.04:
 			add_seeds(loc.cell)
+
+
+func tick() -> void:
+	elemental.tick()
+
+	for cell in locations:
+		var loc : Location = locations[cell]
+		loc.tick()
 
 
 func get_neighbors(loc: Location) -> Array:
@@ -146,14 +152,7 @@ func remove_elemental() -> void:
 
 func change_terrain(cell: Vector3, alias: String, elevation := 0) -> void:
 	var loc : Location = locations[cell]
-
-	if cell.y != elevation:
-		_remove_location(cell)
-		cell.y = elevation
-		_add_location(alias, cell)
-		emit_signal("cell_hovered", cell)
-	else:
-		_replace_terrain(loc, alias)
+	loc.change_terrain(alias)
 
 
 func add_orb(cell: Vector3, alias: String) -> void:
@@ -244,6 +243,28 @@ func get_map_data() -> MapData:
 	return map_data
 
 
+func _connect_all_terrains() -> void:
+	for cell in locations:
+		var loc : Location = locations[cell]
+		for n_loc in get_neighbors(loc):
+			if not loc.terrain or not n_loc.terrain:
+				return
+
+			loc.receive_from(n_loc.terrain)
+
+
+func connect_elemental_with(loc: Location) -> void:
+	loc.receive_from(elemental)
+	for n_loc in get_neighbors(loc):
+		n_loc.receive_from(elemental)
+
+
+func disconnect_elemental_from(loc: Location) -> void:
+	loc.disconnect_from(elemental)
+	for n_loc in get_neighbors(loc):
+		n_loc.disconnect_from(elemental)
+
+
 func _check_conditions() -> void:
 	var blocks_left = 0
 
@@ -259,13 +280,18 @@ func _check_conditions() -> void:
 
 func _add_location(alias: String, cell: Vector3, animate := true) -> void:
 	var terrain : Terrain = Global.terrains[alias].instance()
-	terrain.connect("mouse_entered", self, "_on_terrain_hovered", [ cell ])
-	terrains.add_child(terrain)
-
 	var loc := Location.new()
+
+	loc.connect("hovered", self, "_on_terrain_hovered")
+	loc.connect("terrain_changed", self, "_on_terrain_changed")
+
+	add_child(loc)
+
 	loc.cell = cell
 	loc.position = cell * GRID_SIZE
 	loc.terrain = terrain
+
+	loc.transform.origin = cell * GRID_SIZE
 
 	locations[cell] = loc
 
@@ -282,15 +308,9 @@ func _remove_location(cell) -> void:
 	locations.erase(cell)
 
 
-func _replace_terrain(loc: Location, alias: String, animate := true) -> void:
-	var cell = loc.cell
-	_remove_location(cell)
-	_add_location(alias, cell, animate)
-
-
 func _check_brittle_terrain(loc: Location) -> void:
 	if loc.terrain.brittle:
-		_replace_terrain(loc, "None")
+		loc.change_terrain("None")
 
 
 func _check_collecting_orb(loc: Location) -> void:
@@ -309,60 +329,40 @@ func _check_collecting_seeds(loc: Location) -> void:
 		loc.seeds.collect()
 
 
-func _check_terrain_transitions(loc: Location) -> void:
-	if not loc.terrain:
-		return
-
-	var terrain := ""
-
-	for transition in loc.terrain.transitions:
-		if transition.state == elemental.state:
-			terrain = transition.terrain
-			break
-
-	if terrain:
-		_replace_terrain(loc, terrain)
-
-
-func _check_burning_seeds(loc: Location) -> void:
-	if ["Ice", "Fire"].has(elemental.state) and loc.seeds:
-		SFX.play_sfx("Burn")
-		remove_seeds(loc.cell)
-
-
-func _check_obstacle(loc: Location) -> void:
-	if loc.obstacle and loc.obstacle.is_destroyable(elemental.state):
-		loc.obstacle.destroy()
-
-
 func _check_planting_seeds(loc: Location) -> void:
 	if elemental.seeds and loc.terrain and loc.terrain.fertile:
 		elemental.seeds -= 1
 		seeds_planted += 1
 		print("Seeds - 1")
-		_replace_terrain(loc, "Tree")
+		loc.change_terrain("Grass")
 		SFX.play_sfx("Plant")
 
 
-func _on_terrain_hovered(cell: Vector3) -> void:
-	emit_signal("cell_hovered", cell)
+func _on_terrain_hovered(loc: Location) -> void:
+	emit_signal("cell_hovered", loc.cell)
+
+
+func _on_terrain_changed(loc: Location) -> void:
+	for n_loc in get_neighbors(loc):
+		if not loc.terrain or not n_loc.terrain:
+			return
+
+		loc.receive_from(n_loc.terrain)
+		loc.broadcast_to(n_loc.terrain)
 
 
 func _on_elemental_move_finished(last_cell: Vector3, new_cell: Vector3) -> void:
 	var last_loc: Location = locations[last_cell]
 	var loc : Location = locations[new_cell]
-	loc.terrain.on_moved(self)
+
+	disconnect_elemental_from(last_loc)
+	connect_elemental_with(loc)
 
 	_check_brittle_terrain(last_loc)
 	_check_collecting_orb(loc)
 	_check_collecting_seeds(loc)
 	_check_planting_seeds(loc)
 
-	_check_terrain_transitions(loc)
+	tick()
 
-	for n_loc in get_neighbors(loc):
-		_check_terrain_transitions(n_loc)
-		_check_burning_seeds(n_loc)
-		_check_obstacle(n_loc)
-
-	_check_conditions()
+	call_deferred("_check_conditions")

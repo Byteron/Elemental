@@ -52,36 +52,35 @@ __meta__ = {
 }
 
 [node name="Level" type="LineEdit" parent="VBoxContainer"]
-visible = false
 margin_right = 163.0
 margin_bottom = 24.0
 text = "1"
 
 [node name="Play" parent="VBoxContainer" instance=ExtResource( 2 )]
+margin_top = 28.0
 margin_right = 163.0
-margin_bottom = 60.0
+margin_bottom = 88.0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "PLAY"
 
 [node name="Editor" parent="VBoxContainer" instance=ExtResource( 2 )]
-visible = false
-margin_top = 64.0
+margin_top = 92.0
 margin_right = 163.0
-margin_bottom = 124.0
+margin_bottom = 152.0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "EDITOR"
 
 [node name="Credits" parent="VBoxContainer" instance=ExtResource( 2 )]
-margin_top = 64.0
+margin_top = 156.0
 margin_right = 163.0
-margin_bottom = 124.0
+margin_bottom = 216.0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "CREDITS"
 
 [node name="Quit" parent="VBoxContainer" instance=ExtResource( 2 )]
-margin_top = 128.0
+margin_top = 220.0
 margin_right = 163.0
-margin_bottom = 188.0
+margin_bottom = 280.0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "QUIT"
 [connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_Play_pressed"]

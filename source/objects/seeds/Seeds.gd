@@ -1,4 +1,4 @@
-extends Spatial
+extends Entity
 class_name Seeds
 
 signal collected()
@@ -9,6 +9,14 @@ onready var anim := $AnimationPlayer as AnimationPlayer
 
 static func instance() -> Seeds:
 	return load("res://source/objects/seeds/Seeds.tscn").instance() as Seeds
+
+
+func _fire() -> void:
+	destroy()
+
+
+func _ice() -> void:
+	destroy()
 
 
 func destroy() -> void:

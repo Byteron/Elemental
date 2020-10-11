@@ -1,11 +1,8 @@
-extends Area
+extends Entity
 class_name Terrain
 
-enum Action {
-	MOVE,
-	BLOCK,
-	FALL,
-}
+signal hovered()
+signal change(alias)
 
 export var height := 0.0
 export var speed := 0.0
@@ -13,8 +10,6 @@ export var speed := 0.0
 export var alias := ""
 export var fertile := false
 export var brittle := false
-
-export(Array, Resource) var transitions = []
 
 var cell := Vector3()
 var position := Vector3()
@@ -29,6 +24,10 @@ func _ready() -> void:
 	timer.connect("timeout", self, "_timeout")
 
 
+func change(alias: String) -> void:
+	call_deferred("emit_signal", "change", alias)
+
+
 func animate() -> void:
 	anim.play("spawn")
 	SFX.play_sfx("Grow")
@@ -38,18 +37,8 @@ func destroy() -> void:
 	_destroy()
 
 
-func on_moved(map) -> void:
-	_on_moved(map)
-
-
 func is_blocked(state: String) -> bool:
 	return _is_blocked(state)
-
-
-func _timeout() -> void:
-	tween.interpolate_property(self, "transform:origin:y", transform.origin.y, transform.origin.y - height, speed / 2, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
-	tween.interpolate_property(self, "transform:origin:y", transform.origin.y - height,transform.origin.y, speed / 2, Tween.TRANS_SINE, Tween.EASE_IN_OUT, speed / 2)
-	tween.start()
 
 
 func _set_height(value: float) -> void:
@@ -61,9 +50,15 @@ func _destroy() -> void:
 	queue_free()
 
 
-func _on_moved(map) -> void:
-	pass
-
-
 func _is_blocked(state: String) -> bool:
 	return true
+
+
+func _timeout() -> void:
+	tween.interpolate_property(self, "transform:origin:y", transform.origin.y, transform.origin.y - height, speed / 2, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
+	tween.interpolate_property(self, "transform:origin:y", transform.origin.y - height,transform.origin.y, speed / 2, Tween.TRANS_SINE, Tween.EASE_IN_OUT, speed / 2)
+	tween.start()
+
+
+func _on_Area_mouse_entered() -> void:
+	emit_signal("hovered")
