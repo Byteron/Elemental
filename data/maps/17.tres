@@ -1,0 +1,39 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://source/map/MapData.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+width = 3
+height = 3
+locations = {
+Vector3( 0, 0, 0 ): {
+"Terrain": "Stone"
+},
+Vector3( 0, 0, 1 ): {
+"Elemental": true,
+"Terrain": "Stone"
+},
+Vector3( 0, 0, 2 ): {
+"Terrain": "None"
+},
+Vector3( 1, 0, 0 ): {
+"Terrain": "Water"
+},
+Vector3( 1, 0, 1 ): {
+"Terrain": "Grass"
+},
+Vector3( 1, 0, 2 ): {
+"Terrain": "Storm"
+},
+Vector3( 2, 0, 0 ): {
+"Terrain": "Ice"
+},
+Vector3( 2, 0, 1 ): {
+"Terrain": "Lava"
+},
+Vector3( 2, 0, 2 ): {
+"Obstacle": "Thorns",
+"Terrain": "Stone"
+}
+}
