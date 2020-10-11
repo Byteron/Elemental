@@ -15,10 +15,10 @@ Vector3( 0, 0, 1 ): {
 "Terrain": "Stone"
 },
 Vector3( 0, 0, 2 ): {
-"Terrain": "Wind"
+"Terrain": "Cloud"
 },
 Vector3( 0, 0, 3 ): {
-"Terrain": "Wind"
+"Terrain": "Cloud"
 },
 Vector3( 0, 0, 4 ): {
 "Elemental": true,
@@ -187,7 +187,7 @@ Vector3( 6, 0, 3 ): {
 "Terrain": "None"
 },
 Vector3( 6, 0, 4 ): {
-"Terrain": "Wind"
+"Terrain": "Cloud"
 },
 Vector3( 6, 0, 5 ): {
 "Terrain": "None"
@@ -234,10 +234,10 @@ Vector3( 8, 0, 0 ): {
 "Terrain": "Stone"
 },
 Vector3( 8, 0, 1 ): {
-"Terrain": "Wind"
+"Terrain": "Cloud"
 },
 Vector3( 8, 0, 2 ): {
-"Terrain": "Wind"
+"Terrain": "Cloud"
 },
 Vector3( 8, 0, 3 ): {
 "Terrain": "Earth"

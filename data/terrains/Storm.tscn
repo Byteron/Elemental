@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://data/terrains/Storm.gd" type="Script" id=1]
 [ext_resource path="res://source/terrain/Terrain.tscn" type="PackedScene" id=2]
@@ -6,7 +6,6 @@
 [ext_resource path="res://graphics/models/raw import/Tile_Wind_1.obj" type="ArrayMesh" id=4]
 [ext_resource path="res://graphics/models/raw import/Wind_A.jpg" type="Texture" id=5]
 [ext_resource path="res://graphics/models/raw import/Wind_N.jpg" type="Texture" id=6]
-[ext_resource path="res://data/transitions/wind_from_earth.tres" type="Resource" id=7]
 
 [sub_resource type="Animation" id=1]
 resource_name = "idle"
@@ -71,10 +70,10 @@ normal_texture = ExtResource( 6 )
 
 [node name="Storm" instance=ExtResource( 2 )]
 script = ExtResource( 1 )
+broadcast = [ "thunder" ]
 height = 0.15
 speed = 1.0
 alias = "Storm"
-transitions = [ ExtResource( 7 ) ]
 
 [node name="AnimationPlayer" parent="." index="0"]
 anims/idle = SubResource( 1 )

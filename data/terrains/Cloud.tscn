@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://data/terrains/Cloud.gd" type="Script" id=1]
+[ext_resource path="res://source/terrain/Terrain.tscn" type="PackedScene" id=2]
+[ext_resource path="res://graphics/materials/terrain/terrain_wind.tres" type="Material" id=3]
+[ext_resource path="res://graphics/models/raw import/Tile_Wind_1.obj" type="ArrayMesh" id=4]
+
+[node name="Cloud" instance=ExtResource( 2 )]
+script = ExtResource( 1 )
+height = 0.12
+speed = 1.2
+alias = "Cloud"
+
+[node name="MeshInstance" parent="." index="2"]
+material_override = ExtResource( 3 )
+cast_shadow = 0
+mesh = ExtResource( 4 )

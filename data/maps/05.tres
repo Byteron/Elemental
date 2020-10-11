@@ -150,7 +150,7 @@ Vector3( 5, 0, 6 ): {
 },
 Vector3( 6, 0, 0 ): {
 "Seeds": true,
-"Terrain": "Tree"
+"Terrain": "Grass"
 },
 Vector3( 6, 0, 1 ): {
 "Terrain": "None"

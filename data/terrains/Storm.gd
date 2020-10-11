@@ -6,13 +6,13 @@ func _ready() -> void:
 
 
 func animate() -> void:
-	anim.play("spawn")
+	.animate()
 	anim.queue("idle")
-
-
-func _on_moved(map) -> void:
-	pass
 
 
 func _is_blocked(state: String) -> bool:
 	return true
+
+
+func _earth() -> void:
+	change("Cloud")

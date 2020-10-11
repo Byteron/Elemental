@@ -134,7 +134,6 @@ margin_right = 207.0
 margin_bottom = 20.0
 size_flags_horizontal = 3
 text = "Stone"
-selected = 0
 
 [node name="Obstacles" type="HBoxContainer" parent="Panel/VBoxContainer"]
 margin_top = 156.0

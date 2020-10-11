@@ -19,7 +19,7 @@ Vector3( 0, 0, 2 ): {
 "Terrain": "Stone"
 },
 Vector3( 1, 0, 0 ): {
-"Terrain": "Wind"
+"Terrain": "Cloud"
 },
 Vector3( 1, 0, 1 ): {
 "Terrain": "BrittleStone"
@@ -30,7 +30,7 @@ Vector3( 1, 0, 2 ): {
 },
 Vector3( 2, 0, 0 ): {
 "Seeds": true,
-"Terrain": "Tree"
+"Terrain": "Grass"
 },
 Vector3( 2, 0, 1 ): {
 "Obstacle": "Thorns",

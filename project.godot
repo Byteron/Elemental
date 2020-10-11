@@ -19,10 +19,15 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://source/editor/EditorHUD.gd"
 }, {
-"base": "Area",
+"base": "Entity",
 "class": "Elemental",
 "language": "GDScript",
 "path": "res://source/elemental/Elemental.gd"
+}, {
+"base": "Spatial",
+"class": "Entity",
+"language": "GDScript",
+"path": "res://source/entity/Entity.gd"
 }, {
 "base": "Spatial",
 "class": "Game",
@@ -39,7 +44,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://source/global/Loader.gd"
 }, {
-"base": "Reference",
+"base": "Spatial",
 "class": "Location",
 "language": "GDScript",
 "path": "res://source/map/Location.gd"
@@ -59,7 +64,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/audio_booth/source/music/MusicBooth.gd"
 }, {
-"base": "Spatial",
+"base": "Entity",
 "class": "Obstacle",
 "language": "GDScript",
 "path": "res://source/objects/obstacle/Obstacle.gd"
@@ -84,7 +89,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/scene_manager/source/SceneLoader.gd"
 }, {
-"base": "Spatial",
+"base": "Entity",
 "class": "Seeds",
 "language": "GDScript",
 "path": "res://source/objects/seeds/Seeds.gd"
@@ -109,7 +114,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/audio_booth/source/music/containers/StingerContainer.gd"
 }, {
-"base": "Area",
+"base": "Entity",
 "class": "Terrain",
 "language": "GDScript",
 "path": "res://source/terrain/Terrain.gd"
@@ -138,6 +143,7 @@ _global_script_class_icons={
 "Editor": "",
 "EditorHUD": "",
 "Elemental": "",
+"Entity": "",
 "Game": "",
 "LabelEdit": "",
 "Loader": "",

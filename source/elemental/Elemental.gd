@@ -1,4 +1,4 @@
-extends Area
+extends Entity
 class_name Elemental
 
 const SeedsMesh := preload("res://source/objects/seeds/SeedsMesh.tscn")
@@ -119,23 +119,28 @@ func _set_state(value: String) -> void:
 
 	match state:
 		"Fire":
+			broadcast = ["fire"]
 			fire_particles.emitting = true
 			smoke_particles.emitting = true
 			mesh_instance.mesh = fire_mesh
 			mesh_instance.material_override = fire_mat
 		"Ice":
+			broadcast = ["ice"]
 			ice_particles.emitting = true
 			mesh_instance.mesh = ice_mesh
 			mesh_instance.material_override = ice_mat
 		"Wind":
+			broadcast = ["wind"]
 			wind_particles.emitting = true
 			mesh_instance.mesh = wind_mesh
 			mesh_instance.material_override = wind_mat
 		"Water":
+			broadcast = ["water"]
 			water_particles.emitting = true
 			mesh_instance.mesh = water_mesh
 			mesh_instance.material_override = water_mat
 		"Earth":
+			broadcast = ["earth"]
 			mesh_instance.mesh = earth_mesh
 			mesh_instance.material_override = earth_mat
 
