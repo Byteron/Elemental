@@ -10,5 +10,5 @@ height = 0.06
 speed = 4.0
 alias = "Stone"
 
-[node name="MeshInstance" parent="." index="2"]
-material_override = ExtResource( 3 )
+[node name="MeshInstance" parent="Meshes" index="0"]
+material/0 = ExtResource( 3 )

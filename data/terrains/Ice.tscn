@@ -9,6 +9,6 @@
 script = ExtResource( 1 )
 alias = "Ice"
 
-[node name="MeshInstance" parent="." index="2"]
-material_override = ExtResource( 3 )
+[node name="MeshInstance" parent="Meshes" index="0"]
 mesh = ExtResource( 6 )
+material/0 = ExtResource( 3 )

@@ -34,7 +34,7 @@ func initialize(width: int, height: int) -> void:
 	for z in size.y:
 		for x in size.x:
 			var cell = Vector3(x, 0, z)
-			_add_location("Stone", cell)
+			_add_location("Stone", cell, false)
 
 	_connect_all_terrains()
 

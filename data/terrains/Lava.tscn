@@ -12,12 +12,12 @@ script = ExtResource( 2 )
 broadcast = [ "fire" ]
 alias = "Lava"
 
-[node name="MeshInstance2" type="MeshInstance" parent="." index="2"]
+[node name="MeshInstance" parent="Meshes" index="0"]
+mesh = ExtResource( 5 )
+material/0 = ExtResource( 3 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="Meshes" index="1"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0 )
 material_override = ExtResource( 4 )
 mesh = ExtResource( 6 )
 material/0 = null
-
-[node name="MeshInstance" parent="." index="3"]
-material_override = ExtResource( 3 )
-mesh = ExtResource( 5 )

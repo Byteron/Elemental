@@ -13,6 +13,6 @@ speed = 3.2
 alias = "Earth"
 fertile = true
 
-[node name="MeshInstance" parent="." index="2"]
-material_override = ExtResource( 3 )
+[node name="MeshInstance" parent="Meshes" index="0"]
 mesh = ExtResource( 5 )
+material/0 = ExtResource( 3 )

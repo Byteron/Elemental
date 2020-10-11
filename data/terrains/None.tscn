@@ -7,5 +7,5 @@
 script = ExtResource( 2 )
 alias = "None"
 
-[node name="MeshInstance" parent="." index="2"]
+[node name="MeshInstance" parent="Meshes" index="0"]
 visible = false
