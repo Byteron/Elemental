@@ -42,7 +42,7 @@ onready var elevations := $Panel/VBoxContainer/Elevations
 
 func _ready() -> void:
 	for mode in Mode.keys():
-		mode_options.add_item(mode)
+		mode_options.add_item(mode.to_lower().capitalize())
 
 	for terrain in Global.terrains:
 		terrain_options.add_item(terrain)
