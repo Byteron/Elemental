@@ -1,5 +1,5 @@
 extends Obstacle
 
 
-func _fire() -> void:
+func _fire(boosted: bool) -> void:
 	destroy()

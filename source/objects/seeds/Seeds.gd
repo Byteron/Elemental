@@ -11,11 +11,11 @@ static func instance() -> Seeds:
 	return load("res://source/objects/seeds/Seeds.tscn").instance() as Seeds
 
 
-func _fire() -> void:
+func _fire(boosted: bool) -> void:
 	destroy()
 
 
-func _ice() -> void:
+func _ice(boosted: bool) -> void:
 	destroy()
 
 

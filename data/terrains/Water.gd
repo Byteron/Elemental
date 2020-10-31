@@ -7,9 +7,9 @@ func _is_blocked(state: int) -> bool:
 	return true
 
 
-func _ice() -> void:
+func _ice(boosted: bool) -> void:
 	change("Ice")
 
 
-func _thunder() -> void:
-	send("thunder")
+func _thunder(boosted: bool) -> void:
+	send("thunder", boosted)

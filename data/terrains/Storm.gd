@@ -14,5 +14,5 @@ func _is_blocked(state: int) -> bool:
 	return true
 
 
-func _earth() -> void:
+func _earth(boosted: bool) -> void:
 	change("Cloud")

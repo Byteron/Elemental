@@ -1,26 +1,28 @@
 extends Spatial
 class_name Entity
 
-signal nature()
-signal earth()
-signal fire()
-signal ice()
-signal wind()
-signal water()
-signal thunder()
+signal nature(boost)
+signal earth(boost)
+signal fire(boost)
+signal ice(boost)
+signal wind(boost)
+signal water(boost)
+signal thunder(boost)
 
+var boost := ""
 
 export(Array, String) var broadcast := []
 
 var elements_sent := []
 
 
-func send(element: String) -> void:
+func send(element: String, boosted := false) -> void:
 	if elements_sent.has(element):
 		return
 
 	elements_sent.append(element)
-	emit_signal(element)
+	emit_signal(element, boosted or boost == element)
+	boost = ""
 
 
 func receive_from(entity: Entity) -> void:
@@ -62,29 +64,29 @@ func tick() -> void:
 
 	elements_sent.clear()
 
-func _nature() -> void:
+func _nature(boosted: bool) -> void:
 	pass
 
 
-func _earth() -> void:
+func _earth(boosted: bool) -> void:
 	pass
 
 
-func _fire() -> void:
+func _fire(boosted: bool) -> void:
 	pass
 
 
-func _ice() -> void:
+func _ice(boosted: bool) -> void:
 	pass
 
 
-func _wind() -> void:
+func _wind(boosted: bool) -> void:
 	pass
 
 
-func _water() -> void:
+func _water(boosted: bool) -> void:
 	pass
 
 
-func _thunder() -> void:
+func _thunder(boosted: bool) -> void:
 	pass

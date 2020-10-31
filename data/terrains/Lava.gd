@@ -1,7 +1,7 @@
 extends Terrain
 
 
-func _water() -> void:
+func _water(boosted: bool) -> void:
 	change("BrittleStone")
 
 
