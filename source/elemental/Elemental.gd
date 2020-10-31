@@ -139,5 +139,7 @@ func _set_state(value: int) -> void:
 			water_particles.emitting = true
 
 
-func _on_Tween_tween_all_completed() -> void:
-	emit_signal("move_finished", last_cell, cell)
+func _on_Tween_tween_completed(object: Object, key: NodePath) -> void:
+
+	if key == ":transform:origin":
+		emit_signal("move_finished", last_cell, cell)

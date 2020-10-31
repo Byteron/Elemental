@@ -98,7 +98,6 @@ earth_mesh = ExtResource( 8 )
 earth_mat = ExtResource( 9 )
 wind_mesh = ExtResource( 14 )
 wind_mat = ExtResource( 6 )
-state = "Earth"
 
 [node name="Tween" type="Tween" parent="."]
 
@@ -124,4 +123,4 @@ material/0 = null
 [node name="WaterParticles" parent="." instance=ExtResource( 7 )]
 
 [node name="WindParticles" parent="." instance=ExtResource( 3 )]
-[connection signal="tween_all_completed" from="Tween" to="." method="_on_Tween_tween_all_completed"]
+[connection signal="tween_completed" from="Tween" to="." method="_on_Tween_tween_completed"]
