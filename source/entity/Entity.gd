@@ -24,33 +24,18 @@ func send(element: String) -> void:
 
 
 func receive_from(entity: Entity) -> void:
-	entity.connect("nature", self, "_nature")
-	entity.connect("earth", self, "_earth")
-	entity.connect("fire", self, "_fire")
-	entity.connect("ice", self, "_ice")
-	entity.connect("wind", self, "_wind")
-	entity.connect("water", self, "_water")
-	entity.connect("thunder", self, "_thunder")
+	for element in entity.broadcast:
+		entity.connect(element, self, "_" + element)
 
 
 func broadcast_to(entity: Entity) -> void:
-	connect("nature", entity, "_nature")
-	connect("earth", entity, "_earth")
-	connect("fire", entity, "_fire")
-	connect("ice", entity, "_ice")
-	connect("wind", entity, "_wind")
-	connect("water", entity, "_water")
-	connect("thunder", entity, "_thunder")
+	for element in broadcast:
+		connect(element, entity, "_" + element)
 
 
 func disconnect_from(entity: Entity) -> void:
-	entity.disconnect("nature", self, "_nature")
-	entity.disconnect("earth", self, "_earth")
-	entity.disconnect("fire", self, "_fire")
-	entity.disconnect("ice", self, "_ice")
-	entity.disconnect("wind", self, "_wind")
-	entity.disconnect("water", self, "_water")
-	entity.disconnect("thunder", self, "_thunder")
+	for element in entity.broadcast:
+		entity.disconnect(element, self, "_" + element)
 
 
 func tick() -> void:

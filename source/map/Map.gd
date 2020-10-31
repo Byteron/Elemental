@@ -261,6 +261,7 @@ func connect_elemental_with(loc: Location) -> void:
 
 func disconnect_elemental_from(loc: Location) -> void:
 	loc.disconnect_from(elemental)
+
 	for n_loc in get_neighbors(loc):
 		n_loc.disconnect_from(elemental)
 
@@ -356,10 +357,12 @@ func _on_elemental_move_finished(last_cell: Vector3, new_cell: Vector3) -> void:
 	var loc : Location = locations[new_cell]
 
 	disconnect_elemental_from(last_loc)
+
+	_check_collecting_orb(loc)
+
 	connect_elemental_with(loc)
 
 	_check_brittle_terrain(last_loc)
-	_check_collecting_orb(loc)
 	_check_collecting_seeds(loc)
 	_check_planting_seeds(loc)
 
