@@ -34,8 +34,26 @@ func broadcast_to(entity: Entity) -> void:
 
 
 func disconnect_from(entity: Entity) -> void:
-	for element in entity.broadcast:
-		entity.disconnect(element, self, "_" + element)
+	if entity.is_connected("nature", self, "_nature"):
+		entity.disconnect("nature", self, "_nature")
+
+	if entity.is_connected("earth", self, "_earth"):
+		entity.disconnect("earth", self, "_earth")
+
+	if entity.is_connected("fire", self, "_fire"):
+		entity.disconnect("fire", self, "_fire")
+
+	if entity.is_connected("ice", self, "_ice"):
+		entity.disconnect("ice", self, "_ice")
+
+	if entity.is_connected("wind", self, "_wind"):
+		entity.disconnect("wind", self, "_wind")
+
+	if entity.is_connected("water", self, "_water"):
+		entity.disconnect("water", self, "_water")
+
+	if entity.is_connected("thunder", self, "_thunder"):
+		entity.disconnect("thunder", self, "_thunder")
 
 
 func tick() -> void:
