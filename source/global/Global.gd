@@ -1,5 +1,8 @@
 extends Node
 
+const SAVE_DATA_VERSION := 1
+const SAVE_DATA_PATH := "user://save_data.tres"
+
 var current_level := 0
 
 var levels := {}
@@ -31,6 +34,27 @@ func next_level() -> void:
 		Scene.change("Credits")
 	else:
 		Scene.change("Game")
+		save_progress()
+
+
+
+func save_progress() -> void:
+	var save = SaveData.new()
+	save.version = SAVE_DATA_VERSION
+	save.data["current_level"] = current_level
+	ResourceSaver.save(SAVE_DATA_PATH, save)
+
+
+func load_progress() -> void:
+	var save : SaveData = load(SAVE_DATA_PATH)
+
+	if not save:
+		return
+
+	if save.version < SAVE_DATA_VERSION:
+		print("warning, outdated save data!")
+
+	current_level = save.data["current_level"]
 
 
 func get_map_data() -> MapData:

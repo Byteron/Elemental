@@ -54,7 +54,6 @@ __meta__ = {
 [node name="Level" type="LineEdit" parent="VBoxContainer"]
 margin_right = 163.0
 margin_bottom = 24.0
-text = "1"
 
 [node name="Play" parent="VBoxContainer" instance=ExtResource( 2 )]
 margin_top = 28.0

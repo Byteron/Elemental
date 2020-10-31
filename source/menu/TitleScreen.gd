@@ -12,7 +12,10 @@ func _ready() -> void:
 
 
 func _on_Play_pressed() -> void:
-	Global.current_level = int(level.text) - 1
+	if level.text:
+		Global.current_level = int(level.text) - 1
+	else:
+		Global.load_progress()
 	Scene.change("Game")
 
 
