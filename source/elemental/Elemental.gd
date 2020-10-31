@@ -23,7 +23,7 @@ export var wind_mesh : Mesh = null
 export var wind_mat : Material = null
 
 
-export(State) var state := 0 setget _set_state
+export(State) var state := 1 setget _set_state
 
 export var seeds := 0 setget _set_seeds
 
