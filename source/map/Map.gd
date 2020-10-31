@@ -10,6 +10,7 @@ const NEIGHBORS = [
 	Vector3(0, 0, -1)
 ]
 
+signal tick()
 signal finished()
 signal game_over()
 signal cell_hovered(cell)
@@ -21,6 +22,8 @@ var elemental : Elemental = null
 
 var earth_block_count := 0
 var seeds_planted := 0
+
+var optimal_steps := 0
 
 onready var terrains := $Terrains
 
@@ -41,6 +44,7 @@ func initialize(width: int, height: int) -> void:
 
 func initialize_from_map_data(elemental: Elemental, map_data: MapData) -> void:
 	size = Vector2(map_data.width, map_data.height)
+	optimal_steps = map_data.optimal_steps
 
 	for cell in map_data.locations.keys():
 		var data : Dictionary = map_data.locations[cell]
@@ -85,6 +89,8 @@ func tick() -> void:
 	for cell in locations:
 		var loc : Location = locations[cell]
 		loc.tick()
+
+	emit_signal("tick")
 
 
 func get_neighbors(loc: Location) -> Array:
@@ -246,6 +252,7 @@ func get_map_data() -> MapData:
 
 	map_data.width = size.x
 	map_data.height = size.y
+	map_data.optimal_steps = optimal_steps
 
 	for value in locations.values():
 		var loc : Location = value

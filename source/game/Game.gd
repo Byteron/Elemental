@@ -4,10 +4,14 @@ class_name Game
 export var size := Vector2(10, 10)
 export var random := false
 
+var steps := 0
+
 onready var elemental := $Elemental as Elemental
 onready var map := $Map as Map
 onready var camera := $OrthoCamera as OrthoCamera
-onready var level_label := $CanvasLayer/LevelLabel
+
+onready var level_label := $CanvasLayer/LevelLabel as Label
+onready var step_counter_label := $CanvasLayer/StepCounterLabel as Label
 
 
 func _ready() -> void:
@@ -27,6 +31,7 @@ func _ready() -> void:
 		map.initialize_from_map_data(elemental, Global.get_map_data())
 
 	map.connect("finished", self, "_on_map_finished")
+	map.connect("tick", self, "_on_map_tick")
 	camera.initialize(map.size)
 
 
@@ -51,7 +56,13 @@ func _process(delta: float) -> void:
 		map.move_elemental(Vector3.RIGHT)
 
 
+func _on_map_tick() -> void:
+	steps += 1
+	step_counter_label.text = "Steps: %d / %d" % [steps, map.optimal_steps]
+
+
 func _on_map_finished() -> void:
+	print("Rating: %f" % (float(map.optimal_steps) / float(steps) * 100.0))
 	set_process(false)
 	set_process_unhandled_input(false)
 	elemental.finished()
