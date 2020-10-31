@@ -12,7 +12,7 @@ albedo_texture = ExtResource( 3 )
 script = ExtResource( 2 )
 alias = "Thorns"
 
-[node name="Thorns" type="MeshInstance" parent="." index="0"]
+[node name="Thorns" type="MeshInstance" parent="Meshes" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.63027, 0 )
 material_override = SubResource( 1 )
 mesh = ExtResource( 4 )

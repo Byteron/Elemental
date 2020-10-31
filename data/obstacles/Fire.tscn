@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://graphics/materials/elemental/elemental_fire.tres" type="Material" id=1]
+[ext_resource path="res://data/obstacles/Fire.gd" type="Script" id=2]
+[ext_resource path="res://source/objects/obstacle/Obstacle.tscn" type="PackedScene" id=3]
+[ext_resource path="res://graphics/models/raw import/Elemental_fire.obj" type="ArrayMesh" id=4]
+
+[node name="Fire" instance=ExtResource( 3 )]
+script = ExtResource( 2 )
+alias = "Fire"
+particles = null
+
+[node name="MeshInstance" type="MeshInstance" parent="Meshes" index="0"]
+transform = Transform( 0.393133, -0.0620904, -0.0398904, 0.0738001, 0.330755, 0.212496, 2.98023e-09, -0.216208, 0.336533, 0.1207, -0.404887, 0.529263 )
+material_override = ExtResource( 1 )
+mesh = ExtResource( 4 )
+material/0 = null

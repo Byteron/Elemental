@@ -7,7 +7,7 @@
 resource_name = "shrink"
 length = 0.5
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:scale")
+tracks/0/path = NodePath("Meshes:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -25,3 +25,5 @@ particles = ExtResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/shrink = SubResource( 1 )
+
+[node name="Meshes" type="Spatial" parent="."]

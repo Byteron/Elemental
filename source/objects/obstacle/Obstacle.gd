@@ -13,8 +13,11 @@ func destroy() -> void:
 	SFX.play_sfx("Burn")
 	emit_signal("destroyed")
 	anim.play("shrink")
-	var p : Spatial = particles.instance() as Spatial
-	p.global_transform.origin = global_transform.origin
-	get_tree().current_scene.add_child(p)
+
+	if particles:
+		var p : Spatial = particles.instance() as Spatial
+		p.global_transform.origin = global_transform.origin
+		get_tree().current_scene.add_child(p)
+
 	yield(anim, "animation_finished")
 	queue_free()
