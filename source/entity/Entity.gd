@@ -22,7 +22,6 @@ func send(element: String, boosted := false) -> void:
 
 	elements_sent.append(element)
 	emit_signal(element, boosted or boost == element)
-	boost = ""
 
 
 func receive_from(entity: Entity) -> void:
