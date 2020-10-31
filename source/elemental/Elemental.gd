@@ -1,6 +1,8 @@
 extends Entity
 class_name Elemental
 
+enum State { WATER, EARTH, FIRE, WIND, ICE }
+
 const SeedsMesh := preload("res://source/objects/seeds/SeedsMesh.tscn")
 
 signal move_finished(last_cell, new_cell)
@@ -21,7 +23,8 @@ export var wind_mesh : Mesh = null
 export var wind_mat : Material = null
 
 
-export var state := "Stone" setget _set_state
+export(State) var state := 0 setget _set_state
+
 export var seeds := 0 setget _set_seeds
 
 var last_cell := Vector3()
@@ -105,7 +108,7 @@ func _set_seeds(value: int) -> void:
 	_add_seeds()
 
 
-func _set_state(value: String) -> void:
+func _set_state(value: int) -> void:
 	state = value
 
 	if not wind_particles:
@@ -117,32 +120,23 @@ func _set_state(value: String) -> void:
 	water_particles.emitting = false
 	smoke_particles.emitting = false
 
+	var state_name : String = State.keys()[value].to_lower()
+
+	broadcast = [ state_name ]
+
+	mesh_instance.mesh = get(state_name + "_mesh")
+	mesh_instance.material_override = get(state_name + "_mat")
+
 	match state:
-		"Fire":
-			broadcast = ["fire"]
+		State.FIRE:
 			fire_particles.emitting = true
 			smoke_particles.emitting = true
-			mesh_instance.mesh = fire_mesh
-			mesh_instance.material_override = fire_mat
-		"Ice":
-			broadcast = ["ice"]
+		State.ICE:
 			ice_particles.emitting = true
-			mesh_instance.mesh = ice_mesh
-			mesh_instance.material_override = ice_mat
-		"Wind":
-			broadcast = ["wind"]
+		State.WIND:
 			wind_particles.emitting = true
-			mesh_instance.mesh = wind_mesh
-			mesh_instance.material_override = wind_mat
-		"Water":
-			broadcast = ["water"]
+		State.WATER:
 			water_particles.emitting = true
-			mesh_instance.mesh = water_mesh
-			mesh_instance.material_override = water_mat
-		"Earth":
-			broadcast = ["earth"]
-			mesh_instance.mesh = earth_mesh
-			mesh_instance.material_override = earth_mat
 
 
 func _on_Tween_tween_all_completed() -> void:

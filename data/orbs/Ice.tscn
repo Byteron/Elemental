@@ -5,7 +5,7 @@
 [ext_resource path="res://graphics/particles/ice.tscn" type="PackedScene" id=3]
 
 [node name="Ice" instance=ExtResource( 1 )]
-alias = "Ice"
+element = 4
 
 [node name="Spatial" parent="." index="1" instance=ExtResource( 3 )]
 

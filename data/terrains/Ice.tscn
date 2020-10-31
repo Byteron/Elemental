@@ -7,7 +7,6 @@
 
 [node name="Ice" instance=ExtResource( 2 )]
 script = ExtResource( 1 )
-broadcast = [ "ice" ]
 alias = "Ice"
 
 [node name="MeshInstance" parent="Meshes" index="0"]

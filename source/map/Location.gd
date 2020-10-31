@@ -53,7 +53,7 @@ func disconnect_from(entity: Entity) -> void:
 		seeds.disconnect_from(entity)
 
 
-func is_blocked(state: String) -> bool:
+func is_blocked(state: int) -> bool:
 	if obstacle or (terrain and terrain.is_blocked(state)):
 		return true
 	return false

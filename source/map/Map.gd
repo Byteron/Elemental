@@ -315,10 +315,10 @@ func _check_brittle_terrain(loc: Location) -> void:
 
 func _check_collecting_orb(loc: Location) -> void:
 	if loc.orb:
-		if ["Ice", "Fire"].has(loc.orb.alias) and elemental.seeds:
+		if [Elemental.State.ICE, Elemental.State.FIRE].has(loc.orb.element) and elemental.seeds:
 			elemental.seeds = 0
 
-		elemental.state = loc.orb.alias
+		elemental.state = loc.orb.element
 		elemental.plop()
 		loc.orb.collect()
 

@@ -1,7 +1,7 @@
 extends Terrain
 
 
-func _is_blocked(state: String) -> bool:
+func _is_blocked(state: int) -> bool:
 	return false
 
 

@@ -5,7 +5,7 @@
 [ext_resource path="res://graphics/particles/wind.tscn" type="PackedScene" id=3]
 
 [node name="Wind" instance=ExtResource( 1 )]
-alias = "Wind"
+element = 3
 
 [node name="Spatial" parent="." index="1" instance=ExtResource( 3 )]
 

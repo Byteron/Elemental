@@ -3,7 +3,7 @@ class_name Orb
 
 signal collected()
 
-export var alias := "Stone"
+export(Elemental.State) var element := 0
 
 onready var mesh_instance := $MeshInstance as MeshInstance
 
@@ -13,6 +13,8 @@ func _process(delta: float) -> void:
 
 
 func collect() -> void:
+	var alias = Elemental.State.keys()[element].to_lower().capitalize()
+
 	SFX.play_sfx(alias + "Orb")
 
 	match alias:

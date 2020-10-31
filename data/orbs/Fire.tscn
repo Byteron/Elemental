@@ -6,7 +6,7 @@
 [ext_resource path="res://graphics/particles/smoke.tscn" type="PackedScene" id=4]
 
 [node name="Fire" instance=ExtResource( 1 )]
-alias = "Fire"
+element = 2
 
 [node name="Spatial" parent="." index="1" instance=ExtResource( 3 )]
 
