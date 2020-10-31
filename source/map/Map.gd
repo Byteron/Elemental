@@ -25,7 +25,8 @@ var seeds_planted := 0
 
 var optimal_steps := 0
 
-onready var terrains := $Terrains
+onready var terrains := $Terrains as Node
+onready var creatures := $Creatures as Node
 
 
 static func instance() -> Map:
@@ -57,12 +58,16 @@ func initialize_from_map_data(elemental: Elemental, map_data: MapData) -> void:
 			add_seeds(cell)
 
 		if data.has("Orb"):
-			var type : String = data["Orb"]
-			add_orb(cell, type)
+			var alias : String = data["Orb"]
+			add_orb(cell, alias)
 
 		if data.has("Sigil"):
-			var type : String = data["Sigil"]
-			add_sigil(cell, type)
+			var alias : String = data["Sigil"]
+			add_sigil(cell, alias)
+
+		if data.has("Creature"):
+			var alias : String = data["Creature"]
+			add_creature(cell, alias)
 
 		if data.has("Obstacle"):
 			var obstacle = data["Obstacle"]
@@ -107,18 +112,36 @@ func get_neighbors(loc: Location) -> Array:
 	return neighbors
 
 
+func change_terrain(cell: Vector3, alias: String, elevation := 0) -> void:
+	var loc : Location = locations[cell]
+	loc.change_terrain(alias)
+
+
+func drop_seeds() -> void:
+	if not elemental.can_move() or not elemental.seeds or locations[elemental.cell].seeds:
+		return
+
+	elemental.seeds -= 1
+	add_seeds(elemental.cell)
+
+
 func place_elemental(elemental: Elemental, cell: Vector3) -> void:
 	if not locations.has(cell):
 		print_debug("invalid start location: ", cell)
 		return
 
+	var loc : Location = locations[cell]
+
 	elemental.connect("move_finished", self, "_on_elemental_move_finished")
+
 	elemental.cell = cell
 	elemental.last_cell = cell
-	elemental.transform.origin = cell * GRID_SIZE
+	elemental.transform.origin = loc.position
 	elemental.visible = true
+
 	self.elemental = elemental
-	locations[cell].elemental = elemental
+
+	loc.elemental = elemental
 
 
 func move_elemental(direction: Vector3) -> void:
@@ -145,14 +168,6 @@ func move_elemental(direction: Vector3) -> void:
 	elemental.move_to(next_loc.position)
 
 
-func drop_seeds() -> void:
-	if not elemental.can_move() or not elemental.seeds or locations[elemental.cell].seeds:
-		return
-
-	elemental.seeds -= 1
-	add_seeds(elemental.cell)
-
-
 func remove_elemental() -> void:
 	if not elemental:
 		return
@@ -162,9 +177,31 @@ func remove_elemental() -> void:
 	self.elemental = null
 
 
-func change_terrain(cell: Vector3, alias: String, elevation := 0) -> void:
+func add_creature(cell: Vector3, alias: String) -> void:
 	var loc : Location = locations[cell]
-	loc.change_terrain(alias)
+
+	if loc.creature:
+		return
+
+	if not loc.terrain:
+		return
+
+	var creature = Global.creatures[alias].instance()
+	creatures.add_child(creature)
+
+	creatures.connect("move_finished", self, "_on_creature_move_finished")
+
+	creature.transform.origin = loc.position
+
+	loc.creature = creature
+
+
+func remove_creature(cell: Vector3) -> void:
+	var loc : Location = locations[cell]
+
+	if loc.creature:
+		loc.creature.queue_free()
+		loc.creature = null
 
 
 func add_orb(cell: Vector3, alias: String) -> void:
@@ -176,10 +213,7 @@ func add_orb(cell: Vector3, alias: String) -> void:
 	if not loc.terrain:
 		return
 
-	var orb : Orb = Global.orbs[alias].instance()
-	loc.terrain.add_child(orb)
-
-	loc.orb = orb
+	loc.orb = Global.orbs[alias].instance()
 
 
 func remove_orb(cell: Vector3) -> void:
@@ -196,10 +230,7 @@ func add_sigil(cell: Vector3, alias: String) -> void:
 	if not loc.terrain:
 		return
 
-	var sigil : Sigil = Global.sigils[alias].instance()
-	loc.terrain.add_child(sigil)
-
-	loc.sigil = sigil
+	loc.sigil = Global.sigils[alias].instance()
 
 
 func remove_sigil(cell: Vector3) -> void:
@@ -216,10 +247,7 @@ func add_seeds(cell: Vector3) -> void:
 	if not loc.terrain:
 		return
 
-	var seeds := Seeds.instance()
-	loc.terrain.add_child(seeds)
-
-	loc.seeds = seeds
+	loc.seeds = Seeds.instance()
 
 
 func remove_seeds(cell: Vector3) -> void:
@@ -236,10 +264,7 @@ func add_obstacle(cell: Vector3, alias: String) -> void:
 	if not loc.terrain:
 		return
 
-	var obstacle : Obstacle = Global.obstacles[alias].instance()
-	loc.terrain.add_child(obstacle)
-
-	loc.obstacle = obstacle
+	loc.obstacle = Global.obstacles[alias].instance()
 
 
 func remove_obstacle(cell: Vector3) -> void:
@@ -267,6 +292,9 @@ func get_map_data() -> MapData:
 		if loc.sigil:
 			map_data.locations[loc.cell]["Sigil"] = Elemental.State.keys()[loc.sigil.element].to_lower().capitalize()
 
+		if loc.creature:
+			map_data.locations[loc.cell]["Creature"] = loc.creature.alias
+
 		if loc.obstacle:
 			map_data.locations[loc.cell]["Obstacle"] = loc.obstacle.alias
 
@@ -289,17 +317,18 @@ func _connect_all_terrains() -> void:
 			loc.receive_from(n_loc.terrain)
 
 
-func connect_elemental_with(loc: Location) -> void:
-	loc.receive_from(elemental)
-	for n_loc in get_neighbors(loc):
-		n_loc.receive_from(elemental)
-
-
-func disconnect_elemental_from(loc: Location) -> void:
-	loc.disconnect_from(elemental)
+func connect_entity_with(entity: Entity, loc: Location) -> void:
+	loc.receive_from(entity)
 
 	for n_loc in get_neighbors(loc):
-		n_loc.disconnect_from(elemental)
+		n_loc.receive_from(entity)
+
+
+func disconnect_entity_from(entity: Entity, loc: Location) -> void:
+	loc.disconnect_from(entity)
+
+	for n_loc in get_neighbors(loc):
+		n_loc.disconnect_from(entity)
 
 
 func _check_conditions() -> void:
@@ -343,6 +372,14 @@ func _remove_location(cell) -> void:
 	loc.seeds = null
 	loc.obstacle = null
 	locations.erase(cell)
+
+
+func _move_creatures() -> void:
+	for loc in locations.values():
+		if not loc.creature:
+			continue
+
+		_on_creature_move_finished(loc.creature, loc.cell, loc.cell)
 
 
 func _check_brittle_terrain(loc: Location) -> void:
@@ -402,20 +439,30 @@ func _on_terrain_changed(loc: Location) -> void:
 		loc.broadcast_to(n_loc.terrain)
 
 
-func _on_elemental_move_finished(last_cell: Vector3, new_cell: Vector3) -> void:
+func _on_creature_move_finished(creature: Character, last_cell: Vector3, new_cell: Vector3) -> void:
 	var last_loc: Location = locations[last_cell]
 	var loc : Location = locations[new_cell]
 
-	disconnect_elemental_from(last_loc)
+	disconnect_entity_from(creature, last_loc)
+	connect_entity_with(creature, loc)
+
+
+func _on_elemental_move_finished(elemental: Character, last_cell: Vector3, new_cell: Vector3) -> void:
+	var last_loc: Location = locations[last_cell]
+	var loc : Location = locations[new_cell]
+
+	disconnect_entity_from(elemental, last_loc)
 
 	_check_collecting_orb(loc)
 	_check_sigil(loc)
 
-	connect_elemental_with(loc)
+	connect_entity_with(elemental, loc)
 
 	_check_brittle_terrain(last_loc)
 	_check_collecting_seeds(loc)
 	_check_planting_seeds(loc)
+
+	_move_creatures()
 
 	tick()
 

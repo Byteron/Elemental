@@ -17,7 +17,7 @@ __meta__ = {
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 214.0
-margin_bottom = 207.0
+margin_bottom = 231.0
 
 [node name="Create" type="HBoxContainer" parent="Panel/VBoxContainer"]
 margin_right = 207.0
@@ -157,10 +157,31 @@ margin_right = 207.0
 margin_bottom = 20.0
 size_flags_horizontal = 3
 
-[node name="Obstacles" type="HBoxContainer" parent="Panel/VBoxContainer"]
+[node name="Creatures" type="HBoxContainer" parent="Panel/VBoxContainer"]
 margin_top = 180.0
 margin_right = 207.0
 margin_bottom = 200.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/Creatures"]
+margin_top = 3.0
+margin_right = 101.0
+margin_bottom = 17.0
+size_flags_horizontal = 3
+text = "Type"
+
+[node name="CreatureOptions" type="OptionButton" parent="Panel/VBoxContainer/Creatures"]
+margin_left = 105.0
+margin_right = 207.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+
+[node name="Obstacles" type="HBoxContainer" parent="Panel/VBoxContainer"]
+margin_top = 204.0
+margin_right = 207.0
+margin_bottom = 224.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -215,6 +236,7 @@ __meta__ = {
 [connection signal="item_selected" from="Panel/VBoxContainer/Terrains/TerrainOptions" to="." method="_on_TerrainOptions_item_selected"]
 [connection signal="item_selected" from="Panel/VBoxContainer/Orbs/OrbOptions" to="." method="_on_OrbOptions_item_selected"]
 [connection signal="item_selected" from="Panel/VBoxContainer/Sigils/SigilOptions" to="." method="_on_SigilOptions_item_selected"]
+[connection signal="item_selected" from="Panel/VBoxContainer/Creatures/CreatureOptions" to="." method="_on_CreatureOptions_item_selected"]
 [connection signal="item_selected" from="Panel/VBoxContainer/Obstacles/ObstacleOptions" to="." method="_on_ObstacleOptions_item_selected"]
 [connection signal="value_changed" from="Panel/VBoxContainer/Elevations/ElevationSlider" to="." method="_on_ElevationSlider_value_changed"]
 [connection signal="pressed" from="Back" to="." method="_on_Back_pressed"]

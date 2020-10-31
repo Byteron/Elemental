@@ -8,6 +8,7 @@ var cell := Vector3()
 var position := Vector3()
 
 var elemental : Elemental = null
+var creature : Creature = null
 
 var terrain : Terrain = null setget _set_terrain
 var orb : Orb = null setget _set_orb
@@ -25,6 +26,10 @@ func change_terrain(alias: String) -> void:
 func tick() -> void:
 	if terrain:
 		terrain.tick()
+	if creature:
+		creature.tick()
+	if obstacle:
+		obstacle.tick()
 
 
 func receive_from(entity: Entity) -> void:
@@ -34,6 +39,8 @@ func receive_from(entity: Entity) -> void:
 		obstacle.receive_from(entity)
 	if seeds:
 		seeds.receive_from(entity)
+	if creature:
+		creature.receive_from(entity)
 
 
 func broadcast_to(entity: Entity) -> void:
@@ -43,6 +50,8 @@ func broadcast_to(entity: Entity) -> void:
 		obstacle.broadcast_to(entity)
 	if seeds:
 		seeds.broadcast_to(entity)
+	if creature:
+		creature.broadcast_to(entity)
 
 
 func disconnect_from(entity: Entity) -> void:
@@ -52,10 +61,12 @@ func disconnect_from(entity: Entity) -> void:
 		obstacle.disconnect_from(entity)
 	if seeds:
 		seeds.disconnect_from(entity)
+	if creature:
+		creature.disconnect_from(entity)
 
 
 func is_blocked(state: int) -> bool:
-	if obstacle or (terrain and terrain.is_blocked(state)):
+	if obstacle or creature or (terrain and terrain.is_blocked(state)):
 		return true
 	return false
 
@@ -84,7 +95,7 @@ func _set_orb(value: Orb) -> void:
 	orb = value
 
 	if orb:
-		add_child(orb)
+		terrain.add_child(orb)
 		orb.connect("collected", self, "_on_orb_collected")
 
 
@@ -95,7 +106,7 @@ func _set_sigil(value: Sigil) -> void:
 	sigil = value
 
 	if sigil:
-		add_child(sigil)
+		terrain.add_child(sigil)
 
 
 func _set_seeds(value: Seeds) -> void:
@@ -105,7 +116,7 @@ func _set_seeds(value: Seeds) -> void:
 	seeds = value
 
 	if seeds:
-		add_child(seeds)
+		terrain.add_child(seeds)
 		seeds.connect("collected", self, "_on_seeds_collected")
 
 
@@ -116,7 +127,7 @@ func _set_obstacle(value: Obstacle) -> void:
 	obstacle = value
 
 	if obstacle:
-		add_child(obstacle)
+		terrain.add_child(obstacle)
 		obstacle.connect("destroyed", self, "_on_obstacle_destroyed")
 
 

@@ -5,6 +5,7 @@ enum Mode {
 	TERRAIN,
 	ORBS,
 	SIGILS,
+	CREATURES,
 	SEEDS,
 	OBSTACLES,
 	ELEMENTAL
@@ -17,6 +18,7 @@ signal load_button_pressed(file_name)
 signal terrain_selected(terrain)
 signal orb_selected(orb)
 signal sigil_selected(sigil)
+signal creature_selected(creature)
 signal obstacle_selected(obstacle)
 signal elevation_selected(elevation)
 signal mode_selected(mode)
@@ -31,10 +33,12 @@ onready var mode_options := $Panel/VBoxContainer/Mode/ModeOptions as OptionButto
 onready var terrain_options := $Panel/VBoxContainer/Terrains/TerrainOptions as OptionButton
 onready var orb_options := $Panel/VBoxContainer/Orbs/OrbOptions as OptionButton
 onready var sigil_options := $Panel/VBoxContainer/Sigils/SigilOptions as OptionButton
+onready var creature_options := $Panel/VBoxContainer/Creatures/CreatureOptions as OptionButton
 onready var obstacle_options := $Panel/VBoxContainer/Obstacles/ObstacleOptions as OptionButton
 
 onready var orbs := $Panel/VBoxContainer/Orbs
 onready var sigils := $Panel/VBoxContainer/Sigils
+onready var creatures := $Panel/VBoxContainer/Creatures
 onready var obstacles := $Panel/VBoxContainer/Obstacles
 onready var terrains := $Panel/VBoxContainer/Terrains
 onready var elevations := $Panel/VBoxContainer/Elevations
@@ -56,6 +60,9 @@ func _ready() -> void:
 	for sigil in Global.sigils:
 		sigil_options.add_item(sigil)
 
+	for creature in Global.creatures:
+		creature_options.add_item(creature)
+
 
 func initialize() -> void:
 	width_edit.text = "7"
@@ -64,7 +71,8 @@ func initialize() -> void:
 	emit_signal("terrain_selected", terrain_options.get_item_text(0))
 	emit_signal("elevation_selected", 0)
 	emit_signal("orb_selected", orb_options.get_item_text(0))
-	emit_signal("sigil_selected", orb_options.get_item_text(0))
+	emit_signal("sigil_selected", sigil_options.get_item_text(0))
+	emit_signal("creature_selected", creature_options.get_item_text(0))
 	emit_signal("obstacle_selected", obstacle_options.get_item_text(0))
 	_on_ModeOptions_item_selected(0)
 
@@ -76,6 +84,7 @@ func _on_CreateButton_pressed() -> void:
 func _on_ModeOptions_item_selected(index: int) -> void:
 	orbs.hide()
 	sigils.hide()
+	creatures.hide()
 	obstacles.hide()
 	terrains.hide()
 	elevations.hide()
@@ -88,6 +97,8 @@ func _on_ModeOptions_item_selected(index: int) -> void:
 			orbs.show()
 		Mode.SIGILS:
 			sigils.show()
+		Mode.CREATURES:
+			creatures.show()
 		Mode.OBSTACLES:
 			obstacles.show()
 
@@ -104,6 +115,10 @@ func _on_OrbOptions_item_selected(index: int) -> void:
 
 func _on_SigilOptions_item_selected(index: int) -> void:
 	emit_signal("sigil_selected", sigil_options.get_item_text(index))
+
+
+func _on_CreatureOptions_item_selected(index: int) -> void:
+	emit_signal("creature_selected", creature_options.get_item_text(index))
 
 
 func _on_ObstacleOptions_item_selected(index: int) -> void:
@@ -131,3 +146,6 @@ func _on_Load_pressed() -> void:
 func _on_Back_pressed() -> void:
 	Global.scan()
 	Scene.change("TitleScreen")
+
+
+

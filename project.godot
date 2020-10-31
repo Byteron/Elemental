@@ -9,6 +9,16 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Entity",
+"class": "Character",
+"language": "GDScript",
+"path": "res://source/character/Character.gd"
+}, {
+"base": "Character",
+"class": "Creature",
+"language": "GDScript",
+"path": "res://source/character/creature/Creature.gd"
+}, {
 "base": "Spatial",
 "class": "Editor",
 "language": "GDScript",
@@ -19,10 +29,10 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://source/editor/EditorHUD.gd"
 }, {
-"base": "Entity",
+"base": "Character",
 "class": "Elemental",
 "language": "GDScript",
-"path": "res://source/elemental/Elemental.gd"
+"path": "res://source/character/elemental/Elemental.gd"
 }, {
 "base": "Spatial",
 "class": "Entity",
@@ -145,6 +155,8 @@ _global_script_classes=[ {
 "path": "res://source/terrain/TransitionData.gd"
 } ]
 _global_script_class_icons={
+"Character": "",
+"Creature": "",
 "Editor": "",
 "EditorHUD": "",
 "Elemental": "",

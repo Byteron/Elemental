@@ -7,6 +7,7 @@ var current_terrain := ""
 var current_elevation := 0
 var current_orb := ""
 var current_sigil := ""
+var current_creature := ""
 var current_obstacle := ""
 
 onready var map := $Map as Map
@@ -24,6 +25,8 @@ func _unhandled_input(event: InputEvent) -> void:
 			_handle_orbs_mode(event)
 		EditorHUD.Mode.SIGILS:
 			_handle_sigils_mode(event)
+		EditorHUD.Mode.CREATURES:
+			_handle_creatures_mode(event)
 		EditorHUD.Mode.SEEDS:
 			_handle_seeds_mode(event)
 		EditorHUD.Mode.OBSTACLES:
@@ -54,6 +57,13 @@ func _handle_sigils_mode(event: InputEvent) -> void:
 		map.add_sigil(current_cell, current_sigil)
 	if event.is_action_pressed("mouse_right"):
 		map.remove_sigil(current_cell)
+
+
+func _handle_creatures_mode(event: InputEvent) -> void:
+	if event.is_action_pressed("mouse_left"):
+		map.add_creature(current_cell, current_creature)
+	if event.is_action_pressed("mouse_right"):
+		map.remove_creature(current_cell)
 
 
 func _handle_obstalces_mode(event: InputEvent) -> void:
@@ -107,12 +117,18 @@ func _on_HUD_mode_selected(mode: int) -> void:
 func _on_HUD_orb_selected(orb: String) -> void:
 	current_orb = orb
 
+
 func _on_HUD_sigil_selected(sigil: String) -> void:
 	current_sigil = sigil
 
 
+func _on_HUD_creature_selected(creature: String) -> void:
+	current_creature = creature
+
+
 func _on_HUD_obstacle_selected(obstacle: String) -> void:
 	current_obstacle = obstacle
+
 
 func _on_HUD_elevation_selected(elevation: int) -> void:
 	current_elevation = elevation

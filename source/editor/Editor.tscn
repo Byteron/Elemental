@@ -4,7 +4,7 @@
 [ext_resource path="res://source/camera/OrthoCamera.tscn" type="PackedScene" id=2]
 [ext_resource path="res://source/map/Map.tscn" type="PackedScene" id=3]
 [ext_resource path="res://source/editor/EditorHUD.tscn" type="PackedScene" id=4]
-[ext_resource path="res://source/elemental/Elemental.tscn" type="PackedScene" id=5]
+[ext_resource path="res://source/character/elemental/Elemental.tscn" type="PackedScene" id=5]
 [ext_resource path="res://source/WorldEnvironment.tscn" type="PackedScene" id=6]
 
 [node name="Editor" type="Spatial"]
@@ -12,15 +12,15 @@ script = ExtResource( 1 )
 
 [node name="WorldEnvironment" parent="." instance=ExtResource( 6 )]
 
-[node name="Elemental" parent="." instance=ExtResource( 5 )]
-state = 1
-
 [node name="Map" parent="." instance=ExtResource( 3 )]
+
+[node name="Elemental" parent="." instance=ExtResource( 5 )]
 
 [node name="OrthoCamera" parent="." instance=ExtResource( 2 )]
 
 [node name="HUD" parent="." instance=ExtResource( 4 )]
 [connection signal="create_button_pressed" from="HUD" to="." method="_on_HUD_create_button_pressed"]
+[connection signal="creature_selected" from="HUD" to="." method="_on_HUD_creature_selected"]
 [connection signal="elevation_selected" from="HUD" to="." method="_on_HUD_elevation_selected"]
 [connection signal="load_button_pressed" from="HUD" to="." method="_on_HUD_load_button_pressed"]
 [connection signal="mode_selected" from="HUD" to="." method="_on_HUD_mode_selected"]

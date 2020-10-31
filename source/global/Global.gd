@@ -9,6 +9,7 @@ var levels := {}
 
 var orbs := {}
 var sigils := {}
+var creatures := {}
 var terrains := {}
 var obstacles := {}
 
@@ -18,6 +19,7 @@ func _ready() -> void:
 	_load_tiles()
 	_load_orbs()
 	_load_sigils()
+	_load_creatures()
 	_load_obstacles()
 	scan()
 
@@ -118,6 +120,18 @@ func _load_sigils() -> void:
 		sigils[file.id] = sigil
 
 	print(sigils)
+
+
+func _load_creatures() -> void:
+	creatures.clear()
+
+	var files = Loader.load_dir("res://data/creatures/", ["tscn"])
+
+	for file in files:
+		var creature = file.data
+		creatures[file.id] = creature
+
+	print(creatures)
 
 
 func _load_levels() -> void:

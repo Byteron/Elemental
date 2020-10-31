@@ -1,11 +1,11 @@
-extends Entity
+extends Character
 class_name Elemental
 
 enum State { WATER, EARTH, FIRE, WIND, ICE }
 
 const SeedsMesh := preload("res://source/objects/seeds/SeedsMesh.tscn")
 
-signal move_finished(last_cell, new_cell)
+export(State) var state := 1 setget _set_state
 
 export var fire_mesh : Mesh = null
 export var fire_mat : Material = null
@@ -22,17 +22,10 @@ export var earth_mat : Material = null
 export var wind_mesh : Mesh = null
 export var wind_mat : Material = null
 
-
-export(State) var state := 1 setget _set_state
-
 export var seeds := 0 setget _set_seeds
 
-var last_cell := Vector3()
-var cell := Vector3() setget _set_cell
+onready var mesh_instance := $Meshes/MeshInstance as MeshInstance
 
-onready var anim := $AnimationPlayer as AnimationPlayer
-onready var tween := $Tween as Tween
-onready var mesh_instance := $MeshInstance as MeshInstance
 onready var seeds_container := $Seeds as Spatial
 
 onready var wind_particles := $WindParticles/Particles
@@ -44,27 +37,13 @@ onready var smoke_particles := $SmokeParicles/Particles
 
 func _ready() -> void:
 	_set_state(state)
-	mesh_instance.rotation_degrees.y = 135
-
-
-func move_to(position: Vector3) -> void:
-	if tween.is_active():
-		return
-
-	mesh_instance.look_at(position, Vector3.UP)
-
-	tween.interpolate_property(self, "transform:origin", transform.origin, position, 0.28, Tween.TRANS_SINE, Tween.EASE_OUT)
-	tween.start()
+	meshes.rotation_degrees.y = 135
 
 
 func plop() -> void:
 	tween.interpolate_property(self, "scale", Vector3(1, 1, 1), Vector3(0.8, 1.2, 0.8), 0.15, Tween.TRANS_SINE, Tween.EASE_IN)
 	tween.interpolate_property(self, "scale", Vector3(0.8, 1.2, 0.8), Vector3(1, 1, 1), 0.2, Tween.TRANS_BACK, Tween.EASE_OUT, 0.15)
 	tween.start()
-
-
-func can_move() -> bool:
-	return not tween.is_active()
 
 
 func shake() -> void:
@@ -75,7 +54,7 @@ func shake() -> void:
 
 
 func finished() -> void:
-	mesh_instance.rotation_degrees.y = 135
+	meshes.rotation_degrees.y = 135
 	anim.play("finished")
 
 
@@ -96,11 +75,6 @@ func _add_seeds() -> void:
 		mesh.translate_object_local(Vector3.FORWARD * 1.25)
 		spatial.rotation_degrees.y = (360 / seeds) * i
 		print(spatial.rotation_degrees)
-
-
-func _set_cell(value: Vector3) -> void:
-	last_cell = cell
-	cell = value
 
 
 func _set_seeds(value: int) -> void:
@@ -137,9 +111,3 @@ func _set_state(value: int) -> void:
 			wind_particles.emitting = true
 		State.WATER:
 			water_particles.emitting = true
-
-
-func _on_Tween_tween_completed(object: Object, key: NodePath) -> void:
-
-	if key == ":transform:origin":
-		emit_signal("move_finished", last_cell, cell)
