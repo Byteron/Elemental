@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://addons/audio_booth/source/sfx/SoundBooth.gd" type="Script" id=1]
+[ext_resource path="res://source/global/SFX.gd" type="Script" id=1]
 [ext_resource path="res://addons/audio_booth/source/sfx/Sound.gd" type="Script" id=2]
 [ext_resource path="res://audio/sounds/IceOrb.wav" type="AudioStream" id=3]
 [ext_resource path="res://audio/sounds/Burn.wav" type="AudioStream" id=4]

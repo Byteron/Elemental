@@ -13,41 +13,8 @@ func _process(delta: float) -> void:
 
 
 func collect() -> void:
-	var alias = Elemental.State.keys()[element].to_lower().capitalize()
-
-	SFX.play_sfx(alias + "Orb")
-
-	match alias:
-		"Earth":
-			Music.play_track(1, .5)
-			Music.stop_track(2, .5)
-			Music.stop_track(3, .5)
-			Music.stop_track(3, .5)
-			Music.stop_track(4, .5)
-		"Ice":
-			Music.play_track(2, .5)
-			Music.stop_track(1, .5)
-			Music.stop_track(3, .5)
-			Music.stop_track(4, .5)
-			Music.stop_track(5, .5)
-		"Fire":
-			Music.play_track(3, .5)
-			Music.stop_track(1, .5)
-			Music.stop_track(2, .5)
-			Music.stop_track(4, .5)
-			Music.stop_track(5, .5)
-		"Water":
-			Music.play_track(4, .5)
-			Music.stop_track(1, .5)
-			Music.stop_track(2, .5)
-			Music.stop_track(3, .5)
-			Music.stop_track(5, .5)
-		"Wind":
-			Music.play_track(5, .5)
-			Music.stop_track(1, .5)
-			Music.stop_track(2, .5)
-			Music.stop_track(3, .5)
-			Music.stop_track(4, .5)
+	SFX.play_element_sfx(element)
+	Music.play_element_music(element)
 
 	emit_signal("collected")
 	queue_free()
