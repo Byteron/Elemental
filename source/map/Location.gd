@@ -11,6 +11,7 @@ var elemental : Elemental = null
 
 var terrain : Terrain = null setget _set_terrain
 var orb : Orb = null setget _set_orb
+var sigil : Sigil = null setget _set_sigil
 var seeds : Seeds = null setget _set_seeds
 var obstacle : Obstacle = null setget _set_obstacle
 
@@ -87,6 +88,16 @@ func _set_orb(value: Orb) -> void:
 		orb.connect("collected", self, "_on_orb_collected")
 
 
+func _set_sigil(value: Sigil) -> void:
+	if sigil:
+		sigil.queue_free()
+
+	sigil = value
+
+	if sigil:
+		add_child(sigil)
+
+
 func _set_seeds(value: Seeds) -> void:
 	if seeds:
 		seeds.queue_free()
@@ -129,5 +140,3 @@ func _on_seeds_collected() -> void:
 
 func _on_obstacle_destroyed() -> void:
 	obstacle = null
-
-

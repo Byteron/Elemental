@@ -13,6 +13,7 @@ script = ExtResource( 1 )
 [node name="WorldEnvironment" parent="." instance=ExtResource( 6 )]
 
 [node name="Elemental" parent="." instance=ExtResource( 5 )]
+state = 1
 
 [node name="Map" parent="." instance=ExtResource( 3 )]
 
@@ -26,4 +27,5 @@ script = ExtResource( 1 )
 [connection signal="obstacle_selected" from="HUD" to="." method="_on_HUD_obstacle_selected"]
 [connection signal="orb_selected" from="HUD" to="." method="_on_HUD_orb_selected"]
 [connection signal="save_button_pressed" from="HUD" to="." method="_on_HUD_save_button_pressed"]
+[connection signal="sigil_selected" from="HUD" to="." method="_on_HUD_sigil_selected"]
 [connection signal="terrain_selected" from="HUD" to="." method="_on_HUD_terrain_selected"]

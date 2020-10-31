@@ -17,7 +17,7 @@ __meta__ = {
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 214.0
-margin_bottom = 183.0
+margin_bottom = 207.0
 
 [node name="Create" type="HBoxContainer" parent="Panel/VBoxContainer"]
 margin_right = 207.0
@@ -33,11 +33,13 @@ margin_bottom = 52.0
 [node name="Width" parent="Panel/VBoxContainer/Create/VBoxContainer" instance=ExtResource( 1 )]
 margin_bottom = 24.0
 alias = "Width"
+text = ""
 
 [node name="Height" parent="Panel/VBoxContainer/Create/VBoxContainer" instance=ExtResource( 1 )]
 margin_top = 28.0
 margin_bottom = 52.0
 alias = "Height"
+text = ""
 
 [node name="CreateButton" type="Button" parent="Panel/VBoxContainer/Create"]
 margin_left = 154.0
@@ -88,7 +90,6 @@ margin_right = 207.0
 margin_bottom = 20.0
 size_flags_horizontal = 3
 text = "Terrain"
-items = [ "Terrain", null, false, 0, null, "Orbs", null, false, 1, null, "Seeds", null, false, 2, null, "Obstacles", null, false, 3, null, "Elemental", null, false, 4, null ]
 selected = 0
 
 [node name="Terrains" type="HBoxContainer" parent="Panel/VBoxContainer"]
@@ -135,10 +136,31 @@ margin_bottom = 20.0
 size_flags_horizontal = 3
 text = "Stone"
 
-[node name="Obstacles" type="HBoxContainer" parent="Panel/VBoxContainer"]
+[node name="Sigils" type="HBoxContainer" parent="Panel/VBoxContainer"]
 margin_top = 156.0
 margin_right = 207.0
 margin_bottom = 176.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/Sigils"]
+margin_top = 3.0
+margin_right = 101.0
+margin_bottom = 17.0
+size_flags_horizontal = 3
+text = "Type"
+
+[node name="SigilOptions" type="OptionButton" parent="Panel/VBoxContainer/Sigils"]
+margin_left = 105.0
+margin_right = 207.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+
+[node name="Obstacles" type="HBoxContainer" parent="Panel/VBoxContainer"]
+margin_top = 180.0
+margin_right = 207.0
+margin_bottom = 200.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -192,6 +214,7 @@ __meta__ = {
 [connection signal="item_selected" from="Panel/VBoxContainer/Mode/ModeOptions" to="." method="_on_ModeOptions_item_selected"]
 [connection signal="item_selected" from="Panel/VBoxContainer/Terrains/TerrainOptions" to="." method="_on_TerrainOptions_item_selected"]
 [connection signal="item_selected" from="Panel/VBoxContainer/Orbs/OrbOptions" to="." method="_on_OrbOptions_item_selected"]
+[connection signal="item_selected" from="Panel/VBoxContainer/Sigils/SigilOptions" to="." method="_on_SigilOptions_item_selected"]
 [connection signal="item_selected" from="Panel/VBoxContainer/Obstacles/ObstacleOptions" to="." method="_on_ObstacleOptions_item_selected"]
 [connection signal="value_changed" from="Panel/VBoxContainer/Elevations/ElevationSlider" to="." method="_on_ElevationSlider_value_changed"]
 [connection signal="pressed" from="Back" to="." method="_on_Back_pressed"]

@@ -53,8 +53,12 @@ func initialize_from_map_data(elemental: Elemental, map_data: MapData) -> void:
 			add_seeds(cell)
 
 		if data.has("Orb"):
-			var type = data["Orb"]
+			var type : String = data["Orb"]
 			add_orb(cell, type)
+
+		if data.has("Sigil"):
+			var type : String = data["Sigil"]
+			add_sigil(cell, type)
 
 		if data.has("Obstacle"):
 			var obstacle = data["Obstacle"]
@@ -69,6 +73,8 @@ func randomize_terrain() -> void:
 
 		if randf() < 0.1:
 			add_orb(loc.cell, Global.orbs.keys()[randi() % Global.orbs.size()])
+		elif randf() < 0.05:
+			add_sigil(loc.cell, Global.sigils.keys()[randi() % Global.sigils.size()])
 		elif randf() < 0.04:
 			add_seeds(loc.cell)
 
@@ -175,6 +181,26 @@ func remove_orb(cell: Vector3) -> void:
 	loc.orb = null
 
 
+func add_sigil(cell: Vector3, alias: String) -> void:
+	var loc : Location = locations[cell]
+
+	if loc.sigil:
+		return
+
+	if not loc.terrain:
+		return
+
+	var sigil : Sigil = Global.sigils[alias].instance()
+	loc.terrain.add_child(sigil)
+
+	loc.sigil = sigil
+
+
+func remove_sigil(cell: Vector3) -> void:
+	var loc : Location = locations[cell]
+	loc.sigil = null
+
+
 func add_seeds(cell: Vector3) -> void:
 	var loc : Location = locations[cell]
 
@@ -229,7 +255,10 @@ func get_map_data() -> MapData:
 		map_data.locations[loc.cell]["Terrain"] = loc.terrain.alias
 
 		if loc.orb:
-			map_data.locations[loc.cell]["Orb"] = loc.orb.alias
+			map_data.locations[loc.cell]["Orb"] = Elemental.State.keys()[loc.orb.element].to_lower().capitalize()
+
+		if loc.sigil:
+			map_data.locations[loc.cell]["Sigil"] = Elemental.State.keys()[loc.sigil.element].to_lower().capitalize()
 
 		if loc.obstacle:
 			map_data.locations[loc.cell]["Obstacle"] = loc.obstacle.alias
@@ -324,6 +353,20 @@ func _check_collecting_orb(loc: Location) -> void:
 		loc.orb.collect()
 
 
+func _check_sigil(loc: Location) -> void:
+
+	if loc.sigil and elemental.state == loc.sigil.element:
+		return
+
+	if loc.sigil:
+		if [Elemental.State.ICE, Elemental.State.FIRE].has(loc.sigil.element) and elemental.seeds:
+			elemental.seeds = 0
+
+		elemental.state = loc.sigil.element
+		elemental.plop()
+		loc.sigil.activate()
+
+
 func _check_collecting_seeds(loc: Location) -> void:
 	if loc.seeds:
 		elemental.seeds += 1
@@ -359,6 +402,7 @@ func _on_elemental_move_finished(last_cell: Vector3, new_cell: Vector3) -> void:
 	disconnect_elemental_from(last_loc)
 
 	_check_collecting_orb(loc)
+	_check_sigil(loc)
 
 	connect_elemental_with(loc)
 

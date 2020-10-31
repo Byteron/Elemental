@@ -74,11 +74,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://source/objects/orb/Orb.gd"
 }, {
-"base": "Resource",
-"class": "OrbMaterialData",
-"language": "GDScript",
-"path": "res://source/objects/orb/OrbMaterialData.gd"
-}, {
 "base": "Spatial",
 "class": "OrthoCamera",
 "language": "GDScript",
@@ -93,6 +88,11 @@ _global_script_classes=[ {
 "class": "Seeds",
 "language": "GDScript",
 "path": "res://source/objects/seeds/Seeds.gd"
+}, {
+"base": "Spatial",
+"class": "Sigil",
+"language": "GDScript",
+"path": "res://source/objects/sigils/Sigil.gd"
 }, {
 "base": "Node",
 "class": "Song",
@@ -153,10 +153,10 @@ _global_script_class_icons={
 "MusicBooth": "",
 "Obstacle": "",
 "Orb": "",
-"OrbMaterialData": "",
 "OrthoCamera": "",
 "SceneLoader": "",
 "Seeds": "",
+"Sigil": "",
 "Song": "",
 "Sound": "",
 "SoundBooth": "",
