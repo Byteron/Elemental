@@ -22,7 +22,7 @@
 resource_name = "finished"
 step = 0.05
 tracks/0/type = "value"
-tracks/0/path = NodePath("MeshInstance:scale")
+tracks/0/path = NodePath("Meshes:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -34,7 +34,7 @@ tracks/0/keys = {
 "values": [ Vector3( 0.7, 0.7, 0.7 ), Vector3( 0.5, 1, 0.5 ), Vector3( 0.7, 0.7, 0.7 ), Vector3( 0.5, 1, 0.5 ), Vector3( 0.7, 0.7, 0.7 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("MeshInstance:translation")
+tracks/1/path = NodePath("Meshes:translation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -105,8 +105,11 @@ autoplay = "idle"
 anims/finished = SubResource( 1 )
 anims/idle = SubResource( 2 )
 
-[node name="MeshInstance" type="MeshInstance" parent="Meshes" index="0"]
+[node name="Meshes" parent="." index="2"]
 transform = Transform( 0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0.5, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Meshes" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
 material_override = ExtResource( 14 )
 mesh = ExtResource( 9 )
 material/0 = null
