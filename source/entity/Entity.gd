@@ -25,36 +25,33 @@ func send(element: String, boosted := false) -> void:
 
 
 func receive_from(entity: Entity) -> void:
-	for element in entity.broadcast:
-		entity.connect(element, self, "_" + element)
+	entity.connect("nature", self, "_nature")
+	entity.connect("earth", self, "_earth")
+	entity.connect("fire", self, "_fire")
+	entity.connect("ice", self, "_ice")
+	entity.connect("wind", self, "_wind")
+	entity.connect("water", self, "_water")
+	entity.connect("thunder", self, "_thunder")
 
 
 func broadcast_to(entity: Entity) -> void:
-	for element in broadcast:
-		connect(element, entity, "_" + element)
+	connect("nature", entity, "_nature")
+	connect("earth", entity, "_earth")
+	connect("fire", entity, "_fire")
+	connect("ice", entity, "_ice")
+	connect("wind", entity, "_wind")
+	connect("water", entity, "_water")
+	connect("thunder", entity, "_thunder")
 
 
 func disconnect_from(entity: Entity) -> void:
-	if entity.is_connected("nature", self, "_nature"):
-		entity.disconnect("nature", self, "_nature")
-
-	if entity.is_connected("earth", self, "_earth"):
-		entity.disconnect("earth", self, "_earth")
-
-	if entity.is_connected("fire", self, "_fire"):
-		entity.disconnect("fire", self, "_fire")
-
-	if entity.is_connected("ice", self, "_ice"):
-		entity.disconnect("ice", self, "_ice")
-
-	if entity.is_connected("wind", self, "_wind"):
-		entity.disconnect("wind", self, "_wind")
-
-	if entity.is_connected("water", self, "_water"):
-		entity.disconnect("water", self, "_water")
-
-	if entity.is_connected("thunder", self, "_thunder"):
-		entity.disconnect("thunder", self, "_thunder")
+	entity.disconnect("nature", self, "_nature")
+	entity.disconnect("earth", self, "_earth")
+	entity.disconnect("fire", self, "_fire")
+	entity.disconnect("ice", self, "_ice")
+	entity.disconnect("wind", self, "_wind")
+	entity.disconnect("water", self, "_water")
+	entity.disconnect("thunder", self, "_thunder")
 
 
 func tick() -> void:

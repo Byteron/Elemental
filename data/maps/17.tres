@@ -4,36 +4,88 @@
 
 [resource]
 script = ExtResource( 1 )
-width = 3
-height = 3
+width = 5
+height = 5
+optimal_steps = 0
 locations = {
 Vector3( 0, 0, 0 ): {
+"Orb": "Fire",
 "Terrain": "Stone"
 },
 Vector3( 0, 0, 1 ): {
 "Elemental": true,
+"Sigil": "Earth",
 "Terrain": "Stone"
 },
 Vector3( 0, 0, 2 ): {
-"Terrain": "None"
-},
-Vector3( 1, 0, 0 ): {
-"Terrain": "Water"
-},
-Vector3( 1, 0, 1 ): {
-"Terrain": "Grass"
-},
-Vector3( 1, 0, 2 ): {
-"Terrain": "Storm"
-},
-Vector3( 2, 0, 0 ): {
-"Terrain": "Ice"
-},
-Vector3( 2, 0, 1 ): {
-"Terrain": "Lava"
-},
-Vector3( 2, 0, 2 ): {
 "Obstacle": "Thorns",
 "Terrain": "Stone"
+},
+Vector3( 0, 0, 3 ): {
+"Terrain": "Metal"
+},
+Vector3( 0, 0, 4 ): {
+"Terrain": "Metal"
+},
+Vector3( 1, 0, 0 ): {
+"Terrain": "Metal"
+},
+Vector3( 1, 0, 1 ): {
+"Terrain": "None"
+},
+Vector3( 1, 0, 2 ): {
+"Seeds": true,
+"Terrain": "Stone"
+},
+Vector3( 1, 0, 3 ): {
+"Terrain": "None"
+},
+Vector3( 1, 0, 4 ): {
+"Terrain": "Metal"
+},
+Vector3( 2, 0, 0 ): {
+"Terrain": "Metal"
+},
+Vector3( 2, 0, 1 ): {
+"Terrain": "None"
+},
+Vector3( 2, 0, 2 ): {
+"Terrain": "Earth"
+},
+Vector3( 2, 0, 3 ): {
+"Terrain": "None"
+},
+Vector3( 2, 0, 4 ): {
+"Terrain": "Metal"
+},
+Vector3( 3, 0, 0 ): {
+"Terrain": "Metal"
+},
+Vector3( 3, 0, 1 ): {
+"Terrain": "None"
+},
+Vector3( 3, 0, 2 ): {
+"Terrain": "None"
+},
+Vector3( 3, 0, 3 ): {
+"Terrain": "None"
+},
+Vector3( 3, 0, 4 ): {
+"Terrain": "Metal"
+},
+Vector3( 4, 0, 0 ): {
+"Terrain": "Metal"
+},
+Vector3( 4, 0, 1 ): {
+"Terrain": "Metal"
+},
+Vector3( 4, 0, 2 ): {
+"Terrain": "Metal"
+},
+Vector3( 4, 0, 3 ): {
+"Terrain": "Metal"
+},
+Vector3( 4, 0, 4 ): {
+"Terrain": "Metal"
 }
 }

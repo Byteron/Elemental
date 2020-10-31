@@ -122,7 +122,7 @@ func _on_CreatureOptions_item_selected(index: int) -> void:
 
 
 func _on_ObstacleOptions_item_selected(index: int) -> void:
-	emit_signal("obstacle_selected", orb_options.get_item_text(index))
+	emit_signal("obstacle_selected", obstacle_options.get_item_text(index))
 
 
 func _on_ElevationSlider_value_changed(value: float) -> void:
