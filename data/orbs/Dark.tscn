@@ -1,10 +1,14 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://source/objects/orb/Orb.tscn" type="PackedScene" id=1]
 [ext_resource path="res://graphics/materials/orbs/orb_darkl.tres" type="Material" id=2]
+[ext_resource path="res://graphics/particles/DarkParticles.tscn" type="PackedScene" id=3]
 
 [node name="Dark" instance=ExtResource( 1 )]
 element = 7
 
 [node name="MeshInstance" parent="." index="1"]
 material_override = ExtResource( 2 )
+
+[node name="DarkParticles" parent="." index="2" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0627018, 0.837128, 0 )
