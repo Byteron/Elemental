@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://graphics/models/raw import/Tile_Stone_1.obj" type="ArrayMesh" id=1]
-[ext_resource path="res://graphics/particles/BrittleStoneParticles.gd" type="Script" id=2]
+[ext_resource path="res://graphics/particles/OneShotParticles.gd" type="Script" id=2]
 [ext_resource path="res://graphics/materials/terrain/terrain_stone.tres" type="Material" id=3]
 
 [sub_resource type="Curve" id=1]
@@ -20,10 +20,7 @@ damping = 0.5
 scale = 0.3
 scale_curve = SubResource( 2 )
 
-[node name="BrittleStoneParticles" type="Spatial"]
-script = ExtResource( 2 )
-
-[node name="Particles" type="Particles" parent="."]
+[node name="BrittleStoneParticles" type="Particles"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
 material_override = ExtResource( 3 )
 emitting = false
@@ -33,3 +30,4 @@ explosiveness = 1.0
 local_coords = false
 process_material = SubResource( 3 )
 draw_pass_1 = ExtResource( 1 )
+script = ExtResource( 2 )

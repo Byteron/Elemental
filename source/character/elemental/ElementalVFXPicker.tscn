@@ -1,0 +1,50 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://source/character/elemental/ElementalVFXPicker.gd" type="Script" id=1]
+[ext_resource path="res://graphics/particles/IcePartcilesElemental.tscn" type="PackedScene" id=2]
+[ext_resource path="res://graphics/particles/SmokeParticlesElemental.tscn" type="PackedScene" id=3]
+[ext_resource path="res://graphics/particles/WaterParticlesElemental.tscn" type="PackedScene" id=4]
+[ext_resource path="res://graphics/particles/FireParticlesElemental.tscn" type="PackedScene" id=5]
+[ext_resource path="res://graphics/particles/WindParticlesElemental.tscn" type="PackedScene" id=6]
+[ext_resource path="res://graphics/materials/terrain/terrain_light.tres" type="Material" id=7]
+[ext_resource path="res://graphics/materials/terrain/terrain_dark.tres" type="Material" id=8]
+[ext_resource path="res://graphics/models/raw import/Elemental_earth.obj" type="ArrayMesh" id=9]
+[ext_resource path="res://graphics/models/raw import/Elemental_fire.obj" type="ArrayMesh" id=10]
+[ext_resource path="res://graphics/models/raw import/Elemental_ice.obj" type="ArrayMesh" id=11]
+[ext_resource path="res://graphics/models/raw import/Elemental_water.obj" type="ArrayMesh" id=12]
+[ext_resource path="res://graphics/models/raw import/Elemental_wind.obj" type="ArrayMesh" id=13]
+[ext_resource path="res://graphics/materials/elemental/elemental_earth.tres" type="Material" id=14]
+[ext_resource path="res://graphics/materials/elemental/elemental_fire.tres" type="Material" id=15]
+[ext_resource path="res://graphics/materials/elemental/elemental_ice.tres" type="Material" id=16]
+[ext_resource path="res://graphics/materials/elemental/elemental_water.tres" type="Material" id=17]
+[ext_resource path="res://graphics/materials/elemental/elemental_wind.tres" type="Material" id=18]
+[ext_resource path="res://graphics/materials/terrain/terrain_storm.tres" type="Material" id=19]
+
+[node name="ElementalVFXPicker" type="Spatial"]
+script = ExtResource( 1 )
+fire_mesh = ExtResource( 10 )
+fire_mat = ExtResource( 15 )
+water_mesh = ExtResource( 12 )
+water_mat = ExtResource( 17 )
+ice_mesh = ExtResource( 11 )
+ice_mat = ExtResource( 16 )
+earth_mesh = ExtResource( 9 )
+earth_mat = ExtResource( 14 )
+wind_mesh = ExtResource( 13 )
+wind_mat = ExtResource( 18 )
+thunder_mesh = ExtResource( 11 )
+thunder_mat = ExtResource( 19 )
+light_mesh = ExtResource( 12 )
+light_mat = ExtResource( 7 )
+dark_mesh = ExtResource( 12 )
+dark_mat = ExtResource( 8 )
+
+[node name="FireParticles" parent="." instance=ExtResource( 5 )]
+
+[node name="SmokeParicles" parent="." instance=ExtResource( 3 )]
+
+[node name="IceParticles" parent="." instance=ExtResource( 2 )]
+
+[node name="WaterParticles" parent="." instance=ExtResource( 4 )]
+
+[node name="WindParticles" parent="." instance=ExtResource( 6 )]

@@ -2,12 +2,13 @@
 
 [ext_resource path="res://source/objects/orb/Orb.tscn" type="PackedScene" id=1]
 [ext_resource path="res://graphics/materials/orbs/orb_ice.tres" type="Material" id=2]
-[ext_resource path="res://graphics/particles/ice.tscn" type="PackedScene" id=3]
+[ext_resource path="res://graphics/particles/IceParticles.tscn" type="PackedScene" id=3]
 
 [node name="Ice" instance=ExtResource( 1 )]
 element = 4
 
-[node name="Spatial" parent="." index="1" instance=ExtResource( 3 )]
-
-[node name="MeshInstance" parent="." index="2"]
+[node name="MeshInstance" parent="." index="1"]
 material_override = ExtResource( 2 )
+
+[node name="IceParticles" parent="." index="2" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0627018, 0.719315, 0 )

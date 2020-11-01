@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://graphics/particles/circle.png" type="Texture" id=1]
-[ext_resource path="res://graphics/particles/SmokeBurn.gd" type="Script" id=2]
+[ext_resource path="res://graphics/images/circle.png" type="Texture" id=1]
+[ext_resource path="res://graphics/particles/OneShotParticles.gd" type="Script" id=2]
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0, 0.644444, 0.807407, 0.948148 )
@@ -16,7 +16,7 @@ _data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.278481, 0 ), 0.0, 0.0, 0, 
 [sub_resource type="CurveTexture" id=4]
 curve = SubResource( 3 )
 
-[sub_resource type="ParticlesMaterial" id=8]
+[sub_resource type="ParticlesMaterial" id=5]
 trail_divisor = 6
 emission_shape = 1
 emission_sphere_radius = 0.6
@@ -50,11 +50,7 @@ albedo_texture = ExtResource( 1 )
 material = SubResource( 6 )
 size = Vector2( 0.5, 0.5 )
 
-[node name="SmokeBurn" type="Spatial"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
-script = ExtResource( 2 )
-
-[node name="Particles" type="Particles" parent="."]
+[node name="SmokeParticlesOneShot" type="Particles"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0627018, 0, 0 )
 emitting = false
 amount = 200
@@ -64,5 +60,6 @@ explosiveness = 0.7
 randomness = 1.0
 local_coords = false
 draw_order = 2
-process_material = SubResource( 8 )
+process_material = SubResource( 5 )
 draw_pass_1 = SubResource( 7 )
+script = ExtResource( 2 )

@@ -8,6 +8,8 @@ signal ice(boost)
 signal wind(boost)
 signal water(boost)
 signal thunder(boost)
+signal light(boost)
+signal dark(boost)
 
 var boost := ""
 
@@ -32,6 +34,8 @@ func receive_from(entity: Entity) -> void:
 	entity.connect("wind", self, "_wind")
 	entity.connect("water", self, "_water")
 	entity.connect("thunder", self, "_thunder")
+	entity.connect("light", self, "_light")
+	entity.connect("dark", self, "_dark")
 
 
 func broadcast_to(entity: Entity) -> void:
@@ -42,6 +46,8 @@ func broadcast_to(entity: Entity) -> void:
 	connect("wind", entity, "_wind")
 	connect("water", entity, "_water")
 	connect("thunder", entity, "_thunder")
+	connect("light", entity, "_light")
+	connect("dark", entity, "_dark")
 
 
 func disconnect_from(entity: Entity) -> void:
@@ -52,6 +58,8 @@ func disconnect_from(entity: Entity) -> void:
 	entity.disconnect("wind", self, "_wind")
 	entity.disconnect("water", self, "_water")
 	entity.disconnect("thunder", self, "_thunder")
+	entity.disconnect("light", self, "_light")
+	entity.disconnect("dark", self, "_dark")
 
 
 func tick() -> void:
@@ -59,6 +67,7 @@ func tick() -> void:
 		send(element)
 
 	elements_sent.clear()
+
 
 func _nature(boosted: bool) -> void:
 	pass
@@ -85,4 +94,12 @@ func _water(boosted: bool) -> void:
 
 
 func _thunder(boosted: bool) -> void:
+	pass
+
+
+func _light(boosted: bool) -> void:
+	pass
+
+
+func _dark(boosted: bool) -> void:
 	pass

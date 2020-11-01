@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://graphics/materials/elemental/elemental_fire.tres" type="Material" id=1]
 [ext_resource path="res://data/obstacles/Fire.gd" type="Script" id=2]
 [ext_resource path="res://source/objects/obstacle/Obstacle.tscn" type="PackedScene" id=3]
 [ext_resource path="res://graphics/models/raw import/Elemental_fire.obj" type="ArrayMesh" id=4]
+[ext_resource path="res://graphics/particles/FireParticles.tscn" type="PackedScene" id=5]
+[ext_resource path="res://graphics/particles/SmokeParticles.tscn" type="PackedScene" id=6]
 
 [node name="Fire" instance=ExtResource( 3 )]
 script = ExtResource( 2 )
@@ -11,7 +13,13 @@ alias = "Fire"
 particles = null
 
 [node name="MeshInstance" type="MeshInstance" parent="Meshes" index="0"]
-transform = Transform( 0.393133, -0.0620904, -0.0398904, 0.0738001, 0.330755, 0.212496, 2.98023e-09, -0.216208, 0.336533, 0.1207, -0.404887, 0.529263 )
+transform = Transform( 0.393133, -0.0620904, -0.0398904, 0.0738001, 0.330755, 0.212496, 2.98023e-09, -0.216208, 0.336533, 0.1207, -0.404887, 0.420367 )
 material_override = ExtResource( 1 )
 mesh = ExtResource( 4 )
 material/0 = null
+
+[node name="FireParticles" parent="." index="2" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0627018, 0.531322, 0 )
+
+[node name="SmokeParticles" parent="." index="3" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0627018, 0.531322, 0 )

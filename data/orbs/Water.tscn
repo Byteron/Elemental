@@ -2,11 +2,12 @@
 
 [ext_resource path="res://source/objects/orb/Orb.tscn" type="PackedScene" id=1]
 [ext_resource path="res://graphics/materials/orbs/orb_water.tres" type="Material" id=2]
-[ext_resource path="res://graphics/particles/water.tscn" type="PackedScene" id=3]
+[ext_resource path="res://graphics/particles/WaterPartciles.tscn" type="PackedScene" id=3]
 
 [node name="Water" instance=ExtResource( 1 )]
 
 [node name="MeshInstance" parent="." index="1"]
 material_override = ExtResource( 2 )
 
-[node name="Spatial" parent="." index="2" instance=ExtResource( 3 )]
+[node name="WaterParticles" parent="." index="2" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0627018, 0.770761, 0 )

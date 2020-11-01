@@ -1,22 +1,10 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://source/character/Character.tscn" type="PackedScene" id=1]
 [ext_resource path="res://source/character/elemental/Elemental.gd" type="Script" id=2]
-[ext_resource path="res://graphics/particles/smoke_elemental.tscn" type="PackedScene" id=3]
-[ext_resource path="res://graphics/particles/ice_elemental.tscn" type="PackedScene" id=4]
-[ext_resource path="res://graphics/particles/water_elemental.tscn" type="PackedScene" id=5]
-[ext_resource path="res://graphics/particles/wind_elemental.tscn" type="PackedScene" id=6]
-[ext_resource path="res://graphics/particles/fire_elemental.tscn" type="PackedScene" id=7]
+[ext_resource path="res://source/character/elemental/ElementalVFXPicker.tscn" type="PackedScene" id=3]
 [ext_resource path="res://graphics/models/raw import/Elemental_earth.obj" type="ArrayMesh" id=9]
-[ext_resource path="res://graphics/models/raw import/Elemental_fire.obj" type="ArrayMesh" id=10]
-[ext_resource path="res://graphics/models/raw import/Elemental_ice.obj" type="ArrayMesh" id=11]
-[ext_resource path="res://graphics/models/raw import/Elemental_water.obj" type="ArrayMesh" id=12]
-[ext_resource path="res://graphics/models/raw import/Elemental_wind.obj" type="ArrayMesh" id=13]
 [ext_resource path="res://graphics/materials/elemental/elemental_earth.tres" type="Material" id=14]
-[ext_resource path="res://graphics/materials/elemental/elemental_fire.tres" type="Material" id=15]
-[ext_resource path="res://graphics/materials/elemental/elemental_ice.tres" type="Material" id=16]
-[ext_resource path="res://graphics/materials/elemental/elemental_water.tres" type="Material" id=17]
-[ext_resource path="res://graphics/materials/elemental/elemental_wind.tres" type="Material" id=18]
 
 [sub_resource type="Animation" id=1]
 resource_name = "finished"
@@ -89,16 +77,6 @@ tracks/2/keys = {
 
 [node name="Elemental" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
-fire_mesh = ExtResource( 10 )
-fire_mat = ExtResource( 15 )
-water_mesh = ExtResource( 12 )
-water_mat = ExtResource( 17 )
-ice_mesh = ExtResource( 11 )
-ice_mat = ExtResource( 16 )
-earth_mesh = ExtResource( 9 )
-earth_mat = ExtResource( 14 )
-wind_mesh = ExtResource( 13 )
-wind_mat = ExtResource( 18 )
 
 [node name="AnimationPlayer" parent="." index="1"]
 autoplay = "idle"
@@ -116,12 +94,5 @@ material/0 = null
 
 [node name="Seeds" type="Spatial" parent="." index="3"]
 
-[node name="FireParticles" parent="." index="4" instance=ExtResource( 7 )]
-
-[node name="SmokeParicles" parent="." index="5" instance=ExtResource( 3 )]
-
-[node name="IceParticles" parent="." index="6" instance=ExtResource( 4 )]
-
-[node name="WaterParticles" parent="." index="7" instance=ExtResource( 5 )]
-
-[node name="WindParticles" parent="." index="8" instance=ExtResource( 6 )]
+[node name="ElementalVFXPicker" parent="." index="4" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.66587, 0 )
