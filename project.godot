@@ -149,11 +149,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://source/terrain/Terrain.gd"
 }, {
-"base": "Resource",
-"class": "TerrainData",
-"language": "GDScript",
-"path": "res://source/terrain/TerrainData.gd"
-}, {
 "base": "Control",
 "class": "TitleScreen",
 "language": "GDScript",
@@ -163,11 +158,6 @@ _global_script_classes=[ {
 "class": "TrackContainer",
 "language": "GDScript",
 "path": "res://addons/audio_booth/source/music/containers/TrackContainer.gd"
-}, {
-"base": "Resource",
-"class": "TransitionData",
-"language": "GDScript",
-"path": "res://source/terrain/TransitionData.gd"
 } ]
 _global_script_class_icons={
 "Character": "",
@@ -198,10 +188,8 @@ _global_script_class_icons={
 "SoundBooth": "",
 "StingerContainer": "",
 "Terrain": "",
-"TerrainData": "",
 "TitleScreen": "",
-"TrackContainer": "",
-"TransitionData": ""
+"TrackContainer": ""
 }
 
 [application]
