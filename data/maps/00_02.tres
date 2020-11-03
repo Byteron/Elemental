@@ -4,8 +4,11 @@
 
 [resource]
 script = ExtResource( 1 )
+world = 0
+level = 2
 width = 5
 height = 5
+optimal_steps = 0
 locations = {
 Vector3( 0, 0, 0 ): {
 "Elemental": true,

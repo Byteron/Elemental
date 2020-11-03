@@ -17,6 +17,9 @@ signal cell_hovered(cell)
 
 var size := Vector2(0, 0)
 
+var world := 0
+var level := 0
+
 var locations := {}
 var elemental : Elemental = null
 
@@ -278,6 +281,8 @@ func get_map_data() -> MapData:
 	map_data.width = size.x
 	map_data.height = size.y
 	map_data.optimal_steps = optimal_steps
+	map_data.world = world
+	map_data.level = level
 
 	for value in locations.values():
 		var loc : Location = value

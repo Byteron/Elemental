@@ -4,8 +4,11 @@
 
 [resource]
 script = ExtResource( 1 )
+world = 0
+level = 9
 width = 7
 height = 7
+optimal_steps = 0
 locations = {
 Vector3( 0, 0, 0 ): {
 "Terrain": "None"

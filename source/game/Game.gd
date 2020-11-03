@@ -15,7 +15,7 @@ onready var step_counter_label := $CanvasLayer/StepCounterLabel as Label
 
 
 func _ready() -> void:
-	level_label.text = "Level: " + str(Global.current_level + 1)
+	level_label.text = "%d - %d" % [Global.current_world + 1, Global.current_level + 1]
 
 	Music.play_track(1, 1.0)
 	Music.stop_track(2, 1.0)

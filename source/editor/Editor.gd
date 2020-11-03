@@ -1,6 +1,8 @@
 extends Spatial
 class_name Editor
 
+const MAP_PATH := "res://data/maps/"
+
 var current_mode := 0
 var current_cell := Vector3()
 var current_terrain := ""
@@ -130,23 +132,29 @@ func _on_HUD_obstacle_selected(obstacle: String) -> void:
 	current_obstacle = obstacle
 
 
-func _on_HUD_elevation_selected(elevation: int) -> void:
-	current_elevation = elevation
-	print("Current Elevation: ", elevation)
-
-
-func _on_HUD_save_button_pressed(file_name: String) -> void:
+func _on_HUD_save_button_pressed(world: int, level: int) -> void:
 	var dir = Directory.new()
 	var map_data := map.get_map_data()
-	dir.remove("res://data/maps/" + file_name + ".tres")
+
+	map_data.world = world
+	map_data.level = level
+
+	var file_name := str(world).pad_zeros(2) + "_" + str(level).pad_zeros(2) + ".tres"
+	dir.remove(MAP_PATH + file_name)
 	yield(get_tree(), "idle_frame")
-	ResourceSaver.save("res://data/maps/" + file_name + ".tres", map_data)
+	ResourceSaver.save(MAP_PATH + file_name, map_data)
+	Global.scan()
 
 
-func _on_HUD_load_button_pressed(file_name) -> void:
-	var map_data : MapData = load("res://data/maps/" + file_name + ".tres")
+func _on_HUD_load_button_pressed(world: int, level: int) -> void:
+	if not Global.levels.has(world) or not Global.levels[world].has(level):
+		print("Level %d_%d does not exist." % [world, level])
+		return
+
+	var map_data : MapData = Global.levels[world][level]
 
 	if not map_data:
+		print("Level %d_%d has no map data." % [world, level])
 		return
 
 	map.remove_elemental()

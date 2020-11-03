@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://source/editor/SelectionPanel.gd" type="Script" id=1]
+
+[node name="SelectionPanel" type="PanelContainer"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -14.0
+margin_bottom = 14.0
+grow_horizontal = 0
+size_flags_horizontal = 11
+size_flags_vertical = 11
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="."]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 7.0
+margin_bottom = 7.0
+grow_horizontal = 0
+size_flags_horizontal = 11
+size_flags_vertical = 11
+custom_constants/vseparation = 5
+custom_constants/hseparation = 5
+columns = 2

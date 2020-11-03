@@ -3,6 +3,7 @@ extends Node
 const SAVE_DATA_VERSION := 1
 const SAVE_DATA_PATH := "user://save_data.tres"
 
+var current_world := 0
 var current_level := 0
 
 var levels := {}
@@ -60,7 +61,7 @@ func load_progress() -> void:
 
 
 func get_map_data() -> MapData:
-	return levels.values()[current_level]
+	return levels[current_world][current_level]
 
 
 func get_map_data_from_key(key: String) -> MapData:
@@ -141,6 +142,10 @@ func _load_levels() -> void:
 
 	for file in files:
 		var level = file.data
-		levels[file.id] = level
+
+		if not levels.has(level.world):
+			levels[level.world] = {}
+
+		levels[level.world][level.level] = level
 
 	print(levels)

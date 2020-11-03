@@ -4,8 +4,11 @@
 
 [resource]
 script = ExtResource( 1 )
+world = 0
+level = 6
 width = 3
 height = 3
+optimal_steps = 0
 locations = {
 Vector3( 0, 0, 0 ): {
 "Orb": "Wind",
