@@ -51,37 +51,49 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Level" type="LineEdit" parent="VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 margin_right = 163.0
-margin_bottom = 24.0
+margin_bottom = 20.0
+
+[node name="WorldOptions" type="OptionButton" parent="VBoxContainer/HBoxContainer"]
+margin_right = 79.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+
+[node name="LevelOptions" type="OptionButton" parent="VBoxContainer/HBoxContainer"]
+margin_left = 83.0
+margin_right = 163.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
 
 [node name="Play" parent="VBoxContainer" instance=ExtResource( 2 )]
-margin_top = 28.0
+margin_top = 24.0
 margin_right = 163.0
-margin_bottom = 88.0
+margin_bottom = 84.0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "PLAY"
 
 [node name="Editor" parent="VBoxContainer" instance=ExtResource( 2 )]
-margin_top = 92.0
+margin_top = 88.0
 margin_right = 163.0
-margin_bottom = 152.0
+margin_bottom = 148.0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "EDITOR"
 
 [node name="Credits" parent="VBoxContainer" instance=ExtResource( 2 )]
-margin_top = 156.0
+margin_top = 152.0
 margin_right = 163.0
-margin_bottom = 216.0
+margin_bottom = 212.0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "CREDITS"
 
 [node name="Quit" parent="VBoxContainer" instance=ExtResource( 2 )]
-margin_top = 220.0
+margin_top = 216.0
 margin_right = 163.0
-margin_bottom = 280.0
+margin_bottom = 276.0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "QUIT"
+[connection signal="item_selected" from="VBoxContainer/HBoxContainer/WorldOptions" to="." method="_on_WorldOptions_item_selected"]
 [connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_Play_pressed"]
 [connection signal="pressed" from="VBoxContainer/Editor" to="." method="_on_Editor_pressed"]
 [connection signal="pressed" from="VBoxContainer/Credits" to="." method="_on_Credits_pressed"]

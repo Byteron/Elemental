@@ -40,7 +40,7 @@ func _ready() -> void:
 		mode_options.add_item(mode.to_lower().capitalize())
 
 	for world in Global.levels:
-		world_options.add_item(str(world))
+		world_options.add_item(str(world + 1))
 
 	world_options.select(0)
 
@@ -110,12 +110,12 @@ func _on_WorldOptions_item_selected(index: int) -> void:
 	level_options.clear()
 
 	if not Global.levels.has(index):
-		level_options.add_item("0")
+		level_options.add_item("1")
 		level_options.select(0)
 		return
 
 	for level in Global.levels[index]:
-		level_options.add_item(str(level))
+		level_options.add_item(str(level + 1))
 
 	level_options.select(0)
 
