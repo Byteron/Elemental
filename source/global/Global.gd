@@ -1,6 +1,6 @@
 extends Node
 
-const SAVE_DATA_VERSION := 1
+const SAVE_DATA_VERSION := 2
 const SAVE_DATA_PATH := "user://save_data.tres"
 
 var current_world := 0
@@ -45,6 +45,7 @@ func save_progress() -> void:
 	var save = SaveData.new()
 	save.version = SAVE_DATA_VERSION
 	save.data["current_level"] = current_level
+	save.data["current_world"] = current_world
 	ResourceSaver.save(SAVE_DATA_PATH, save)
 
 
@@ -56,8 +57,10 @@ func load_progress() -> void:
 
 	if save.version < SAVE_DATA_VERSION:
 		print("warning, outdated save data!")
+		return
 
 	current_level = save.data["current_level"]
+	current_world = save.data["current_world"]
 
 
 func get_map_data() -> MapData:
