@@ -65,6 +65,7 @@ Vector3( 2, 0, 2 ): {
 "Terrain": "Stone"
 },
 Vector3( 2, 0, 3 ): {
+"Seeds": true,
 "Terrain": "Stone"
 },
 Vector3( 2, 0, 4 ): {

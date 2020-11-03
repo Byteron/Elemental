@@ -32,7 +32,12 @@ func scan() -> void:
 func next_level() -> void:
 	current_level += 1
 
-	if levels.size() == current_level:
+	if current_level == levels[current_world].size():
+		current_world += 1
+		current_level = 0
+
+	if current_world == levels.size():
+		current_world = 0
 		current_level = 0
 		Scene.change("Credits")
 	else:
