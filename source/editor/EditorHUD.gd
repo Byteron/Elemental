@@ -121,11 +121,11 @@ func _on_WorldOptions_item_selected(index: int) -> void:
 
 
 func _on_AddWorldButton_pressed() -> void:
-	world_options.add_item(str(world_options.get_item_count()))
+	world_options.add_item(str(world_options.get_item_count() + 1))
 	world_options.select(world_options.get_item_count() - 1)
 	_on_WorldOptions_item_selected(world_options.get_item_count() - 1)
 
 
 func _on_AddLevelButton_pressed() -> void:
-	level_options.add_item(str(level_options.get_item_count()))
+	level_options.add_item(str(level_options.get_item_count() + 1))
 	level_options.select(level_options.get_item_count() - 1)
