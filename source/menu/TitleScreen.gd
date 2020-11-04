@@ -13,11 +13,16 @@ func _ready() -> void:
 	Music.stop_track(2)
 	Music.stop_track(3)
 
+	yield(get_tree(), "idle_frame")
+
 	for world in Global.levels:
 		world_options.add_item(str(world + 1))
 
+	world_options.select(Global.current_world)
 	_on_WorldOptions_item_selected(Global.current_world)
+
 	level_options.select(Global.current_level)
+
 
 func _on_Play_pressed() -> void:
 	Global.current_world = world_options.get_selected_id()
