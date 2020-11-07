@@ -29,7 +29,6 @@ emission_on_uv2 = false
 
 [node name="Orb" type="Spatial"]
 script = ExtResource( 2 )
-alias = "Orb"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "idle"
