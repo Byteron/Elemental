@@ -144,7 +144,7 @@ func place_elemental(elemental: Elemental, cell: Vector3) -> void:
 
 	self.elemental = elemental
 
-	loc.elemental = elemental
+	loc.character = elemental
 
 
 func move_elemental(direction: Vector3) -> void:
@@ -165,9 +165,9 @@ func move_elemental(direction: Vector3) -> void:
 
 	var loc = locations[elemental.cell]
 
-	loc.elemental = null
+	loc.character = null
 	elemental.cell = next_loc.cell
-	next_loc.elemental = elemental
+	next_loc.character = elemental
 	elemental.move_to(next_loc.position)
 
 
@@ -176,14 +176,14 @@ func remove_elemental() -> void:
 		return
 
 	var loc : Location = locations[elemental.cell]
-	loc.elemental = null
+	loc.character = null
 	self.elemental = null
 
 
 func add_creature(cell: Vector3, alias: String) -> void:
 	var loc : Location = locations[cell]
 
-	if loc.creature:
+	if loc.character:
 		return
 
 	if not loc.terrain:
@@ -196,15 +196,15 @@ func add_creature(cell: Vector3, alias: String) -> void:
 
 	creature.transform.origin = loc.position
 
-	loc.creature = creature
+	loc.character = creature
 
 
 func remove_creature(cell: Vector3) -> void:
 	var loc : Location = locations[cell]
 
-	if loc.creature:
-		loc.creature.queue_free()
-		loc.creature = null
+	if loc.character:
+		loc.character.queue_free()
+		loc.character = null
 
 
 func add_orb(cell: Vector3, alias: String) -> void:
@@ -297,17 +297,14 @@ func get_map_data() -> MapData:
 		if loc.sigil:
 			map_data.locations[loc.cell]["Sigil"] = Elemental.State.keys()[loc.sigil.element].to_lower().capitalize()
 
-		if loc.creature:
-			map_data.locations[loc.cell]["Creature"] = loc.creature.alias
+		if loc.character:
+			map_data.locations[loc.cell]["Character"] = loc.character.alias
 
 		if loc.obstacle:
 			map_data.locations[loc.cell]["Obstacle"] = loc.obstacle.alias
 
 		if loc.seeds:
 			map_data.locations[loc.cell]["Seeds"] = true
-
-		if loc.elemental:
-			map_data.locations[loc.cell]["Elemental"] = true
 
 	return map_data
 
@@ -381,10 +378,10 @@ func _remove_location(cell) -> void:
 
 func _move_creatures() -> void:
 	for loc in locations.values():
-		if not loc.creature:
+		if not loc.character:
 			continue
 
-		_on_creature_move_finished(loc.creature, loc.cell, loc.cell)
+		_on_creature_move_finished(loc.character, loc.cell, loc.cell)
 
 
 func _check_brittle_terrain(loc: Location) -> void:

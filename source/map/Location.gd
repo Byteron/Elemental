@@ -7,8 +7,7 @@ signal terrain_changed(loc)
 var cell := Vector3()
 var position := Vector3()
 
-var elemental : Elemental = null
-var creature : Creature = null
+var character : Character = null
 
 var terrain : Terrain = null setget _set_terrain
 var orb : Orb = null setget _set_orb
@@ -26,8 +25,8 @@ func change_terrain(alias: String) -> void:
 func tick() -> void:
 	if terrain:
 		terrain.tick()
-	if creature:
-		creature.tick()
+	if character:
+		character.tick()
 	if obstacle:
 		obstacle.tick()
 
@@ -39,8 +38,8 @@ func receive_from(entity: Entity) -> void:
 		obstacle.receive_from(entity)
 	if seeds:
 		seeds.receive_from(entity)
-	if creature:
-		creature.receive_from(entity)
+	if character:
+		character.receive_from(entity)
 
 
 func broadcast_to(entity: Entity) -> void:
@@ -50,8 +49,8 @@ func broadcast_to(entity: Entity) -> void:
 		obstacle.broadcast_to(entity)
 	if seeds:
 		seeds.broadcast_to(entity)
-	if creature:
-		creature.broadcast_to(entity)
+	if character:
+		character.broadcast_to(entity)
 
 
 func disconnect_from(entity: Entity) -> void:
@@ -61,12 +60,12 @@ func disconnect_from(entity: Entity) -> void:
 		obstacle.disconnect_from(entity)
 	if seeds:
 		seeds.disconnect_from(entity)
-	if creature:
-		creature.disconnect_from(entity)
+	if character:
+		character.disconnect_from(entity)
 
 
 func is_blocked(state: int) -> bool:
-	if obstacle or creature or (terrain and terrain.is_blocked(state)):
+	if obstacle or character or (terrain and terrain.is_blocked(state)):
 		return true
 	return false
 
