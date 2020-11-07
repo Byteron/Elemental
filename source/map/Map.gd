@@ -298,7 +298,11 @@ func get_map_data() -> MapData:
 			map_data.locations[loc.cell]["Sigil"] = Elemental.State.keys()[loc.sigil.element].to_lower().capitalize()
 
 		if loc.character:
-			map_data.locations[loc.cell]["Character"] = loc.character.alias
+			if loc.character is Elemental:
+				map_data.locations[loc.cell]["Elemental"] = true
+
+			elif loc.character is Creature:
+				map_data.locations[loc.cell]["Creature"] = loc.character.alias
 
 		if loc.obstacle:
 			map_data.locations[loc.cell]["Obstacle"] = loc.obstacle.alias
