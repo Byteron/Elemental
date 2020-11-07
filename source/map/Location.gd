@@ -31,37 +31,32 @@ func tick() -> void:
 		obstacle.tick()
 
 
-func receive_from(entity: Entity) -> void:
+func receive_from_location(loc: Location) -> void:
+	receive_from_entity(loc.terrain)
+	receive_from_entity(loc.obstacle)
+
+
+func disconnect_from_location(loc: Location) -> void:
+	disconnect_from_entity(loc.terrain)
+	disconnect_from_entity(loc.obstacle)
+
+
+func receive_from_entity(entity: Entity) -> void:
 	if terrain:
 		terrain.receive_from(entity)
 	if obstacle:
 		obstacle.receive_from(entity)
 	if seeds:
 		seeds.receive_from(entity)
-	if character:
-		character.receive_from(entity)
 
 
-func broadcast_to(entity: Entity) -> void:
-	if terrain:
-		terrain.broadcast_to(entity)
-	if obstacle:
-		obstacle.broadcast_to(entity)
-	if seeds:
-		seeds.broadcast_to(entity)
-	if character:
-		character.broadcast_to(entity)
-
-
-func disconnect_from(entity: Entity) -> void:
+func disconnect_from_entity(entity: Entity) -> void:
 	if terrain:
 		terrain.disconnect_from(entity)
 	if obstacle:
 		obstacle.disconnect_from(entity)
 	if seeds:
 		seeds.disconnect_from(entity)
-	if character:
-		character.disconnect_from(entity)
 
 
 func is_blocked(state: int) -> bool:

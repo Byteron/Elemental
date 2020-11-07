@@ -36,43 +36,45 @@ Vector3( 1, 0, 0 ): {
 "Terrain": "Stone"
 },
 Vector3( 1, 0, 1 ): {
-"Terrain": "Stone"
+"Terrain": "Water"
 },
 Vector3( 1, 0, 2 ): {
-"Terrain": "Stone"
+"Terrain": "Water"
 },
 Vector3( 1, 0, 3 ): {
 "Terrain": "Stone"
 },
 Vector3( 1, 0, 4 ): {
-"Terrain": "Stone"
+"Terrain": "Water"
 },
 Vector3( 1, 0, 5 ): {
-"Terrain": "Stone"
+"Terrain": "Water"
 },
 Vector3( 1, 0, 6 ): {
 "Terrain": "Stone"
 },
 Vector3( 2, 0, 0 ): {
-"Terrain": "Metal"
+"Terrain": "Stone"
 },
 Vector3( 2, 0, 1 ): {
-"Terrain": "Metal"
+"Terrain": "Water"
 },
 Vector3( 2, 0, 2 ): {
-"Terrain": "Stone"
+"Creature": "FireMan",
+"Terrain": "Water"
 },
 Vector3( 2, 0, 3 ): {
 "Terrain": "Stone"
 },
 Vector3( 2, 0, 4 ): {
-"Terrain": "Stone"
+"Creature": "SnowMan",
+"Terrain": "Water"
 },
 Vector3( 2, 0, 5 ): {
-"Terrain": "Metal"
+"Terrain": "Water"
 },
 Vector3( 2, 0, 6 ): {
-"Terrain": "Metal"
+"Terrain": "Stone"
 },
 Vector3( 3, 0, 0 ): {
 "Terrain": "Stone"
@@ -99,19 +101,21 @@ Vector3( 4, 0, 0 ): {
 "Terrain": "Stone"
 },
 Vector3( 4, 0, 1 ): {
-"Terrain": "Stone"
+"Terrain": "Water"
 },
 Vector3( 4, 0, 2 ): {
-"Terrain": "Stone"
+"Creature": "SnowMan",
+"Terrain": "Water"
 },
 Vector3( 4, 0, 3 ): {
 "Terrain": "Stone"
 },
 Vector3( 4, 0, 4 ): {
-"Terrain": "Stone"
+"Creature": "FireMan",
+"Terrain": "Water"
 },
 Vector3( 4, 0, 5 ): {
-"Terrain": "Stone"
+"Terrain": "Water"
 },
 Vector3( 4, 0, 6 ): {
 "Terrain": "Stone"
@@ -120,19 +124,19 @@ Vector3( 5, 0, 0 ): {
 "Terrain": "Stone"
 },
 Vector3( 5, 0, 1 ): {
-"Terrain": "Stone"
+"Terrain": "Water"
 },
 Vector3( 5, 0, 2 ): {
-"Terrain": "Stone"
+"Terrain": "Water"
 },
 Vector3( 5, 0, 3 ): {
-"Terrain": "Metal"
+"Terrain": "Stone"
 },
 Vector3( 5, 0, 4 ): {
-"Terrain": "Stone"
+"Terrain": "Water"
 },
 Vector3( 5, 0, 5 ): {
-"Terrain": "Stone"
+"Terrain": "Water"
 },
 Vector3( 5, 0, 6 ): {
 "Terrain": "Stone"
@@ -147,7 +151,7 @@ Vector3( 6, 0, 2 ): {
 "Terrain": "Stone"
 },
 Vector3( 6, 0, 3 ): {
-"Terrain": "Metal"
+"Terrain": "Stone"
 },
 Vector3( 6, 0, 4 ): {
 "Terrain": "Stone"

@@ -4,6 +4,8 @@ class_name Game
 export var size := Vector2(10, 10)
 export var random := false
 
+var behaviors := {}
+
 var steps := 0
 
 onready var elemental := $Elemental as Elemental
@@ -17,11 +19,11 @@ onready var step_counter_label := $CanvasLayer/StepCounterLabel as Label
 func _ready() -> void:
 	level_label.text = "%d - %d" % [Global.current_world + 1, Global.current_level + 1]
 
-	Music.play_track(1, 1.0)
-	Music.stop_track(2, 1.0)
-	Music.stop_track(3, 1.0)
-	Music.stop_track(4, 1.0)
-	Music.stop_track(5, 1.0)
+	for key in Global.behaviors:
+		var script : Script = Global.behaviors[key]
+		var behavior : Behavior = script.new()
+		behavior.map = map
+		behaviors[key] = behavior
 
 	if random:
 		map.initialize(size.x, size.y)
@@ -30,9 +32,9 @@ func _ready() -> void:
 	else:
 		map.initialize_from_map_data(elemental, Global.get_map_data())
 
-	map.connect("finished", self, "_on_map_finished")
-	map.connect("tick", self, "_on_map_tick")
 	camera.initialize(map.size)
+
+	Music.play_element_music(Elemental.State.EARTH)
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -47,24 +49,41 @@ func _unhandled_input(event: InputEvent) -> void:
 func _process(delta: float) -> void:
 	yield(get_tree(), "idle_frame")
 	if Input.is_action_pressed("move_left"):
-		map.move_elemental(Vector3.FORWARD)
+		move_elemental(Vector3.FORWARD)
 	if Input.is_action_pressed("move_down"):
-		map.move_elemental(Vector3.LEFT)
+		move_elemental(Vector3.LEFT)
 	if Input.is_action_pressed("move_right"):
-		map.move_elemental(Vector3.BACK)
+		move_elemental(Vector3.BACK)
 	if Input.is_action_pressed("move_up"):
-		map.move_elemental(Vector3.RIGHT)
+		move_elemental(Vector3.RIGHT)
 
 
-func _on_map_tick() -> void:
-	steps += 1
-	step_counter_label.text = "Steps: %d / %d" % [steps, map.optimal_steps]
+func move_elemental(direction: Vector3) -> void:
+	map.move_elemental(direction)
 
 
-func _on_map_finished() -> void:
+func execute_behaviors() -> void:
+	for behavior in behaviors.values():
+		behavior.execute()
+
+
+func _on_Map_creature_added(creature: Creature) -> void:
+	behaviors[creature.behavior].add_creature(creature)
+
+
+func _on_Map_pretick() -> void:
+	execute_behaviors()
+
+
+func _on_Map_finished() -> void:
 	print("Rating: %f" % (float(map.optimal_steps) / float(steps) * 100.0))
 	set_process(false)
 	set_process_unhandled_input(false)
 	elemental.finished()
 	yield(get_tree().create_timer(1.5), "timeout")
 	Global.next_level()
+
+
+func _on_Map_tick() -> void:
+	steps += 1
+	step_counter_label.text = "Steps: %d / %d" % [steps, map.optimal_steps]

@@ -13,6 +13,7 @@ var sigils := {}
 var creatures := {}
 var terrains := {}
 var obstacles := {}
+var behaviors := {}
 
 
 func _ready() -> void:
@@ -22,6 +23,7 @@ func _ready() -> void:
 	_load_sigils()
 	_load_creatures()
 	_load_obstacles()
+	_load_behaviors()
 	scan()
 
 
@@ -51,7 +53,7 @@ func save_progress() -> void:
 	save.version = SAVE_DATA_VERSION
 	save.data["current_level"] = current_level
 	save.data["current_world"] = current_world
-	ResourceSaver.save(SAVE_DATA_PATH, save)
+	var __ = ResourceSaver.save(SAVE_DATA_PATH, save)
 
 
 func load_progress() -> void:
@@ -157,3 +159,14 @@ func _load_levels() -> void:
 		levels[level.world][level.level] = level
 
 	print(levels)
+
+
+func _load_behaviors() -> void:
+	behaviors.clear()
+
+	var files = Loader.load_dir("res://data/behaviors/", ["gd"])
+
+	for file in files:
+		behaviors[file.id] = file.data
+
+	print(behaviors)

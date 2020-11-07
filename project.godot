@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Reference",
+"class": "Behavior",
+"language": "GDScript",
+"path": "res://source/behavior/Behavior.gd"
+}, {
 "base": "Entity",
 "class": "Character",
 "language": "GDScript",
@@ -160,6 +165,7 @@ _global_script_classes=[ {
 "path": "res://addons/audio_booth/source/music/containers/TrackContainer.gd"
 } ]
 _global_script_class_icons={
+"Behavior": "",
 "Character": "",
 "Creature": "",
 "Editor": "",

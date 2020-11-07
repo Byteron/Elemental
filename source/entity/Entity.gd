@@ -27,6 +27,7 @@ func send(element: String, boosted := false) -> void:
 
 
 func receive_from(entity: Entity) -> void:
+	if not entity: return
 	entity.connect("nature", self, "_nature")
 	entity.connect("earth", self, "_earth")
 	entity.connect("fire", self, "_fire")
@@ -38,19 +39,8 @@ func receive_from(entity: Entity) -> void:
 	entity.connect("dark", self, "_dark")
 
 
-func broadcast_to(entity: Entity) -> void:
-	connect("nature", entity, "_nature")
-	connect("earth", entity, "_earth")
-	connect("fire", entity, "_fire")
-	connect("ice", entity, "_ice")
-	connect("wind", entity, "_wind")
-	connect("water", entity, "_water")
-	connect("thunder", entity, "_thunder")
-	connect("light", entity, "_light")
-	connect("dark", entity, "_dark")
-
-
 func disconnect_from(entity: Entity) -> void:
+	if not entity: return
 	entity.disconnect("nature", self, "_nature")
 	entity.disconnect("earth", self, "_earth")
 	entity.disconnect("fire", self, "_fire")

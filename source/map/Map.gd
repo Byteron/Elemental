@@ -11,9 +11,11 @@ const NEIGHBORS = [
 ]
 
 signal tick()
+signal pretick()
 signal finished()
 signal game_over()
 signal cell_hovered(cell)
+signal creature_added(creature)
 
 var size := Vector2(0, 0)
 
@@ -98,6 +100,7 @@ func tick() -> void:
 		var loc : Location = locations[cell]
 		loc.tick()
 
+	print("tick")
 	emit_signal("tick")
 
 
@@ -113,6 +116,12 @@ func get_neighbors(loc: Location) -> Array:
 		neighbors.append(locations[n_cell])
 
 	return neighbors
+
+
+func get_location(cell: Vector3) -> Location:
+	if locations.has(cell):
+		return locations[cell]
+	return null
 
 
 func change_terrain(cell: Vector3, alias: String, elevation := 0) -> void:
@@ -147,17 +156,33 @@ func place_elemental(elemental: Elemental, cell: Vector3) -> void:
 	loc.character = elemental
 
 
+func move_character(start_loc: Location, end_loc: Location) -> void:
+	if not start_loc.character:
+		print("no character to move")
+		return
+
+	if end_loc.character:
+		print("position blocked by other character")
+		return
+
+	var character : Character = start_loc.character
+	start_loc.character = null
+	end_loc.character = character
+	character.cell = end_loc.cell
+	character.move_to(end_loc.position)
+
+
 func move_elemental(direction: Vector3) -> void:
 	var next_cell = elemental.cell + direction
 
 	if not elemental.can_move():
 		return
 
-	if not locations.has(next_cell):
+	var next_loc = get_location(next_cell)
+
+	if not next_loc:
 		elemental.shake()
 		return
-
-	var next_loc = locations[next_cell]
 
 	if next_loc.is_blocked(elemental.state):
 		elemental.shake()
@@ -165,10 +190,8 @@ func move_elemental(direction: Vector3) -> void:
 
 	var loc = locations[elemental.cell]
 
-	loc.character = null
-	elemental.cell = next_loc.cell
-	next_loc.character = elemental
-	elemental.move_to(next_loc.position)
+	move_character(loc, next_loc)
+	emit_signal("pretick")
 
 
 func remove_elemental() -> void:
@@ -192,11 +215,13 @@ func add_creature(cell: Vector3, alias: String) -> void:
 	var creature = Global.creatures[alias].instance()
 	creatures.add_child(creature)
 
-	creatures.connect("move_finished", self, "_on_creature_move_finished")
+	creature.connect("move_finished", self, "_on_creature_move_finished")
 
+	creature.cell = loc.cell
 	creature.transform.origin = loc.position
 
 	loc.character = creature
+	emit_signal("creature_added", creature)
 
 
 func remove_creature(cell: Vector3) -> void:
@@ -317,24 +342,21 @@ func _connect_all_terrains() -> void:
 	for cell in locations:
 		var loc : Location = locations[cell]
 		for n_loc in get_neighbors(loc):
-			if not loc.terrain or not n_loc.terrain:
-				return
-
-			loc.receive_from(n_loc.terrain)
+			loc.receive_from_location(n_loc)
 
 
 func connect_entity_with(entity: Entity, loc: Location) -> void:
-	loc.receive_from(entity)
+	loc.receive_from_entity(entity)
 
 	for n_loc in get_neighbors(loc):
-		n_loc.receive_from(entity)
+		n_loc.receive_from_entity(entity)
 
 
 func disconnect_entity_from(entity: Entity, loc: Location) -> void:
-	loc.disconnect_from(entity)
+	loc.disconnect_from_entity(entity)
 
 	for n_loc in get_neighbors(loc):
-		n_loc.disconnect_from(entity)
+		n_loc.disconnect_from_entity(entity)
 
 
 func _check_conditions() -> void:
@@ -438,11 +460,8 @@ func _on_terrain_hovered(loc: Location) -> void:
 
 func _on_terrain_changed(loc: Location) -> void:
 	for n_loc in get_neighbors(loc):
-		if not loc.terrain or not n_loc.terrain:
-			return
-
-		loc.receive_from(n_loc.terrain)
-		loc.broadcast_to(n_loc.terrain)
+		loc.receive_from_location(n_loc)
+		n_loc.receive_from_location(loc)
 
 
 func _on_creature_move_finished(creature: Character, last_cell: Vector3, new_cell: Vector3) -> void:
@@ -458,11 +477,11 @@ func _on_elemental_move_finished(elemental: Character, last_cell: Vector3, new_c
 	var loc : Location = locations[new_cell]
 
 	disconnect_entity_from(elemental, last_loc)
+	connect_entity_with(elemental, loc)
 
 	_check_collecting_orb(loc)
 	_check_sigil(loc)
 
-	connect_entity_with(elemental, loc)
 
 	_check_brittle_terrain(last_loc)
 	_check_collecting_seeds(loc)
