@@ -23,6 +23,8 @@ var world := 0
 var level := 0
 
 var locations := {}
+var character_locations := {}
+
 var elemental : Elemental = null
 
 var earth_block_count := 0
@@ -154,6 +156,7 @@ func place_elemental(elemental: Elemental, cell: Vector3) -> void:
 	self.elemental = elemental
 
 	loc.character = elemental
+	character_locations[elemental] = loc
 
 
 func move_character(start_loc: Location, end_loc: Location) -> void:
@@ -170,6 +173,7 @@ func move_character(start_loc: Location, end_loc: Location) -> void:
 	end_loc.character = character
 	character.cell = end_loc.cell
 	character.move_to(end_loc.position)
+	character_locations[character] = end_loc
 
 
 func move_elemental(direction: Vector3) -> void:
@@ -199,6 +203,9 @@ func remove_elemental() -> void:
 		return
 
 	var loc : Location = locations[elemental.cell]
+
+	character_locations.erase(elemental)
+
 	loc.character = null
 	self.elemental = null
 
@@ -221,13 +228,17 @@ func add_creature(cell: Vector3, alias: String) -> void:
 	creature.transform.origin = loc.position
 
 	loc.character = creature
+	character_locations[creature] = loc
+
 	emit_signal("creature_added", creature)
 
 
 func remove_creature(cell: Vector3) -> void:
 	var loc : Location = locations[cell]
 
+
 	if loc.character:
+		character_locations.erase(loc.character)
 		loc.character.queue_free()
 		loc.character = null
 
