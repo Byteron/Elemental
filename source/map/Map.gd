@@ -413,14 +413,6 @@ func _remove_location(cell) -> void:
 	locations.erase(cell)
 
 
-func _move_creatures() -> void:
-	for loc in locations.values():
-		if not loc.character:
-			continue
-
-		_on_creature_move_finished(loc.character, loc.cell, loc.cell)
-
-
 func _check_brittle_terrain(loc: Location) -> void:
 	if loc.terrain.brittle:
 		loc.change_terrain("None")
@@ -497,8 +489,6 @@ func _on_elemental_move_finished(elemental: Character, last_cell: Vector3, new_c
 	_check_brittle_terrain(last_loc)
 	_check_collecting_seeds(loc)
 	_check_planting_seeds(loc)
-
-	_move_creatures()
 
 	tick()
 

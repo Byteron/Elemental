@@ -27,7 +27,9 @@ func send(element: String, boosted := false) -> void:
 
 
 func receive_from(entity: Entity) -> void:
-	if not entity: return
+	if not entity:
+		return
+
 	entity.connect("nature", self, "_nature")
 	entity.connect("earth", self, "_earth")
 	entity.connect("fire", self, "_fire")
@@ -40,7 +42,9 @@ func receive_from(entity: Entity) -> void:
 
 
 func disconnect_from(entity: Entity) -> void:
-	if not entity: return
+	if not entity:
+		return
+
 	entity.disconnect("nature", self, "_nature")
 	entity.disconnect("earth", self, "_earth")
 	entity.disconnect("fire", self, "_fire")
