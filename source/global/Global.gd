@@ -18,7 +18,7 @@ var behaviors := {}
 
 func _ready() -> void:
 	_register_scenes()
-	_load_tiles()
+	_load_terrains()
 	_load_orbs()
 	_load_sigils()
 	_load_creatures()
@@ -85,7 +85,7 @@ func _register_scenes() -> void:
 	Scene.register_scene("Credits", "res://source/menu/Credits.tscn")
 
 
-func _load_tiles() -> void:
+func _load_terrains() -> void:
 	terrains.clear()
 
 	var files = Loader.load_dir("res://data/terrains/", ["tscn"])
