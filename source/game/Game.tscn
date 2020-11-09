@@ -47,6 +47,5 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 [connection signal="creature_added" from="Map" to="." method="_on_Map_creature_added"]
-[connection signal="finished" from="Map" to="." method="_on_Map_finished"]
-[connection signal="pretick" from="Map" to="." method="_on_Map_pretick"]
-[connection signal="tick" from="Map" to="." method="_on_Map_tick"]
+[connection signal="elemental_move_finished" from="Map" to="." method="_on_Map_elemental_move_finished"]
+[connection signal="elemental_moving" from="Map" to="." method="_on_Map_elemental_moving"]
