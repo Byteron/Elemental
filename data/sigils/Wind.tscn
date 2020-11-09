@@ -4,7 +4,7 @@
 [ext_resource path="res://graphics/materials/orbs/orb_wind.tres" type="Material" id=2]
 
 [node name="Wind" instance=ExtResource( 1 )]
-element = 3
+element = 4
 
 [node name="MeshInstance" parent="." index="1"]
 material_override = ExtResource( 2 )

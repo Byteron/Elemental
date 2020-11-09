@@ -2,7 +2,7 @@ extends Terrain
 
 
 func _is_blocked(state: int) -> bool:
-	if state == Elemental.State.FIRE:
+	if state == Entity.Element.FIRE:
 		return true
 	return false
 

@@ -16,8 +16,8 @@ func destroy() -> void:
 
 	if particles:
 		var p : Spatial = particles.instance() as Spatial
-		p.global_transform.origin = global_transform.origin
 		get_tree().current_scene.add_child(p)
+		p.global_transform.origin = global_transform.origin
 
 	yield(anim, "animation_finished")
 	queue_free()

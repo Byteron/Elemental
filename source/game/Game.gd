@@ -34,7 +34,7 @@ func _ready() -> void:
 
 	camera.initialize(map.size)
 
-	Music.play_element_music(Elemental.State.EARTH)
+	Music.play_element_music(Entity.Element.EARTH)
 
 
 func _unhandled_input(event: InputEvent) -> void:

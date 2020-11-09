@@ -3,7 +3,7 @@ class_name Orb
 
 signal collected()
 
-export(Elemental.State) var element := 0
+export(Entity.Element) var element := 0
 
 onready var mesh_instance := $MeshInstance as MeshInstance
 

@@ -1,8 +1,7 @@
-extends Spatial
+extends Entity
 class_name Location
 
 signal hovered(loc)
-signal terrain_changed(loc)
 
 var cell := Vector3()
 var position := Vector3()
@@ -18,51 +17,58 @@ var obstacle : Obstacle = null setget _set_obstacle
 var initialized := false
 
 
+func get_broadcast() -> Array:
+	var elements := []
+
+	_add_broadcaster(elements, character)
+	_add_broadcaster(elements, terrain)
+	_add_broadcaster(elements, obstacle)
+	_add_broadcaster(elements, seeds)
+	_add_broadcaster(elements, self)
+
+	return elements
+
+
+func get_conduction() -> Array:
+	if terrain:
+		return terrain.conduct
+	return []
+
+
 func change_terrain(alias: String) -> void:
-	_on_terrain_change(alias)
-
-
-func tick() -> void:
-	if terrain:
-		terrain.tick()
-	if character:
-		character.tick()
-	if obstacle:
-		obstacle.tick()
-
-
-func receive_from_location(loc: Location) -> void:
-	receive_from_entity(loc.terrain)
-	receive_from_entity(loc.obstacle)
-
-
-func disconnect_from_location(loc: Location) -> void:
-	disconnect_from_entity(loc.terrain)
-	disconnect_from_entity(loc.obstacle)
-
-
-func receive_from_entity(entity: Entity) -> void:
-	if terrain:
-		terrain.receive_from(entity)
-	if obstacle:
-		obstacle.receive_from(entity)
-	if seeds:
-		seeds.receive_from(entity)
-
-
-func disconnect_from_entity(entity: Entity) -> void:
-	if terrain:
-		terrain.disconnect_from(entity)
-	if obstacle:
-		obstacle.disconnect_from(entity)
-	if seeds:
-		seeds.disconnect_from(entity)
+	_on_terrain_changed(alias)
 
 
 func is_blocked(state: int) -> bool:
 	if obstacle or character or (terrain and terrain.is_blocked(state)):
 		return true
 	return false
+
+
+func conducts_element(element: int) -> bool:
+	if not terrain:
+		return false
+	return terrain.conducts_element(element)
+
+
+func _add_broadcaster(elements: Array, entity: Entity) -> void:
+	if not entity:
+		return
+
+	for element in entity.broadcast:
+		if not elements.has(element):
+			elements.append(element)
+
+
+func _call_on_children(function: String, boosted: bool) -> void:
+	if character:
+		character.call(function, boosted)
+	if terrain:
+		terrain.call(function, boosted)
+	if obstacle:
+		obstacle.call(function, boosted)
+	if seeds:
+		seeds.call(function, boosted)
 
 
 func _set_terrain(value: Terrain) -> void:
@@ -73,7 +79,7 @@ func _set_terrain(value: Terrain) -> void:
 
 	if terrain:
 		terrain.connect("hovered", self, "_on_terrain_hovered")
-		terrain.connect("change", self, "_on_terrain_change")
+		terrain.connect("changed", self, "_on_terrain_changed")
 		add_child(terrain)
 
 		if initialized:
@@ -125,14 +131,49 @@ func _set_obstacle(value: Obstacle) -> void:
 		obstacle.connect("destroyed", self, "_on_obstacle_destroyed")
 
 
+func _nature(boosted: bool) -> void:
+	_call_on_children("_nature", boosted)
+
+
+func _earth(boosted: bool) -> void:
+	_call_on_children("_earth", boosted)
+
+
+func _fire(boosted: bool) -> void:
+	_call_on_children("_fire", boosted)
+
+
+func _ice(boosted: bool) -> void:
+	_call_on_children("_ice", boosted)
+
+
+func _wind(boosted: bool) -> void:
+	_call_on_children("_wind", boosted)
+
+
+func _water(boosted: bool) -> void:
+	_call_on_children("_water", boosted)
+
+
+func _thunder(boosted: bool) -> void:
+	_call_on_children("_thunder", boosted)
+
+
+func _light(boosted: bool) -> void:
+	_call_on_children("_light", boosted)
+
+
+func _dark(boosted: bool) -> void:
+	_call_on_children("_dark", boosted)
+
+
 func _on_terrain_hovered() -> void:
 	emit_signal("hovered", self)
 
 
-func _on_terrain_change(alias: String) -> void:
+func _on_terrain_changed(alias: String) -> void:
 	var terrain = Global.terrains[alias].instance()
 	_set_terrain(terrain)
-	emit_signal("terrain_changed", self)
 
 
 func _on_orb_collected() -> void:

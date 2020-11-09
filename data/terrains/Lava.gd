@@ -6,6 +6,6 @@ func _water(boosted: bool) -> void:
 
 
 func _is_blocked(state: int) -> bool:
-	if state == Elemental.State.FIRE:
+	if state == Entity.Element.FIRE:
 		return false
 	return true

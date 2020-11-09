@@ -1,11 +1,9 @@
 extends Character
 class_name Elemental
 
-enum State { WATER, EARTH, FIRE, WIND, ICE, THUNDER, LIGHT, DARK }
-
 const SeedsMesh := preload("res://source/objects/seeds/SeedsMesh.tscn")
 
-export(State) var state := 1 setget _set_state
+export(Entity.Element) var state := 1 setget _set_state
 
 export var seeds := 0 setget _set_seeds
 
@@ -68,9 +66,9 @@ func _set_state(value: int) -> void:
 
 	vfx_picker.activate_particles(state)
 
-	var state_name : String = State.keys()[state].to_lower()
+	var state_name : String = Entity.Element.keys()[state].to_lower()
 
-	broadcast = [ state_name ]
+	broadcast = [ state ]
 
 	mesh_instance.mesh = vfx_picker.get_mesh(state_name)
 	mesh_instance.material_override = vfx_picker.get_material(state_name)

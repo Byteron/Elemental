@@ -9,7 +9,7 @@ func _destroy() -> void:
 	var p : Spatial = particles.instance()
 	get_tree().current_scene.add_child(p)
 	p.transform.origin = transform.origin
-	queue_free()
+	change("None")
 
 
 func _is_blocked(state: int) -> bool:

@@ -2,6 +2,6 @@ extends Terrain
 
 
 func _is_blocked(state: int) -> bool:
-	if state != Elemental.State.DARK:
+	if state != Entity.Element.DARK:
 		return true
 	return false

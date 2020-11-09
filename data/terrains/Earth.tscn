@@ -7,11 +7,10 @@
 
 [node name="Earth" instance=ExtResource( 2 )]
 script = ExtResource( 1 )
-broadcast = [ "earth" ]
 height = 0.07
 speed = 3.2
 alias = "Earth"
-fertile = true
+is_fertile = true
 
 [node name="MeshInstance" parent="Meshes" index="0"]
 mesh = ExtResource( 5 )

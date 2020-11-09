@@ -1,66 +1,13 @@
 extends Spatial
 class_name Entity
 
-signal nature(boost)
-signal earth(boost)
-signal fire(boost)
-signal ice(boost)
-signal wind(boost)
-signal water(boost)
-signal thunder(boost)
-signal light(boost)
-signal dark(boost)
+enum Element { NATURE, EARTH, FIRE, ICE, WIND, WATER, THUNDER, LIGHT, DARK, NONE }
 
-var boost := ""
-
-export(Array, String) var broadcast := []
-
-var elements_sent := []
+export(Array, Element) var broadcast := []
+export(Array, Element) var conduct := []
 
 
-func send(element: String, boosted := false) -> void:
-	if elements_sent.has(element):
-		return
-
-	elements_sent.append(element)
-	emit_signal(element, boosted or boost == element)
-
-
-func receive_from(entity: Entity) -> void:
-	if not entity:
-		return
-
-	entity.connect("nature", self, "_nature")
-	entity.connect("earth", self, "_earth")
-	entity.connect("fire", self, "_fire")
-	entity.connect("ice", self, "_ice")
-	entity.connect("wind", self, "_wind")
-	entity.connect("water", self, "_water")
-	entity.connect("thunder", self, "_thunder")
-	entity.connect("light", self, "_light")
-	entity.connect("dark", self, "_dark")
-
-
-func disconnect_from(entity: Entity) -> void:
-	if not entity:
-		return
-
-	entity.disconnect("nature", self, "_nature")
-	entity.disconnect("earth", self, "_earth")
-	entity.disconnect("fire", self, "_fire")
-	entity.disconnect("ice", self, "_ice")
-	entity.disconnect("wind", self, "_wind")
-	entity.disconnect("water", self, "_water")
-	entity.disconnect("thunder", self, "_thunder")
-	entity.disconnect("light", self, "_light")
-	entity.disconnect("dark", self, "_dark")
-
-
-func tick() -> void:
-	for element in broadcast:
-		send(element)
-
-	elements_sent.clear()
+var boost : int = Element.NONE
 
 
 func _nature(boosted: bool) -> void:

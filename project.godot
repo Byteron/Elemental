@@ -64,7 +64,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://source/global/Loader.gd"
 }, {
-"base": "Spatial",
+"base": "Entity",
 "class": "Location",
 "language": "GDScript",
 "path": "res://source/map/Location.gd"

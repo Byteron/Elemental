@@ -70,7 +70,7 @@ size = Vector3( 0.1, 0.3, 0.1 )
 
 [node name="Storm" instance=ExtResource( 2 )]
 script = ExtResource( 1 )
-broadcast = [ "thunder" ]
+broadcast = [ 6 ]
 height = 0.15
 speed = 1.0
 alias = "Storm"

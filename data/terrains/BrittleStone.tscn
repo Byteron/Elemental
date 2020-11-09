@@ -11,7 +11,7 @@ script = ExtResource( 1 )
 height = 0.06
 speed = 1.2
 alias = "BrittleStone"
-brittle = true
+is_brittle = true
 particles = ExtResource( 5 )
 
 [node name="MeshInstance" parent="Meshes" index="0"]

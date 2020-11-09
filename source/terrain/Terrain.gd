@@ -2,14 +2,16 @@ extends Entity
 class_name Terrain
 
 signal hovered()
-signal change(alias)
+signal changed(alias)
 
 export var height := 0.0
 export var speed := 0.0
 
 export var alias := ""
-export var fertile := false
-export var brittle := false
+
+export var is_fertile := false
+export var is_brittle := false
+
 
 var cell := Vector3()
 var position := Vector3()
@@ -25,7 +27,7 @@ func _ready() -> void:
 
 
 func change(alias: String) -> void:
-	call_deferred("emit_signal", "change", alias)
+	emit_signal("changed", alias)
 
 
 func animate() -> void:
@@ -35,6 +37,10 @@ func animate() -> void:
 
 func destroy() -> void:
 	_destroy()
+
+
+func conducts_element(element: int) -> bool:
+	return conduct.has(element)
 
 
 func is_blocked(state: int) -> bool:
@@ -47,7 +53,7 @@ func _set_height(value: float) -> void:
 
 
 func _destroy() -> void:
-	queue_free()
+	change("None")
 
 
 func _is_blocked(state: int) -> bool:

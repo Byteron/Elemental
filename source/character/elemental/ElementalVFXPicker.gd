@@ -43,14 +43,14 @@ func activate_particles(state: int) -> void:
 	smoke_particles.emitting = false
 
 	match state:
-		Elemental.State.FIRE:
+		Entity.Element.FIRE:
 			fire_particles.emitting = true
 			smoke_particles.emitting = true
-		Elemental.State.ICE:
+		Entity.Element.ICE:
 			ice_particles.emitting = true
-		Elemental.State.WIND:
+		Entity.Element.WIND:
 			wind_particles.emitting = true
-		Elemental.State.WATER:
+		Entity.Element.WATER:
 			water_particles.emitting = true
 
 

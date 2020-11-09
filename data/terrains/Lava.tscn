@@ -9,7 +9,7 @@
 
 [node name="Lava" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
-broadcast = [ "fire" ]
+broadcast = [ 2 ]
 alias = "Lava"
 
 [node name="MeshInstance" parent="Meshes" index="0"]
