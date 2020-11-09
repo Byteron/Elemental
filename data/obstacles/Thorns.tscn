@@ -1,9 +1,10 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://source/objects/obstacle/Obstacle.tscn" type="PackedScene" id=1]
+[ext_resource path="res://source/entity/obstacle/Obstacle.tscn" type="PackedScene" id=1]
 [ext_resource path="res://data/obstacles/Thorns.gd" type="Script" id=2]
 [ext_resource path="res://graphics/models/raw import/Thorns_A.jpg" type="Texture" id=3]
 [ext_resource path="res://graphics/models/raw import/Thorns.obj" type="ArrayMesh" id=4]
+
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_texture = ExtResource( 3 )

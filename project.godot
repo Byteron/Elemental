@@ -17,12 +17,12 @@ _global_script_classes=[ {
 "base": "Entity",
 "class": "Character",
 "language": "GDScript",
-"path": "res://source/character/Character.gd"
+"path": "res://source/entity/character/Character.gd"
 }, {
 "base": "Character",
 "class": "Creature",
 "language": "GDScript",
-"path": "res://source/character/creature/Creature.gd"
+"path": "res://source/entity/character/creature/Creature.gd"
 }, {
 "base": "Spatial",
 "class": "Editor",
@@ -37,12 +37,12 @@ _global_script_classes=[ {
 "base": "Character",
 "class": "Elemental",
 "language": "GDScript",
-"path": "res://source/character/elemental/Elemental.gd"
+"path": "res://source/entity/character/elemental/Elemental.gd"
 }, {
 "base": "Spatial",
 "class": "ElementalVFXPicker",
 "language": "GDScript",
-"path": "res://source/character/elemental/ElementalVFXPicker.gd"
+"path": "res://source/entity/character/elemental/ElementalVFXPicker.gd"
 }, {
 "base": "Spatial",
 "class": "Entity",
@@ -57,12 +57,7 @@ _global_script_classes=[ {
 "base": "Entity",
 "class": "Item",
 "language": "GDScript",
-"path": "res://source/item/Item.gd"
-}, {
-"base": "HBoxContainer",
-"class": "LabelEdit",
-"language": "GDScript",
-"path": "res://source/interface/LabelEdit.gd"
+"path": "res://source/entity/item/Item.gd"
 }, {
 "base": "Reference",
 "class": "Loader",
@@ -92,7 +87,7 @@ _global_script_classes=[ {
 "base": "Entity",
 "class": "Obstacle",
 "language": "GDScript",
-"path": "res://source/objects/obstacle/Obstacle.gd"
+"path": "res://source/entity/obstacle/Obstacle.gd"
 }, {
 "base": "Particles",
 "class": "OneShotParticles",
@@ -102,7 +97,7 @@ _global_script_classes=[ {
 "base": "Spatial",
 "class": "Orb",
 "language": "GDScript",
-"path": "res://source/objects/orb/Orb.gd"
+"path": "res://source/booster/Orb.gd"
 }, {
 "base": "Spatial",
 "class": "OrthoCamera",
@@ -112,7 +107,7 @@ _global_script_classes=[ {
 "base": "Resource",
 "class": "SaveData",
 "language": "GDScript",
-"path": "res://source/SaveData.gd"
+"path": "res://source/misc/SaveData.gd"
 }, {
 "base": "Node",
 "class": "SceneLoader",
@@ -127,7 +122,7 @@ _global_script_classes=[ {
 "base": "Spatial",
 "class": "Sigil",
 "language": "GDScript",
-"path": "res://source/objects/sigils/Sigil.gd"
+"path": "res://source/booster/Sigil.gd"
 }, {
 "base": "Node",
 "class": "Song",
@@ -152,7 +147,7 @@ _global_script_classes=[ {
 "base": "Entity",
 "class": "Terrain",
 "language": "GDScript",
-"path": "res://source/terrain/Terrain.gd"
+"path": "res://source/entity/terrain/Terrain.gd"
 }, {
 "base": "Control",
 "class": "TitleScreen",
@@ -175,7 +170,6 @@ _global_script_class_icons={
 "Entity": "",
 "Game": "",
 "Item": "",
-"LabelEdit": "",
 "Loader": "",
 "Location": "",
 "Map": "",

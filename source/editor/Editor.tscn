@@ -4,8 +4,10 @@
 [ext_resource path="res://source/camera/OrthoCamera.tscn" type="PackedScene" id=2]
 [ext_resource path="res://source/map/Map.tscn" type="PackedScene" id=3]
 [ext_resource path="res://source/editor/EditorHUD.tscn" type="PackedScene" id=4]
-[ext_resource path="res://source/character/elemental/Elemental.tscn" type="PackedScene" id=5]
-[ext_resource path="res://source/WorldEnvironment.tscn" type="PackedScene" id=6]
+[ext_resource path="res://source/entity/character/elemental/Elemental.tscn" type="PackedScene" id=5]
+[ext_resource path="res://source/misc/WorldEnvironment.tscn" type="PackedScene" id=6]
+
+
 
 [node name="Editor" type="Spatial"]
 script = ExtResource( 1 )

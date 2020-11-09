@@ -1,8 +1,9 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://data/terrains/Dark.gd" type="Script" id=1]
-[ext_resource path="res://source/terrain/Terrain.tscn" type="PackedScene" id=2]
+[ext_resource path="res://source/entity/terrain/Terrain.tscn" type="PackedScene" id=2]
 [ext_resource path="res://graphics/materials/terrain/terrain_dark.tres" type="Material" id=3]
+
 
 [node name="Dark" instance=ExtResource( 2 )]
 script = ExtResource( 1 )
