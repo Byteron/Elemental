@@ -113,6 +113,9 @@ func _tick_analyze_conduction() -> void:
 
 		for loc in locs:
 			for n_loc in map.get_neighbors(loc):
+				if locs.has(n_loc):
+					continue
+
 				if n_loc.get_broadcast().has(element):
 					is_conducting = true
 					break
@@ -120,6 +123,7 @@ func _tick_analyze_conduction() -> void:
 		if is_conducting:
 			for loc in locs:
 				loc.broadcast.append(element)
+				loc.terrain.animate()
 
 
 func _tick_analyze_interactions() -> void:

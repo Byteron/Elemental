@@ -16,8 +16,8 @@ func destroy() -> void:
 
 	if destroy_particles:
 		var p : Spatial = destroy_particles.instance() as Spatial
-		p.global_transform.origin = global_transform.origin
 		get_tree().current_scene.add_child(p)
+		p.global_transform.origin = global_transform.origin
 
 	anim.play("shrink")
 

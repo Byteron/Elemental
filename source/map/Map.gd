@@ -216,7 +216,7 @@ func move_elemental(direction: Vector3) -> void:
 	var loc = locations[elemental.cell]
 
 	move_character(loc, next_loc)
-	emit_signal("pretick")
+	emit_signal("elemental_moving")
 
 
 func remove_elemental() -> void:

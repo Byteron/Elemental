@@ -2,12 +2,11 @@
 
 [ext_resource path="res://source/entity/character/creature/Creature.tscn" type="PackedScene" id=1]
 
-
 [sub_resource type="SpatialMaterial" id=1]
 albedo_color = Color( 0.247059, 0.886275, 0.901961, 1 )
 
 [node name="SnowMan" instance=ExtResource( 1 )]
-broadcast = [ "ice" ]
+broadcast = [ 3 ]
 alias = "SnowMan"
 
 [node name="MeshInstance" parent="Meshes" index="0"]

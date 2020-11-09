@@ -3,7 +3,6 @@
 [ext_resource path="res://graphics/models/raw import/Tile_Stone_1.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://source/entity/terrain/Terrain.gd" type="Script" id=2]
 
-
 [sub_resource type="Animation" id=1]
 resource_name = "spawn"
 length = 0.35
