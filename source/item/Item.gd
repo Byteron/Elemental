@@ -14,9 +14,10 @@ onready var anim := $AnimationPlayer as AnimationPlayer
 func destroy() -> void:
 	emit_signal("destroyed")
 
-	var p : Spatial = destroy_particles.instance() as Spatial
-	p.global_transform.origin = global_transform.origin
-	get_tree().current_scene.add_child(p)
+	if destroy_particles:
+		var p : Spatial = destroy_particles.instance() as Spatial
+		p.global_transform.origin = global_transform.origin
+		get_tree().current_scene.add_child(p)
 
 	anim.play("shrink")
 

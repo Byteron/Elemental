@@ -32,7 +32,7 @@ Vector3( 1, 0, 2 ): {
 "Terrain": "Stone"
 },
 Vector3( 2, 0, 0 ): {
-"Seeds": true,
+"Item": "Seeds",
 "Terrain": "Grass"
 },
 Vector3( 2, 0, 1 ): {

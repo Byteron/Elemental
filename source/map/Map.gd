@@ -56,8 +56,9 @@ func initialize_from_map_data(elemental: Elemental, map_data: MapData) -> void:
 		if data.has("Elemental"):
 			place_elemental(elemental, cell)
 
-		if data.has("Seeds"):
-			add_seeds(cell)
+		if data.has("Item"):
+			var alias : String = data["Item"]
+			add_item(cell, alias)
 
 		if data.has("Orb"):
 			var alias : String = data["Orb"]
@@ -85,7 +86,45 @@ func randomize_terrain() -> void:
 		elif randf() < 0.05:
 			add_sigil(loc.cell, Global.sigils.keys()[randi() % Global.sigils.size()])
 		elif randf() < 0.04:
-			add_seeds(loc.cell)
+			add_item(loc.cell, "Seeds")
+
+
+func get_map_data() -> MapData:
+	var map_data := MapData.new()
+
+	map_data.width = size.x
+	map_data.height = size.y
+	map_data.optimal_steps = optimal_steps
+	map_data.world = world
+	map_data.level = level
+
+	for value in locations.values():
+		var loc : Location = value
+
+		map_data.locations[loc.cell] = {}
+
+		map_data.locations[loc.cell]["Terrain"] = loc.terrain.alias
+
+		if loc.orb:
+			map_data.locations[loc.cell]["Orb"] = Entity.Element.keys()[loc.orb.element].to_lower().capitalize()
+
+		if loc.sigil:
+			map_data.locations[loc.cell]["Sigil"] = Entity.Element.keys()[loc.sigil.element].to_lower().capitalize()
+
+		if loc.character:
+			if loc.character is Elemental:
+				map_data.locations[loc.cell]["Elemental"] = true
+
+			elif loc.character is Creature:
+				map_data.locations[loc.cell]["Creature"] = loc.character.alias
+
+		if loc.obstacle:
+			map_data.locations[loc.cell]["Obstacle"] = loc.obstacle.alias
+
+		if loc.item:
+			map_data.locations[loc.cell]["Item"] = loc.item.alias
+
+	return map_data
 
 
 func get_neighbors(loc: Location) -> Array:
@@ -114,11 +153,11 @@ func change_terrain(cell: Vector3, alias: String, elevation := 0) -> void:
 
 
 func drop_seeds() -> void:
-	if not elemental.can_move() or not elemental.seeds or locations[elemental.cell].seeds:
+	if not elemental.can_move() or not elemental.seeds or locations[elemental.cell].item:
 		return
 
 	elemental.seeds -= 1
-	add_seeds(elemental.cell)
+	add_item(elemental.cell, "Seeds")
 
 
 func move_character(start_loc: Location, end_loc: Location) -> void:
@@ -257,21 +296,21 @@ func remove_sigil(cell: Vector3) -> void:
 	loc.sigil = null
 
 
-func add_seeds(cell: Vector3) -> void:
+func add_item(cell: Vector3, alias: String) -> void:
 	var loc : Location = locations[cell]
 
-	if loc.seeds:
+	if loc.item:
 		return
 
 	if not loc.terrain:
 		return
 
-	loc.seeds = Seeds.instance()
+	loc.item = Global.items[alias].instance()
 
 
-func remove_seeds(cell: Vector3) -> void:
+func remove_item(cell: Vector3) -> void:
 	var loc : Location = locations[cell]
-	loc.seeds = null
+	loc.item = null
 
 
 func add_obstacle(cell: Vector3, alias: String) -> void:
@@ -289,44 +328,6 @@ func add_obstacle(cell: Vector3, alias: String) -> void:
 func remove_obstacle(cell: Vector3) -> void:
 	var loc : Location = locations[cell]
 	loc.obstacle = null
-
-
-func get_map_data() -> MapData:
-	var map_data := MapData.new()
-
-	map_data.width = size.x
-	map_data.height = size.y
-	map_data.optimal_steps = optimal_steps
-	map_data.world = world
-	map_data.level = level
-
-	for value in locations.values():
-		var loc : Location = value
-
-		map_data.locations[loc.cell] = {}
-
-		map_data.locations[loc.cell]["Terrain"] = loc.terrain.alias
-
-		if loc.orb:
-			map_data.locations[loc.cell]["Orb"] = Entity.Element.keys()[loc.orb.element].to_lower().capitalize()
-
-		if loc.sigil:
-			map_data.locations[loc.cell]["Sigil"] = Entity.Element.keys()[loc.sigil.element].to_lower().capitalize()
-
-		if loc.character:
-			if loc.character is Elemental:
-				map_data.locations[loc.cell]["Elemental"] = true
-
-			elif loc.character is Creature:
-				map_data.locations[loc.cell]["Creature"] = loc.character.alias
-
-		if loc.obstacle:
-			map_data.locations[loc.cell]["Obstacle"] = loc.obstacle.alias
-
-		if loc.seeds:
-			map_data.locations[loc.cell]["Seeds"] = true
-
-	return map_data
 
 
 func _add_location(alias: String, cell: Vector3, animate := true) -> void:

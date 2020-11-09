@@ -1,8 +1,6 @@
 extends Character
 class_name Elemental
 
-const SeedsMesh := preload("res://source/objects/seeds/SeedsMesh.tscn")
-
 export(Entity.Element) var state := 1 setget _set_state
 
 export var seeds := 0 setget _set_seeds
@@ -48,7 +46,7 @@ func _add_seeds() -> void:
 
 	for i in seeds:
 		var spatial = Spatial.new()
-		var mesh = SeedsMesh.instance()
+		var mesh = Global.items["Seeds"].instance()
 		seeds_container.add_child(spatial)
 		spatial.add_child(mesh)
 		mesh.translate_object_local(Vector3.FORWARD * 1.25)

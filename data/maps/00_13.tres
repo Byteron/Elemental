@@ -11,7 +11,7 @@ height = 9
 optimal_steps = 0
 locations = {
 Vector3( 0, 0, 0 ): {
-"Seeds": true,
+"Item": "Seeds",
 "Terrain": "Stone"
 },
 Vector3( 0, 0, 1 ): {
@@ -37,7 +37,7 @@ Vector3( 0, 0, 7 ): {
 "Terrain": "Stone"
 },
 Vector3( 0, 0, 8 ): {
-"Seeds": true,
+"Item": "Seeds",
 "Terrain": "Stone"
 },
 Vector3( 1, 0, 0 ): {
@@ -233,7 +233,7 @@ Vector3( 7, 0, 8 ): {
 "Terrain": "Stone"
 },
 Vector3( 8, 0, 0 ): {
-"Seeds": true,
+"Item": "Seeds",
 "Terrain": "Stone"
 },
 Vector3( 8, 0, 1 ): {
@@ -258,7 +258,7 @@ Vector3( 8, 0, 7 ): {
 "Terrain": "None"
 },
 Vector3( 8, 0, 8 ): {
-"Seeds": true,
+"Item": "Seeds",
 "Terrain": "Stone"
 }
 }

@@ -11,6 +11,7 @@ var current_orb := ""
 var current_sigil := ""
 var current_creature := ""
 var current_obstacle := ""
+var current_item := ""
 
 onready var map := $Map as Map
 onready var elemental := $Elemental
@@ -29,8 +30,8 @@ func _unhandled_input(event: InputEvent) -> void:
 			_handle_sigils_mode(event)
 		EditorHUD.Mode.CREATURES:
 			_handle_creatures_mode(event)
-		EditorHUD.Mode.SEEDS:
-			_handle_seeds_mode(event)
+		EditorHUD.Mode.ITEMS:
+			_handle_items_mode(event)
 		EditorHUD.Mode.OBSTACLES:
 			_handle_obstalces_mode(event)
 		EditorHUD.Mode.ELEMENTAL:
@@ -75,11 +76,11 @@ func _handle_obstalces_mode(event: InputEvent) -> void:
 		map.remove_obstacle(current_cell)
 
 
-func _handle_seeds_mode(event: InputEvent) -> void:
+func _handle_items_mode(event: InputEvent) -> void:
 	if event.is_action_pressed("mouse_left"):
-		map.add_seeds(current_cell)
+		map.add_item(current_cell, current_item)
 	if event.is_action_pressed("mouse_right"):
-		map.remove_seeds(current_cell)
+		map.remove_item(current_cell)
 
 
 func _handle_elemental_mode(event: InputEvent) -> void:
@@ -130,6 +131,10 @@ func _on_HUD_creature_selected(creature: String) -> void:
 
 func _on_HUD_obstacle_selected(obstacle: String) -> void:
 	current_obstacle = obstacle
+
+
+func _on_HUD_item_selected(item: String) -> void:
+	current_item = item
 
 
 func _on_HUD_save_button_pressed(world: int, level: int) -> void:

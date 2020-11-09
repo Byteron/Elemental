@@ -192,9 +192,9 @@ func _check_sigil(loc: Location) -> void:
 
 
 func _check_collecting_seeds(loc: Location) -> void:
-	if loc.seeds:
+	if loc.item and loc.item.alias == "Seeds":
 		elemental.seeds += 1
-		loc.seeds.collect()
+		loc.item.collect()
 
 
 func _check_planting_seeds(loc: Location) -> void:

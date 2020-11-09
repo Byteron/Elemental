@@ -31,7 +31,7 @@ Vector3( 0, 0, 5 ): {
 "Terrain": "Stone"
 },
 Vector3( 0, 0, 6 ): {
-"Seeds": true,
+"Item": "Seeds",
 "Terrain": "Stone"
 },
 Vector3( 1, 0, 0 ): {
@@ -159,7 +159,7 @@ Vector3( 6, 0, 3 ): {
 "Terrain": "None"
 },
 Vector3( 6, 0, 4 ): {
-"Seeds": true,
+"Item": "Seeds",
 "Terrain": "Stone"
 },
 Vector3( 6, 0, 5 ): {

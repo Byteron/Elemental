@@ -17,11 +17,11 @@ Vector3( 0, 0, 1 ): {
 "Terrain": "None"
 },
 Vector3( 0, 0, 2 ): {
-"Seeds": true,
+"Item": "Seeds",
 "Terrain": "Grass"
 },
 Vector3( 0, 0, 3 ): {
-"Seeds": true,
+"Item": "Seeds",
 "Terrain": "Grass"
 },
 Vector3( 0, 0, 4 ): {
@@ -29,11 +29,11 @@ Vector3( 0, 0, 4 ): {
 "Terrain": "Grass"
 },
 Vector3( 0, 0, 5 ): {
-"Seeds": true,
+"Item": "Seeds",
 "Terrain": "Grass"
 },
 Vector3( 0, 0, 6 ): {
-"Seeds": true,
+"Item": "Seeds",
 "Terrain": "Grass"
 },
 Vector3( 0, 0, 7 ): {

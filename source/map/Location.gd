@@ -11,7 +11,7 @@ var character : Character = null
 var terrain : Terrain = null setget _set_terrain
 var orb : Orb = null setget _set_orb
 var sigil : Sigil = null setget _set_sigil
-var seeds : Seeds = null setget _set_seeds
+var item : Item = null setget _set_item
 var obstacle : Obstacle = null setget _set_obstacle
 
 var initialized := false
@@ -23,7 +23,7 @@ func get_broadcast() -> Array:
 	_add_broadcaster(elements, character)
 	_add_broadcaster(elements, terrain)
 	_add_broadcaster(elements, obstacle)
-	_add_broadcaster(elements, seeds)
+	_add_broadcaster(elements, item)
 	_add_broadcaster(elements, self)
 
 	return elements
@@ -67,8 +67,8 @@ func _call_on_children(function: String, boosted: bool) -> void:
 		terrain.call(function, boosted)
 	if obstacle:
 		obstacle.call(function, boosted)
-	if seeds:
-		seeds.call(function, boosted)
+	if item:
+		item.call(function, boosted)
 
 
 func _set_terrain(value: Terrain) -> void:
@@ -109,15 +109,15 @@ func _set_sigil(value: Sigil) -> void:
 		terrain.add_child(sigil)
 
 
-func _set_seeds(value: Seeds) -> void:
-	if seeds:
-		seeds.queue_free()
+func _set_item(value: Item) -> void:
+	if item:
+		item.queue_free()
 
-	seeds = value
+	item = value
 
-	if seeds:
-		terrain.add_child(seeds)
-		seeds.connect("collected", self, "_on_seeds_collected")
+	if item:
+		terrain.add_child(item)
+		item.connect("collected", self, "_on_item_collected")
 
 
 func _set_obstacle(value: Obstacle) -> void:
@@ -180,8 +180,8 @@ func _on_orb_collected() -> void:
 	orb = null
 
 
-func _on_seeds_collected() -> void:
-	seeds = null
+func _on_item_collected() -> void:
+	item = null
 
 
 func _on_obstacle_destroyed() -> void:

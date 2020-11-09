@@ -6,7 +6,7 @@ enum Mode {
 	ORBS,
 	SIGILS,
 	CREATURES,
-	SEEDS,
+	ITEMS,
 	OBSTACLES,
 	ELEMENTAL
 }
@@ -19,6 +19,7 @@ signal orb_selected(orb)
 signal sigil_selected(sigil)
 signal creature_selected(creature)
 signal obstacle_selected(obstacle)
+signal item_selected(item)
 signal elevation_selected(elevation)
 signal mode_selected(mode)
 
@@ -75,6 +76,8 @@ func _on_ModeOptions_item_selected(index: int) -> void:
 			selection_panel.fill(Global.creatures.keys())
 		Mode.OBSTACLES:
 			selection_panel.fill(Global.obstacles.keys())
+		Mode.ITEMS:
+			selection_panel.fill(Global.items.keys())
 
 	emit_signal("mode_selected", index)
 
@@ -104,6 +107,8 @@ func _on_SelectionPanel_option_selected(alias: String) -> void:
 			emit_signal("creature_selected", alias)
 		Mode.OBSTACLES:
 			emit_signal("obstacle_selected", alias)
+		Mode.ITEMS:
+			emit_signal("item_selected", alias)
 
 
 func _on_WorldOptions_item_selected(index: int) -> void:

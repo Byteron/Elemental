@@ -22,6 +22,7 @@ script = ExtResource( 1 )
 [connection signal="create_button_pressed" from="HUD" to="." method="_on_HUD_create_button_pressed"]
 [connection signal="creature_selected" from="HUD" to="." method="_on_HUD_creature_selected"]
 [connection signal="elevation_selected" from="HUD" to="." method="_on_HUD_elevation_selected"]
+[connection signal="item_selected" from="HUD" to="." method="_on_HUD_item_selected"]
 [connection signal="load_button_pressed" from="HUD" to="." method="_on_HUD_load_button_pressed"]
 [connection signal="mode_selected" from="HUD" to="." method="_on_HUD_mode_selected"]
 [connection signal="obstacle_selected" from="HUD" to="." method="_on_HUD_obstacle_selected"]

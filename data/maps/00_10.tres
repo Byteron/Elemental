@@ -36,7 +36,7 @@ Vector3( 1, 0, 0 ): {
 "Terrain": "Water"
 },
 Vector3( 1, 0, 1 ): {
-"Seeds": true,
+"Item": "Seeds",
 "Terrain": "Grass"
 },
 Vector3( 1, 0, 2 ): {
@@ -65,7 +65,7 @@ Vector3( 2, 0, 2 ): {
 "Terrain": "Cloud"
 },
 Vector3( 2, 0, 3 ): {
-"Seeds": true,
+"Item": "Seeds",
 "Terrain": "Grass"
 },
 Vector3( 2, 0, 4 ): {
@@ -118,7 +118,7 @@ Vector3( 4, 0, 5 ): {
 "Terrain": "Grass"
 },
 Vector3( 4, 0, 6 ): {
-"Seeds": true,
+"Item": "Seeds",
 "Terrain": "Grass"
 },
 Vector3( 5, 0, 0 ): {
@@ -134,7 +134,7 @@ Vector3( 5, 0, 3 ): {
 "Terrain": "Cloud"
 },
 Vector3( 5, 0, 4 ): {
-"Seeds": true,
+"Item": "Seeds",
 "Terrain": "Grass"
 },
 Vector3( 5, 0, 5 ): {
