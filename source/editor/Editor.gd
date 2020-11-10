@@ -3,6 +3,8 @@ class_name Editor
 
 const MAP_PATH := "res://data/maps/"
 
+export var Map : PackedScene = null
+
 var current_mode := 0
 var current_cell := Vector3()
 var current_terrain := ""

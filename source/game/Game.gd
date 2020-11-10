@@ -47,8 +47,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		get_tree().reload_current_scene()
 	if event.is_action_pressed("ui_cancel"):
 		Scene.change("TitleScreen")
-	if event.is_action_pressed("drop_seeds"):
-		map.drop_seeds()
+	if event.is_action_pressed("drop"):
+		map.drop_item()
 
 
 func _process(delta: float) -> void:
@@ -173,8 +173,9 @@ func _check_brittle_terrain(loc: Location) -> void:
 
 func _check_collecting_orb(loc: Location) -> void:
 	if loc.orb:
-		if [Entity.Element.ICE, Entity.Element.FIRE].has(loc.orb.element) and elemental.seeds:
-			elemental.seeds = 0
+		if [Entity.Element.ICE, Entity.Element.FIRE].has(loc.orb.element) and elemental.get_item_count("Seeds"):
+			elemental.inventory.erase("Seeds")
+			elemental.update_inventory()
 
 		elemental.state = loc.orb.element
 		elemental.plop()
@@ -187,25 +188,25 @@ func _check_sigil(loc: Location) -> void:
 		return
 
 	if loc.sigil:
-		if [Entity.Element.ICE, Entity.Element.FIRE].has(loc.sigil.element) and elemental.seeds:
-			elemental.seeds = 0
+		if [Entity.Element.ICE, Entity.Element.FIRE].has(loc.sigil.element) and elemental.get_item_count("Seeds"):
+			elemental.inventory.erase("Seeds")
+			elemental.update_inventory()
 
 		elemental.state = loc.sigil.element
 		elemental.plop()
 		loc.sigil.activate()
 
 
-func _check_collecting_seeds(loc: Location) -> void:
-	if loc.item and loc.item.alias == "Seeds":
-		elemental.seeds += 1
+func _check_collecting_items(loc: Location) -> void:
+	if loc.item:
+		elemental.add_item(loc.item.alias)
 		loc.item.collect()
 
 
 func _check_planting_seeds(loc: Location) -> void:
-	if elemental.seeds and loc.terrain and loc.terrain.is_fertile:
-		elemental.seeds -= 1
+	if elemental.get_item_count("Seeds") and loc.terrain and loc.terrain.is_fertile:
+		elemental.remove_item("Seeds")
 		seeds_planted += 1
-		print("Seeds - 1")
 		loc.change_terrain("Grass")
 		SFX.play_sfx("Plant")
 
@@ -215,7 +216,7 @@ func _on_Map_elemental_move_finished(last_loc: Location, loc: Location) -> void:
 	_check_sigil(loc)
 
 	_check_brittle_terrain(last_loc)
-	_check_collecting_seeds(loc)
+	_check_collecting_items(loc)
 	_check_planting_seeds(loc)
 
 	_tick()

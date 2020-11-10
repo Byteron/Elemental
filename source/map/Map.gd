@@ -33,10 +33,6 @@ onready var terrains := $Terrains as Node
 onready var creatures := $Creatures as Node
 
 
-static func instance() -> Map:
-	return load("res://source/map/Map.tscn").instance() as Map
-
-
 func initialize(width: int, height: int) -> void:
 	size = Vector2(width, height)
 	for z in size.y:
@@ -147,17 +143,36 @@ func get_location(cell: Vector3) -> Location:
 	return null
 
 
+func get_locations_in_reach(start_loc: Location, reach: int) -> Array:
+	var reachable_cells := []
+	var reachable_locations := [ start_loc ]
+
+	for x in range(-reach, reach + 1):
+		for z in range(-reach, reach + 1):
+			var r_cell = start_loc.cell + Vector3(x, 0, z)
+			reachable_cells.append(r_cell)
+
+	for r_cell in reachable_cells:
+		var loc : Location = get_location(r_cell)
+		if loc:
+			reachable_locations.append(loc)
+
+	return reachable_locations
+
+
 func change_terrain(cell: Vector3, alias: String, elevation := 0) -> void:
 	var loc : Location = locations[cell]
 	loc.change_terrain(alias)
 
 
-func drop_seeds() -> void:
-	if not elemental.can_move() or not elemental.seeds or locations[elemental.cell].item:
+func drop_item() -> void:
+	if not elemental.can_move() or not elemental.inventory or locations[elemental.cell].item:
 		return
 
-	elemental.seeds -= 1
-	add_item(elemental.cell, "Seeds")
+	var key = elemental.inventory.keys()[0]
+
+	elemental.remove_item(key)
+	add_item(elemental.cell, key)
 
 
 func move_character(start_loc: Location, end_loc: Location) -> void:

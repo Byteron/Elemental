@@ -33,6 +33,7 @@ Vector3( 0, 0, 6 ): {
 "Terrain": "Stone"
 },
 Vector3( 1, 0, 0 ): {
+"Item": "Meat",
 "Terrain": "Stone"
 },
 Vector3( 1, 0, 1 ): {
@@ -60,14 +61,12 @@ Vector3( 2, 0, 1 ): {
 "Terrain": "Water"
 },
 Vector3( 2, 0, 2 ): {
-"Creature": "FireMan",
 "Terrain": "Water"
 },
 Vector3( 2, 0, 3 ): {
 "Terrain": "Stone"
 },
 Vector3( 2, 0, 4 ): {
-"Creature": "SnowMan",
 "Terrain": "Water"
 },
 Vector3( 2, 0, 5 ): {
@@ -86,6 +85,7 @@ Vector3( 3, 0, 2 ): {
 "Terrain": "Stone"
 },
 Vector3( 3, 0, 3 ): {
+"Creature": "Bear",
 "Terrain": "Earth"
 },
 Vector3( 3, 0, 4 ): {
@@ -104,14 +104,12 @@ Vector3( 4, 0, 1 ): {
 "Terrain": "Water"
 },
 Vector3( 4, 0, 2 ): {
-"Creature": "SnowMan",
 "Terrain": "Water"
 },
 Vector3( 4, 0, 3 ): {
 "Terrain": "Stone"
 },
 Vector3( 4, 0, 4 ): {
-"Creature": "FireMan",
 "Terrain": "Water"
 },
 Vector3( 4, 0, 5 ): {

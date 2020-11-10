@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://data/items/Seeds.gd" type="Script" id=1]
+[ext_resource path="res://source/entity/item/Item.tscn" type="PackedScene" id=5]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_color = Color( 0.478431, 0.0862745, 0.0862745, 1 )
+
+[sub_resource type="PrismMesh" id=2]
+material = SubResource( 1 )
+size = Vector3( 0.5, 0.5, 0.5 )
+
+[node name="Meat" instance=ExtResource( 5 )]
+script = ExtResource( 1 )
+alias = "Meat"
+
+[node name="MeshInstance" type="MeshInstance" parent="Meshes" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.229719, 0 )
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="MeshInstance2" type="MeshInstance" parent="Meshes" index="1"]
+transform = Transform( 0.190261, 0, 0.981734, 0, 1, 0, -0.981734, 0, 0.190261, 0, 0.229719, 0 )
+mesh = SubResource( 2 )
+material/0 = null

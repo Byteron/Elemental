@@ -7,10 +7,9 @@
 [ext_resource path="res://source/entity/character/elemental/Elemental.tscn" type="PackedScene" id=5]
 [ext_resource path="res://source/misc/WorldEnvironment.tscn" type="PackedScene" id=6]
 
-
-
 [node name="Editor" type="Spatial"]
 script = ExtResource( 1 )
+Map = ExtResource( 3 )
 
 [node name="WorldEnvironment" parent="." instance=ExtResource( 6 )]
 

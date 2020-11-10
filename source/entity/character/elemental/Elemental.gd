@@ -3,18 +3,47 @@ class_name Elemental
 
 export(Entity.Element) var state := 1 setget _set_state
 
-export var seeds := 0 setget _set_seeds
+var inventory := {}
 
 onready var vfx_picker := $ElementalVFXPicker
 
 onready var mesh_instance := $Meshes/MeshInstance as MeshInstance
 
-onready var seeds_container := $Seeds as Spatial
+onready var item_container := $Items as Spatial
 
 
 func _ready() -> void:
 	_set_state(state)
 	meshes.rotation_degrees.y = 135
+	inventory.clear()
+
+
+func add_item(alias: String) -> void:
+	if not inventory.has(alias):
+		inventory[alias] = 0
+	inventory[alias] += 1
+	print("%s: %d" % [alias, inventory[alias]])
+	update_inventory()
+
+
+func remove_item(alias: String) -> void:
+	if not inventory.has(alias):
+		return
+
+	inventory[alias] -= 1
+
+	if inventory[alias] == 0:
+		inventory.erase(alias)
+		print("%s: %d" % [alias, 0])
+	else:
+		print("%s: %d" % [alias, inventory[alias]])
+	update_inventory()
+
+
+func get_item_count(alias: String) -> int:
+	if inventory.has(alias):
+		return inventory[alias]
+	return 0
 
 
 func plop() -> void:
@@ -35,28 +64,28 @@ func finished() -> void:
 	anim.play("finished")
 
 
-func _clear_seeds() -> void:
-	for child in seeds_container.get_children():
-		seeds_container.remove_child(child)
+func _clear_items() -> void:
+	for child in item_container.get_children():
+		item_container.remove_child(child)
 		child.queue_free()
 
 
-func _add_seeds() -> void:
-	_clear_seeds()
+func update_inventory() -> void:
+	_clear_items()
 
-	for i in seeds:
+	var items := []
+	for key in inventory:
+		var count : int = inventory[key]
+		for i in count:
+			items.append(Global.items[key].instance())
+
+	for i in items.size():
+		var item = items[i]
 		var spatial = Spatial.new()
-		var mesh = Global.items["Seeds"].instance()
-		seeds_container.add_child(spatial)
-		spatial.add_child(mesh)
-		mesh.translate_object_local(Vector3.FORWARD * 1.25)
-		spatial.rotation_degrees.y = (360 / seeds) * i
-		print(spatial.rotation_degrees)
-
-
-func _set_seeds(value: int) -> void:
-	seeds = value
-	_add_seeds()
+		item_container.add_child(spatial)
+		spatial.add_child(item)
+		item.translate_object_local(Vector3.FORWARD * 1.25)
+		spatial.rotation_degrees.y = (360 / items.size()) * i
 
 
 func _set_state(value: int) -> void:

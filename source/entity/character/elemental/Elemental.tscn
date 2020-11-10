@@ -6,10 +6,6 @@
 [ext_resource path="res://assets/graphics/models/Elemental_earth.obj" type="ArrayMesh" id=9]
 [ext_resource path="res://assets/graphics/materials/elemental/elemental_earth.tres" type="Material" id=14]
 
-
-
-
-
 [sub_resource type="Animation" id=1]
 resource_name = "finished"
 step = 0.05
@@ -55,7 +51,7 @@ tracks/0/keys = {
 "values": [ Vector3( 0, 0.5, 0 ), Vector3( 0, 0.3, 0 ), Vector3( 0, 0.5, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Seeds:rotation_degrees")
+tracks/1/path = NodePath("Items:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -96,7 +92,7 @@ material_override = ExtResource( 14 )
 mesh = ExtResource( 9 )
 material/0 = null
 
-[node name="Seeds" type="Spatial" parent="." index="3"]
+[node name="Items" type="Spatial" parent="." index="3"]
 
 [node name="ElementalVFXPicker" parent="." index="4" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.66587, 0 )
