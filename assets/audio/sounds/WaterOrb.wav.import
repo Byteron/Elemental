@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/WaterOrb.wav-e621e5562d41b45226fb54e08e7faa45.sample"
+
+[deps]
+
+source_file="res://assets/audio/sounds/WaterOrb.wav"
+dest_files=[ "res://.import/WaterOrb.wav-e621e5562d41b45226fb54e08e7faa45.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

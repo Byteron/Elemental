@@ -1,11 +1,13 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://graphics/materials/elemental/elemental_fire.tres" type="Material" id=1]
+[ext_resource path="res://assets/graphics/materials/elemental/elemental_fire.tres" type="Material" id=1]
 [ext_resource path="res://data/obstacles/Fire.gd" type="Script" id=2]
 [ext_resource path="res://source/entity/obstacle/Obstacle.tscn" type="PackedScene" id=3]
-[ext_resource path="res://graphics/models/raw import/Elemental_fire.obj" type="ArrayMesh" id=4]
-[ext_resource path="res://graphics/particles/FireParticles.tscn" type="PackedScene" id=5]
-[ext_resource path="res://graphics/particles/SmokeParticles.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/graphics/models/Elemental_fire.obj" type="ArrayMesh" id=4]
+[ext_resource path="res://assets/graphics/particles/FireParticles.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/graphics/particles/SmokeParticles.tscn" type="PackedScene" id=6]
+
+
 
 
 [node name="Fire" instance=ExtResource( 3 )]

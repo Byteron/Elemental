@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Seeds.obj-bcd95f50afd4d40d12dcd9a9f8528542.mesh"
+
+[deps]
+
+files=[ "res://.import/Seeds.obj-bcd95f50afd4d40d12dcd9a9f8528542.mesh" ]
+
+source_file="res://assets/graphics/models/Seeds.obj"
+dest_files=[ "res://.import/Seeds.obj-bcd95f50afd4d40d12dcd9a9f8528542.mesh", "res://.import/Seeds.obj-bcd95f50afd4d40d12dcd9a9f8528542.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

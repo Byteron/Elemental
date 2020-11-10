@@ -2,8 +2,10 @@
 
 [ext_resource path="res://data/terrains/Earth.gd" type="Script" id=1]
 [ext_resource path="res://source/entity/terrain/Terrain.tscn" type="PackedScene" id=2]
-[ext_resource path="res://graphics/materials/terrain/terrain_earth.tres" type="Material" id=3]
-[ext_resource path="res://graphics/models/raw import/Tile_Dirt_1.obj" type="ArrayMesh" id=5]
+[ext_resource path="res://assets/graphics/materials/terrain/terrain_earth.tres" type="Material" id=3]
+[ext_resource path="res://assets/graphics/models/Tile_Dirt_1.obj" type="ArrayMesh" id=5]
+
+
 
 
 [node name="Earth" instance=ExtResource( 2 )]

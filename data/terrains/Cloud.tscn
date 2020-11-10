@@ -2,8 +2,10 @@
 
 [ext_resource path="res://data/terrains/Cloud.gd" type="Script" id=1]
 [ext_resource path="res://source/entity/terrain/Terrain.tscn" type="PackedScene" id=2]
-[ext_resource path="res://graphics/materials/terrain/terrain_wind.tres" type="Material" id=3]
-[ext_resource path="res://graphics/models/raw import/Tile_Wind_1.obj" type="ArrayMesh" id=4]
+[ext_resource path="res://assets/graphics/materials/terrain/terrain_wind.tres" type="Material" id=3]
+[ext_resource path="res://assets/graphics/models/Tile_Wind_1.obj" type="ArrayMesh" id=4]
+
+
 
 
 [node name="Cloud" instance=ExtResource( 2 )]

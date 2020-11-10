@@ -2,16 +2,17 @@
 
 [ext_resource path="res://source/global/SFX.gd" type="Script" id=1]
 [ext_resource path="res://addons/audio_booth/source/sfx/Sound.gd" type="Script" id=2]
-[ext_resource path="res://audio/sounds/IceOrb.wav" type="AudioStream" id=3]
-[ext_resource path="res://audio/sounds/Burn.wav" type="AudioStream" id=4]
-[ext_resource path="res://audio/sounds/GrabSeeds.wav" type="AudioStream" id=5]
-[ext_resource path="res://audio/sounds/WindOrb.wav" type="AudioStream" id=6]
-[ext_resource path="res://audio/sounds/WaterOrb.wav" type="AudioStream" id=7]
-[ext_resource path="res://audio/sounds/FireOrb.wav" type="AudioStream" id=8]
-[ext_resource path="res://audio/sounds/Freeze.wav" type="AudioStream" id=9]
-[ext_resource path="res://audio/sounds/PlantSeeds.wav" type="AudioStream" id=10]
-[ext_resource path="res://audio/sounds/StoneOrb.wav" type="AudioStream" id=11]
-[ext_resource path="res://audio/sounds/GrowGrass.wav" type="AudioStream" id=12]
+[ext_resource path="res://assets/audio/sounds/IceOrb.wav" type="AudioStream" id=3]
+[ext_resource path="res://assets/audio/sounds/Burn.wav" type="AudioStream" id=4]
+[ext_resource path="res://assets/audio/sounds/GrabSeeds.wav" type="AudioStream" id=5]
+[ext_resource path="res://assets/audio/sounds/WindOrb.wav" type="AudioStream" id=6]
+[ext_resource path="res://assets/audio/sounds/WaterOrb.wav" type="AudioStream" id=7]
+[ext_resource path="res://assets/audio/sounds/FireOrb.wav" type="AudioStream" id=8]
+[ext_resource path="res://assets/audio/sounds/Freeze.wav" type="AudioStream" id=9]
+[ext_resource path="res://assets/audio/sounds/PlantSeeds.wav" type="AudioStream" id=10]
+[ext_resource path="res://assets/audio/sounds/StoneOrb.wav" type="AudioStream" id=11]
+[ext_resource path="res://assets/audio/sounds/GrowGrass.wav" type="AudioStream" id=12]
+
 
 [node name="SFX" type="Node"]
 script = ExtResource( 1 )

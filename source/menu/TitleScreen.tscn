@@ -2,8 +2,8 @@
 
 [ext_resource path="res://source/menu/TitleScreen.gd" type="Script" id=1]
 [ext_resource path="res://source/menu/MenuButton.tscn" type="PackedScene" id=2]
-[ext_resource path="res://fonts/architect-s-daughter/ArchitectsDaughter.ttf" type="DynamicFontData" id=3]
-[ext_resource path="res://graphics/images/background.png" type="Texture" id=4]
+[ext_resource path="res://assets/fonts/architect-s-daughter/ArchitectsDaughter.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://assets/graphics/images/background.png" type="Texture" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 64

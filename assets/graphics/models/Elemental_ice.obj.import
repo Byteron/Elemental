@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Elemental_ice.obj-f89f57ef798299b83baf49b5e715d40c.mesh"
+
+[deps]
+
+files=[ "res://.import/Elemental_ice.obj-f89f57ef798299b83baf49b5e715d40c.mesh" ]
+
+source_file="res://assets/graphics/models/Elemental_ice.obj"
+dest_files=[ "res://.import/Elemental_ice.obj-f89f57ef798299b83baf49b5e715d40c.mesh", "res://.import/Elemental_ice.obj-f89f57ef798299b83baf49b5e715d40c.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

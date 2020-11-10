@@ -92,7 +92,7 @@ _global_script_classes=[ {
 "base": "Particles",
 "class": "OneShotParticles",
 "language": "GDScript",
-"path": "res://graphics/particles/OneShotParticles.gd"
+"path": "res://assets/graphics/particles/OneShotParticles.gd"
 }, {
 "base": "Spatial",
 "class": "Orb",
