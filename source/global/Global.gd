@@ -1,6 +1,6 @@
 extends Node
 
-const SAVE_DATA_VERSION := 2
+const SAVE_DATA_VERSION := 3
 const SAVE_DATA_PATH := "user://save_data.tres"
 
 var current_world := 0
