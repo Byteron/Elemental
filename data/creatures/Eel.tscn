@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://source/entity/character/creature/Creature.tscn" type="PackedScene" id=1]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_color = Color( 0.384314, 0.392157, 0.439216, 1 )
+
+[sub_resource type="CapsuleMesh" id=2]
+radius = 0.4
+
+[node name="Eel" instance=ExtResource( 1 )]
+broadcast = [ 6 ]
+alias = "Eel"
+
+[node name="MeshInstance" parent="Meshes" index="0"]
+material_override = SubResource( 1 )
+mesh = SubResource( 2 )
