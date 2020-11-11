@@ -26,117 +26,119 @@ Vector3( 0, 0, 3 ): {
 "Terrain": "Stone"
 },
 Vector3( 0, 0, 4 ): {
-"Terrain": "None"
+"Terrain": "Stone"
 },
 Vector3( 0, 0, 5 ): {
-"Terrain": "None"
+"Terrain": "Stone"
 },
 Vector3( 0, 0, 6 ): {
-"Terrain": "None"
+"Item": "Seeds",
+"Terrain": "Stone"
 },
 Vector3( 1, 0, 0 ): {
 "Terrain": "Metal"
 },
 Vector3( 1, 0, 1 ): {
-"Terrain": "None"
+"Terrain": "Stone"
 },
 Vector3( 1, 0, 2 ): {
-"Terrain": "None"
+"Terrain": "Stone"
 },
 Vector3( 1, 0, 3 ): {
 "Item": "Seeds",
 "Terrain": "Stone"
 },
 Vector3( 1, 0, 4 ): {
-"Terrain": "None"
+"Terrain": "Stone"
 },
 Vector3( 1, 0, 5 ): {
-"Terrain": "None"
+"Terrain": "Stone"
 },
 Vector3( 1, 0, 6 ): {
-"Terrain": "None"
+"Terrain": "Stone"
 },
 Vector3( 2, 0, 0 ): {
 "Terrain": "Metal"
 },
 Vector3( 2, 0, 1 ): {
-"Terrain": "None"
+"Terrain": "Stone"
 },
 Vector3( 2, 0, 2 ): {
-"Terrain": "None"
+"Terrain": "Stone"
 },
 Vector3( 2, 0, 3 ): {
 "Obstacle": "Thorns",
 "Terrain": "Stone"
 },
 Vector3( 2, 0, 4 ): {
-"Terrain": "Metal"
+"Terrain": "Stone"
 },
 Vector3( 2, 0, 5 ): {
-"Terrain": "Metal"
+"Terrain": "Stone"
 },
 Vector3( 2, 0, 6 ): {
-"Terrain": "Metal"
+"Terrain": "Earth"
 },
 Vector3( 3, 0, 0 ): {
 "Terrain": "Metal"
 },
 Vector3( 3, 0, 1 ): {
-"Terrain": "None"
+"Terrain": "Stone"
 },
 Vector3( 3, 0, 2 ): {
-"Terrain": "None"
+"Terrain": "Stone"
 },
 Vector3( 3, 0, 3 ): {
-"Terrain": "Earth"
+"Terrain": "Metal"
 },
 Vector3( 3, 0, 4 ): {
-"Terrain": "None"
+"Terrain": "Metal"
 },
 Vector3( 3, 0, 5 ): {
-"Terrain": "None"
+"Terrain": "Stone"
 },
 Vector3( 3, 0, 6 ): {
-"Terrain": "Metal"
+"Terrain": "Stone"
 },
 Vector3( 4, 0, 0 ): {
 "Terrain": "Metal"
 },
 Vector3( 4, 0, 1 ): {
-"Terrain": "None"
+"Item": "Meat",
+"Terrain": "Stone"
 },
 Vector3( 4, 0, 2 ): {
-"Terrain": "None"
+"Terrain": "Stone"
 },
 Vector3( 4, 0, 3 ): {
-"Terrain": "None"
+"Terrain": "Metal"
 },
 Vector3( 4, 0, 4 ): {
-"Terrain": "None"
+"Terrain": "Stone"
 },
 Vector3( 4, 0, 5 ): {
-"Terrain": "None"
+"Terrain": "Metal"
 },
 Vector3( 4, 0, 6 ): {
-"Terrain": "Metal"
+"Terrain": "Stone"
 },
 Vector3( 5, 0, 0 ): {
 "Terrain": "Metal"
 },
 Vector3( 5, 0, 1 ): {
-"Terrain": "None"
+"Terrain": "Stone"
 },
 Vector3( 5, 0, 2 ): {
-"Terrain": "None"
+"Terrain": "Stone"
 },
 Vector3( 5, 0, 3 ): {
-"Terrain": "None"
+"Terrain": "Metal"
 },
 Vector3( 5, 0, 4 ): {
-"Terrain": "None"
+"Terrain": "Stone"
 },
 Vector3( 5, 0, 5 ): {
-"Terrain": "None"
+"Terrain": "Stone"
 },
 Vector3( 5, 0, 6 ): {
 "Terrain": "Metal"
@@ -154,12 +156,12 @@ Vector3( 6, 0, 3 ): {
 "Terrain": "Metal"
 },
 Vector3( 6, 0, 4 ): {
-"Terrain": "Metal"
+"Terrain": "Stone"
 },
 Vector3( 6, 0, 5 ): {
 "Terrain": "Metal"
 },
 Vector3( 6, 0, 6 ): {
-"Terrain": "Metal"
+"Terrain": "Stone"
 }
 }

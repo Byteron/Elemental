@@ -3,6 +3,8 @@ class_name Location
 
 signal hovered(loc)
 
+var index := 0
+
 var cell := Vector3()
 var position := Vector3()
 

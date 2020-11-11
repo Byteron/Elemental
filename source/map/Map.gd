@@ -17,6 +17,8 @@ signal creature_added(creature)
 signal elemental_moving()
 signal elemental_move_finished(last_loc, loc)
 
+var grid := AStar.new()
+
 var size := Vector2(0, 0)
 
 var world := 0
@@ -38,16 +40,20 @@ func initialize(width: int, height: int) -> void:
 	for z in size.y:
 		for x in size.x:
 			var cell = Vector3(x, 0, z)
-			_add_location("Stone", cell, false)
+			var index = z * width + x
+			_add_location(index, "Stone", cell, false)
+
+	_initialize_grid()
 
 
 func initialize_from_map_data(elemental: Elemental, map_data: MapData) -> void:
 	size = Vector2(map_data.width, map_data.height)
 	optimal_steps = map_data.optimal_steps
 
+	var index := 0
 	for cell in map_data.locations.keys():
 		var data : Dictionary = map_data.locations[cell]
-		_add_location(data["Terrain"], cell, false)
+		_add_location(index, data["Terrain"], cell, false)
 
 		if data.has("Elemental"):
 			place_elemental(elemental, cell)
@@ -72,6 +78,10 @@ func initialize_from_map_data(elemental: Elemental, map_data: MapData) -> void:
 			var obstacle = data["Obstacle"]
 			add_obstacle(cell, obstacle)
 
+		index += 1
+
+	_initialize_grid()
+
 
 func randomize_terrain() -> void:
 	for loc in locations.values():
@@ -83,6 +93,31 @@ func randomize_terrain() -> void:
 			add_sigil(loc.cell, Global.sigils.keys()[randi() % Global.sigils.size()])
 		elif randf() < 0.04:
 			add_item(loc.cell, "Seeds")
+
+
+
+func update_grid_weight(walkable: Array) -> void:
+	for cell in locations:
+		var loc: Location = locations[cell]
+
+		if not walkable or loc.terrain.alias in walkable and not loc.terrain.alias == "None":
+			grid.set_point_weight_scale(loc.index, 1)
+		else:
+			grid.set_point_weight_scale(loc.index, 99)
+
+
+func find_path(start_loc: Location, end_loc: Location) -> Array:
+	var path := []
+	var cell_path := grid.get_point_path(start_loc.index, end_loc.index)
+
+	cell_path.remove(0)
+
+	for cell in cell_path:
+		var loc := get_location(cell)
+		loc.terrain.debug_color(Color.green)
+		path.append(loc)
+
+	return path
 
 
 func get_map_data() -> MapData:
@@ -393,7 +428,7 @@ func remove_obstacle(cell: Vector3) -> void:
 	loc.obstacle = null
 
 
-func _add_location(alias: String, cell: Vector3, animate := true) -> void:
+func _add_location(index: int, alias: String, cell: Vector3, animate := true) -> void:
 	var terrain : Terrain = Global.terrains[alias].instance()
 	var loc := Location.new()
 
@@ -401,6 +436,7 @@ func _add_location(alias: String, cell: Vector3, animate := true) -> void:
 
 	add_child(loc)
 
+	loc.index = index
 	loc.cell = cell
 	loc.position = cell * GRID_SIZE
 	loc.terrain = terrain
@@ -420,6 +456,19 @@ func _remove_location(cell) -> void:
 	loc.seeds = null
 	loc.obstacle = null
 	locations.erase(cell)
+
+
+func _initialize_grid() -> void:
+	for loc in locations.values():
+		grid.add_point(loc.index, loc.cell, 1.0)
+
+	for loc in locations.values():
+		for n_loc in get_neighbors(loc):
+			grid.connect_points(n_loc.index, loc.index)
+
+
+func _flatten(cell: Vector3, width: int) -> int:
+	return int(cell.y) * width + int(cell.x)
 
 
 func _on_terrain_hovered(loc: Location) -> void:
