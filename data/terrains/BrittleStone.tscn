@@ -6,9 +6,6 @@
 [ext_resource path="res://assets/graphics/models/Tile_Stone_Brittle_1.obj" type="ArrayMesh" id=4]
 [ext_resource path="res://assets/graphics/particles/BrittleStoneParticles.tscn" type="PackedScene" id=5]
 
-
-
-
 [node name="BrittleStone" instance=ExtResource( 2 )]
 script = ExtResource( 1 )
 height = 0.06

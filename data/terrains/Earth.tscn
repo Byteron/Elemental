@@ -5,9 +5,6 @@
 [ext_resource path="res://assets/graphics/materials/terrain/terrain_earth.tres" type="Material" id=3]
 [ext_resource path="res://assets/graphics/models/Tile_Dirt_1.obj" type="ArrayMesh" id=5]
 
-
-
-
 [node name="Earth" instance=ExtResource( 2 )]
 script = ExtResource( 1 )
 height = 0.07

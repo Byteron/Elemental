@@ -4,8 +4,6 @@
 [ext_resource path="res://source/entity/terrain/Terrain.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/graphics/materials/terrain/terrain_dark.tres" type="Material" id=3]
 
-
-
 [node name="Dark" instance=ExtResource( 2 )]
 script = ExtResource( 1 )
 alias = "Dark"

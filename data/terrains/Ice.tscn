@@ -5,9 +5,6 @@
 [ext_resource path="res://assets/graphics/materials/terrain/terrain_ice.tres" type="Material" id=3]
 [ext_resource path="res://assets/graphics/models/Tile_Ice_1.obj" type="ArrayMesh" id=6]
 
-
-
-
 [node name="Ice" instance=ExtResource( 2 )]
 script = ExtResource( 1 )
 alias = "Ice"

@@ -7,8 +7,6 @@
 [ext_resource path="res://assets/graphics/models/Seeds.obj" type="ArrayMesh" id=5]
 [ext_resource path="res://assets/graphics/particles/SmokeParticlesOneShot.tscn" type="PackedScene" id=6]
 
-
-
 [sub_resource type="SpatialMaterial" id=1]
 albedo_texture = ExtResource( 4 )
 normal_enabled = true

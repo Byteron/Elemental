@@ -20,9 +20,6 @@
 [ext_resource path="res://assets/graphics/materials/elemental/elemental_wind.tres" type="Material" id=18]
 [ext_resource path="res://assets/graphics/materials/terrain/terrain_storm.tres" type="Material" id=19]
 
-
-
-
 [node name="ElementalVFXPicker" type="Spatial"]
 script = ExtResource( 1 )
 fire_mesh = ExtResource( 10 )
