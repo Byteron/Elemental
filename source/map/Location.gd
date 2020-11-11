@@ -8,7 +8,7 @@ var index := 0
 var cell := Vector3()
 var position := Vector3()
 
-var character : Character = null
+var character : Character = null setget _set_character
 
 var terrain : Terrain = null setget _set_terrain
 var orb : Orb = null setget _set_orb
@@ -42,7 +42,13 @@ func change_terrain(alias: String) -> void:
 
 
 func is_blocked(state: int) -> bool:
-	if obstacle or character or (terrain and terrain.is_blocked(state)):
+	if is_occupied() or (terrain and terrain.is_blocked(state)):
+		return true
+	return false
+
+
+func is_occupied() -> bool:
+	if obstacle or character:
 		return true
 	return false
 
@@ -71,6 +77,17 @@ func _call_on_children(function: String, boosted: bool) -> void:
 		obstacle.call(function, boosted)
 	if item:
 		item.call(function, boosted)
+
+
+func _set_character(value: Character) -> void:
+	if character and value:
+		print("trying to put character on occupied location. Not good!")
+		return
+
+	character = value
+
+	if character:
+		character.connect("died", self, "_on_character_died")
 
 
 func _set_terrain(value: Terrain) -> void:
@@ -176,6 +193,10 @@ func _on_terrain_hovered() -> void:
 func _on_terrain_changed(alias: String) -> void:
 	var terrain = Global.terrains[alias].instance()
 	_set_terrain(terrain)
+
+
+func _on_character_died() -> void:
+	character = null
 
 
 func _on_orb_collected() -> void:

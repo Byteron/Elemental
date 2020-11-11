@@ -100,7 +100,9 @@ func update_grid_weight(walkable: Array) -> void:
 	for cell in locations:
 		var loc: Location = locations[cell]
 
-		if not walkable or loc.terrain.alias in walkable and not loc.terrain.alias == "None":
+		if loc.is_occupied():
+			grid.set_point_weight_scale(loc.index, 99)
+		elif not walkable or loc.terrain.alias in walkable and not loc.terrain.alias == "None":
 			grid.set_point_weight_scale(loc.index, 1)
 		else:
 			grid.set_point_weight_scale(loc.index, 99)
@@ -204,7 +206,7 @@ func find_walkable_locations(start_loc: Location, walkable: Array) -> Array:
 
 	while queue:
 		var loc: Location = queue.pop_back()
-		if loc in visited or not loc.terrain.alias in walkable:
+		if loc in visited or not loc.terrain.alias in walkable or loc.is_occupied():
 			continue
 
 		visited.append(loc)

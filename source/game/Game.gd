@@ -258,6 +258,9 @@ func _on_Map_elemental_move_finished(last_loc: Location, loc: Location) -> void:
 
 
 func _on_Map_creature_added(creature: Creature) -> void:
+	if creature.behavior == "None":
+		return
+
 	behaviors[creature.behavior].add_creature(creature)
 
 

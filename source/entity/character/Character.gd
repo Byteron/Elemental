@@ -1,6 +1,7 @@
 extends Entity
 class_name Character
 
+signal died()
 signal move_finished(character, last_cell, new_cell)
 
 var last_cell := Vector3()
@@ -19,6 +20,11 @@ func move_to(position: Vector3) -> void:
 
 	tween.interpolate_property(self, "transform:origin", transform.origin, position, 0.28, Tween.TRANS_SINE, Tween.EASE_OUT)
 	tween.start()
+
+
+func kill() -> void:
+	emit_signal("died")
+	queue_free()
 
 
 func can_move() -> bool:
