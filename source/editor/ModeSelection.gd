@@ -1,5 +1,7 @@
 extends PanelContainer
-class_name SelectionPanel
+class_name ModeSelection
+
+var BUTTON_GROUP := ButtonGroup.new()
 
 signal option_selected(index)
 
@@ -12,15 +14,21 @@ func fill(array: Array) -> void:
 	if not array:
 		return
 
+	var index := 0
 	for option in array:
+		option = option.to_lower().capitalize()
 		var button := Button.new()
-		button.rect_min_size = Vector2(60, 60)
+		button.group = BUTTON_GROUP
+		button.toggle_mode = true
+		button.rect_min_size = Vector2(80, 38)
 		button.text = option
 		button.clip_text = true
-		button.connect("pressed", self, "_on_option_selected", [ option ])
+		button.connect("pressed", self, "_on_option_selected", [ index ])
 		container.add_child(button)
+		index += 1
 
-	_on_option_selected(array[0])
+	container.get_child(0).pressed = true
+	_on_option_selected(0)
 
 
 func _clear() -> void:
@@ -34,5 +42,7 @@ func _clear() -> void:
 	container.show()
 	show()
 
-func _on_option_selected(alias: String) -> void:
-	emit_signal("option_selected", alias)
+func _on_option_selected(index: int) -> void:
+	emit_signal("option_selected", index)
+
+

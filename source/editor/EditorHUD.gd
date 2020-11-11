@@ -30,15 +30,14 @@ onready var height_edit := $LevelPanel/VBoxContainer/Create/HBoxContainer/Height
 
 onready var selection_panel := $SelectionPanel as SelectionPanel
 
-onready var mode_options := $ModePanel/VBoxContainer/Mode/ModeOptions as OptionButton
+onready var mode_selection := $ModeSelection as ModeSelection
 
 onready var world_options := $LevelPanel/VBoxContainer/SaveAndLoad2/Selection/WorldOptions
 onready var level_options := $LevelPanel/VBoxContainer/SaveAndLoad2/Selection/LevelOptions
 
 
 func _ready() -> void:
-	for mode in Mode.keys():
-		mode_options.add_item(mode.to_lower().capitalize())
+	mode_selection.fill(Mode.keys())
 
 	for world in Global.levels:
 		world_options.add_item(str(world + 1))
@@ -52,34 +51,12 @@ func initialize() -> void:
 
 	_on_CreateButton_pressed()
 
-	_on_ModeOptions_item_selected(0)
+	_on_ModeSelection_option_selected(0)
 	_on_WorldOptions_item_selected(0)
 
 
 func _on_CreateButton_pressed() -> void:
 	emit_signal("create_button_pressed", int(width_edit.text), int(height_edit.text))
-
-
-func _on_ModeOptions_item_selected(index: int) -> void:
-	mode = index
-
-	selection_panel.hide()
-
-	match index:
-		Mode.TERRAIN:
-			selection_panel.fill(Global.terrains.keys())
-		Mode.ORBS:
-			selection_panel.fill(Global.orbs.keys())
-		Mode.SIGILS:
-			selection_panel.fill(Global.sigils.keys())
-		Mode.CREATURES:
-			selection_panel.fill(Global.creatures.keys())
-		Mode.OBSTACLES:
-			selection_panel.fill(Global.obstacles.keys())
-		Mode.ITEMS:
-			selection_panel.fill(Global.items.keys())
-
-	emit_signal("mode_selected", index)
 
 
 func _on_Save_pressed() -> void:
@@ -134,3 +111,25 @@ func _on_AddWorldButton_pressed() -> void:
 func _on_AddLevelButton_pressed() -> void:
 	level_options.add_item(str(level_options.get_item_count() + 1))
 	level_options.select(level_options.get_item_count() - 1)
+
+
+func _on_ModeSelection_option_selected(index: int) -> void:
+	mode = index
+
+	selection_panel.hide()
+
+	match index:
+		Mode.TERRAIN:
+			selection_panel.fill(Global.terrains.keys())
+		Mode.ORBS:
+			selection_panel.fill(Global.orbs.keys())
+		Mode.SIGILS:
+			selection_panel.fill(Global.sigils.keys())
+		Mode.CREATURES:
+			selection_panel.fill(Global.creatures.keys())
+		Mode.OBSTACLES:
+			selection_panel.fill(Global.obstacles.keys())
+		Mode.ITEMS:
+			selection_panel.fill(Global.items.keys())
+
+	emit_signal("mode_selected", index)

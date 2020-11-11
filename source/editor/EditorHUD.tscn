@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://source/editor/SelectionPanel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://source/editor/EditorHUD.gd" type="Script" id=2]
+[ext_resource path="res://source/editor/ModeSelection.tscn" type="PackedScene" id=3]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource( 2 )
@@ -10,44 +11,14 @@ script = ExtResource( 2 )
 anchor_left = 0.0
 anchor_right = 0.0
 margin_left = 0.0
-margin_top = 34.0
 margin_right = 14.0
-margin_bottom = 48.0
 grow_horizontal = 1
 
-[node name="ModePanel" type="PanelContainer" parent="."]
-margin_right = 191.0
-margin_bottom = 34.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="VBoxContainer" type="VBoxContainer" parent="ModePanel"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 184.0
-margin_bottom = 27.0
-
-[node name="Mode" type="HBoxContainer" parent="ModePanel/VBoxContainer"]
-margin_right = 177.0
-margin_bottom = 20.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="ModePanel/VBoxContainer/Mode"]
-margin_top = 3.0
-margin_right = 86.0
-margin_bottom = 17.0
-size_flags_horizontal = 3
-text = "Mode"
-
-[node name="ModeOptions" type="OptionButton" parent="ModePanel/VBoxContainer/Mode"]
-margin_left = 90.0
-margin_right = 177.0
-margin_bottom = 20.0
-size_flags_horizontal = 3
-text = "Terrain"
+[node name="ModeSelection" parent="." instance=ExtResource( 3 )]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -88.5
+margin_right = 88.5
 
 [node name="LevelPanel" type="PanelContainer" parent="."]
 anchor_left = 1.0
@@ -154,16 +125,18 @@ margin_bottom = 25.0
 text = " + "
 
 [node name="Back" type="Button" parent="."]
+anchor_left = 1.0
 anchor_top = 1.0
+anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = -220.0
 margin_top = -60.0
-margin_right = 220.0
 text = "BACK"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 [connection signal="option_selected" from="SelectionPanel" to="." method="_on_SelectionPanel_option_selected"]
-[connection signal="item_selected" from="ModePanel/VBoxContainer/Mode/ModeOptions" to="." method="_on_ModeOptions_item_selected"]
+[connection signal="option_selected" from="ModeSelection" to="." method="_on_ModeSelection_option_selected"]
 [connection signal="pressed" from="LevelPanel/VBoxContainer/Create/HBoxContainer/CreateButton" to="." method="_on_CreateButton_pressed"]
 [connection signal="pressed" from="LevelPanel/VBoxContainer/SaveAndLoad2/Buttons/Load" to="." method="_on_Load_pressed"]
 [connection signal="pressed" from="LevelPanel/VBoxContainer/SaveAndLoad2/Buttons/Save" to="." method="_on_Save_pressed"]
