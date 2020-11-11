@@ -160,6 +160,54 @@ func get_locations_in_reach(start_loc: Location, reach: int) -> Array:
 	return reachable_locations
 
 
+func find_walkable_locations(start_loc: Location, walkable: Array) -> Array:
+	if not start_loc.terrain.alias in walkable:
+		return []
+
+	var visited := []
+	var queue := [ start_loc ]
+
+	while queue:
+		var loc: Location = queue.pop_back()
+		if loc in visited or not loc.terrain.alias in walkable:
+			continue
+
+		visited.append(loc)
+
+		for n_loc in get_neighbors(loc):
+			queue.append(n_loc)
+
+	return visited
+
+
+func _process(delta: float) -> void:
+	find_conducting_locations_calls = 0.0
+
+var find_conducting_locations_calls := 0.0
+func find_conducting_locations(start_loc: Location, element: int) -> Array:
+	if not start_loc.conducts_element(element):
+		return []
+
+	var visited := []
+	var conduct := []
+	var queue := [ start_loc ]
+
+	while queue:
+		var loc: Location = queue.pop_back()
+
+		if loc in visited or not loc.conducts_element(element):
+			continue
+
+		visited.append(loc)
+		loc.terrain.debug_color(Color.red * 0.05 * find_conducting_locations_calls)
+
+		for n_loc in get_neighbors(loc):
+			queue.append(n_loc)
+
+	find_conducting_locations_calls += 1
+	return visited
+
+
 func change_terrain(cell: Vector3, alias: String, elevation := 0) -> void:
 	var loc : Location = locations[cell]
 	loc.change_terrain(alias)

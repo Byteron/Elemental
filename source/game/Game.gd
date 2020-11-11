@@ -88,42 +88,68 @@ func _tick() -> void:
 
 
 func _tick_analyze() -> void:
+	for loc in map.locations.values():
+		loc.terrain.debug_color(Color.white)
+
 	_tick_analyze_conduction()
 	_tick_analyze_interactions()
 
 
 func _tick_analyze_conduction() -> void:
+	var conductions := _tick_get_conductions()
+
+	for element in Entity.Element.values():
+		var loc_array = conductions[element]
+
+		for locs in loc_array:
+			if _are_neighbors_broadcasting(locs, element):
+				_add_broadcast_to_locations(locs, element)
+
+
+func _are_neighbors_broadcasting(locs: Array, element: int) -> bool:
+	for loc in locs:
+		for n_loc in map.get_neighbors(loc):
+
+			if n_loc in locs:
+				continue
+
+			if n_loc.get_broadcast().has(element):
+				n_loc.terrain.debug_color(Color.red)
+				return true
+	return false
+
+
+func _add_broadcast_to_locations(locs: Array, element: int) -> void:
+	for loc in locs:
+		loc.broadcast.append(element)
+		loc.terrain.debug_color(Color.orange)
+
+
+func _tick_get_conductions() -> Dictionary:
 	var conductions := {}
+	var visited := {}
 
 	for element in Entity.Element.values():
 		conductions[element] = []
+		visited[element] = []
 
 	for cell in map.locations:
 		var loc: Location = map.locations[cell]
 
-		loc.broadcast.clear()
+		for element in Entity.Element.values():
 
-		for element in loc.get_conduction():
-			conductions[element].append(loc)
+			if loc in visited[element]:
+				continue
 
-	for element in conductions:
-		var locs : Array = conductions[element]
+			var c_locs = map.find_conducting_locations(loc, element)
 
-		var is_conducting := false
+			if not c_locs:
+				continue
 
-		for loc in locs:
-			for n_loc in map.get_neighbors(loc):
-				if locs.has(n_loc):
-					continue
+			conductions[element].append(c_locs)
+			visited[element] += c_locs
 
-				if n_loc.get_broadcast().has(element):
-					is_conducting = true
-					break
-
-		if is_conducting:
-			for loc in locs:
-				loc.broadcast.append(element)
-				loc.terrain.animate()
+	return conductions
 
 
 func _tick_analyze_interactions() -> void:
@@ -136,12 +162,17 @@ func _tick_analyze_interactions() -> void:
 		for element in loc.get_broadcast():
 			tick_calls[loc].append(element)
 
-		for n_loc in map.get_neighbors(loc):
+			if element == Entity.Element.FIRE:
+				loc.terrain.debug_color(Color.yellow)
 
-			if not tick_calls.has(n_loc):
-				tick_calls[n_loc] = []
+			for n_loc in map.get_neighbors(loc):
 
-			for element in loc.get_broadcast():
+				if not tick_calls.has(n_loc):
+					tick_calls[n_loc] = []
+
+				if tick_calls[n_loc].has(element):
+					continue
+
 				tick_calls[n_loc].append(element)
 
 
@@ -151,6 +182,8 @@ func _tick_apply() -> void:
 
 		for element in elements:
 			loc.call("_" + Entity.Element.keys()[element].to_lower(), false)
+
+		loc.broadcast.clear()
 
 
 func _check_conditions() -> void:

@@ -6,8 +6,12 @@ enum Element { NATURE, EARTH, FIRE, ICE, WIND, WATER, THUNDER, LIGHT, DARK, NONE
 export(Array, Element) var broadcast := []
 export(Array, Element) var conduct := []
 
-
 var boost : int = Element.NONE
+
+
+func _init() -> void:
+	broadcast = broadcast.duplicate()
+	conduct = conduct.duplicate()
 
 
 func _nature(boosted: bool) -> void:

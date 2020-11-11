@@ -4,6 +4,7 @@ class_name Terrain
 signal hovered()
 signal changed(alias)
 
+
 export var height := 0.0
 export var speed := 0.0
 
@@ -18,6 +19,12 @@ var position := Vector3()
 
 onready var anim := $AnimationPlayer as AnimationPlayer
 onready var tween := $Tween as Tween
+
+onready var debug := $Debug
+
+
+func debug_color(color: Color) -> void:
+	debug.material_override.albedo_color = color
 
 
 func _ready() -> void:
