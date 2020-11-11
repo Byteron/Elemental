@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://source/entity/character/creature/Creature.tscn" type="PackedScene" id=1]
+[ext_resource path="res://data/creatures/SandStriker.gd" type="Script" id=2]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_color = Color( 1, 0, 0, 1 )
+
+[sub_resource type="CylinderMesh" id=2]
+
+[sub_resource type="CylinderMesh" id=3]
+
+[node name="SandStriker" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+alias = "SandStriker"
+behavior = "None"
+
+[node name="MeshInstance" parent="Meshes" index="0"]
+transform = Transform( 0.548666, 0, 0, 0, 0.548666, 0, 0, 0, 0.548666, -0.000186697, -0.232866, -0.0296131 )
+material_override = SubResource( 1 )
+mesh = SubResource( 2 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="Meshes" index="1"]
+transform = Transform( 0.247128, 0, 0, 0, 0.247128, 0, 0, 0, 0.247128, -0.529775, 0.344857, -0.63194 )
+mesh = SubResource( 3 )
+material/0 = SubResource( 1 )
+
+[node name="MeshInstance3" type="MeshInstance" parent="Meshes" index="2"]
+transform = Transform( 0.247128, 0, 0, 0, 0.247128, 0, 0, 0, 0.247128, -0.529775, 0.344857, 0.500715 )
+mesh = SubResource( 3 )
+material/0 = SubResource( 1 )
+
+[node name="MeshInstance4" type="MeshInstance" parent="Meshes" index="3"]
+transform = Transform( 0.247128, 0, 0, 0, 0.247128, 0, 0, 0, 0.247128, 0.528947, 0.344857, 0.500715 )
+mesh = SubResource( 3 )
+material/0 = SubResource( 1 )
+
+[node name="MeshInstance5" type="MeshInstance" parent="Meshes" index="4"]
+transform = Transform( 0.247128, 0, 0, 0, 0.247128, 0, 0, 0, 0.247128, 0.528947, 0.344857, -0.450755 )
+mesh = SubResource( 3 )
+material/0 = SubResource( 1 )
