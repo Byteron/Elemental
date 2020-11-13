@@ -27,4 +27,4 @@ func _execute(map: Map, loc: Location, creature: Creature) -> void:
 	if not next_loc:
 		return
 
-	map.move_character(loc, next_loc)
+	var __ = map.move_character(loc, next_loc)

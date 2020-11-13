@@ -29,6 +29,8 @@ var elemental : Elemental = null
 var locations := {}
 var character_locations := {}
 
+var paths := {}
+
 var optimal_steps := 0
 
 onready var terrains := $Terrains as Node
@@ -49,6 +51,7 @@ func initialize(width: int, height: int) -> void:
 func initialize_from_map_data(elemental: Elemental, map_data: MapData) -> void:
 	size = Vector2(map_data.width, map_data.height)
 	optimal_steps = map_data.optimal_steps
+	paths = map_data.paths
 
 	var index := 0
 	for cell in map_data.locations.keys():
@@ -102,7 +105,7 @@ func update_grid_weight(walkable: Array) -> void:
 
 		if loc.is_occupied():
 			grid.set_point_weight_scale(loc.index, 99)
-		elif not walkable or loc.terrain.alias in walkable and not loc.terrain.alias == "None":
+		elif not walkable or loc.get_terrain_alias in walkable and not loc.has_terrain("None"):
 			grid.set_point_weight_scale(loc.index, 1)
 		else:
 			grid.set_point_weight_scale(loc.index, 99)
@@ -130,13 +133,14 @@ func get_map_data() -> MapData:
 	map_data.optimal_steps = optimal_steps
 	map_data.world = world
 	map_data.level = level
+	map_data.paths = paths
 
 	for value in locations.values():
 		var loc : Location = value
 
 		map_data.locations[loc.cell] = {}
 
-		map_data.locations[loc.cell]["Terrain"] = loc.terrain.alias
+		map_data.locations[loc.cell]["Terrain"] = loc.get_terrain_alias()
 
 		if loc.orb:
 			map_data.locations[loc.cell]["Orb"] = Entity.Element.keys()[loc.orb.element].to_lower().capitalize()
@@ -198,7 +202,9 @@ func get_locations_in_reach(start_loc: Location, reach: int) -> Array:
 
 
 func find_walkable_locations(start_loc: Location, walkable: Array) -> Array:
-	if not start_loc.terrain.alias in walkable:
+	if not start_loc.get_terrain_alias() in walkable:
+		print(start_loc.get_terrain_alias(), walkable)
+		print("no walkable found, returning []")
 		return []
 
 	var visited := []
@@ -206,7 +212,7 @@ func find_walkable_locations(start_loc: Location, walkable: Array) -> Array:
 
 	while queue:
 		var loc: Location = queue.pop_back()
-		if loc in visited or not loc.terrain.alias in walkable or loc.is_occupied():
+		if loc in visited or not loc.get_terrain_alias() in walkable or loc.is_occupied():
 			continue
 
 		visited.append(loc)
@@ -260,14 +266,14 @@ func drop_item() -> void:
 	add_item(elemental.cell, key)
 
 
-func move_character(start_loc: Location, end_loc: Location) -> void:
+func move_character(start_loc: Location, end_loc: Location) -> bool:
 	if not start_loc.character:
 		print("no character to move")
-		return
+		return false
 
 	if end_loc.character:
 		print("position blocked by other character")
-		return
+		return false
 
 	var character : Character = start_loc.character
 	start_loc.character = null
@@ -275,6 +281,7 @@ func move_character(start_loc: Location, end_loc: Location) -> void:
 	character.cell = end_loc.cell
 	character.move_to(end_loc.position)
 	character_locations[character] = end_loc
+	return true
 
 
 func place_elemental(elemental: Elemental, cell: Vector3) -> void:
@@ -315,7 +322,7 @@ func move_elemental(direction: Vector3) -> void:
 
 	var loc = locations[elemental.cell]
 
-	move_character(loc, next_loc)
+	var __ = move_character(loc, next_loc)
 	emit_signal("elemental_moving")
 
 
@@ -348,6 +355,11 @@ func add_creature(cell: Vector3, alias: String) -> void:
 
 	loc.character = creature
 	character_locations[creature] = loc
+
+	for entry in paths.values():
+		if loc.cell == entry.start:
+			creature.path = entry.path
+			creature.loop_path = entry.loop
 
 	emit_signal("creature_added", creature)
 
@@ -428,6 +440,22 @@ func add_obstacle(cell: Vector3, alias: String) -> void:
 func remove_obstacle(cell: Vector3) -> void:
 	var loc : Location = locations[cell]
 	loc.obstacle = null
+
+
+func add_path(index: int, path: Array, loop: bool) -> void:
+	if not path:
+		return
+
+	paths[index] = {
+		"start": path[0],
+		"path": path,
+		"loop": loop
+	}
+
+
+func remove_path(index: int) -> void:
+	paths.erase(index)
+
 
 
 func _add_location(index: int, alias: String, cell: Vector3, animate := true) -> void:

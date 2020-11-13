@@ -10,3 +10,4 @@ export var height := 0
 export var optimal_steps := 0
 
 export var locations := {}
+export var paths := {}

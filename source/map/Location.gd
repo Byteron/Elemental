@@ -18,7 +18,6 @@ var obstacle : Obstacle = null setget _set_obstacle
 
 var initialized := false
 
-
 func get_broadcast() -> Array:
 	var elements := []
 
@@ -39,6 +38,14 @@ func get_conduction() -> Array:
 
 func change_terrain(alias: String) -> void:
 	_on_terrain_changed(alias)
+
+
+func has_terrain(alias: String) -> bool:
+	return alias == terrain.alias
+
+
+func get_terrain_alias() -> String:
+	return terrain.alias
 
 
 func is_blocked(state: int) -> bool:
@@ -80,9 +87,15 @@ func _call_on_children(function: String, boosted: bool) -> void:
 
 
 func _set_character(value: Character) -> void:
+	if character == value:
+		return
+
 	if character and value:
 		print("trying to put character on occupied location. Not good!")
 		return
+
+	if character:
+		character.disconnect("died", self, "_on_character_died")
 
 	character = value
 
@@ -91,6 +104,9 @@ func _set_character(value: Character) -> void:
 
 
 func _set_terrain(value: Terrain) -> void:
+	if terrain == value:
+		return
+
 	if terrain:
 		terrain.queue_free()
 
@@ -108,6 +124,9 @@ func _set_terrain(value: Terrain) -> void:
 
 
 func _set_orb(value: Orb) -> void:
+	if value == orb:
+		return
+
 	if orb:
 		orb.queue_free()
 
@@ -119,6 +138,9 @@ func _set_orb(value: Orb) -> void:
 
 
 func _set_sigil(value: Sigil) -> void:
+	if value == sigil:
+		return
+
 	if sigil:
 		sigil.queue_free()
 
@@ -140,6 +162,9 @@ func _set_item(value: Item) -> void:
 
 
 func _set_obstacle(value: Obstacle) -> void:
+	if obstacle == value:
+		return
+
 	if obstacle:
 		obstacle.queue_free()
 

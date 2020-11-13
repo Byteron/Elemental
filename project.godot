@@ -59,6 +59,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://source/entity/item/Item.gd"
 }, {
+"base": "PanelContainer",
+"class": "LevelPanel",
+"language": "GDScript",
+"path": "res://source/editor/LevelPanel.gd"
+}, {
 "base": "Reference",
 "class": "Loader",
 "language": "GDScript",
@@ -108,6 +113,11 @@ _global_script_classes=[ {
 "class": "OrthoCamera",
 "language": "GDScript",
 "path": "res://source/camera/OrthoCamera.gd"
+}, {
+"base": "PanelContainer",
+"class": "PathPanel",
+"language": "GDScript",
+"path": "res://source/editor/PathPanel.gd"
 }, {
 "base": "Resource",
 "class": "SaveData",
@@ -175,6 +185,7 @@ _global_script_class_icons={
 "Entity": "",
 "Game": "",
 "Item": "",
+"LevelPanel": "",
 "Loader": "",
 "Location": "",
 "Map": "",
@@ -185,6 +196,7 @@ _global_script_class_icons={
 "OneShotParticles": "",
 "Orb": "",
 "OrthoCamera": "",
+"PathPanel": "",
 "SaveData": "",
 "SceneLoader": "",
 "SelectionPanel": "",

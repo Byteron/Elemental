@@ -1,0 +1,76 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://source/editor/PathPanel.gd" type="Script" id=1]
+
+[node name="PathPanel" type="PanelContainer"]
+margin_right = 149.0
+margin_bottom = 86.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 142.0
+margin_bottom = 79.0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+margin_right = 135.0
+margin_bottom = 20.0
+
+[node name="RemoveButton" type="Button" parent="VBoxContainer/HBoxContainer2"]
+margin_right = 20.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 20, 20 )
+text = "-"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OptionButton" type="OptionButton" parent="VBoxContainer/HBoxContainer2"]
+margin_left = 24.0
+margin_right = 111.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+
+[node name="AddButton" type="Button" parent="VBoxContainer/HBoxContainer2"]
+margin_left = 115.0
+margin_right = 135.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 20, 20 )
+text = "+"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 24.0
+margin_right = 135.0
+margin_bottom = 48.0
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
+margin_top = 5.0
+margin_right = 107.0
+margin_bottom = 19.0
+size_flags_horizontal = 3
+text = "Loop"
+
+[node name="CheckBox" type="CheckBox" parent="VBoxContainer/HBoxContainer"]
+margin_left = 111.0
+margin_right = 135.0
+margin_bottom = 24.0
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 52.0
+margin_right = 135.0
+margin_bottom = 72.0
+
+[node name="SaveButton" type="Button" parent="VBoxContainer/HBoxContainer3"]
+margin_right = 135.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+text = "Save"
+[connection signal="pressed" from="VBoxContainer/HBoxContainer2/RemoveButton" to="." method="_on_RemoveButton_pressed"]
+[connection signal="item_selected" from="VBoxContainer/HBoxContainer2/OptionButton" to="." method="_on_OptionButton_item_selected"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer2/AddButton" to="." method="_on_AddButton_pressed"]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer/CheckBox" to="." method="_on_CheckBox_toggled"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer3/SaveButton" to="." method="_on_SaveButton_pressed"]

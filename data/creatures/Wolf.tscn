@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://source/entity/character/creature/Creature.tscn" type="PackedScene" id=1]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_color = Color( 0.4, 0.4, 0.4, 1 )
+
+[node name="Wolf" instance=ExtResource( 1 )]
+alias = "Wolf"
+behavior = "Stray"
+walkable = [ "Grass" ]
+
+[node name="MeshInstance" parent="Meshes" index="0"]
+material_override = SubResource( 1 )

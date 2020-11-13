@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://source/editor/SelectionPanel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://source/editor/EditorHUD.gd" type="Script" id=2]
 [ext_resource path="res://source/editor/ModeSelection.tscn" type="PackedScene" id=3]
+[ext_resource path="res://source/editor/LevelPanel.tscn" type="PackedScene" id=4]
+[ext_resource path="res://source/editor/PathPanel.tscn" type="PackedScene" id=5]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource( 2 )
@@ -20,109 +22,9 @@ anchor_right = 0.5
 margin_left = -88.5
 margin_right = 88.5
 
-[node name="LevelPanel" type="PanelContainer" parent="."]
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -191.0
-margin_bottom = 110.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="LevelPanel" parent="." instance=ExtResource( 4 )]
 
-[node name="VBoxContainer" type="VBoxContainer" parent="LevelPanel"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 184.0
-margin_bottom = 103.0
-
-[node name="Create" type="VBoxContainer" parent="LevelPanel/VBoxContainer"]
-margin_right = 177.0
-margin_bottom = 24.0
-
-[node name="HBoxContainer" type="HBoxContainer" parent="LevelPanel/VBoxContainer/Create"]
-margin_right = 177.0
-margin_bottom = 24.0
-
-[node name="Width" type="LineEdit" parent="LevelPanel/VBoxContainer/Create/HBoxContainer"]
-margin_right = 58.0
-margin_bottom = 24.0
-size_flags_horizontal = 3
-placeholder_text = "Width"
-
-[node name="Height" type="LineEdit" parent="LevelPanel/VBoxContainer/Create/HBoxContainer"]
-margin_left = 62.0
-margin_right = 120.0
-margin_bottom = 24.0
-size_flags_horizontal = 3
-placeholder_text = "Height"
-
-[node name="CreateButton" type="Button" parent="LevelPanel/VBoxContainer/Create/HBoxContainer"]
-margin_left = 124.0
-margin_right = 177.0
-margin_bottom = 24.0
-size_flags_horizontal = 3
-text = "Create"
-
-[node name="HSeparator" type="HSeparator" parent="LevelPanel/VBoxContainer"]
-margin_top = 28.0
-margin_right = 177.0
-margin_bottom = 43.0
-custom_constants/separation = 15
-
-[node name="SaveAndLoad2" type="VBoxContainer" parent="LevelPanel/VBoxContainer"]
-margin_top = 47.0
-margin_right = 177.0
-margin_bottom = 96.0
-
-[node name="Buttons" type="HBoxContainer" parent="LevelPanel/VBoxContainer/SaveAndLoad2"]
-margin_right = 177.0
-margin_bottom = 20.0
-
-[node name="Load" type="Button" parent="LevelPanel/VBoxContainer/SaveAndLoad2/Buttons"]
-margin_right = 86.0
-margin_bottom = 20.0
-size_flags_horizontal = 3
-text = "Load"
-
-[node name="Save" type="Button" parent="LevelPanel/VBoxContainer/SaveAndLoad2/Buttons"]
-margin_left = 90.0
-margin_right = 177.0
-margin_bottom = 20.0
-size_flags_horizontal = 3
-text = "Save"
-
-[node name="Selection" type="HBoxContainer" parent="LevelPanel/VBoxContainer/SaveAndLoad2"]
-margin_top = 24.0
-margin_right = 177.0
-margin_bottom = 49.0
-
-[node name="WorldOptions" type="OptionButton" parent="LevelPanel/VBoxContainer/SaveAndLoad2/Selection"]
-margin_right = 54.0
-margin_bottom = 25.0
-rect_min_size = Vector2( 0, 25 )
-size_flags_horizontal = 3
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="AddWorldButton" type="Button" parent="LevelPanel/VBoxContainer/SaveAndLoad2/Selection"]
-margin_left = 58.0
-margin_right = 86.0
-margin_bottom = 25.0
-text = " + "
-
-[node name="LevelOptions" type="OptionButton" parent="LevelPanel/VBoxContainer/SaveAndLoad2/Selection"]
-margin_left = 90.0
-margin_right = 145.0
-margin_bottom = 25.0
-rect_min_size = Vector2( 0, 25 )
-size_flags_horizontal = 3
-
-[node name="AddLevelButton" type="Button" parent="LevelPanel/VBoxContainer/SaveAndLoad2/Selection"]
-margin_left = 149.0
-margin_right = 177.0
-margin_bottom = 25.0
-text = " + "
+[node name="PathPanel" parent="." instance=ExtResource( 5 )]
 
 [node name="Back" type="Button" parent="."]
 anchor_left = 1.0
@@ -137,11 +39,9 @@ __meta__ = {
 }
 [connection signal="option_selected" from="SelectionPanel" to="." method="_on_SelectionPanel_option_selected"]
 [connection signal="option_selected" from="ModeSelection" to="." method="_on_ModeSelection_option_selected"]
-[connection signal="pressed" from="LevelPanel/VBoxContainer/Create/HBoxContainer/CreateButton" to="." method="_on_CreateButton_pressed"]
-[connection signal="pressed" from="LevelPanel/VBoxContainer/SaveAndLoad2/Buttons/Load" to="." method="_on_Load_pressed"]
-[connection signal="pressed" from="LevelPanel/VBoxContainer/SaveAndLoad2/Buttons/Save" to="." method="_on_Save_pressed"]
-[connection signal="item_selected" from="LevelPanel/VBoxContainer/SaveAndLoad2/Selection/WorldOptions" to="." method="_on_WorldOptions_item_selected"]
-[connection signal="pressed" from="LevelPanel/VBoxContainer/SaveAndLoad2/Selection/AddWorldButton" to="." method="_on_AddWorldButton_pressed"]
-[connection signal="item_selected" from="LevelPanel/VBoxContainer/SaveAndLoad2/Selection/LevelOptions" to="." method="_on_LevelOptions_item_selected"]
-[connection signal="pressed" from="LevelPanel/VBoxContainer/SaveAndLoad2/Selection/AddLevelButton" to="." method="_on_AddLevelButton_pressed"]
+[connection signal="create_button_pressed" from="LevelPanel" to="." method="_on_LevelPanel_create_button_pressed"]
+[connection signal="load_button_pressed" from="LevelPanel" to="." method="_on_LevelPanel_load_button_pressed"]
+[connection signal="save_button_pressed" from="LevelPanel" to="." method="_on_LevelPanel_save_button_pressed"]
+[connection signal="remove" from="PathPanel" to="." method="_on_PathPanel_remove"]
+[connection signal="save" from="PathPanel" to="." method="_on_PathPanel_save"]
 [connection signal="pressed" from="Back" to="." method="_on_Back_pressed"]

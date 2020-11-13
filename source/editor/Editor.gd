@@ -15,6 +15,8 @@ var current_creature := ""
 var current_obstacle := ""
 var current_item := ""
 
+var current_path := []
+
 onready var map := $Map as Map
 onready var elemental := $Elemental
 
@@ -38,6 +40,8 @@ func _unhandled_input(event: InputEvent) -> void:
 			_handle_obstalces_mode(event)
 		EditorHUD.Mode.ELEMENTAL:
 			_handle_elemental_mode(event)
+		EditorHUD.Mode.PATH:
+			_handle_path_mode(event)
 
 
 func _ready() -> void:
@@ -94,6 +98,22 @@ func _handle_elemental_mode(event: InputEvent) -> void:
 	if event.is_action_pressed("mouse_right"):
 		map.remove_elemental()
 		elemental.visible = false
+
+
+func _handle_path_mode(event: InputEvent) -> void:
+	if event.is_action_pressed("mouse_left"):
+		if not current_path.has(current_cell):
+			current_path.append(current_cell)
+			var loc = map.get_location(current_cell)
+			loc.terrain.debug.visible = true
+
+	if event.is_action_pressed("mouse_right"):
+		if not current_path:
+			return
+
+		var cell = current_path.pop_back()
+		var loc = map.get_location(cell)
+		loc.terrain.debug.visible = false
 
 
 func _on_HUD_create_button_pressed(width: int, height: int) -> void:
@@ -171,3 +191,12 @@ func _on_HUD_load_button_pressed(world: int, level: int) -> void:
 	add_child(map)
 	map.initialize_from_map_data(elemental, map_data)
 	camera.initialize(map.size)
+
+
+func _on_HUD_save_path(index: int, loop: bool) -> void:
+	map.add_path(index, current_path, loop)
+	current_path = []
+
+
+func _on_HUD_remove_path(index: int) -> void:
+	map.remove_path(index)
