@@ -29,7 +29,7 @@ func update_path(path_entry: Dictionary) -> void:
 
 
 func show() -> void:
-	_on_OptionButton_item_selected(0)
+	_on_OptionButton_item_selected(options.get_selected_id())
 	.show()
 
 

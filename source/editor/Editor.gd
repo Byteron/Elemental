@@ -157,6 +157,9 @@ func _on_HUD_terrain_selected(terrain: String) -> void:
 
 func _on_HUD_mode_selected(mode: int) -> void:
 	current_mode = mode
+	if map and current_mode != EditorHUD.Mode.PATH:
+		current_path = []
+		update_path()
 
 
 func _on_HUD_orb_selected(orb: String) -> void:
