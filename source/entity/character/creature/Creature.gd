@@ -7,6 +7,9 @@ export(String, "None", "Walker", "Eater", "Stray") var behavior := "Walker"
 
 export(Array, String) var walkable := []
 
+# General
+var start_cell := Vector3()
+
 # Walker
 var path := []
 var next_path_index := 1

@@ -105,7 +105,7 @@ func update_grid_weight(walkable: Array) -> void:
 
 		if loc.is_occupied():
 			grid.set_point_weight_scale(loc.index, 99)
-		elif not walkable or loc.get_terrain_alias in walkable and not loc.has_terrain("None"):
+		elif not walkable or loc.get_terrain_alias() in walkable and not loc.has_terrain("None"):
 			grid.set_point_weight_scale(loc.index, 1)
 		else:
 			grid.set_point_weight_scale(loc.index, 99)
@@ -234,7 +234,10 @@ func find_walkable_locations(start_loc: Location, walkable: Array) -> Array:
 
 	while queue:
 		var loc: Location = queue.pop_back()
-		if loc in visited or not loc.get_terrain_alias() in walkable or loc.is_occupied():
+		if loc in visited or not loc.get_terrain_alias() in walkable:
+			continue
+
+		if not loc == start_loc and loc.is_occupied():
 			continue
 
 		visited.append(loc)
@@ -373,6 +376,7 @@ func add_creature(cell: Vector3, alias: String) -> void:
 	creatures.add_child(creature)
 
 	creature.cell = loc.cell
+	creature.start_cell = loc.cell
 	creature.transform.origin = loc.position
 
 	loc.character = creature
