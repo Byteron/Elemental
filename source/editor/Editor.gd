@@ -124,6 +124,7 @@ func _on_HUD_create_button_pressed(width: int, height: int) -> void:
 	add_child(map)
 	map.initialize(width, height)
 	camera.initialize(map.size)
+	_initialize_paths()
 
 
 func _on_cell_hovered(cell: Vector3) -> void:
@@ -191,7 +192,13 @@ func _on_HUD_load_button_pressed(world: int, level: int) -> void:
 	add_child(map)
 	map.initialize_from_map_data(elemental, map_data)
 	camera.initialize(map.size)
+	_initialize_paths()
 
+func _initialize_paths() -> void:
+	hud.initialize_paths(map.paths.size())
+
+	if current_mode == EditorHUD.Mode.PATH:
+		_on_HUD_path_selected(0)
 
 func _on_HUD_save_path(index: int, loop: bool) -> void:
 	map.add_path(index, current_path, loop)
@@ -200,3 +207,9 @@ func _on_HUD_save_path(index: int, loop: bool) -> void:
 
 func _on_HUD_remove_path(index: int) -> void:
 	map.remove_path(index)
+
+
+func _on_HUD_path_selected(index: int) -> void:
+	var path_entry = map.get_path_entry(index)
+	current_path = path_entry.path
+	hud.update_path(path_entry)

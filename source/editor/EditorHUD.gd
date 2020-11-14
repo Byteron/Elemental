@@ -11,8 +11,11 @@ enum Mode {
 	CREATURES,
 	PATH
 }
+signal mode_selected(mode)
+
 signal save_path(index, loop)
 signal remove_path(index)
+signal path_selected(index)
 
 signal create_button_pressed(width, height)
 signal save_button_pressed(world, level)
@@ -24,7 +27,7 @@ signal sigil_selected(sigil)
 signal creature_selected(creature)
 signal obstacle_selected(obstacle)
 signal item_selected(item)
-signal mode_selected(mode)
+
 
 var mode := 0
 
@@ -45,6 +48,14 @@ func initialize() -> void:
 	level_panel.initialize()
 
 	_on_ModeSelection_option_selected(0)
+
+
+func update_path(path_entry: Dictionary) -> void:
+	path_panel.update_path(path_entry)
+
+
+func initialize_paths(path_count: int) -> void:
+	path_panel.initialize(path_count)
 
 
 func _on_Back_pressed() -> void:
@@ -110,3 +121,7 @@ func _on_LevelPanel_load_button_pressed(world: int, level: int) -> void:
 
 func _on_LevelPanel_save_button_pressed(world: int, level: int) -> void:
 	emit_signal("save_button_pressed", world, level)
+
+
+func _on_PathPanel_path_selected(index: int) -> void:
+	emit_signal("path_selected", index)

@@ -111,6 +111,28 @@ func update_grid_weight(walkable: Array) -> void:
 			grid.set_point_weight_scale(loc.index, 99)
 
 
+func get_path_entry(index: int) -> Dictionary:
+	if not paths.has(index):
+		return {
+			"path": [],
+			"loop": false,
+			"locs": []
+		}
+
+
+	var entry = {
+		"path": paths[index].path,
+		"loop": paths[index].loop,
+		"locs": []
+	}
+
+	for cell in entry.path:
+		var loc = get_location(cell)
+		entry["locs"].append(loc)
+
+	return entry
+
+
 func find_path(start_loc: Location, end_loc: Location) -> Array:
 	var path := []
 	var cell_path := grid.get_point_path(start_loc.index, end_loc.index)
