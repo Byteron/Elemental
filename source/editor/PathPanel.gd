@@ -33,8 +33,11 @@ func update_path(path_entry: Dictionary) -> void:
 
 	locs = path_entry.locs
 
+	var i := 0
 	for loc in path_entry.locs:
 		loc.terrain.debug.visible = true
+		loc.terrain.debug_color(Color.green * (1.0 / path_entry.locs.size()) * (path_entry.locs.size() - i))
+		i += 1
 
 	loop_check_box.pressed = path_entry.loop
 	_on_CheckBox_toggled(path_entry.loop)

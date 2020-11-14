@@ -68,7 +68,7 @@ margin_bottom = 72.0
 margin_right = 135.0
 margin_bottom = 20.0
 size_flags_horizontal = 3
-text = "Save"
+text = "Apply"
 [connection signal="pressed" from="VBoxContainer/HBoxContainer2/RemoveButton" to="." method="_on_RemoveButton_pressed"]
 [connection signal="item_selected" from="VBoxContainer/HBoxContainer2/OptionButton" to="." method="_on_OptionButton_item_selected"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer2/AddButton" to="." method="_on_AddButton_pressed"]
