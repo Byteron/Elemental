@@ -103,17 +103,36 @@ func _handle_elemental_mode(event: InputEvent) -> void:
 func _handle_path_mode(event: InputEvent) -> void:
 	if event.is_action_pressed("mouse_left"):
 		if not current_path.has(current_cell):
-			current_path.append(current_cell)
-			var loc = map.get_location(current_cell)
-			loc.terrain.debug.visible = true
+			add_path_cell()
 
 	if event.is_action_pressed("mouse_right"):
-		if not current_path:
-			return
+		remove_path_cell()
 
-		var cell = current_path.pop_back()
-		var loc = map.get_location(cell)
+
+func add_path_cell() -> void:
+	current_path.append(current_cell)
+	update_path()
+
+
+func remove_path_cell() -> void:
+	if not current_path:
+		return
+
+	var cell = current_path.pop_back()
+	update_path()
+
+
+func update_path() -> void:
+	for loc in map.locations.values():
 		loc.terrain.debug.visible = false
+		loc.terrain.debug_color(Color.white)
+
+	var i := 0
+	for cell in current_path:
+		var loc = map.get_location(cell)
+		loc.terrain.debug.visible = true
+		loc.terrain.debug_color(Color.green * (1.0 / current_path.size()) * (current_path.size() - i))
+		i += 1
 
 
 func _on_HUD_create_button_pressed(width: int, height: int) -> void:
@@ -200,9 +219,9 @@ func _initialize_paths() -> void:
 	if current_mode == EditorHUD.Mode.PATH:
 		_on_HUD_path_selected(0)
 
+
 func _on_HUD_save_path(index: int, loop: bool) -> void:
 	map.add_path(index, current_path, loop)
-	current_path = []
 
 
 func _on_HUD_remove_path(index: int) -> void:
@@ -212,4 +231,5 @@ func _on_HUD_remove_path(index: int) -> void:
 func _on_HUD_path_selected(index: int) -> void:
 	var path_entry = map.get_path_entry(index)
 	current_path = path_entry.path
+	update_path()
 	hud.update_path(path_entry)

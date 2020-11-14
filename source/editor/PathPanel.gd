@@ -11,9 +11,6 @@ onready var loop_check_box := $VBoxContainer/HBoxContainer/CheckBox
 var loop := false
 var index := 0
 
-var locs := []
-
-
 func initialize(path_count: int) -> void:
 	for i in options.get_item_count():
 		options.remove_item(i)
@@ -27,18 +24,6 @@ func initialize(path_count: int) -> void:
 
 
 func update_path(path_entry: Dictionary) -> void:
-	if locs:
-		for loc in locs:
-			loc.terrain.debug.visible = false
-
-	locs = path_entry.locs
-
-	var i := 0
-	for loc in path_entry.locs:
-		loc.terrain.debug.visible = true
-		loc.terrain.debug_color(Color.green * (1.0 / path_entry.locs.size()) * (path_entry.locs.size() - i))
-		i += 1
-
 	loop_check_box.pressed = path_entry.loop
 	_on_CheckBox_toggled(path_entry.loop)
 
