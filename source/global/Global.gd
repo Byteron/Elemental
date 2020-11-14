@@ -6,6 +6,10 @@ const SAVE_DATA_PATH := "user://save_data.tres"
 var current_world := 0
 var current_level := 0
 
+var is_editor_play_mode := false
+var editor_map_data : MapData = null
+
+
 var levels := {}
 
 var orbs := {}
@@ -76,6 +80,8 @@ func load_progress() -> void:
 
 
 func get_map_data() -> MapData:
+	if is_editor_play_mode:
+		return editor_map_data
 	return levels[current_world][current_level]
 
 

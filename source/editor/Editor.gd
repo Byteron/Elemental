@@ -47,6 +47,9 @@ func _unhandled_input(event: InputEvent) -> void:
 func _ready() -> void:
 	hud.initialize()
 	elemental.visible = false
+	if Global.is_editor_play_mode:
+		var map_data : MapData = Global.get_map_data()
+		_load_map(map_data.width, map_data.height, map_data)
 
 
 func _handle_terrain_mode(event: InputEvent) -> void:
@@ -138,12 +141,7 @@ func update_path() -> void:
 func _on_HUD_create_button_pressed(width: int, height: int) -> void:
 	map.remove_elemental()
 	map.queue_free()
-	map = Map.instance()
-	map.connect("cell_hovered", self, "_on_cell_hovered")
-	add_child(map)
-	map.initialize(width, height)
-	camera.initialize(map.size)
-	_initialize_paths()
+	_load_map(width, height)
 
 
 func _on_cell_hovered(cell: Vector3) -> void:
@@ -209,12 +207,20 @@ func _on_HUD_load_button_pressed(world: int, level: int) -> void:
 
 	map.remove_elemental()
 	map.queue_free()
+	_load_map(map_data.width, map_data.height, map_data)
+
+
+func _load_map(width: int, height: int, map_data: MapData = null) -> void:
 	map = Map.instance()
 	map.connect("cell_hovered", self, "_on_cell_hovered")
 	add_child(map)
-	map.initialize_from_map_data(elemental, map_data)
+	if map_data:
+		map.initialize_from_map_data(elemental, map_data)
+	else:
+		map.initialize(width, height)
 	camera.initialize(map.size)
 	_initialize_paths()
+
 
 func _initialize_paths() -> void:
 	hud.initialize_paths(map.paths.size())
@@ -236,3 +242,9 @@ func _on_HUD_path_selected(index: int) -> void:
 	current_path = path_entry.path
 	update_path()
 	hud.update_path(path_entry)
+
+
+func _on_HUD_play_button_pressed() -> void:
+	Global.is_editor_play_mode = true
+	Global.editor_map_data = map.get_map_data()
+	Scene.change("Game")

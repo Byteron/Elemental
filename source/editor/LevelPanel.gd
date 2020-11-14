@@ -23,7 +23,8 @@ func initialize() -> void:
 	width_edit.text = "7"
 	height_edit.text = "7"
 
-	_on_CreateButton_pressed()
+	if not Global.is_editor_play_mode:
+		_on_CreateButton_pressed()
 	_on_WorldOptions_item_selected(0)
 
 

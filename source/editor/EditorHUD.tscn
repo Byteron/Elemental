@@ -37,6 +37,16 @@ text = "BACK"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Play" type="Button" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -60.0
+margin_right = 220.0
+text = "PLAY"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="option_selected" from="SelectionPanel" to="." method="_on_SelectionPanel_option_selected"]
 [connection signal="option_selected" from="ModeSelection" to="." method="_on_ModeSelection_option_selected"]
 [connection signal="create_button_pressed" from="LevelPanel" to="." method="_on_LevelPanel_create_button_pressed"]
@@ -46,3 +56,4 @@ __meta__ = {
 [connection signal="remove" from="PathPanel" to="." method="_on_PathPanel_remove"]
 [connection signal="save" from="PathPanel" to="." method="_on_PathPanel_save"]
 [connection signal="pressed" from="Back" to="." method="_on_Back_pressed"]
+[connection signal="pressed" from="Play" to="." method="_on_Play_pressed"]

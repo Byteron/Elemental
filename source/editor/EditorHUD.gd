@@ -11,6 +11,9 @@ enum Mode {
 	CREATURES,
 	PATH
 }
+
+signal play_button_pressed()
+
 signal mode_selected(mode)
 
 signal save_path(index, loop)
@@ -61,6 +64,7 @@ func initialize_paths(path_count: int) -> void:
 func _on_Back_pressed() -> void:
 	Global.scan()
 	Scene.change("TitleScreen")
+	Global.is_editor_play_mode = false
 
 
 func _on_SelectionPanel_option_selected(alias: String) -> void:
@@ -77,6 +81,7 @@ func _on_SelectionPanel_option_selected(alias: String) -> void:
 			emit_signal("obstacle_selected", alias)
 		Mode.ITEMS:
 			emit_signal("item_selected", alias)
+
 
 func _on_ModeSelection_option_selected(index: int) -> void:
 	mode = index
@@ -125,3 +130,7 @@ func _on_LevelPanel_save_button_pressed(world: int, level: int) -> void:
 
 func _on_PathPanel_path_selected(index: int) -> void:
 	emit_signal("path_selected", index)
+
+
+func _on_Play_pressed() -> void:
+	emit_signal("play_button_pressed")
