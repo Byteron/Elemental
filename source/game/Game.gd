@@ -200,6 +200,9 @@ func _check_objectives() -> bool:
 		if loc.obstacle and loc.obstacle.alias == "Fire":
 			return false
 
+		if loc.obstacle and loc.obstacle.alias == "ThunderBolt":
+			return false
+
 		if loc.character and loc.character.alias == "Fish":
 			return false
 
