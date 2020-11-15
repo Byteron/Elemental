@@ -4,7 +4,7 @@ extends Behavior
 func _execute(map: Map, loc: Location, creature: Creature) -> void:
 	var reachable = map.find_walkable_locations(loc, creature.walkable)
 
-	var exit_loc = map.find_location_with_terrain_from_reachable(reachable, "Grass")
+	var exit_loc = map.find_location_with_terrain_from_reachable(reachable, creature.save_terrain)
 
 	if exit_loc == loc:
 		creature.kill()
