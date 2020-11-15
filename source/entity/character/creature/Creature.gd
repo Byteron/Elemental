@@ -3,7 +3,7 @@ class_name Creature
 
 export var alias := ""
 
-export(String, "None", "Walker", "Eater", "Stray") var behavior := "Walker"
+export(String, "None", "Walker", "Eater", "Stray", "Stranded") var behavior := "Walker"
 
 export(Array, String) var walkable := []
 

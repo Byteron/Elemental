@@ -191,13 +191,16 @@ func _tick_apply() -> void:
 
 
 func _check_conditions() -> void:
-	if _check_extinguishing_fire_objective():
+	if _check_objectives():
 		_finish()
 
 
-func _check_extinguishing_fire_objective() -> bool:
+func _check_objectives() -> bool:
 	for loc in map.locations.values():
 		if loc.obstacle and loc.obstacle.alias == "Fire":
+			return false
+
+		if loc.character and loc.character.alias == "Fish":
 			return false
 	return true
 

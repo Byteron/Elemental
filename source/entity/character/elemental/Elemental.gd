@@ -3,6 +3,8 @@ class_name Elemental
 
 export(Entity.Element) var state := 1 setget _set_state
 
+var alias := "Elemental"
+
 var inventory := {}
 
 onready var vfx_picker := $ElementalVFXPicker
