@@ -1,7 +1,7 @@
 extends Entity
 class_name Character
 
-signal died()
+signal died(character)
 signal move_finished(character, last_cell, new_cell)
 
 var last_cell := Vector3()

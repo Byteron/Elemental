@@ -220,7 +220,7 @@ func _on_terrain_changed(alias: String) -> void:
 	_set_terrain(terrain)
 
 
-func _on_character_died() -> void:
+func _on_character_died(character: Character) -> void:
 	character = null
 
 
