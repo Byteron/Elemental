@@ -6,9 +6,6 @@ export var random := false
 
 var steps := 0
 
-var earth_block_count := 0
-var seeds_planted := 0
-
 var behaviors := {}
 
 var tick_calls := {}
@@ -72,7 +69,11 @@ func _finish() -> void:
 	set_process_unhandled_input(false)
 	elemental.finished()
 	yield(get_tree().create_timer(1.5), "timeout")
-	Global.next_level()
+
+	if Global.is_editor_play_mode:
+		Scene.change("Editor")
+	else:
+		Global.next_level()
 
 
 func _execute_behaviors() -> void:
@@ -190,16 +191,15 @@ func _tick_apply() -> void:
 
 
 func _check_conditions() -> void:
-	var blocks_left = 0
-
-	for cell in map.locations:
-		var loc : Location = map.locations[cell]
-
-		if loc.terrain.is_fertile:
-			blocks_left += 1
-
-	if not blocks_left:
+	if _check_extinguishing_fire_objective():
 		_finish()
+
+
+func _check_extinguishing_fire_objective() -> bool:
+	for loc in map.locations.values():
+		if loc.obstacle and loc.obstacle.alias == "Fire":
+			return false
+	return true
 
 
 func _check_brittle_terrain(loc: Location) -> void:
@@ -239,21 +239,12 @@ func _check_collecting_items(loc: Location) -> void:
 		loc.item.collect()
 
 
-func _check_planting_seeds(loc: Location) -> void:
-	if elemental.get_item_count("Seeds") and loc.terrain and loc.terrain.is_fertile:
-		elemental.remove_item("Seeds")
-		seeds_planted += 1
-		loc.change_terrain("Grass")
-		SFX.play_sfx("Plant")
-
-
 func _on_Map_elemental_move_finished(last_loc: Location, loc: Location) -> void:
 	_check_collecting_orb(loc)
 	_check_sigil(loc)
 
 	_check_brittle_terrain(last_loc)
 	_check_collecting_items(loc)
-	_check_planting_seeds(loc)
 
 	_tick()
 
