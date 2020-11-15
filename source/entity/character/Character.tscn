@@ -2,7 +2,6 @@
 
 [ext_resource path="res://source/entity/character/Character.gd" type="Script" id=1]
 
-
 [node name="Character" type="Spatial"]
 script = ExtResource( 1 )
 
