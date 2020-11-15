@@ -202,6 +202,9 @@ func _check_objectives() -> bool:
 
 		if loc.character and loc.character.alias == "Fish":
 			return false
+
+		if loc.character and loc.character.alias == "Cub":
+			return false
 	return true
 
 

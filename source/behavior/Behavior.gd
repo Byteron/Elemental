@@ -9,6 +9,7 @@ func add_creature(creature: Creature) -> void:
 	creatures.append(creature)
 	creature.connect("died", self, "_on_creature_died")
 
+
 func execute() -> void:
 	for creature in creatures:
 

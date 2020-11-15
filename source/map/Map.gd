@@ -248,10 +248,26 @@ func find_walkable_locations(start_loc: Location, walkable: Array) -> Array:
 	return visited
 
 
-func _process(delta: float) -> void:
-	find_conducting_locations_calls = 0.0
+func find_location_with_item_from_reachable(reachable: Array, alias: String) -> Location:
+	var end_loc : Location = null
 
-var find_conducting_locations_calls := 0.0
+	for loc in reachable:
+		if loc.item and loc.item.alias == alias:
+			return loc
+
+	return null
+
+
+func find_location_with_terrain_from_reachable(reachable: Array, alias: String) -> Location:
+	var end_loc : Location = null
+
+	for loc in reachable:
+		if loc.terrain and loc.terrain.alias == alias:
+			return loc
+
+	return null
+
+
 func find_conducting_locations(start_loc: Location, element: int) -> Array:
 	if not start_loc.conducts_element(element):
 		return []
@@ -267,12 +283,11 @@ func find_conducting_locations(start_loc: Location, element: int) -> Array:
 			continue
 
 		visited.append(loc)
-		loc.terrain.debug_color(Color.red * 0.05 * find_conducting_locations_calls)
+		loc.terrain.debug_color(Color.red)
 
 		for n_loc in get_neighbors(loc):
 			queue.append(n_loc)
 
-	find_conducting_locations_calls += 1
 	return visited
 
 
@@ -289,6 +304,19 @@ func drop_item() -> void:
 
 	elemental.remove_item(key)
 	add_item(elemental.cell, key)
+
+
+func move_character_with_path(loc: Location, end_loc: Location) -> void:
+	update_grid_weight(loc.character.walkable)
+
+	var path = find_path(loc, end_loc)
+
+	var next_loc: Location = path.pop_front()
+
+	if not next_loc:
+		return
+
+	var __ = move_character(loc, next_loc)
 
 
 func move_character(start_loc: Location, end_loc: Location) -> bool:
