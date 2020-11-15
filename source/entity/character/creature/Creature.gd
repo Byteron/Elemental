@@ -10,6 +10,9 @@ export(Array, String) var walkable := []
 # General
 var start_cell := Vector3()
 
+# Scared
+export var save_terrain := "Grass"
+
 # Walker
 var path := []
 var next_path_index := 1
