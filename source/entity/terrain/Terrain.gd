@@ -68,8 +68,8 @@ func _is_blocked(state: int) -> bool:
 
 
 func _timeout() -> void:
-	tween.interpolate_property(self, "transform:origin:y", transform.origin.y, transform.origin.y - height, speed / 2, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
-	tween.interpolate_property(self, "transform:origin:y", transform.origin.y - height,transform.origin.y, speed / 2, Tween.TRANS_SINE, Tween.EASE_IN_OUT, speed / 2)
+	tween.interpolate_property(get_parent(), "transform:origin:y", transform.origin.y, transform.origin.y - height, speed / 2, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
+	tween.interpolate_property(get_parent(), "transform:origin:y", transform.origin.y - height,transform.origin.y, speed / 2, Tween.TRANS_SINE, Tween.EASE_IN_OUT, speed / 2)
 	tween.start()
 
 

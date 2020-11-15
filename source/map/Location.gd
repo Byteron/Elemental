@@ -133,7 +133,7 @@ func _set_orb(value: Orb) -> void:
 	orb = value
 
 	if orb:
-		terrain.add_child(orb)
+		add_child(orb)
 		orb.connect("collected", self, "_on_orb_collected")
 
 
@@ -147,7 +147,7 @@ func _set_sigil(value: Sigil) -> void:
 	sigil = value
 
 	if sigil:
-		terrain.add_child(sigil)
+		add_child(sigil)
 
 
 func _set_item(value: Item) -> void:
@@ -157,7 +157,7 @@ func _set_item(value: Item) -> void:
 	item = value
 
 	if item:
-		terrain.add_child(item)
+		add_child(item)
 		item.connect("collected", self, "_on_item_collected")
 
 
@@ -171,7 +171,7 @@ func _set_obstacle(value: Obstacle) -> void:
 	obstacle = value
 
 	if obstacle:
-		terrain.add_child(obstacle)
+		add_child(obstacle)
 		obstacle.connect("destroyed", self, "_on_obstacle_destroyed")
 
 
