@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/graphics/models/Tile_Stone_1.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://data/obstacles/Fire.gd" type="Script" id=2]
+[ext_resource path="res://assets/graphics/models/Tile_Lava_2.obj" type="ArrayMesh" id=3]
+[ext_resource path="res://source/entity/obstacle/Obstacle.tscn" type="PackedScene" id=5]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_color = Color( 0.364706, 0.345098, 0.345098, 1 )
+
+[sub_resource type="SpatialMaterial" id=2]
+albedo_color = Color( 0.737255, 0.690196, 0.423529, 1 )
+metallic = 0.4
+metallic_specular = 0.6
+roughness = 0.2
+
+[node name="Ore" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.124423 )
+script = ExtResource( 2 )
+alias = "Ore"
+particles = null
+
+[node name="MeshInstance" type="MeshInstance" parent="Meshes" index="0"]
+transform = Transform( 0.393133, -0.0620904, -0.0398904, 0.0738001, 0.330755, 0.212496, 2.98023e-09, -0.216208, 0.336533, 0.314079, -0.404887, 0.420367 )
+material_override = SubResource( 1 )
+mesh = ExtResource( 1 )
+material/0 = null
+
+[node name="MeshInstance2" type="MeshInstance" parent="Meshes" index="1"]
+transform = Transform( 0.244849, 0.130484, -0.288137, 0.0738001, 0.330755, 0.212496, 0.307575, -0.183235, 0.178389, -0.195805, -0.284304, -0.0142105 )
+material_override = SubResource( 1 )
+mesh = ExtResource( 1 )
+material/0 = null
+
+[node name="MeshInstance3" type="MeshInstance" parent="Meshes" index="2"]
+transform = Transform( 0.244849, 0.130484, -0.288137, -0.167314, 0.362657, 0.0220521, 0.268431, 0.107024, 0.27657, -0.232258, -0.374966, 0.359147 )
+material_override = SubResource( 1 )
+mesh = ExtResource( 1 )
+material/0 = null
+
+[node name="MeshInstance4" type="MeshInstance" parent="Meshes" index="3"]
+transform = Transform( 0.244849, 0.130484, -0.288137, -0.167314, 0.362657, 0.0220521, 0.268431, 0.107024, 0.27657, -0.0737793, 0.12077, 0.127623 )
+material_override = SubResource( 1 )
+mesh = ExtResource( 1 )
+material/0 = null
+
+[node name="MeshInstance5" type="MeshInstance" parent="Meshes" index="4"]
+transform = Transform( -0.513941, -0.148792, -0.0857442, -0.152872, 0.519659, 0.0145293, 0.0782395, 0.037971, -0.534849, 0.173967, -0.404193, 0.146958 )
+material_override = SubResource( 2 )
+mesh = ExtResource( 3 )
+material/0 = null

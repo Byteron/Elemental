@@ -223,6 +223,13 @@ func get_locations_in_reach(start_loc: Location, reach: int) -> Array:
 	return reachable_locations
 
 
+func are_locations_neighbors(loc1: Location, loc2: Location):
+	for n_loc in get_neighbors(loc1):
+		if n_loc == loc2:
+			return true
+	return false
+
+
 func find_walkable_locations(start_loc: Location, walkable: Array) -> Array:
 	if not start_loc.get_terrain_alias() in walkable:
 		print(start_loc.get_terrain_alias(), walkable)
@@ -248,11 +255,32 @@ func find_walkable_locations(start_loc: Location, walkable: Array) -> Array:
 	return visited
 
 
+func find_adjacent_obstacles(walkable: Array, alias: String) -> Array:
+	var obstacle_locations := []
+
+	for loc in walkable:
+		for n_loc in get_neighbors(loc):
+			if n_loc.obstacle and n_loc.obstacle.alias == alias:
+				obstacle_locations.append(n_loc)
+
+	return obstacle_locations
+
+
 func find_location_with_item_from_reachable(reachable: Array, alias: String) -> Location:
 	var end_loc : Location = null
 
 	for loc in reachable:
 		if loc.item and loc.item.alias == alias:
+			return loc
+
+	return null
+
+
+func find_location_with_obstacle_from_reachable(reachable: Array, alias: String) -> Location:
+	var end_loc : Location = null
+
+	for loc in reachable:
+		if loc.obstacle and loc.obstacle.alias == alias:
 			return loc
 
 	return null
