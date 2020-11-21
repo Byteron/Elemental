@@ -18,6 +18,8 @@ func _execute(map: Map, loc: Location, creature: Creature) -> void:
 	elif search_loc == loc:
 		loc.item.destroy()
 		creature.has_candle = true
+		creature.candle.visible = true
+		creature.candle._fire(false)
 	elif search_loc and not creature.has_candle:
 		if search_loc.item.is_lit:
 			map.move_character_with_path(loc, search_loc)

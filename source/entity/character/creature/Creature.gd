@@ -15,6 +15,7 @@ export var save_terrain := "Grass"
 
 # Miner
 var has_candle := false
+onready var candle := $Meshes/Candle
 
 # Walker
 var path := []
@@ -24,7 +25,6 @@ var walk_reverse := false
 var loop_path = false
 
 
-
 func tick() -> void:
 	.tick()
 
@@ -32,8 +32,10 @@ func tick() -> void:
 func get_next_path_cell() -> Vector3:
 	return path[next_path_index]
 
+
 func get_path_cell() -> Vector3:
 	return path[path_index]
+
 
 func increment_path_index() -> void:
 	path_index = next_path_index

@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://source/entity/character/creature/Creature.tscn" type="PackedScene" id=1]
+[ext_resource path="res://data/items/Candle.tscn" type="PackedScene" id=2]
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_color = Color( 0.262745, 0.109804, 0.109804, 1 )
@@ -16,3 +17,7 @@ walkable = [ "Stone", "Obsidian" ]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 1.10564, 0 )
 material_override = SubResource( 1 )
 mesh = SubResource( 2 )
+
+[node name="Candle" parent="Meshes" index="1" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.53228, 0 )
+visible = false
