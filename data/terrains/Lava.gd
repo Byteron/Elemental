@@ -2,7 +2,7 @@ extends Terrain
 
 
 func _water(boosted: bool) -> void:
-	change("BrittleStone")
+	change("Obsidian")
 
 
 func _is_blocked(state: int) -> bool:
