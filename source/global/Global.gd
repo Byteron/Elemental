@@ -63,6 +63,11 @@ func save_progress() -> void:
 
 
 func load_progress() -> void:
+	var dir = Directory.new();
+
+	if not dir.file_exists(SAVE_DATA_PATH):
+		return
+
 	var save : SaveData = load(SAVE_DATA_PATH)
 
 	if not save:
