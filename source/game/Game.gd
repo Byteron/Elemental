@@ -216,6 +216,12 @@ func _check_brittle_terrain(loc: Location) -> void:
 		loc.change_terrain("None")
 
 
+func _check_planting_seeds(loc: Location) -> void:
+	if loc.terrain.alias == "Earth" and elemental.get_item_count("Seeds"):
+		loc.change_terrain("Grass")
+		elemental.remove_item("Seeds")
+
+
 func _check_collecting_orb(loc: Location) -> void:
 	if loc.orb:
 		if [Entity.Element.ICE, Entity.Element.FIRE].has(loc.orb.element) and elemental.get_item_count("Seeds"):
@@ -253,6 +259,7 @@ func _on_Map_elemental_move_finished(last_loc: Location, loc: Location) -> void:
 	_check_sigil(loc)
 
 	_check_brittle_terrain(last_loc)
+	_check_planting_seeds(loc)
 	_check_collecting_items(loc)
 
 	_tick()
