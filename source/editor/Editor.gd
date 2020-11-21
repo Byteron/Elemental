@@ -54,8 +54,9 @@ func _ready() -> void:
 
 func _handle_terrain_mode(event: InputEvent) -> void:
 	if event.is_action_pressed("mouse_left"):
-		map.change_terrain(current_cell, current_terrain, current_elevation)
-
+		map.change_terrain(current_cell, current_terrain)
+	if event.is_action_pressed("mouse_right"):
+		map.change_terrain(current_cell, "None")
 
 func _handle_orbs_mode(event: InputEvent) -> void:
 	if event.is_action_pressed("mouse_left"):

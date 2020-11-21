@@ -319,7 +319,7 @@ func find_conducting_locations(start_loc: Location, element: int) -> Array:
 	return visited
 
 
-func change_terrain(cell: Vector3, alias: String, elevation := 0) -> void:
+func change_terrain(cell: Vector3, alias: String) -> void:
 	var loc : Location = locations[cell]
 	loc.change_terrain(alias)
 
