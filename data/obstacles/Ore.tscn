@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/graphics/models/Tile_Stone_1.obj" type="ArrayMesh" id=1]
-[ext_resource path="res://data/obstacles/Fire.gd" type="Script" id=2]
+[ext_resource path="res://data/obstacles/Ore.gd" type="Script" id=2]
 [ext_resource path="res://assets/graphics/models/Tile_Lava_2.obj" type="ArrayMesh" id=3]
 [ext_resource path="res://source/entity/obstacle/Obstacle.tscn" type="PackedScene" id=5]
 
