@@ -39,6 +39,7 @@ func scan() -> void:
 
 
 func next_level() -> void:
+	Scene.change("Credits")
 #	current_level += 1
 #
 #	if current_level == levels_sorted[current_world].size():
@@ -48,7 +49,6 @@ func next_level() -> void:
 #	if current_world == levels.size():
 #		current_world = 0
 #		current_level = 0
-#		Scene.change("Credits")
 #	else:
 #		Scene.change("Game")
 #		save_progress()

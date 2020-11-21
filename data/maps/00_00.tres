@@ -63,6 +63,7 @@ Vector3( 2, 0, 2 ): {
 "Terrain": "Stone"
 },
 Vector3( 2, 0, 3 ): {
+"Orb": "Water",
 "Terrain": "Stone"
 },
 Vector3( 2, 0, 4 ): {
@@ -75,6 +76,7 @@ Vector3( 2, 0, 6 ): {
 "Terrain": "Stone"
 },
 Vector3( 3, 0, 0 ): {
+"Obstacle": "Fire",
 "Terrain": "Stone"
 },
 Vector3( 3, 0, 1 ): {
@@ -93,6 +95,7 @@ Vector3( 3, 0, 5 ): {
 "Terrain": "Stone"
 },
 Vector3( 3, 0, 6 ): {
+"Obstacle": "Fire",
 "Terrain": "Stone"
 },
 Vector3( 4, 0, 0 ): {
@@ -160,5 +163,4 @@ Vector3( 6, 0, 6 ): {
 }
 }
 paths = {
-
 }
