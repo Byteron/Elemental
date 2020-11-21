@@ -321,6 +321,10 @@ func find_conducting_locations(start_loc: Location, element: int) -> Array:
 
 func change_terrain(cell: Vector3, alias: String) -> void:
 	var loc : Location = locations[cell]
+
+	if loc.terrain.alias == alias:
+		return
+
 	loc.change_terrain(alias)
 
 
