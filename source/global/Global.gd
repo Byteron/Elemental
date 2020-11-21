@@ -5,6 +5,7 @@ const SAVE_DATA_PATH := "user://save_data.tres"
 
 var is_editor_play_mode := false
 var editor_map_data : MapData = null
+var editor_level := ""
 
 var current_level := ""
 
@@ -39,7 +40,7 @@ func scan() -> void:
 
 
 func next_level() -> void:
-	Scene.change("Credits")
+	Scene.change("TitleScreen")
 #	current_level += 1
 #
 #	if current_level == levels_sorted[current_world].size():

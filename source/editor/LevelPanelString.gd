@@ -17,7 +17,9 @@ func _ready() -> void:
 	for level in Global.levels:
 		level_options.add_item(level)
 
-	level_options.select(0)
+	for i in level_options.get_item_count():
+		if level_options.get_item_text(i) == Global.editor_level:
+			level_options.select(i)
 
 
 func initialize() -> void:
@@ -43,3 +45,7 @@ func _on_Load_pressed() -> void:
 func _on_AddLevelButton_pressed() -> void:
 	level_options.add_item(level_edit.text)
 	level_options.select(level_options.get_item_count() - 1)
+
+
+func _on_LevelOptions_item_selected(index: int) -> void:
+	Global.editor_level = level_options.get_item_text(index)

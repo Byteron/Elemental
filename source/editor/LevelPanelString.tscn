@@ -102,4 +102,5 @@ text = " + "
 [connection signal="pressed" from="VBoxContainer/Create/HBoxContainer/CreateButton" to="." method="_on_CreateButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/SaveAndLoad/Buttons/Load" to="." method="_on_Load_pressed"]
 [connection signal="pressed" from="VBoxContainer/SaveAndLoad/Buttons/Save" to="." method="_on_Save_pressed"]
+[connection signal="item_selected" from="VBoxContainer/SaveAndLoad/Selection/LevelOptions" to="." method="_on_LevelOptions_item_selected"]
 [connection signal="pressed" from="VBoxContainer/SaveAndLoad/HBoxContainer/AddLevelButton" to="." method="_on_AddLevelButton_pressed"]
