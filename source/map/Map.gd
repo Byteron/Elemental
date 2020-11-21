@@ -344,7 +344,8 @@ func place_elemental(elemental: Elemental, cell: Vector3) -> void:
 
 	var loc : Location = locations[cell]
 
-	elemental.connect("move_finished", self, "_on_elemental_move_finished")
+	if not elemental.is_connected("move_finished", self, "_on_elemental_move_finished"):
+		elemental.connect("move_finished", self, "_on_elemental_move_finished")
 
 	elemental.cell = cell
 	elemental.last_cell = cell
