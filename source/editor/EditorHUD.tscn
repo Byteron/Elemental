@@ -3,8 +3,8 @@
 [ext_resource path="res://source/editor/SelectionPanel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://source/editor/EditorHUD.gd" type="Script" id=2]
 [ext_resource path="res://source/editor/ModeSelection.tscn" type="PackedScene" id=3]
-[ext_resource path="res://source/editor/LevelPanel.tscn" type="PackedScene" id=4]
 [ext_resource path="res://source/editor/PathPanel.tscn" type="PackedScene" id=5]
+[ext_resource path="res://source/editor/LevelPanelString.tscn" type="PackedScene" id=6]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource( 2 )
@@ -22,7 +22,12 @@ anchor_right = 0.5
 margin_left = -88.5
 margin_right = 88.5
 
-[node name="LevelPanel" parent="." instance=ExtResource( 4 )]
+[node name="LevelPanelString" parent="." instance=ExtResource( 6 )]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -191.0
+margin_right = 0.0
+margin_bottom = 138.0
 
 [node name="PathPanel" parent="." instance=ExtResource( 5 )]
 
@@ -47,11 +52,12 @@ text = "PLAY"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
 [connection signal="option_selected" from="SelectionPanel" to="." method="_on_SelectionPanel_option_selected"]
 [connection signal="option_selected" from="ModeSelection" to="." method="_on_ModeSelection_option_selected"]
-[connection signal="create_button_pressed" from="LevelPanel" to="." method="_on_LevelPanel_create_button_pressed"]
-[connection signal="load_button_pressed" from="LevelPanel" to="." method="_on_LevelPanel_load_button_pressed"]
-[connection signal="save_button_pressed" from="LevelPanel" to="." method="_on_LevelPanel_save_button_pressed"]
+[connection signal="create_button_pressed" from="LevelPanelString" to="." method="_on_LevelPanelString_create_button_pressed"]
+[connection signal="load_button_pressed" from="LevelPanelString" to="." method="_on_LevelPanelString_load_button_pressed"]
+[connection signal="save_button_pressed" from="LevelPanelString" to="." method="_on_LevelPanelString_save_button_pressed"]
 [connection signal="path_selected" from="PathPanel" to="." method="_on_PathPanel_path_selected"]
 [connection signal="remove" from="PathPanel" to="." method="_on_PathPanel_remove"]
 [connection signal="save" from="PathPanel" to="." method="_on_PathPanel_save"]

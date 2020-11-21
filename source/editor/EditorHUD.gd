@@ -21,8 +21,8 @@ signal remove_path(index)
 signal path_selected(index)
 
 signal create_button_pressed(width, height)
-signal save_button_pressed(world, level)
-signal load_button_pressed(world, level)
+signal save_button_pressed(level)
+signal load_button_pressed(level)
 
 signal terrain_selected(terrain)
 signal orb_selected(orb)
@@ -37,7 +37,7 @@ var mode := 0
 onready var mode_selection := $ModeSelection as ModeSelection
 onready var selection_panel := $SelectionPanel as SelectionPanel
 
-onready var level_panel := $LevelPanel as LevelPanel
+onready var level_panel := $LevelPanelString as LevelPanel
 
 
 onready var path_panel := $PathPanel as PathPanel
@@ -116,21 +116,21 @@ func _on_PathPanel_remove(index: int) -> void:
 	emit_signal("remove_path", index)
 
 
-func _on_LevelPanel_create_button_pressed(width: int, height: int) -> void:
-	emit_signal("create_button_pressed", width, height)
-
-
-func _on_LevelPanel_load_button_pressed(world: int, level: int) -> void:
-	emit_signal("load_button_pressed", world, level)
-
-
-func _on_LevelPanel_save_button_pressed(world: int, level: int) -> void:
-	emit_signal("save_button_pressed", world, level)
-
-
 func _on_PathPanel_path_selected(index: int) -> void:
 	emit_signal("path_selected", index)
 
 
 func _on_Play_pressed() -> void:
 	emit_signal("play_button_pressed")
+
+
+func _on_LevelPanelString_create_button_pressed(width: int, height: int) -> void:
+	emit_signal("create_button_pressed", width, height)
+
+
+func _on_LevelPanelString_load_button_pressed(level: String) -> void:
+	emit_signal("load_button_pressed", level)
+
+
+func _on_LevelPanelString_save_button_pressed(level: String) -> void:
+	emit_signal("save_button_pressed", level)

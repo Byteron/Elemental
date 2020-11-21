@@ -19,7 +19,7 @@ onready var step_counter_label := $CanvasLayer/StepCounterLabel as Label
 
 
 func _ready() -> void:
-	level_label.text = "%d - %d" % [Global.current_world + 1, Global.current_level + 1]
+	level_label.text = Global.current_level
 
 	for key in Global.behaviors:
 		var script : Script = Global.behaviors[key]

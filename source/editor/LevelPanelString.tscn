@@ -1,0 +1,105 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://source/editor/LevelPanelString.gd" type="Script" id=1]
+
+[node name="LevelPanelString" type="PanelContainer"]
+margin_right = 191.0
+margin_bottom = 110.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 184.0
+margin_bottom = 131.0
+
+[node name="Create" type="VBoxContainer" parent="VBoxContainer"]
+margin_right = 177.0
+margin_bottom = 24.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Create"]
+margin_right = 177.0
+margin_bottom = 24.0
+
+[node name="Width" type="LineEdit" parent="VBoxContainer/Create/HBoxContainer"]
+margin_right = 58.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+placeholder_text = "Width"
+
+[node name="Height" type="LineEdit" parent="VBoxContainer/Create/HBoxContainer"]
+margin_left = 62.0
+margin_right = 120.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+placeholder_text = "Height"
+
+[node name="CreateButton" type="Button" parent="VBoxContainer/Create/HBoxContainer"]
+margin_left = 124.0
+margin_right = 177.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+text = "Create"
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+margin_top = 28.0
+margin_right = 177.0
+margin_bottom = 43.0
+custom_constants/separation = 15
+
+[node name="SaveAndLoad" type="VBoxContainer" parent="VBoxContainer"]
+margin_top = 47.0
+margin_right = 177.0
+margin_bottom = 124.0
+
+[node name="Buttons" type="HBoxContainer" parent="VBoxContainer/SaveAndLoad"]
+margin_right = 177.0
+margin_bottom = 20.0
+
+[node name="Load" type="Button" parent="VBoxContainer/SaveAndLoad/Buttons"]
+margin_right = 86.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+text = "Load"
+
+[node name="Save" type="Button" parent="VBoxContainer/SaveAndLoad/Buttons"]
+margin_left = 90.0
+margin_right = 177.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+text = "Save"
+
+[node name="Selection" type="HBoxContainer" parent="VBoxContainer/SaveAndLoad"]
+margin_top = 24.0
+margin_right = 177.0
+margin_bottom = 49.0
+
+[node name="LevelOptions" type="OptionButton" parent="VBoxContainer/SaveAndLoad/Selection"]
+margin_right = 177.0
+margin_bottom = 25.0
+rect_min_size = Vector2( 0, 25 )
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/SaveAndLoad"]
+margin_top = 53.0
+margin_right = 177.0
+margin_bottom = 77.0
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/SaveAndLoad/HBoxContainer"]
+margin_right = 145.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+
+[node name="AddLevelButton" type="Button" parent="VBoxContainer/SaveAndLoad/HBoxContainer"]
+margin_left = 149.0
+margin_right = 177.0
+margin_bottom = 24.0
+text = " + "
+
+[connection signal="pressed" from="VBoxContainer/Create/HBoxContainer/CreateButton" to="." method="_on_CreateButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/SaveAndLoad/Buttons/Load" to="." method="_on_Load_pressed"]
+[connection signal="pressed" from="VBoxContainer/SaveAndLoad/Buttons/Save" to="." method="_on_Save_pressed"]
+[connection signal="pressed" from="VBoxContainer/SaveAndLoad/HBoxContainer/AddLevelButton" to="." method="_on_AddLevelButton_pressed"]

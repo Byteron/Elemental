@@ -55,13 +55,7 @@ __meta__ = {
 margin_right = 163.0
 margin_bottom = 20.0
 
-[node name="WorldOptions" type="OptionButton" parent="VBoxContainer/HBoxContainer"]
-margin_right = 79.0
-margin_bottom = 20.0
-size_flags_horizontal = 3
-
 [node name="LevelOptions" type="OptionButton" parent="VBoxContainer/HBoxContainer"]
-margin_left = 83.0
 margin_right = 163.0
 margin_bottom = 20.0
 size_flags_horizontal = 3
@@ -93,7 +87,7 @@ margin_right = 163.0
 margin_bottom = 276.0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "QUIT"
-[connection signal="item_selected" from="VBoxContainer/HBoxContainer/WorldOptions" to="." method="_on_WorldOptions_item_selected"]
+
 [connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_Play_pressed"]
 [connection signal="pressed" from="VBoxContainer/Editor" to="." method="_on_Editor_pressed"]
 [connection signal="pressed" from="VBoxContainer/Credits" to="." method="_on_Credits_pressed"]

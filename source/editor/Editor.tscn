@@ -20,6 +20,7 @@ Map = ExtResource( 3 )
 [node name="OrthoCamera" parent="." instance=ExtResource( 2 )]
 
 [node name="HUD" parent="." instance=ExtResource( 4 )]
+
 [connection signal="create_button_pressed" from="HUD" to="." method="_on_HUD_create_button_pressed"]
 [connection signal="creature_selected" from="HUD" to="." method="_on_HUD_creature_selected"]
 [connection signal="item_selected" from="HUD" to="." method="_on_HUD_item_selected"]

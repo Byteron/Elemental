@@ -1,14 +1,12 @@
 extends Node
 
-const SAVE_DATA_VERSION := 3
+const SAVE_DATA_VERSION := 4
 const SAVE_DATA_PATH := "user://save_data.tres"
-
-var current_world := 0
-var current_level := 0
 
 var is_editor_play_mode := false
 var editor_map_data : MapData = null
 
+var current_level := ""
 
 var levels := {}
 
@@ -41,27 +39,26 @@ func scan() -> void:
 
 
 func next_level() -> void:
-	current_level += 1
-
-	if current_level == levels[current_world].size():
-		current_world += 1
-		current_level = 0
-
-	if current_world == levels.size():
-		current_world = 0
-		current_level = 0
-		Scene.change("Credits")
-	else:
-		Scene.change("Game")
-		save_progress()
-
+#	current_level += 1
+#
+#	if current_level == levels_sorted[current_world].size():
+#		current_world += 1
+#		current_level = 0
+#
+#	if current_world == levels.size():
+#		current_world = 0
+#		current_level = 0
+#		Scene.change("Credits")
+#	else:
+#		Scene.change("Game")
+#		save_progress()
+	pass
 
 
 func save_progress() -> void:
 	var save = SaveData.new()
 	save.version = SAVE_DATA_VERSION
 	save.data["current_level"] = current_level
-	save.data["current_world"] = current_world
 	var __ = ResourceSaver.save(SAVE_DATA_PATH, save)
 
 
@@ -76,17 +73,12 @@ func load_progress() -> void:
 		return
 
 	current_level = save.data["current_level"]
-	current_world = save.data["current_world"]
 
 
 func get_map_data() -> MapData:
 	if is_editor_play_mode:
 		return editor_map_data
-	return levels[current_world][current_level]
-
-
-func get_map_data_from_key(key: String) -> MapData:
-	return levels[key]
+	return levels[current_level]
 
 
 func _register_scenes() -> void:
@@ -174,12 +166,7 @@ func _load_levels() -> void:
 	var files = Loader.load_dir("res://data/maps/", ["tres"])
 
 	for file in files:
-		var level = file.data
-
-		if not levels.has(level.world):
-			levels[level.world] = {}
-
-		levels[level.world][level.level] = level
+		levels[file.id] = file.data
 
 	print(levels)
 

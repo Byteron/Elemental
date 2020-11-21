@@ -62,7 +62,7 @@ _global_script_classes=[ {
 "base": "PanelContainer",
 "class": "LevelPanel",
 "language": "GDScript",
-"path": "res://source/editor/LevelPanel.gd"
+"path": "res://source/editor/LevelPanelString.gd"
 }, {
 "base": "Reference",
 "class": "Loader",

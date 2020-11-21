@@ -15,10 +15,10 @@ func _input(event: InputEvent) -> void:
 		camera.size = clamp(camera.size - step_size, 0, max_size)
 	if event.is_action_pressed("scroll_down"):
 		camera.size = clamp(camera.size + step_size, 0, max_size)
-	if event.is_action_pressed("rotate_left"):
-		rotate_camera(90)
-	if event.is_action_pressed("rotate_right"):
-		rotate_camera(-90)
+#	if event.is_action_pressed("rotate_left"):
+#		rotate_camera(90)
+#	if event.is_action_pressed("rotate_right"):
+#		rotate_camera(-90)
 
 
 func initialize(size: Vector2) -> void:

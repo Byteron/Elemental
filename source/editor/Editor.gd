@@ -180,29 +180,26 @@ func _on_HUD_item_selected(item: String) -> void:
 	current_item = item
 
 
-func _on_HUD_save_button_pressed(world: int, level: int) -> void:
+func _on_HUD_save_button_pressed(level: String) -> void:
 	var dir = Directory.new()
 	var map_data := map.get_map_data()
 
-	map_data.world = world
-	map_data.level = level
-
-	var file_name := str(world).pad_zeros(2) + "_" + str(level).pad_zeros(2) + ".tres"
+	var file_name := level + ".tres"
 	dir.remove(MAP_PATH + file_name)
 	yield(get_tree(), "idle_frame")
 	ResourceSaver.save(MAP_PATH + file_name, map_data)
 	Global.scan()
 
 
-func _on_HUD_load_button_pressed(world: int, level: int) -> void:
-	if not Global.levels.has(world) or not Global.levels[world].has(level):
-		print("Level %d_%d does not exist." % [world, level])
+func _on_HUD_load_button_pressed(level: String) -> void:
+	if not Global.levels.has(level):
+		print("Level %s does not exist." % level)
 		return
 
-	var map_data : MapData = Global.levels[world][level]
+	var map_data : MapData = Global.levels[level]
 
 	if not map_data:
-		print("Level %d_%d has no map data." % [world, level])
+		print("Level %s has no map data." % level)
 		return
 
 	map.remove_elemental()
