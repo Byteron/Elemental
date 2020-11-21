@@ -7,6 +7,7 @@ export var Map : PackedScene = null
 
 var current_mode := 0
 var current_cell := Vector3()
+var last_cell := Vector3(-1, -1, -1)
 var current_terrain := ""
 var current_elevation := 0
 var current_orb := ""
@@ -25,23 +26,32 @@ onready var hud := $HUD
 
 
 func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_released("mouse_left"):
+		last_cell = Vector3(-1, -1, -1)
+
+	if Input.is_action_pressed("mouse_left"):
+		if last_cell == current_cell:
+			return
+
+		last_cell = current_cell
+
 	match current_mode:
 		EditorHUD.Mode.TERRAIN:
-			_handle_terrain_mode(event)
+			_handle_terrain_mode()
 		EditorHUD.Mode.ORBS:
-			_handle_orbs_mode(event)
+			_handle_orbs_mode()
 		EditorHUD.Mode.SIGILS:
-			_handle_sigils_mode(event)
+			_handle_sigils_mode()
 		EditorHUD.Mode.CREATURES:
-			_handle_creatures_mode(event)
+			_handle_creatures_mode()
 		EditorHUD.Mode.ITEMS:
-			_handle_items_mode(event)
+			_handle_items_mode()
 		EditorHUD.Mode.OBSTACLES:
-			_handle_obstalces_mode(event)
+			_handle_obstalces_mode()
 		EditorHUD.Mode.ELEMENTAL:
-			_handle_elemental_mode(event)
+			_handle_elemental_mode()
 		EditorHUD.Mode.PATH:
-			_handle_path_mode(event)
+			_handle_path_mode()
 
 
 func _ready() -> void:
@@ -52,64 +62,64 @@ func _ready() -> void:
 		_load_map(map_data.width, map_data.height, map_data)
 
 
-func _handle_terrain_mode(event: InputEvent) -> void:
-	if event.is_action_pressed("mouse_left"):
+func _handle_terrain_mode() -> void:
+	if Input.is_action_pressed("mouse_left"):
 		map.change_terrain(current_cell, current_terrain)
-	if event.is_action_pressed("mouse_right"):
+	if Input.is_action_pressed("mouse_right"):
 		map.change_terrain(current_cell, "None")
 
-func _handle_orbs_mode(event: InputEvent) -> void:
-	if event.is_action_pressed("mouse_left"):
+func _handle_orbs_mode() -> void:
+	if Input.is_action_pressed("mouse_left"):
 		map.add_orb(current_cell, current_orb)
-	if event.is_action_pressed("mouse_right"):
+	if Input.is_action_pressed("mouse_right"):
 		map.remove_orb(current_cell)
 
 
-func _handle_sigils_mode(event: InputEvent) -> void:
-	if event.is_action_pressed("mouse_left"):
+func _handle_sigils_mode() -> void:
+	if Input.is_action_pressed("mouse_left"):
 		map.add_sigil(current_cell, current_sigil)
-	if event.is_action_pressed("mouse_right"):
+	if Input.is_action_pressed("mouse_right"):
 		map.remove_sigil(current_cell)
 
 
-func _handle_creatures_mode(event: InputEvent) -> void:
-	if event.is_action_pressed("mouse_left"):
+func _handle_creatures_mode() -> void:
+	if Input.is_action_pressed("mouse_left"):
 		map.add_creature(current_cell, current_creature)
-	if event.is_action_pressed("mouse_right"):
+	if Input.is_action_pressed("mouse_right"):
 		map.remove_creature(current_cell)
 
 
-func _handle_obstalces_mode(event: InputEvent) -> void:
-	if event.is_action_pressed("mouse_left"):
+func _handle_obstalces_mode() -> void:
+	if Input.is_action_pressed("mouse_left"):
 		map.add_obstacle(current_cell, current_obstacle)
-	if event.is_action_pressed("mouse_right"):
+	if Input.is_action_pressed("mouse_right"):
 		map.remove_obstacle(current_cell)
 
 
-func _handle_items_mode(event: InputEvent) -> void:
-	if event.is_action_pressed("mouse_left"):
+func _handle_items_mode() -> void:
+	if Input.is_action_pressed("mouse_left"):
 		map.add_item(current_cell, current_item)
-	if event.is_action_pressed("mouse_right"):
+	if Input.is_action_pressed("mouse_right"):
 		map.remove_item(current_cell)
 
 
-func _handle_elemental_mode(event: InputEvent) -> void:
-	if event.is_action_pressed("mouse_left"):
+func _handle_elemental_mode() -> void:
+	if Input.is_action_pressed("mouse_left"):
 		map.remove_elemental()
 		map.place_elemental(elemental, current_cell)
 		elemental.visible = true
 
-	if event.is_action_pressed("mouse_right"):
+	if Input.is_action_pressed("mouse_right"):
 		map.remove_elemental()
 		elemental.visible = false
 
 
-func _handle_path_mode(event: InputEvent) -> void:
-	if event.is_action_pressed("mouse_left"):
+func _handle_path_mode() -> void:
+	if Input.is_action_pressed("mouse_left"):
 		if not current_path.has(current_cell):
 			add_path_cell()
 
-	if event.is_action_pressed("mouse_right"):
+	if Input.is_action_pressed("mouse_right"):
 		remove_path_cell()
 
 
