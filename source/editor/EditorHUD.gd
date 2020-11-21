@@ -91,7 +91,9 @@ func _on_ModeSelection_option_selected(index: int) -> void:
 
 	match index:
 		Mode.TERRAIN:
-			selection_panel.fill(Global.terrains.keys())
+			var keys = Global.terrains.keys().duplicate()
+			keys.erase("None")
+			selection_panel.fill(keys)
 		Mode.ORBS:
 			selection_panel.fill(Global.orbs.keys())
 		Mode.SIGILS:
