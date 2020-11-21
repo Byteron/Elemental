@@ -1,0 +1,172 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://source/map/MapData.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+world = 0
+level = 0
+width = 7
+height = 7
+optimal_steps = 0
+locations = {
+Vector3( 0, 0, 0 ): {
+"Terrain": "None"
+},
+Vector3( 0, 0, 1 ): {
+"Terrain": "None"
+},
+Vector3( 0, 0, 2 ): {
+"Terrain": "Stone"
+},
+Vector3( 0, 0, 3 ): {
+"Terrain": "BrittleStone"
+},
+Vector3( 0, 0, 4 ): {
+"Terrain": "Stone"
+},
+Vector3( 0, 0, 5 ): {
+"Terrain": "None"
+},
+Vector3( 0, 0, 6 ): {
+"Terrain": "None"
+},
+Vector3( 1, 0, 0 ): {
+"Terrain": "None"
+},
+Vector3( 1, 0, 1 ): {
+"Terrain": "None"
+},
+Vector3( 1, 0, 2 ): {
+"Terrain": "BrittleStone"
+},
+Vector3( 1, 0, 3 ): {
+"Terrain": "None"
+},
+Vector3( 1, 0, 4 ): {
+"Terrain": "Stone"
+},
+Vector3( 1, 0, 5 ): {
+"Terrain": "None"
+},
+Vector3( 1, 0, 6 ): {
+"Terrain": "None"
+},
+Vector3( 2, 0, 0 ): {
+"Obstacle": "Fire",
+"Terrain": "Stone"
+},
+Vector3( 2, 0, 1 ): {
+"Terrain": "Grass"
+},
+Vector3( 2, 0, 2 ): {
+"Creature": "Bear",
+"Terrain": "Grass"
+},
+Vector3( 2, 0, 3 ): {
+"Terrain": "Grass"
+},
+Vector3( 2, 0, 4 ): {
+"Terrain": "Grass"
+},
+Vector3( 2, 0, 5 ): {
+"Terrain": "None"
+},
+Vector3( 2, 0, 6 ): {
+"Terrain": "None"
+},
+Vector3( 3, 0, 0 ): {
+"Terrain": "None"
+},
+Vector3( 3, 0, 1 ): {
+"Terrain": "None"
+},
+Vector3( 3, 0, 2 ): {
+"Terrain": "Grass"
+},
+Vector3( 3, 0, 3 ): {
+"Obstacle": "Thorns",
+"Terrain": "Grass"
+},
+Vector3( 3, 0, 4 ): {
+"Terrain": "Grass"
+},
+Vector3( 3, 0, 5 ): {
+"Terrain": "None"
+},
+Vector3( 3, 0, 6 ): {
+"Terrain": "None"
+},
+Vector3( 4, 0, 0 ): {
+"Terrain": "None"
+},
+Vector3( 4, 0, 1 ): {
+"Terrain": "None"
+},
+Vector3( 4, 0, 2 ): {
+"Orb": "Water",
+"Terrain": "Grass"
+},
+Vector3( 4, 0, 3 ): {
+"Obstacle": "Thorns",
+"Terrain": "Grass"
+},
+Vector3( 4, 0, 4 ): {
+"Item": "Meat",
+"Terrain": "Grass"
+},
+Vector3( 4, 0, 5 ): {
+"Terrain": "None"
+},
+Vector3( 4, 0, 6 ): {
+"Terrain": "None"
+},
+Vector3( 5, 0, 0 ): {
+"Terrain": "None"
+},
+Vector3( 5, 0, 1 ): {
+"Terrain": "None"
+},
+Vector3( 5, 0, 2 ): {
+"Obstacle": "Thorns",
+"Terrain": "Earth"
+},
+Vector3( 5, 0, 3 ): {
+"Terrain": "Grass"
+},
+Vector3( 5, 0, 4 ): {
+"Terrain": "Grass"
+},
+Vector3( 5, 0, 5 ): {
+"Terrain": "Stone"
+},
+Vector3( 5, 0, 6 ): {
+"Terrain": "None"
+},
+Vector3( 6, 0, 0 ): {
+"Terrain": "None"
+},
+Vector3( 6, 0, 1 ): {
+"Terrain": "None"
+},
+Vector3( 6, 0, 2 ): {
+"Elemental": true,
+"Terrain": "Earth"
+},
+Vector3( 6, 0, 3 ): {
+"Terrain": "Earth"
+},
+Vector3( 6, 0, 4 ): {
+"Terrain": "Earth"
+},
+Vector3( 6, 0, 5 ): {
+"Terrain": "Stone"
+},
+Vector3( 6, 0, 6 ): {
+"Obstacle": "Fire",
+"Terrain": "Stone"
+}
+}
+paths = {
+
+}
