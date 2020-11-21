@@ -3,7 +3,7 @@ class_name Creature
 
 export var alias := ""
 
-export(String, "None", "Walker", "Eater", "Stray", "Stranded", "Scared") var behavior := "Walker"
+export(String, "None", "Walker", "Stray", "Stranded", "Scared", "Hunter") var behavior := "Walker"
 
 export(Array, String) var walkable := []
 
@@ -16,9 +16,36 @@ export var save_terrain := "Grass"
 # Walker
 var path := []
 var next_path_index := 1
+var path_index := 0
 var walk_reverse := false
 var loop_path = false
 
 
 func tick() -> void:
 	.tick()
+
+
+func get_next_path_cell() -> Vector3:
+	return path[next_path_index]
+
+func get_path_cell() -> Vector3:
+	return path[path_index]
+
+func increment_path_index() -> void:
+	path_index = next_path_index
+
+	if walk_reverse:
+		next_path_index -= 1
+
+		if next_path_index == -1:
+			next_path_index = 1
+			walk_reverse = false
+	else:
+		next_path_index += 1
+
+		if path.size() == next_path_index:
+			if loop_path:
+				next_path_index = 0
+			else:
+				walk_reverse = !walk_reverse
+				next_path_index -= 2
