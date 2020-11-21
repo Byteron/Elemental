@@ -10,7 +10,7 @@ albedo_color = Color( 0.262745, 0.109804, 0.109804, 1 )
 [node name="Goblin" instance=ExtResource( 1 )]
 alias = "Goblin"
 behavior = "Miner"
-walkable = [ "Stone" ]
+walkable = [ "Stone", "Obsidian" ]
 
 [node name="MeshInstance" parent="Meshes" index="0"]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 1.10564, 0 )
