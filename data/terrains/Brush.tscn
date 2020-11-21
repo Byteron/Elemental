@@ -1,43 +1,43 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/graphics/models/Tile_Grass_1.obj" type="ArrayMesh" id=1]
-[ext_resource path="res://data/terrains/Undergrowth.gd" type="Script" id=2]
-[ext_resource path="res://source/entity/terrain/Terrain.tscn" type="PackedScene" id=3]
-[ext_resource path="res://assets/graphics/models/Grass_N.jpg" type="Texture" id=4]
-[ext_resource path="res://assets/graphics/models/Grass_A.jpg" type="Texture" id=5]
-
-[sub_resource type="SpatialMaterial" id=2]
-albedo_color = Color( 0.0509804, 0.498039, 0.152941, 1 )
-albedo_texture = ExtResource( 5 )
-normal_enabled = true
-normal_scale = 1.0
-normal_texture = ExtResource( 4 )
+[ext_resource path="res://assets/graphics/models/Grass_N.jpg" type="Texture" id=2]
+[ext_resource path="res://assets/graphics/models/Grass_A.jpg" type="Texture" id=3]
+[ext_resource path="res://source/entity/terrain/Terrain.tscn" type="PackedScene" id=4]
+[ext_resource path="res://data/terrains/Brush.gd" type="Script" id=5]
 
 [sub_resource type="SpatialMaterial" id=1]
+albedo_color = Color( 0.0509804, 0.498039, 0.152941, 1 )
+albedo_texture = ExtResource( 3 )
+normal_enabled = true
+normal_scale = 1.0
+normal_texture = ExtResource( 2 )
+
+[sub_resource type="SpatialMaterial" id=2]
 resource_local_to_scene = true
 
-[node name="Undergrowth" instance=ExtResource( 3 )]
-script = ExtResource( 2 )
-alias = "Undergrowth"
+[node name="Brush" instance=ExtResource( 4 )]
+script = ExtResource( 5 )
+alias = "Brush"
 
 [node name="MeshInstance" parent="Meshes" index="0"]
 mesh = ExtResource( 1 )
-material/0 = SubResource( 2 )
+material/0 = SubResource( 1 )
 
 [node name="MeshInstance2" type="MeshInstance" parent="Meshes" index="1"]
 transform = Transform( 0.988782, -0.149363, 0, 0.148938, 0.985973, 0.0753268, -0.011251, -0.0744818, 0.997159, 0.031722, -1.7169, 0.00196409 )
 mesh = ExtResource( 1 )
-material/0 = SubResource( 2 )
+material/0 = SubResource( 1 )
 
 [node name="MeshInstance3" type="MeshInstance" parent="Meshes" index="2"]
 transform = Transform( 0.990824, 0.133491, 0.0211506, -0.131881, 0.989144, -0.0648169, -0.0295734, 0.0614328, 0.997673, 0.031722, -1.48042, 0.00196409 )
 mesh = ExtResource( 1 )
-material/0 = SubResource( 2 )
+material/0 = SubResource( 1 )
 
 [node name="MeshInstance4" type="MeshInstance" parent="Meshes" index="3"]
 transform = Transform( 0.974248, -0.221436, 0.0425142, 0.223532, 0.973238, -0.0533021, -0.0295734, 0.0614328, 0.997673, 0.031722, -1.28319, 0.00196409 )
 mesh = ExtResource( 1 )
-material/0 = SubResource( 2 )
+material/0 = SubResource( 1 )
 
 [node name="Debug" parent="." index="4"]
-material_override = SubResource( 1 )
+material_override = SubResource( 2 )
