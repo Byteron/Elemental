@@ -15,11 +15,13 @@ func _execute(map: Map, loc: Location, creature: Creature) -> void:
 				ore_loc.obstacle.destroy()
 			else:
 				map.move_character_with_path(loc, ore_loc)
-		else:
+		elif creature.has_path():
 			if loc.cell == creature.get_path_cell():
 				_follow_path(map, loc, creature)
 			else:
 				map.move_character_with_path(loc, map.get_location(creature.get_path_cell()))
+		else:
+			map.move_character_with_path(loc, map.get_location(creature.start_cell))
 	else:
 		if candle_loc and candle_loc.item.is_lit:
 			if candle_loc == loc:
@@ -29,12 +31,13 @@ func _execute(map: Map, loc: Location, creature: Creature) -> void:
 				creature.candle._fire(false)
 			else:
 				map.move_character_with_path(loc, candle_loc)
-		else:
+		elif creature.has_path():
 			if loc.cell == creature.get_path_cell():
 				_follow_path(map, loc, creature)
 			else:
 				map.move_character_with_path(loc, map.get_location(creature.get_path_cell()))
-
+		else:
+			map.move_character_with_path(loc, map.get_location(creature.start_cell))
 
 func _follow_path(map: Map, loc: Location, creature: Creature) -> void:
 	var next_cell : Vector3 = creature.get_next_path_cell()

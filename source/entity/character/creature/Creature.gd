@@ -37,6 +37,10 @@ func get_path_cell() -> Vector3:
 	return path[path_index]
 
 
+func has_path() -> bool:
+	return path.size() > 1
+
+
 func increment_path_index() -> void:
 	path_index = next_path_index
 
