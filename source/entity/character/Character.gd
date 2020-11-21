@@ -23,7 +23,7 @@ func move_to(position: Vector3) -> void:
 
 
 func kill() -> void:
-	emit_signal("died")
+	emit_signal("died", self)
 	queue_free()
 
 
