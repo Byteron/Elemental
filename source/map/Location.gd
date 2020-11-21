@@ -159,6 +159,7 @@ func _set_item(value: Item) -> void:
 	if item:
 		add_child(item)
 		item.connect("collected", self, "_on_item_collected")
+		item.connect("destroyed", self, "_on_item_collected")
 
 
 func _set_obstacle(value: Obstacle) -> void:
