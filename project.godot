@@ -124,11 +124,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://source/misc/SaveData.gd"
 }, {
-"base": "Node",
-"class": "SceneLoader",
-"language": "GDScript",
-"path": "res://addons/scene_manager/source/SceneLoader.gd"
-}, {
 "base": "PanelContainer",
 "class": "SelectionPanel",
 "language": "GDScript",
@@ -198,7 +193,6 @@ _global_script_class_icons={
 "OrthoCamera": "",
 "PathPanel": "",
 "SaveData": "",
-"SceneLoader": "",
 "SelectionPanel": "",
 "Sigil": "",
 "Song": "",
@@ -218,10 +212,10 @@ config/icon="res://icon.png"
 
 [autoload]
 
-Scene="*res://addons/scene_manager/source/Scene.tscn"
 Global="*res://source/global/Global.gd"
 Music="*res://source/global/Music.tscn"
 SFX="*res://source/global/SFX.tscn"
+Scene="*res://source/global/Scene.gd"
 
 [display]
 
@@ -232,7 +226,7 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "audio_booth", "scene_manager" )
+enabled=PoolStringArray( "audio_booth" )
 
 [input]
 

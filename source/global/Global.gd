@@ -24,7 +24,6 @@ var behaviors := {}
 
 
 func _ready() -> void:
-	_register_scenes()
 	_load_terrains()
 	_load_orbs()
 	_load_sigils()
@@ -85,13 +84,6 @@ func get_map_data() -> MapData:
 	if is_editor_play_mode:
 		return editor_map_data
 	return levels[current_level]
-
-
-func _register_scenes() -> void:
-	Scene.register_scene("TitleScreen", "res://source/menu/TitleScreen.tscn")
-	Scene.register_scene("Game", "res://source/game/Game.tscn")
-	Scene.register_scene("Editor", "res://source/editor/Editor.tscn")
-	Scene.register_scene("Credits", "res://source/menu/Credits.tscn")
 
 
 func _load_terrains() -> void:
